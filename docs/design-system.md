@@ -9,81 +9,94 @@ d'être de ce document autant que du fichier.
 
 ## 1. Couleurs
 
-### Bleu azur — couleur dominante
+L'identité est **entièrement bleue**. Le bleu clair porte les aplats, les
+badges et les fonds ; le bleu profond porte le texte, les liens et les boutons
+pleins ; le bleu nuit est réservé au pied de page et aux quelques surfaces qui
+demandent un contraste fort. Le blanc domine en surface.
+
+### Rôles — ce que les composants écrivent
 
 | Jeton | Valeur | Emploi |
 |---|---|---|
-| `--bleu-50` | `#f0f9ff` | fonds de section très clairs |
-| `--bleu-100` | `#e0f2fe` | pastilles, cercles d'icône, lavis de héros |
-| `--bleu-200` | `#bae6fd` | bordures accentuées, survols |
-| `--bleu-300` | `#7dd3fc` | traits décoratifs, eau dans les visuels |
-| `--bleu-400` | `#38bdf8` | aplats et dégradés, jamais du texte sur blanc |
-| `--bleu-500` | `#0ea5e9` | accent vif : dégradés, halos, fonds sombres |
-| `--bleu-600` | `#0284c7` | dégradés, icônes sur fond clair |
-| `--bleu-700` | `#0369a1` | **texte et boutons pleins** — 5,9:1 sur blanc |
-| `--bleu-800` | `#075985` | survols, dégradés foncés |
+| `--color-primary` | `#38bdf8` | aplats, badges, icônes, décor |
+| `--color-primary-dark` | `#0284c7` | éléments interactifs |
+| `--color-primary-deep` | `#0369a1` | **texte et boutons pleins** — 5,9:1 sur blanc |
+| `--color-primary-light` | `#e0f2fe` | cercles d'icône, pastilles, bordures douces |
+| `--color-primary-soft` | `#f0f9ff` | fonds de section alternés |
+| `--color-accent` | `#0ea5e9` | action secondaire, traits d'accent |
+| `--color-dark` | `#0f172a` | pied de page |
+| `--color-text` | `#1e293b` | texte courant — 13,6:1 sur blanc |
+| `--color-text-secondary` | `#5b687d` | texte secondaire |
+| `--color-background` | `#f8fafc` | fond neutre |
+| `--color-background-blue` | `#f0f9ff` | fond bleu très clair |
+| `--color-border` | `#e2e8f0` | filets |
+| `--shadow-soft` | `0 10px 30px rgba(15,23,42,.06)` | ombre par défaut |
 
-### Bleu nuit
+Une **échelle** (`--bleu-50` … `--bleu-900`, `--nuit`) est déclarée à côté. Les
+rôles y pointent : la couleur principale peut changer de place dans l'échelle
+sans qu'un seul composant ne bouge.
 
-| Jeton | Valeur | Emploi |
+### Le seul écart à la palette fournie
+
+`--color-text-secondary` devait être `#64748b`. Posé sur le bleu très pâle des
+sections alternées (`#f0f9ff`), il tombe à **4,48:1** — sous le seuil AA de
+4,5. Assombri de deux crans à `#5b687d`, il tient 5,4:1 sur ce même fond et
+reste visuellement un gris-bleu secondaire. Écart mesuré, pas supposé.
+
+### Pourquoi il n'y a plus d'orange
+
+L'identité précédente réservait un orange aux appels à l'action. Il a été
+retiré : la direction demandée est monochrome bleue, et un bouton d'appel en
+bleu profond sur fond blanc, ou blanc sur fond bleu soutenu, se détache
+suffisamment. La hiérarchie repose désormais sur la **valeur** (clair/foncé)
+plutôt que sur la teinte.
+
+Le compromis mérite d'être connu : un accent chaud attire l'œil plus vite
+qu'un contraste de valeur. Si le taux d'appel devait baisser, c'est la piste
+à rouvrir en premier.
+
+### Boutons
+
+| Classe | Aspect | Rôle |
 |---|---|---|
-| `--nuit` | `#0f172a` | titres, bandeau d'annonce, pied de page, sections sombres |
-| `--nuit-800` | `#1e293b` | aplats secondaires sur fond sombre |
+| `.btn-call` | dégradé bleu profond, texte blanc | **appeler** — l'action prioritaire |
+| `.btn-call` dans `.bandeau-urgence` | fond blanc, texte bleu profond | inversé : un bouton bleu sur un aplat bleu ne se détacherait pas |
+| `.btn-devis` | bleu vif `#0ea5e9`, texte bleu nuit — 6,2:1 | demander un devis |
+| `.btn-ghost` | fond blanc, filet gris | action tertiaire |
 
-### Orange — conversion et urgence, jamais dominant
+### Alternance des fonds
 
-| Jeton | Valeur | Emploi |
-|---|---|---|
-| `--orange` | `#f97316` | accent vif **sur fond sombre** ou en aplat clair |
-| `--orange-cta` | `#c2410c` | **boutons pleins** — 5,3:1 avec du blanc |
-| `--orange-fonce` | `#9a3412` | survol des boutons d'appel |
-| `--orange-100` | `#ffedd5` | fonds de pastille, cercle d'icône téléphone |
+Blanc → bleu très clair → blanc… C'est ce qui donne son rythme à la page. Deux
+sections `.alt` qui se suivent voient la seconde repasser en blanc : sans quoi
+la frontière disparaît et l'alternance ne sert plus à rien.
 
-> **Pourquoi deux oranges.** `#f97316` sur blanc ne donne que 2,9:1 : il est
-> illisible en texte et non conforme en aplat de bouton. Il reste donc réservé
-> aux fonds sombres, où il atteint 6,8:1, et aux petits aplats clairs. Les
-> boutons pleins prennent `--orange-cta`, seule teinte de la famille qui
-> supporte du texte blanc.
-
-### Neutres
-
-`--texte` `#475569` · `--texte-fort` `#0f172a` · `--texte-doux` `#5b687d`
-`--bordure` `#e2e8f0` · `--bordure-forte` `#cbd5e1`
-`--gris-50` `#f8fafc` · `--blanc` `#ffffff`
-
-### Deux jeux de noms, et pourquoi
-
-Les jetons ci-dessus décrivent une **échelle** : `--bleu-100` à `--bleu-900`.
-Un second jeu, déclaré juste après, décrit un **rôle** :
-
-```css
---color-primary        --color-background        --color-text
---color-primary-dark   --color-background-soft   --color-text-strong
---color-primary-light  --color-background-tint   --color-text-secondary
---color-primary-pale   --color-surface           --color-border
---color-accent         --color-accent-light      --color-border-strong
---color-accent-strong  --color-white
 ```
-
-Les deux pointent sur les mêmes couleurs et suivent tous deux le mode sombre.
-L'intérêt de les avoir séparés : un rôle peut changer de place dans l'échelle
-— décider que la couleur principale passe de `--bleu-500` à `--bleu-600` —
-sans qu'aucun composant ne bouge. Écrire les composants avec l'échelle seule
-reviendrait à figer ce choix dans cent règles.
+Héros            blanc
+Réponse rapide   blanc
+Prestations      .alt   bleu très clair
+Pourquoi nous    blanc
+Interventions    .alt
+Comprendre       blanc
+Carte des zones  .alt
+Avis             blanc
+Méthode          .alt
+FAQ              blanc
+Urgence          bleu soutenu
+Appel final      bleu profond
+Pied de page     bleu nuit
+```
 
 ### Règle de contraste
 
-Chaque couleur de texte tient **4,5:1** sur son fond (3:1 pour un grand
-texte : 24 px, ou 18,7 px en gras). Ce n'est pas une intention, c'est mesuré :
-`scripts/check-contraste.py` rend le texte transparent, capture les fonds
-réels et échantillonne les pixels sous chaque bloc. Les dégradés et les
-textes posés sur une image sont donc évalués comme le voit un visiteur.
+Chaque couleur de texte tient **4,5:1** sur son fond (3:1 pour un grand texte).
+Mesuré, pas déclaré : `scripts/check-contraste.py` rend le texte transparent,
+capture les fonds réels et échantillonne les pixels sous chaque bloc — dégradés
+et photographies compris.
 
 ### Mode sombre
 
-Le site s'adapte à `prefers-color-scheme: dark`. Seuls les **jetons** sont
-redéfinis : les rôles, eux, ne bougent pas. Le bleu reste l'accent, l'orange
-reste l'urgence.
+Le site s'adapte à `prefers-color-scheme: dark`. Seuls les jetons changent ;
+les rôles ne bougent pas.
 
 ---
 
@@ -137,18 +150,19 @@ Largeurs : `--largeur` 1200 px, `--largeur-etroite` 760 px pour les articles
 | `.btn` `.btn-call` `.btn-devis` `.btn-ghost` `.btn-large` `.btn-bloc` | boutons ; `.btn-call` est l'appel, seule action à porter l'orange plein |
 | `.carte` `.carte-service` `.carte-media` `.carte-icone` `.carte-pied` | cartes : fond blanc, rayon 20 px, filet 1 px, ombre légère, survol qui soulève de 3 px |
 | `.hero` `.hero-interieur` `.hero-article` `.hero-page` | quatre déclinaisons de la bande d'ouverture |
-| `.reponse-rapide` `.definition` `.qr-liste` `.cle` | bloc GEO : réponse autoportante + QUI/QUOI/OÙ/QUAND/COMMENT/POURQUOI/COMBIEN |
+| `.hero-badges` | pastilles de réassurance sous les boutons, repliables |
+| `.reponse-rapide` `.definition` `.qr-liste` `.cle` | bloc GEO : réponse autoportante, puis QUI/QUOI/OÙ/QUAND/COMMENT/POURQUOI/COMBIEN en blocs — chacun se cite isolément, ce qui est l'usage qu'en fait un moteur génératif |
 | `.etapes` (`.horizontale`) | chronologie numérotée, verticale sur mobile, horizontale au-delà de 900 px |
 | `.galerie` (`.mise-en-avant`) | galerie 4 colonnes, première vignette en 2×2 : les cinq photographies remplissent la grille sans trou |
 | `.confiance` `.confiance-icone` | les huit arguments vérifiables, icône animée au survol |
 | `.schema` `.schemas-grille` | schéma technique accompagné de sa légende, dans le corps du texte |
 | `.carte-bloc` `.carte-toile` `.carte-legende` `.carte-liste` | carte des zones et sa liste HTML |
 | `.avis-carte` `.avis-note` `.etoile` | avis clients — inactifs tant qu'aucun avis réel n'est renseigné |
-| `.stats` `.reassurance` | chiffres clés et engagements |
 | `.bandeau-urgence` `.urgence-encart` | la seule section où l'orange domine |
 | `.departements` `.departement-carte` `.numero` | les six départements |
 | `.faq details` | accordéons natifs, sans JavaScript |
 | `.formulaire` `.champ` `.champs` | formulaire de demande |
+| `.champ-radio` `.champ-case` | l'étiquette devient la cible tactile : un bouton radio natif fait 19 px |
 | `.sur-titre` `.badge` `.pastille` `.lien-fleche` | micro-éléments |
 | `.barre-mobile` | barre d'action fixe, sous 768 px |
 
@@ -182,7 +196,12 @@ défilement doux et les survols qui déplacent.
 - le tiroir de navigation fermé est retiré de l'ordre de tabulation par
   `visibility: hidden` — un simple décalage hors écran le laisserait
   atteignable au clavier ;
-- `scroll-padding-top` pour que l'en-tête collant ne masque pas les ancres.
+- `scroll-padding-top` pour que l'en-tête collant ne masque pas les ancres ;
+- la FAQ repose sur `<details>` / `<summary>`, et non sur un `<button>` associé
+  à un `<div>`. `<summary>` porte nativement le rôle de bouton et l'état
+  déplié/replié : les lecteurs d'écran l'annoncent sans un seul attribut ARIA,
+  et l'accordéon continue de fonctionner script désactivé. Le reconstruire à
+  la main ferait perdre cette dernière propriété sans rien gagner.
 
 ---
 
@@ -230,7 +249,36 @@ si les tuiles ne chargent pas.
 
 ---
 
-## 9. Performance
+## 9. Responsive
+
+Le site est vérifié à **onze largeurs** — 320, 375, 390, 414, 430, 768, 820,
+1024, 1280, 1440, 1920 — sur seize gabarits, soit 176 rendus, par
+`scripts/check-responsive.py`. Le script mesure la page rendue et cherche cinq
+choses : débordement du document, élément hors cadre, image qui déborde ou se
+déforme, contenu tronqué sans défilement prévu, cible tactile trop petite ou
+collée au bord.
+
+Points de rupture :
+
+| Seuil | Ce qui change |
+|---|---|
+| 480 px | la galerie passe à deux colonnes |
+| 560 px | les boutons radio du formulaire passent à deux colonnes |
+| 720 px | le bloc « Réponse rapide » passe à deux colonnes |
+| 768 px | la barre d'action fixe disparaît au profit de l'en-tête |
+| 900 px | grilles et carte des zones passent à deux colonnes |
+| 980 px | le héros passe à deux colonnes |
+| **1180 px** | le tiroir de navigation cède la place à la barre complète, et la chronologie passe à l'horizontale |
+
+Le seuil de 1180 px mérite une note : à 1080 px, la barre complète — marque,
+six entrées, téléphone et devis — dépassait la largeur utile et poussait
+**toutes** les pages en défilement horizontal à 1280 px. C'est exactement le
+genre de défaut qu'on ne voit pas dans le CSS et que la mesure trouve en une
+passe.
+
+---
+
+## 10. Performance
 
 | Ressource | Poids | Chargée |
 |---|---|---|

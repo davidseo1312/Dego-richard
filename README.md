@@ -143,6 +143,7 @@ scripts/
   check-html.py          structure HTML, hiérarchie des titres, labels
   check-contenu-local.py similarité des pages locales (anti-duplication)
   check-contraste.py     contrastes mesurés sur la page rendue (WCAG 1.4.3)
+  check-responsive.py    11 largeurs d'appareil : débordements, images, cibles
   audit.sh               enchaîne tous les contrôles
   test-http.sh           sert public/ et interroge toutes les URLs (aucun 403)
   apercu.sh              aperçu local avec les URLs de production
@@ -381,6 +382,7 @@ bash scripts/audit.sh
 | JSON-LD | validité de chaque bloc de données structurées |
 | `test-http.sh` | toutes les URLs du sitemap en 200, redirections 301, 404 personnalisée, **aucun 403** |
 | `check-contraste.py` | rapport de contraste de chaque texte, mesuré sur la page **rendue** (dégradés et images compris) — 4,5:1, ou 3:1 pour un grand texte |
+| `check-responsive.py` | 16 gabarits × 11 largeurs d'appareil : débordement du document, élément hors cadre, image qui déborde ou se déforme, contenu tronqué, cible tactile |
 
 Le build **échoue** (code de sortie ≠ 0) si le dossier produit n'est pas
 déployable. Un build qui n'a pas planté n'est pas un build valide : c'est
