@@ -82,7 +82,7 @@
 
     // Le tiroir n'existe qu'en dessous de 1080 px. Repasser au-dessus alors
     // qu'il est ouvert laisserait le corps de page bloqué en non-défilable.
-    var large = window.matchMedia('(min-width: 1080px)');
+    var large = window.matchMedia('(min-width: 1180px)');
     var surChangement = function (e) {
       if (e.matches && nav.getAttribute('data-ouvert') === 'true') { basculerMenu(false); }
     };

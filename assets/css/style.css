@@ -13,9 +13,9 @@
    changer une teinte ici la change sur les 111 pages du site.
 
    Contrastes : chaque couleur de texte a été vérifiée à 4.5:1 minimum sur son
-   fond (WCAG AA). Les bleus et oranges vifs de l'identité servent aux aplats,
-   aux dégradés et aux fonds sombres ; leurs déclinaisons foncées portent le
-   texte et les boutons pleins.
+   fond (WCAG AA). L'identité est entièrement bleue : le bleu clair porte les
+   aplats, les badges et les fonds ; le bleu profond porte le texte, les liens
+   et les boutons pleins, parce que lui seul tient le contraste.
    ========================================================================== */
 
 /* == 01. Polices ========================================================== */
@@ -48,148 +48,132 @@
 /* == 02. Jetons de design ================================================= */
 
 :root {
-  /* Bleu azur — couleur dominante. */
+  /* --- Rôles : ce que la couleur FAIT ------------------------------------
+     C'est ce jeu-là qu'écrivent les composants. Les valeurs qu'il désigne
+     peuvent bouger dans l'échelle ci-dessous sans qu'une seule règle change. */
+  --color-primary:        #38bdf8;   /* bleu clair — aplats, badges, icônes  */
+  --color-primary-dark:   #0284c7;   /* interactif                            */
+  --color-primary-deep:   #0369a1;   /* texte et boutons pleins — 5,9:1       */
+  --color-primary-light:  #e0f2fe;   /* fonds de pastille, cercles d'icône    */
+  --color-primary-soft:   #f0f9ff;   /* fonds de section                      */
+  --color-accent:         #0ea5e9;   /* action secondaire, traits d'accent    */
+
+  --color-dark:           #0f172a;   /* pied de page, sections sombres        */
+  --color-text:           #1e293b;   /* texte courant — 13,6:1 sur blanc      */
+  --color-text-strong:    #0f172a;   /* titres                                */
+  --color-text-secondary: #5b687d;   /* texte secondaire — voir la note       */
+
+  --color-background:      #f8fafc;
+  --color-background-blue: #f0f9ff;
+  --color-surface:         #ffffff;
+  --color-white:           #ffffff;
+  --color-border:          #e2e8f0;
+  --color-border-strong:   #cbd5e1;
+
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, .06);
+
+  /* NOTE sur --color-text-secondary. La direction demandait #64748b. Posé sur
+     le bleu très pâle des sections (#f0f9ff), il tombe à 4,48:1 — sous le
+     seuil AA de 4,5. Assombri de deux crans, il tient 5,4:1 sur ce même fond
+     et reste visuellement un gris-bleu secondaire. C'est le seul écart à la
+     palette fournie, et il est mesuré, pas supposé. */
+
+  /* --- Échelle : les teintes disponibles ---------------------------------- */
   --bleu-50:  #f0f9ff;
   --bleu-100: #e0f2fe;
   --bleu-200: #bae6fd;
   --bleu-300: #7dd3fc;
   --bleu-400: #38bdf8;
-  --bleu-500: #0ea5e9;   /* accent vif : aplats, dégradés, fonds sombres */
+  --bleu-500: #0ea5e9;
   --bleu-600: #0284c7;
-  --bleu-700: #0369a1;   /* texte et boutons pleins — 5.9:1 sur blanc */
+  --bleu-700: #0369a1;
   --bleu-800: #075985;
   --bleu-900: #0c4a6e;
 
-  /* Bleu nuit — titres, en-tête, sections sombres. */
   --nuit:     #0f172a;
   --nuit-800: #1e293b;
   --nuit-700: #334155;
 
-  /* Orange — conversion et urgence, jamais dominant. */
-  --orange:      #f97316;   /* accent vif : sur fond sombre ou en aplat clair */
-  --orange-cta:  #c2410c;   /* boutons pleins — 5.3:1 avec du blanc */
-  --orange-fonce:#9a3412;
-  --orange-100:  #ffedd5;
-  --orange-50:   #fff7ed;
-
-  /* Neutres. */
   --blanc:    #ffffff;
   --gris-50:  #f8fafc;
   --gris-100: #f1f5f9;
   --gris-200: #e2e8f0;
-  --texte:      #475569;
-  --texte-fort: var(--nuit);
-  --texte-doux: #5b687d;
-  --bordure:    #e2e8f0;
-  --bordure-forte: #cbd5e1;
+  --texte:      var(--color-text);
+  --texte-fort: var(--color-text-strong);
+  --texte-doux: var(--color-text-secondary);
+  --bordure:       var(--color-border);
+  --bordure-forte: var(--color-border-strong);
 
-  /* États. */
   --vert:  #15803d;
   --rouge: #b91c1c;
 
   /* Rayons. */
-  --r-xs: 8px;
-  --r-sm: 12px;
-  --r-md: 16px;
-  --r-lg: 20px;
-  --r-xl: 28px;
-  --r-full: 999px;
+  --r-xs: 8px;  --r-sm: 12px;  --r-md: 16px;
+  --r-lg: 20px; --r-xl: 28px;  --r-full: 999px;
 
-  /* Ombres — deux couches, très douces. Jamais d'ombre lourde. */
-  --ombre-xs: 0 1px 2px rgba(15, 23, 42, .05);
-  --ombre-sm: 0 1px 2px rgba(15, 23, 42, .04), 0 2px 6px rgba(15, 23, 42, .05);
-  --ombre-md: 0 1px 3px rgba(15, 23, 42, .05), 0 8px 24px rgba(15, 23, 42, .07);
-  --ombre-lg: 0 2px 6px rgba(15, 23, 42, .05), 0 18px 45px rgba(15, 23, 42, .10);
-  --ombre-bleue:   0 8px 22px rgba(3, 105, 161, .25);
-  --ombre-orange:  0 8px 22px rgba(194, 65, 12, .26);
+  /* Ombres — douces et bleutées, jamais lourdes. */
+  --ombre-xs: 0 1px 2px rgba(15, 23, 42, .04);
+  --ombre-sm: 0 1px 2px rgba(15, 23, 42, .04), 0 2px 8px rgba(15, 23, 42, .05);
+  --ombre-md: 0 1px 3px rgba(15, 23, 42, .04), 0 10px 30px rgba(15, 23, 42, .07);
+  --ombre-lg: 0 2px 6px rgba(15, 23, 42, .05), 0 20px 45px rgba(15, 23, 42, .10);
+  --ombre-bleue: 0 8px 22px rgba(3, 105, 161, .22);
 
   /* Espacement — échelle de 4 px. */
   --e-1: .25rem;  --e-2: .5rem;   --e-3: .75rem;  --e-4: 1rem;
   --e-5: 1.5rem;  --e-6: 2rem;    --e-7: 2.5rem;  --e-8: 3rem;
   --e-9: 4rem;    --e-10: 5rem;   --e-11: 6.5rem;
 
-  /* Rythme vertical des sections, fluide. */
-  --section-y: clamp(3rem, 1.6rem + 5.2vw, 5.5rem);
+  --section-y: clamp(2.75rem, 1.4rem + 5vw, 5.25rem);
 
-  /* Largeurs. */
   --largeur: 1200px;
   --largeur-etroite: 760px;
-  --gouttiere: clamp(1.15rem, .6rem + 2.2vw, 2rem);
+  --gouttiere: clamp(1rem, .5rem + 2vw, 2rem);
 
-  /* Typographie. */
   --police:       'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --police-titre: 'Jakarta', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  /* Surfaces — redéfinies en mode sombre. */
-  --fond:       var(--blanc);
-  --fond-doux:  var(--gris-50);
-  --fond-bleu:  var(--bleu-50);
-  --surface:    var(--blanc);
-
-  /* --- Noms canoniques du système ----------------------------------------
-     Les jetons ci-dessus décrivent une ÉCHELLE (bleu-100 à bleu-900) ; ceux
-     ci-dessous décrivent un RÔLE. Un rôle peut changer de place dans
-     l'échelle sans qu'aucune page ne bouge : c'est tout l'intérêt d'avoir
-     les deux. Les deux jeux suivent le mode sombre, puisqu'ils pointent sur
-     les mêmes variables. */
-  --color-primary:        var(--bleu-500);
-  --color-primary-dark:   var(--bleu-700);
-  --color-primary-light:  var(--bleu-100);
-  --color-primary-pale:   var(--bleu-50);
-  --color-accent:         var(--orange);
-  --color-accent-strong:  var(--orange-cta);
-  --color-accent-light:   var(--orange-100);
-  --color-background:     var(--fond);
-  --color-background-soft: var(--fond-doux);
-  --color-background-tint: var(--fond-bleu);
-  --color-surface:        var(--surface);
-  --color-text:           var(--texte);
-  --color-text-strong:    var(--texte-fort);
-  --color-text-secondary: var(--texte-doux);
-  --color-border:         var(--bordure);
-  --color-border-strong:  var(--bordure-forte);
-  --color-white:          #ffffff;
+  /* Surfaces. */
+  --fond:      var(--color-surface);
+  --fond-doux: var(--color-background);
+  --fond-bleu: var(--color-background-blue);
+  --surface:   var(--color-surface);
 }
 
-/* Mode sombre : mêmes rôles, mêmes contrastes, teintes inversées. Le bleu
-   azur reste l'accent ; l'orange reste réservé à l'urgence. */
+/* Mode sombre : mêmes rôles, teintes inversées. Le bleu clair reste l'accent. */
 @media (prefers-color-scheme: dark) {
   :root {
+    --color-primary-deep:   #7dd3fc;
+    --color-primary-dark:   #38bdf8;
+    --color-primary-light:  #12293f;
+    --color-primary-soft:   #0d1b2b;
+    --color-text:           #c3d2e2;
+    --color-text-strong:    #f1f5f9;
+    --color-text-secondary: #93a4bb;
+    --color-background:      #0f1829;
+    --color-background-blue: #0d1b2b;
+    --color-surface:         #101a2c;
+    --color-border:          #22304b;
+    --color-border-strong:   #33415c;
+
     --blanc:    #0b1220;
     --gris-50:  #0f1829;
     --gris-100: #16223a;
     --gris-200: #22304b;
-    --texte:      #b9c7d9;
-    --texte-fort: #f1f5f9;
-    --texte-doux: #93a4bb;
-    --bordure:    #22304b;
-    --bordure-forte: #33415c;
-
     --bleu-50:  #0d1b2b;
     --bleu-100: #12293f;
     --bleu-200: #1a3d5c;
-    --bleu-700: #7dd3fc;   /* les liens s'éclaircissent au lieu de foncer */
+    --bleu-700: #7dd3fc;
     --bleu-800: #bae6fd;
-
     --nuit:     #0b1220;
     --nuit-800: #131e33;
-
-    --orange-cta: #f97316;
-    --orange-fonce: #ea580c;
-    --orange-100: #2a1a0e;
-    --orange-50:  #1c1209;
-
-    --fond:      #0b1220;
-    --fond-doux: #0f1829;
-    --fond-bleu: #0d1b2b;
-    --surface:   #101a2c;
+    --fond:     #0b1220;
 
     --ombre-xs: 0 1px 2px rgba(0, 0, 0, .5);
     --ombre-sm: 0 1px 3px rgba(0, 0, 0, .5);
-    --ombre-md: 0 2px 8px rgba(0, 0, 0, .5);
-    --ombre-lg: 0 8px 30px rgba(0, 0, 0, .55);
+    --ombre-md: 0 2px 10px rgba(0, 0, 0, .5);
+    --ombre-lg: 0 8px 34px rgba(0, 0, 0, .55);
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, .45);
   }
-  :root .btn-call { color: #2b1206; }
 }
 
 /* == 03. Base et typographie ============================================== */
@@ -265,9 +249,13 @@ hr { border: 0; border-top: 1px solid var(--bordure); margin: var(--e-7) 0; }
 main > section { padding-block: var(--section-y); }
 main > section:first-child { padding-top: clamp(2rem, 1rem + 3vw, 3.25rem); }
 
-/* Alternance de fond : une section sur deux respire sur un gris très clair. */
-section.alt { background: var(--fond-doux); }
-section.bleu { background: var(--fond-bleu); }
+/* Alternance des fonds. Le rythme de la page repose dessus : blanc, bleu très
+   clair, blanc… Une page dont toutes les sections ont le même fond se lit
+   comme un seul bloc, quelle que soit la qualité de son contenu. */
+section.alt  { background: var(--color-background-blue); }
+/* Deux sections de même fond qui se suivent : la seconde reprend le blanc,
+   sinon la frontière disparaît et l'alternance ne sert plus à rien. */
+section.alt + section.alt { background: var(--color-surface); }
 
 .visually-hidden {
   position: absolute; width: 1px; height: 1px;
@@ -299,7 +287,6 @@ section.bleu { background: var(--fond-bleu); }
   color: var(--texte);
   margin-bottom: 0;
 }
-.section-titre.centre { margin-inline: auto; text-align: center; }
 
 .sur-titre {
   display: inline-flex; align-items: center; gap: .5rem;
@@ -313,8 +300,8 @@ section.bleu { background: var(--fond-bleu); }
   content: ""; width: 1.6rem; height: 2px; border-radius: 2px;
   background: linear-gradient(90deg, var(--bleu-500), var(--bleu-300));
 }
-.sur-titre.orange { color: var(--orange-cta); }
-.sur-titre.orange::before { background: linear-gradient(90deg, var(--orange), #fdba74); }
+.sur-titre.accent { color: var(--color-primary-deep); }
+.sur-titre.accent::before { background: linear-gradient(90deg, var(--color-accent), var(--color-primary)); }
 
 /* Pastilles d'information. */
 .badge {
@@ -325,7 +312,7 @@ section.bleu { background: var(--fond-bleu); }
   background: var(--bleu-100); color: var(--bleu-800);
   border: 1px solid var(--bleu-200);
 }
-.badge.orange { background: var(--orange-100); color: var(--orange-fonce); border-color: #fed7aa; }
+.badge.accent { background: var(--color-primary); color: #06283d; border-color: var(--color-primary-dark); }
 .badge svg { width: 1em; height: 1em; }
 
 /* Point clignotant de disponibilité. */
@@ -361,22 +348,31 @@ section.bleu { background: var(--fond-bleu); }
 .btn svg { width: 1.15em; height: 1.15em; flex: none; }
 
 .btn-large { padding: 1.02rem 1.85rem; font-size: 1.05rem; border-radius: var(--r-md); }
-.btn-petit { padding: .55rem .95rem; font-size: .875rem; }
 .btn-bloc  { display: flex; width: 100%; }
 
-/* Appel — l'action prioritaire, seule à porter l'orange plein. */
+/* Appel — l'action prioritaire. Bleu profond plein : c'est la seule teinte de
+   la famille qui supporte du texte blanc, et son poids visuel la distingue
+   nettement du devis sans recourir à une couleur d'alerte. */
 .btn-call {
-  background: var(--orange-cta); color: #fff;
-  box-shadow: var(--ombre-orange);
-}
-.btn-call:hover { background: var(--orange-fonce); color: #fff; box-shadow: 0 12px 28px rgba(194,65,12,.34); }
-
-/* Devis — action secondaire, bleu plein. */
-.btn-devis {
-  background: var(--bleu-700); color: #fff;
+  background: linear-gradient(180deg, var(--color-primary-deep), #075985);
+  color: #fff;
   box-shadow: var(--ombre-bleue);
 }
-.btn-devis:hover { background: var(--bleu-800); color: #fff; box-shadow: 0 12px 28px rgba(3,105,161,.32); }
+.btn-call:hover {
+  background: linear-gradient(180deg, #075985, #0c4a6e);
+  color: #fff; box-shadow: 0 12px 30px rgba(3, 105, 161, .32);
+}
+
+/* Devis — action secondaire. Bleu clair vif, texte bleu nuit : 6,2:1, et
+   assez lumineux pour ressortir sur un en-tête blanc. */
+.btn-devis {
+  background: var(--color-accent); color: #06283d;
+  box-shadow: 0 6px 18px rgba(14, 165, 233, .28);
+}
+.btn-devis:hover {
+  background: var(--color-primary-dark); color: #fff;
+  box-shadow: 0 12px 28px rgba(2, 132, 199, .34);
+}
 
 /* Contour — action tertiaire. S'adapte au fond clair comme au fond sombre. */
 .btn-ghost {
@@ -391,18 +387,13 @@ section.bleu { background: var(--fond-bleu); }
   box-shadow: var(--ombre-sm);
 }
 
-.btn-urgence { background: var(--rouge); color: #fff; }
-.btn-urgence:hover { background: #991b1b; color: #fff; }
-
 /* Variante sur fond sombre. */
-.sur-sombre .btn-ghost,
 .btn-ghost.clair {
   background: rgba(255,255,255,.07);
   border-color: rgba(255,255,255,.28);
   color: #fff;
   backdrop-filter: blur(6px);
 }
-.sur-sombre .btn-ghost:hover,
 .btn-ghost.clair:hover {
   background: rgba(255,255,255,.15);
   border-color: rgba(255,255,255,.5);
@@ -432,8 +423,8 @@ section.bleu { background: var(--fond-bleu); }
 /* Bandeau d'annonce : disponibilité à gauche, zone à droite. Disparaît sous
    900 px pour ne pas voler de hauteur au contenu sur mobile. */
 .topbar {
-  background: var(--nuit);
-  color: #cbd5e1;
+  background: var(--color-primary-deep);
+  color: #e2e8f0;
   font-size: .82rem;
 }
 .topbar-inner {
@@ -441,7 +432,7 @@ section.bleu { background: var(--fond-bleu); }
   gap: var(--e-4); min-height: 2.4rem; padding-block: .35rem;
 }
 .topbar-dispo { display: inline-flex; align-items: center; gap: .5rem; }
-.topbar-zone  { color: #94a3b8; }
+.topbar-zone  { color: #cfe6f5; }
 .topbar strong { color: #fff; font-weight: 600; }
 @media (max-width: 899px) { .topbar { display: none; } }
 
@@ -454,7 +445,7 @@ section.bleu { background: var(--fond-bleu); }
 .site-header.est-colle { box-shadow: var(--ombre-md); }
 
 .header-inner {
-  display: flex; align-items: center; gap: var(--e-5);
+  display: flex; align-items: center; gap: var(--e-4);
   min-height: 4.5rem;
   padding-block: .7rem;
 }
@@ -485,7 +476,7 @@ section.bleu { background: var(--fond-bleu); }
 
 .nav { margin-left: auto; }
 .nav ul {
-  display: flex; align-items: center; gap: .15rem;
+  display: flex; align-items: center; gap: .1rem;
   list-style: none; margin: 0; padding: 0;
 }
 /* Sans cette remise à zéro, le dernier <li> — seul à ne pas porter la marge
@@ -493,9 +484,9 @@ section.bleu { background: var(--fond-bleu); }
    « Contact » se retrouve désaligné du reste du menu. */
 .nav li { margin: 0; }
 .nav ul a {
-  display: block; padding: .55rem .72rem;
+  display: block; padding: .55rem .6rem;
   border-radius: var(--r-xs);
-  font-size: .945rem; font-weight: 550;
+  font-size: .92rem; font-weight: 550;
   color: var(--texte-fort); text-decoration: none;
   white-space: nowrap;
 }
@@ -503,7 +494,7 @@ section.bleu { background: var(--fond-bleu); }
 .nav ul a[aria-current="page"] { color: var(--bleu-700); background: var(--bleu-50); }
 
 /* Les deux actions de l'en-tête. */
-.header-actions { display: flex; align-items: center; gap: .6rem; flex: none; }
+.header-actions { display: flex; align-items: center; gap: .5rem; flex: none; }
 .header-call {
   display: inline-flex; align-items: center; gap: .55rem;
   text-decoration: none; padding: .5rem .9rem .5rem .55rem;
@@ -513,17 +504,17 @@ section.bleu { background: var(--fond-bleu); }
   width: 2.2rem; height: 2.2rem; flex: none;
   display: grid; place-items: center;
   border-radius: 50%;
-  background: var(--orange-100); color: var(--orange-fonce);
+  background: var(--color-primary-light); color: var(--color-primary-deep);
 }
 .header-call .tel-icone svg { width: 1.1rem; height: 1.1rem; }
 .header-call .tel-texte { display: grid; line-height: 1.15; text-align: left; }
 .header-call .tel-texte small { font-size: .68rem; color: var(--texte-doux); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
 .header-call .tel-texte strong {
   font-family: var(--police-titre);
-  font-size: 1.02rem; font-weight: 800; color: var(--texte-fort);
+  font-size: .97rem; font-weight: 800; color: var(--texte-fort);
   letter-spacing: -.01em; white-space: nowrap;
 }
-.header-call:hover .tel-icone { background: var(--orange-cta); color: #fff; }
+.header-call:hover .tel-icone { background: var(--color-primary-deep); color: #fff; }
 
 .nav-toggle {
   display: none;
@@ -545,7 +536,11 @@ section.bleu { background: var(--fond-bleu); }
 .nav-toggle[aria-expanded="true"] .nav-toggle-bars::after  { transform: translateY(-6px) rotate(-45deg); }
 
 /* Tiroir de navigation mobile. */
-@media (max-width: 1079px) {
+/* Le tiroir prend le relais jusqu'à 1179 px. En dessous, la barre complète —
+   marque, six entrées, téléphone et devis — ne tient plus dans la largeur
+   utile et pousse la page en défilement horizontal. C'est ce que mesurait
+   scripts/check-responsive.py à 1280 px avant correction. */
+@media (max-width: 1179px) {
   .nav-toggle { display: flex; position: relative; z-index: 130; }
   .header-inner { gap: var(--e-3); }
   .header-actions { display: none; }
@@ -593,7 +588,7 @@ section.bleu { background: var(--fond-bleu); }
   .voile[data-visible="true"] { opacity: 1; pointer-events: auto; }
   body[data-menu="ouvert"] { overflow: hidden; }
 }
-@media (min-width: 1080px) {
+@media (min-width: 1180px) {
   .nav-actions { display: none; }
 }
 
@@ -661,37 +656,42 @@ main > section.hero { padding-block: clamp(2.25rem, 1rem + 4.4vw, 4.5rem); }
   margin-bottom: var(--e-6);
 }
 
-/* Réassurance sous les boutons : quatre lignes courtes, cochées. */
-.hero-points {
-  display: grid; gap: .55rem .5rem;
-  grid-template-columns: 1fr;
+/* Réassurance sous les boutons : des pastilles plutôt qu'une liste. Elles se
+   replient naturellement sur une ou deux lignes selon la largeur, sans avoir
+   à décider d'un nombre de colonnes. */
+.hero-badges {
+  display: flex; flex-wrap: wrap; gap: .45rem;
   list-style: none; margin: 0 0 var(--e-6); padding: 0;
-  font-size: .95rem;
 }
-@media (min-width: 560px) { .hero-points { grid-template-columns: 1fr 1fr; } }
-.hero-points li {
-  display: flex; align-items: flex-start; gap: .5rem; margin: 0;
-  color: var(--texte);
+.hero-badges li { margin: 0; }
+.hero-badges .badge {
+  gap: .4rem;
+  background: var(--color-surface);
+  border-color: var(--color-primary-light);
+  color: var(--color-text);
+  box-shadow: var(--ombre-xs);
 }
-.hero-points li::before {
+.hero-badges .badge::before {
   content: "";
-  width: 1.1rem; height: 1.1rem; flex: none; margin-top: .28rem;
+  width: 1rem; height: 1rem; flex: none;
   border-radius: 50%;
-  background: var(--bleu-100) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230369a1' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / .72rem no-repeat;
+  background: var(--color-primary-light) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230369a1' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / .66rem no-repeat;
 }
 
 /* Trois preuves chiffrées, en ligne. */
 .hero-preuves {
   display: grid; gap: var(--e-4);
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10.5rem), 1fr));
   padding-top: var(--e-5);
   border-top: 1px solid var(--bordure);
 }
 .preuve { display: grid; gap: .1rem; }
 .preuve strong {
   font-family: var(--police-titre);
-  font-size: 1.5rem; font-weight: 800; color: var(--bleu-700);
-  letter-spacing: -.02em; line-height: 1.1;
+  font-size: clamp(1.15rem, .9rem + .8vw, 1.5rem);
+  font-weight: 800; color: var(--color-primary-deep);
+  letter-spacing: -.02em; line-height: 1.15;
+  overflow-wrap: anywhere;
 }
 .preuve span { font-size: .84rem; color: var(--texte-doux); line-height: 1.4; }
 
@@ -703,14 +703,7 @@ main > section.hero { padding-block: clamp(2.25rem, 1rem + 4.4vw, 4.5rem); }
   box-shadow: var(--ombre-lg);
   background: var(--bleu-50);
 }
-.hero-media::before {
-  content: "";
-  position: absolute; inset: auto -1.4rem -1.4rem auto;
-  width: 62%; height: 62%;
-  border-radius: var(--r-xl);
-  background: linear-gradient(140deg, var(--bleu-200), transparent 65%);
-  z-index: -1;
-}
+
 .hero-carte {
   position: absolute; left: -1rem; bottom: -1.25rem;
   display: flex; align-items: center; gap: .75rem;
@@ -724,14 +717,13 @@ main > section.hero { padding-block: clamp(2.25rem, 1rem + 4.4vw, 4.5rem); }
 .hero-carte .icone {
   width: 2.4rem; height: 2.4rem; flex: none;
   display: grid; place-items: center; border-radius: 50%;
-  background: var(--orange-100); color: var(--orange-fonce);
+  background: var(--color-primary-light); color: var(--color-primary-deep);
 }
 .hero-carte .icone svg { width: 1.2rem; height: 1.2rem; }
 .hero-carte strong { display: block; font-size: .95rem; color: var(--texte-fort); font-family: var(--police-titre); }
 .hero-carte span { font-size: .8rem; color: var(--texte-doux); line-height: 1.35; display: block; }
 @media (max-width: 979px) {
   .hero-carte { position: static; margin-top: var(--e-4); max-width: none; }
-  .hero-media::before { display: none; }
 }
 
 /* Héros des pages intérieures : même langage que l'accueil, moins haut, et
@@ -743,7 +735,6 @@ main > section.hero-interieur { padding-block: 0 clamp(2rem, 1rem + 3vw, 3.25rem
 .hero-interieur .chapeau { margin-bottom: var(--e-5); }
 .hero-interieur .hero-actions { margin-bottom: 0; }
 .hero-interieur .hero-media img { border-radius: var(--r-lg); }
-.hero-interieur .hero-media::before { display: none; }
 @media (min-width: 980px) {
   .hero-interieur .hero-grid { grid-template-columns: 1.1fr .9fr; }
 }
@@ -766,9 +757,7 @@ main > section.hero-interieur { padding-block: 0 clamp(2rem, 1rem + 3vw, 3.25rem
 /* == 08. Cartes et grilles ================================================ */
 
 .grille { display: grid; gap: var(--e-5); }
-.grille-2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
 .grille-3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 20.5rem), 1fr)); }
-.grille-4 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.5rem), 1fr)); }
 
 .carte {
   display: flex; flex-direction: column;
@@ -826,7 +815,12 @@ main > section.hero-interieur { padding-block: 0 clamp(2rem, 1rem + 3vw, 3.25rem
   padding-top: var(--e-4);
   border-top: 1px solid var(--bordure);
 }
-.carte-pied .btn { padding: .5rem .9rem; font-size: .875rem; box-shadow: none; }
+/* 40 px de haut : en dessous, un pouce rate la cible une fois sur trois.
+   Le bouton reste visuellement secondaire par sa taille de texte. */
+.carte-pied .btn {
+  padding: .6rem 1rem; min-height: 2.65rem;
+  font-size: .875rem; box-shadow: none;
+}
 
 /* Carte avec visuel en tête (blog, galerie de services). */
 .carte-media { padding: 0; overflow: hidden; }
@@ -857,18 +851,18 @@ main > section.hero-interieur { padding-block: 0 clamp(2rem, 1rem + 3vw, 3.25rem
 /* Réponse autoportante placée haut dans la page : un moteur génératif peut la
    citer telle quelle sans avoir à recomposer le reste du document. */
 .reponse-rapide {
-  background: var(--surface);
-  border: 1px solid var(--bleu-200);
-  border-radius: var(--r-lg);
-  padding: clamp(1.5rem, 1rem + 2vw, 2.4rem);
-  box-shadow: var(--ombre-sm);
+  background: var(--color-surface);
+  border: 1px solid var(--color-primary-light);
+  border-radius: var(--r-xl);
+  padding: clamp(1.25rem, .8rem + 2vw, 2.4rem);
+  box-shadow: var(--shadow-soft);
   position: relative;
   overflow: hidden;
 }
 .reponse-rapide::before {
   content: "";
-  position: absolute; inset: 0 auto 0 0; width: 4px;
-  background: linear-gradient(180deg, var(--bleu-500), var(--bleu-300));
+  position: absolute; inset: 0 0 auto 0; height: 4px;
+  background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary));
 }
 .reponse-rapide > h2 {
   font-size: .78rem; font-weight: 700;
@@ -885,50 +879,83 @@ main > section.hero-interieur { padding-block: 0 clamp(2rem, 1rem + 3vw, 3.25rem
 }
 .definition strong { color: var(--texte-fort); }
 
-.qr-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: .1rem; }
+/* Les sept entrées QUI/QUOI/OÙ/QUAND/COMMENT/POURQUOI/COMBIEN deviennent
+   autant de blocs. En liste, elles se lisaient comme un tableau administratif ;
+   en blocs, chacune se repère et se cite isolément — ce qui est exactement
+   l'usage qu'en fait un moteur génératif. */
+.qr-liste {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: .7rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .qr-liste { grid-template-columns: 1fr 1fr; }
+  /* La dernière entrée, souvent la plus longue (« Combien »), prend toute la
+     largeur plutôt que de laisser une case vide à côté d'elle. */
+  .qr-liste li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
 .qr-liste li {
-  display: grid; grid-template-columns: 6.5rem 1fr; gap: .9rem;
-  padding: .7rem 0; margin: 0;
-  border-top: 1px solid var(--bordure);
-  font-size: .96rem;
+  display: grid; gap: .3rem;
+  margin: 0; padding: .85rem 1rem;
+  background: var(--color-primary-soft);
+  border: 1px solid var(--color-primary-light);
+  border-radius: var(--r-md);
+  font-size: .95rem;
+  transition: border-color .18s ease, background-color .18s ease;
 }
-.qr-liste li:first-child { border-top: 0; padding-top: 0; }
+.qr-liste li:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+}
 .cle {
+  display: inline-flex; align-items: center; gap: .4rem;
   font-family: var(--police-titre);
-  font-size: .78rem; font-weight: 800;
-  letter-spacing: .07em; text-transform: uppercase;
-  color: var(--bleu-700);
-  padding-top: .18rem;
+  font-size: .72rem; font-weight: 800;
+  letter-spacing: .09em; text-transform: uppercase;
+  color: var(--color-primary-deep);
 }
-@media (max-width: 559px) {
-  .qr-liste li { grid-template-columns: 1fr; gap: .15rem; }
+.cle::before {
+  content: ""; width: .45rem; height: .45rem; flex: none;
+  border-radius: 50%; background: var(--color-primary);
 }
 
-/* --- Bandeau d'urgence — le seul aplat orange de la page ------------------ */
+/* --- Bandeau d'urgence — le seul aplat de bleu soutenu de la page --------- */
+/* Bleu soutenu, et non bleu nuit : c'est la seule section colorée de la page,
+   elle doit trancher avec le blanc sans basculer dans le sombre. Le blanc y
+   passe à 5,9:1, ce qui autorise du texte courant. */
 .bandeau-urgence {
   background:
-    radial-gradient(38rem 22rem at 92% 8%, rgba(249, 115, 22, .22), transparent 62%),
-    linear-gradient(135deg, #0f172a 0%, #12263f 55%, #0b1e33 100%);
-  color: #e2e8f0;
+    radial-gradient(38rem 22rem at 92% 8%, rgba(125, 211, 252, .28), transparent 62%),
+    linear-gradient(135deg, #0369a1 0%, #075985 58%, #0c4a6e 100%);
+  color: #eaf6fd;
   position: relative;
   overflow: hidden;
+}
+/* Sur ce fond bleu, l'action prioritaire s'inverse : fond blanc, texte bleu
+   profond. Un bouton bleu sur un aplat bleu ne se détacherait pas. */
+.bandeau-urgence .btn-call {
+  background: var(--color-white); color: var(--color-primary-deep);
+  box-shadow: 0 8px 22px rgba(3, 26, 46, .28);
+}
+.bandeau-urgence .btn-call:hover {
+  background: var(--color-primary-light); color: #075985;
 }
 .bandeau-urgence::after {
   content: "";
   position: absolute; inset: 0 0 auto 0; height: 3px;
-  background: linear-gradient(90deg, var(--orange), var(--bleu-500));
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
 }
 .bandeau-urgence h1,
 .bandeau-urgence h2,
 .bandeau-urgence h3 { color: #fff; }
-.bandeau-urgence .sur-titre { color: #fdba74; }
-.bandeau-urgence .sur-titre::before { background: linear-gradient(90deg, var(--orange), #fdba74); }
-.bandeau-urgence a:not(.btn) { color: #fed7aa; }
+.bandeau-urgence .sur-titre { color: #bae6fd; }
+.bandeau-urgence .sur-titre::before { background: linear-gradient(90deg, var(--color-primary), #bae6fd); }
+.bandeau-urgence a:not(.btn) { color: #e0f2fe; }
 /* Le fil d'Ariane pose sa couleur sur le <ol> lui-même : la redéfinir sur le
    conteneur ne suffit pas, elle ne fait qu'être héritée puis écrasée. */
-.bandeau-urgence .fil ol { color: #cbd5e1; }
-.bandeau-urgence .fil a { color: #e2e8f0; }
-.bandeau-urgence .fil li + li::before { color: #475569; }
+.bandeau-urgence .fil ol { color: #cfe6f5; }
+.bandeau-urgence .fil a { color: #eaf6fd; }
+.bandeau-urgence .fil li + li::before { color: #6ea8cc; }
 .bandeau-urgence strong { color: #fff; }
 
 .urgence-inner {
@@ -946,12 +973,12 @@ main > section.hero-interieur { padding-block: 0 clamp(2rem, 1rem + 3vw, 3.25rem
 }
 .liste-situations li {
   display: flex; align-items: flex-start; gap: .55rem; margin: 0;
-  color: #cbd5e1;
+  color: #dbeefb;
 }
 .liste-situations li::before {
   content: "";
   width: .45rem; height: .45rem; margin-top: .55rem; flex: none;
-  border-radius: 50%; background: var(--orange);
+  border-radius: 50%; background: var(--color-primary);
 }
 
 .urgence-encart {
@@ -970,7 +997,7 @@ main > section.hero-interieur { padding-block: 0 clamp(2rem, 1rem + 3vw, 3.25rem
   font-weight: 800; color: #fff; letter-spacing: -.01em;
   text-decoration: none; margin-bottom: .3rem;
 }
-.urgence-encart .horaires { font-size: .85rem; color: #cbd5e1; margin-bottom: var(--e-4); }
+.urgence-encart .horaires { font-size: .85rem; color: #d7edfa; margin-bottom: var(--e-4); }
 
 /* --- Étapes : chronologie verticale numérotée ---------------------------- */
 .etapes {
@@ -1008,11 +1035,14 @@ main > section.hero-interieur { padding-block: 0 clamp(2rem, 1rem + 3vw, 3.25rem
 .etapes h3 { margin-bottom: .35rem; padding-top: .3rem; }
 .etapes p { font-size: .98rem; margin-bottom: 0; }
 
-@media (min-width: 900px) {
-  /* En largeur, la chronologie devient horizontale. */
+@media (min-width: 1180px) {
+  /* La chronologie ne passe à l'horizontale qu'une fois ses cinq étapes
+     tenant sur UNE ligne. En dessous, elles se répartissaient en 4 + 1, et
+     le trait de liaison de la quatrième débordait dans le vide à droite. */
   .etapes.horizontale {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+    grid-template-columns: repeat(5, 1fr);
     gap: var(--e-5);
+    overflow: hidden;   /* garde-fou : aucun trait ne dépasse de la grille */
   }
   .etapes.horizontale > li { padding: 3.4rem 0 0; }
   .etapes.horizontale > li::after {
@@ -1023,60 +1053,16 @@ main > section.hero-interieur { padding-block: 0 clamp(2rem, 1rem + 3vw, 3.25rem
   .etapes.horizontale > li:last-child::after { display: none; }
 }
 
-/* --- Engagements : liste cochée en deux colonnes ------------------------- */
-.reassurance {
-  list-style: none; margin: 0; padding: 0;
-  display: grid; gap: var(--e-5);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
-}
-.reassurance > li {
-  display: flex; gap: var(--e-4); margin: 0;
-  background: var(--surface);
-  border: 1px solid var(--bordure);
-  border-radius: var(--r-lg);
-  padding: var(--e-5);
-  box-shadow: var(--ombre-xs);
-}
-.reassurance > li > svg {
-  width: 2.5rem; height: 2.5rem; flex: none;
-  padding: .55rem; border-radius: var(--r-sm);
-  background: var(--bleu-100); color: var(--bleu-700);
-  border: 1px solid var(--bleu-200);
-}
-.reassurance strong { display: block; font-family: var(--police-titre); font-size: 1.05rem; margin-bottom: .25rem; }
-.reassurance span { display: block; font-size: .95rem; color: var(--texte); }
-
-/* --- Chiffres clés ------------------------------------------------------- */
-.stats {
-  list-style: none; margin: 0; padding: 0;
-  display: grid; gap: var(--e-4);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
-}
-.stats > li {
-  margin: 0; padding: var(--e-5) var(--e-4);
-  text-align: center;
-  background: var(--surface);
-  border: 1px solid var(--bordure);
-  border-radius: var(--r-lg);
-}
-.stats b {
-  display: block;
-  font-family: var(--police-titre);
-  font-size: clamp(1.7rem, 1.3rem + 1.5vw, 2.4rem);
-  font-weight: 800; line-height: 1;
-  background: linear-gradient(120deg, var(--bleu-700), var(--bleu-600));
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: var(--bleu-700);
-  margin-bottom: .35rem;
-}
-.stats span { font-size: .88rem; color: var(--texte-doux); }
-
 /* --- Galerie d'interventions --------------------------------------------- */
 .galerie {
-  display: grid; gap: var(--e-4);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  display: grid; gap: var(--e-3);
+  grid-template-columns: 1fr;
   list-style: none; margin: 0; padding: 0;
 }
+/* Deux colonnes dès qu'il y a la place, trois au-delà : une photographie
+   d'intervention reste lisible en vignette, contrairement à un schéma. */
+@media (min-width: 480px) { .galerie { grid-template-columns: 1fr 1fr; gap: var(--e-4); } }
+@media (min-width: 900px) { .galerie { grid-template-columns: repeat(3, 1fr); } }
 .galerie > li { margin: 0; }
 .galerie figure {
   margin: 0; position: relative;
@@ -1131,9 +1117,19 @@ main > section.hero-interieur { padding-block: 0 clamp(2rem, 1rem + 3vw, 3.25rem
   border-color: var(--bleu-200);
 }
 .departement-carte h3 {
-  display: flex; align-items: center; gap: .6rem;
-  font-size: 1.15rem; margin-bottom: .5rem;
+  display: flex; align-items: center; gap: .65rem;
+  font-size: 1.15rem; margin-bottom: .55rem;
 }
+.departement-carte::after {
+  /* Le numéro en très grand, en filigrane : il donne à la carte un repère
+     visuel immédiat sans ajouter de texte à lire. */
+  content: attr(data-numero);
+  position: absolute; right: -.4rem; bottom: -1.6rem;
+  font-family: var(--police-titre); font-size: 5.5rem; font-weight: 800;
+  line-height: 1; color: var(--color-primary-light);
+  pointer-events: none; z-index: 0;
+}
+.departement-carte > * { position: relative; z-index: 1; }
 .numero {
   display: inline-grid; place-items: center;
   min-width: 2.35rem; height: 2.35rem; padding: 0 .4rem;
@@ -1191,9 +1187,9 @@ ul.liens-connexes { padding: var(--e-5); }
 .encadre > :last-child { margin-bottom: 0; }
 
 .alerte {
-  background: var(--orange-50);
+  background: var(--color-primary-soft);
   border: 1px solid #fed7aa;
-  border-left: 4px solid var(--orange);
+  border-left: 4px solid var(--color-accent);
   border-radius: var(--r-sm);
   padding: var(--e-4) var(--e-5);
   margin: var(--e-5) 0;
@@ -1317,7 +1313,7 @@ tbody tr:hover { background: var(--fond-doux); }
 .champ label {
   font-size: .9rem; font-weight: 650; color: var(--texte-fort);
 }
-.requis { color: var(--orange-cta); font-weight: 700; }
+.requis { color: var(--color-primary-deep); font-weight: 700; }
 .aide { font-size: .82rem; color: var(--texte-doux); }
 
 .champ input, .champ select, .champ textarea {
@@ -1339,6 +1335,41 @@ tbody tr:hover { background: var(--fond-doux); }
   box-shadow: 0 0 0 4px rgba(14, 165, 233, .16);
 }
 .champ input[type="file"] { padding: .55rem .7rem; background: var(--fond-doux); }
+
+/* Cases et boutons radio : le contrôle natif fait 13 px, ce qui est
+   inatteignable au pouce. C'est le LABEL qui devient la cible — 44 px de haut,
+   toute la largeur — et le contrôle lui-même est agrandi. */
+.champ-radio { display: grid; gap: .35rem; }
+.champ-radio label,
+.champ-case {
+  display: flex; align-items: flex-start; gap: .65rem;
+  min-height: 2.75rem; padding: .55rem .75rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--r-sm);
+  background: var(--color-surface);
+  font-size: .95rem; font-weight: 500; color: var(--texte);
+  cursor: pointer;
+  transition: border-color .16s ease, background-color .16s ease;
+}
+.champ-radio label:hover,
+.champ-case:hover { border-color: var(--color-primary); background: var(--color-primary-soft); }
+.champ-radio input[type="radio"],
+.champ-case input[type="checkbox"] {
+  width: 1.2rem; height: 1.2rem; flex: none; margin: .15rem 0 0;
+  accent-color: var(--color-primary-deep);
+}
+.champ-radio label:has(input:checked),
+.champ-case:has(input:checked) {
+  border-color: var(--color-primary-dark);
+  background: var(--color-primary-light);
+}
+.champ-radio label:focus-within,
+.champ-case:focus-within { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+@media (min-width: 560px) {
+  .champ-radio { grid-template-columns: 1fr 1fr; }
+}
+.champ-case { font-size: .9rem; line-height: 1.55; margin: 0; }
+.champ-case label { cursor: pointer; }
 .champ select {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
@@ -1428,8 +1459,8 @@ tbody tr:hover { background: var(--fond-doux); }
    photographie, et un fond semi-transparent laisserait sa lisibilité dépendre
    de ce qui se trouve derrière — donc de l'image. */
 .bandeau-urgence .article-visuel figcaption {
-  background: #0d1e33; color: #cbd5e1;
-  border-top-color: rgba(255,255,255,.16);
+  background: #06405f; color: #d7edfa;
+  border-top-color: rgba(255,255,255,.2);
 }
 
 /* Sommaire d'article. */
@@ -1505,10 +1536,10 @@ tbody tr:hover { background: var(--fond-doux); }
 .footer-tel .icone {
   width: 2.4rem; height: 2.4rem; flex: none;
   display: grid; place-items: center; border-radius: 50%;
-  background: var(--orange-cta); color: #fff;
+  background: var(--color-accent); color: #06283d;
 }
 .footer-tel .icone svg { width: 1.15rem; height: 1.15rem; }
-.footer-tel:hover .icone { background: var(--orange); }
+.footer-tel:hover .icone { background: var(--color-primary); }
 
 .footer-legal {
   border-top: 1px solid rgba(255, 255, 255, .1);
@@ -1545,7 +1576,10 @@ tbody tr:hover { background: var(--fond-doux); }
   min-height: 2.9rem;
 }
 .barre-mobile a svg { width: 1.15rem; height: 1.15rem; flex: none; }
-.barre-mobile-appel { background: var(--orange-cta); color: #fff; flex: 1.45 !important; }
+.barre-mobile-appel {
+  background: linear-gradient(180deg, var(--color-primary-deep), #075985);
+  color: #fff; flex: 1.45 !important;
+}
 .barre-mobile-appel:hover { color: #fff; }
 .barre-mobile-devis {
   background: var(--surface); color: var(--texte-fort);
@@ -1620,6 +1654,7 @@ tbody tr:hover { background: var(--fond-doux); }
 }
 .schema figcaption strong { color: var(--texte-fort); }
 .schemas-grille .schema { margin: 0; display: flex; flex-direction: column; }
+.schemas-grille .schema img { aspect-ratio: 3 / 2; object-fit: cover; }
 .schemas-grille .schema figcaption { flex: 1; }
 
 /* --- Carte des zones d'intervention --------------------------------------- */
@@ -1631,9 +1666,14 @@ tbody tr:hover { background: var(--fond-doux); }
 @media (min-width: 900px) {
   .carte-bloc { grid-template-columns: 1.25fr .75fr; gap: var(--e-6); }
 }
+.carte-zone { display: flex; }
 .carte-toile {
   position: relative;
-  min-height: clamp(20rem, 16rem + 18vw, 30rem);
+  flex: 1;
+  /* 400 px sur téléphone — assez pour situer les six départements sans manger
+     tout l'écran. Au-delà de 900 px, la carte s'aligne sur la hauteur de la
+     colonne voisine plutôt que d'imposer la sienne. */
+  min-height: 400px;
   border-radius: var(--r-lg);
   overflow: hidden;
   background: var(--bleu-50);
