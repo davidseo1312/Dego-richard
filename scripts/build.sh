@@ -26,6 +26,18 @@ while IFS= read -r var; do
   export "$var"
 done < <(grep -oE '^[A-Z][A-Z0-9_]*=' src/config.sh | tr -d '=')
 
+# Markup des photographies, produit par scripts/preparer-photos.py. Chaque
+# variable porte un bloc <picture> complet : une page écrit {{PHOTO_WC_MEDIA}}
+# et hérite des sources AVIF/WebP, du srcset, du sizes et des dimensions
+# réelles des fichiers. Absent, le site se construit quand même — sans
+# photographies, mais sans planter.
+if [ -f src/photos.sh ]; then
+  source src/photos.sh
+  while IFS= read -r var; do
+    export "$var"
+  done < <(grep -oE '^PHOTO_[A-Z0-9_]*=' src/photos.sh | tr -d '=')
+fi
+
 ROBOTS_POLICY_GLOBAL="$ROBOTS_POLICY"
 
 OUT="public"
@@ -65,11 +77,72 @@ if [ -n "${GSC_CODE:-}" ]; then
   BLOC_VERIFICATION="<meta name=\"google-site-verification\" content=\"${GSC_CODE}\">"
 fi
 
+# --- Avis clients -----------------------------------------------------------
+# La section est construite depuis src/avis.tsv. Le fichier livré est vide :
+# aucun avis n'a été inventé. Tant qu'il le reste, {{SECTION_AVIS}} vaut la
+# chaîne vide et la section n'apparaît sur aucune page — une section d'avis
+# vide inspire moins confiance que pas de section du tout.
+#
+# Ces avis ne sont volontairement PAS balisés en JSON-LD : Google interdit le
+# balisage d'avis que l'on collecte soi-même à son propre sujet.
+export SECTION_AVIS=""
+NB_AVIS=0
+if [ -f src/avis.tsv ]; then
+  AVIS_CARTES=""
+  TOTAL_NOTES=0
+  while IFS=$'\t' read -r prenom note ville date commentaire; do
+    case "$prenom" in ''|'#'*) continue ;; esac
+    [ -n "$commentaire" ] || continue
+    NB_AVIS=$((NB_AVIS + 1))
+    TOTAL_NOTES=$((TOTAL_NOTES + ${note:-0}))
+    note=${note:-0}
+    etoiles=""
+    for i in 1 2 3 4 5; do
+      if [ "$i" -le "$note" ]; then
+        etoiles="${etoiles}<span class=\"etoile pleine\" aria-hidden=\"true\">★</span>"
+      else
+        etoiles="${etoiles}<span class=\"etoile\" aria-hidden=\"true\">★</span>"
+      fi
+    done
+    lieu=""
+    [ -n "$ville" ] && lieu=" · $ville"
+    quand=""
+    if [ -n "$date" ]; then
+      quand="<time datetime=\"$date\">$(date -d "$date" '+%B %Y' 2>/dev/null || echo "$date")</time>"
+    fi
+    AVIS_CARTES="${AVIS_CARTES}
+      <article class=\"carte avis-carte\" data-reveal>
+        <p class=\"avis-note\">${etoiles}<span class=\"visually-hidden\">${note} étoiles sur 5</span></p>
+        <blockquote><p>${commentaire}</p></blockquote>
+        <p class=\"avis-auteur\"><strong>${prenom}</strong><span>${lieu}</span> ${quand}</p>
+      </article>"
+  done < src/avis.tsv
+
+  if [ "$NB_AVIS" -gt 0 ]; then
+    MOYENNE=$(awk "BEGIN { printf \"%.1f\", $TOTAL_NOTES / $NB_AVIS }")
+    export SECTION_AVIS="<section>
+  <div class=\"wrap\">
+    <div class=\"section-titre\">
+      <p class=\"sur-titre\">Avis clients</p>
+      <h2>Ce que disent les personnes chez qui nous sommes intervenus</h2>
+      <p>Avis reçus après intervention, publiés tels qu'ils ont été écrits. Note moyenne : <strong>${MOYENNE} sur 5</strong> sur ${NB_AVIS} avis.</p>
+    </div>
+    <div class=\"grille grille-3 avis-grille\">${AVIS_CARTES}
+    </div>
+  </div>
+</section>"
+  fi
+fi
+
 # --- Formulaire de demande d'intervention ----------------------------------
 # Le formulaire n'existe qu'en un seul exemplaire, dans src/partials/. Les
 # pages qui l'affichent écrivent simplement {{FORMULAIRE_DEVIS}} : une
 # correction sur le partiel se répercute partout au build suivant.
 export FORMULAIRE_DEVIS="$(cat src/partials/formulaire-devis.html)"
+
+# --- Carte des zones d'intervention ----------------------------------------
+# Même principe que le formulaire : un seul exemplaire, dans src/partials/.
+export SECTION_CARTE="$(cat src/partials/carte-zone.html)"
 
 # --- Génération d'un fil d'Ariane BreadcrumbList ---------------------------
 # Google exige que le fil d'Ariane balisé corresponde à celui affiché.
@@ -129,7 +202,7 @@ while IFS= read -r src_file; do
   PAGE_PARENT_URL="$(meta_get "$src_file" parent_url)"
 
   [ -n "$PAGE_PRIORITY" ] || PAGE_PRIORITY="0.6"
-  [ -n "$PAGE_IMAGE" ] || PAGE_IMAGE="/assets/img/og-default.jpg"
+  [ -n "$PAGE_IMAGE" ] || PAGE_IMAGE="/assets/img/partage/og-default.jpg"
   [ -n "$PAGE_DATE" ] || PAGE_DATE="$(date +%Y-%m-%d)"
 
   # Une page peut déclarer une conversion mesurée à son affichage (page de
@@ -259,14 +332,20 @@ for requis in \
   "$OUT/assets/css/style.css" \
   "$OUT/assets/js/site.js" \
   "$OUT/assets/img/favicon.svg" \
-  "$OUT/assets/img/og-default.jpg"; do
+  "$OUT/assets/img/partage/og-default.jpg"; do
   [ -f "$requis" ] || manque "fichier requis absent : ${requis#$OUT/}"
 done
 
 # 4. Toutes les ressources référencées par les pages existent réellement.
+#    Les srcset sont dépouillés au même titre que les src : un fichier
+#    manquant dans un srcset ne casse rien de visible en développement, mais
+#    fait échouer silencieusement le chargement chez une partie des visiteurs.
 RESSOURCES=$( { grep -rhoE 'src="/[^"]+"' "$OUT" --include='*.html'
                 grep -rhoE 'href="/assets/[^"]+"' "$OUT" --include='*.html'
                 grep -rhoE 'href="/manifest[^"]*"' "$OUT" --include='*.html'
+                grep -rhoE 'srcset="[^"]+"' "$OUT" --include='*.html' \
+                  | sed 's/^srcset="//;s/"$//' | tr ',' '\n' \
+                  | sed 's/^ *//;s/ [0-9]*w$//' | sed 's/^/src="/;s/$/"/'
               } 2>/dev/null | sed 's/^[a-z]*="//;s/"$//' | sort -u )
 NB_RESSOURCES=0
 while IFS= read -r ref; do

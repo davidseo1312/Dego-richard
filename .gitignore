@@ -21,3 +21,7 @@ Thumbs.db
 # Dépendance facultative des tests de navigateur (npm install playwright).
 /package.json
 /package-lock.json
+
+# Les dérivés d'images sont régénérés par scripts/preparer-photos.py à partir
+# de photos-source/. Ils restent versionnés : GitHub Actions ne dispose ni de
+# Pillow ni du support AVIF, et le build doit rester reproductible sans eux.

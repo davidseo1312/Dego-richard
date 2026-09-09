@@ -5,7 +5,7 @@ schema: service
 breadcrumb: Débouchage douche
 parent_nom: Nos prestations
 parent_url: /services
-image: /assets/img/og-debouchage-evier.jpg
+image: /assets/img/partage/og-debouchage-baignoire-inspection.jpg
 priority: 0.8
 -->
 
@@ -38,9 +38,7 @@ priority: 0.8
       </div>
 
       <div class="hero-media">
-        <img src="/assets/img/photos/debouchage-douche.webp"
-             width="960" height="720" fetchpriority="high" decoding="async"
-             alt="Coupe d'un receveur de douche dont la bonde siphoïde est obstruée par des cheveux">
+        {{PHOTO_BAIGNOIRE_MEDIA}}
       </div>
     </div>
   </div>
@@ -66,6 +64,14 @@ priority: 0.8
         <li><span class="cle">Quand</span><span>{{HORAIRES_URGENCE}}.</span></li>
       </ul>
     </div>
+
+    <figure class="schema">
+      <img src="/assets/img/schemas/debouchage-douche.webp" width="960" height="720"
+           loading="lazy" decoding="async"
+           alt="Coupe d'un receveur de douche dont la bonde siphoïde est obstruée par des cheveux">
+      <figcaption>La bonde siphoïde d'un receveur de douche, obstruée par les cheveux.</figcaption>
+    </figure>
+
 
     <h2>Trois types de receveur, trois façons d'intervenir</h2>
     <h3>Receveur surélevé sur pieds</h3>

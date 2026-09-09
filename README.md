@@ -25,14 +25,15 @@ réorganisé plus tard.
 2. [Comment le site est construit](#comment-le-site-est-construit)
 3. [Organisation des fichiers](#organisation-des-fichiers)
 4. [Design system](#design-system)
-5. [Modifier le site](#modifier-le-site)
-6. [Le formulaire de demande](#le-formulaire-de-demande)
-7. [Google Search Console, Analytics, Tag Manager](#google-search-console-analytics-tag-manager)
-8. [Contrôles avant mise en ligne](#contrôles-avant-mise-en-ligne)
-9. [DEPLOYMENT HOSTINGER](#deployment-hostinger)
-10. [Cohérence géographique et commerciale](#cohérence-géographique-et-commerciale)
-11. [Avant la mise en ligne : informations à fournir](#avant-la-mise-en-ligne--informations-à-fournir)
-12. [Sécurité](#sécurité)
+5. [Photographies, carte et avis](#photographies-carte-et-avis)
+6. [Modifier le site](#modifier-le-site)
+7. [Le formulaire de demande](#le-formulaire-de-demande)
+8. [Google Search Console, Analytics, Tag Manager](#google-search-console-analytics-tag-manager)
+9. [Contrôles avant mise en ligne](#contrôles-avant-mise-en-ligne)
+10. [DEPLOYMENT HOSTINGER](#deployment-hostinger)
+11. [Cohérence géographique et commerciale](#cohérence-géographique-et-commerciale)
+12. [Avant la mise en ligne : informations à fournir](#avant-la-mise-en-ligne--informations-à-fournir)
+13. [Sécurité](#sécurité)
 
 ---
 
@@ -110,7 +111,9 @@ Le `BreadcrumbList` est généré à partir de `breadcrumb`, `parent_nom` et
 ```
 src/
   config.sh              toutes les valeurs globales
-  partials/              head, header, footer, formulaire, JSON-LD
+  avis.tsv               avis clients — VIDE, à ne jamais inventer
+  photos.sh              markup <picture> généré, ne pas modifier à la main
+  partials/              head, header, footer, formulaire, carte, JSON-LD
   pages/
     index.html           accueil
     services.html        sommaire des prestations
@@ -124,10 +127,14 @@ static/
   manifest.webmanifest
   assets/
     css/style.css        design system complet (jetons, composants)
-    js/site.js           menu, micro-interactions, consentement, mesure
+    js/site.js           menu, micro-interactions, carte, consentement, mesure
     fonts/               Inter et Plus Jakarta Sans, variables, auto-hébergées
-    img/                 favicon, icônes, images de partage (Open Graph)
-    img/photos/          bibliothèque de visuels du site
+    vendor/leaflet/      Leaflet 1.9.4 (BSD 2-Clause), auto-hébergé
+    img/                 favicon et icônes d'application
+    img/interventions/   photographies, 5 largeurs × 2 formats
+    img/schemas/         schémas techniques
+    img/partage/         images Open Graph (JPEG 1200×630)
+photos-source/           photographies d'origine, source de la chaîne images
 scripts/
   build.sh               construit public/ et refuse un résultat non déployable
   gen-sitemap.sh         sitemap.xml + robots.txt
@@ -141,8 +148,10 @@ scripts/
   apercu.sh              aperçu local avec les URLs de production
   routeur-local.php      reproduit les règles du .htaccess en local
   generer-images.py      régénère favicon et icônes d'application
-  generer-visuels.py     régénère la bibliothèque de visuels et les images
-                         de partage, rendues en WebP et JPEG par Chromium
+  generer-visuels.py     régénère les schémas techniques et les images de
+                         partage, rendus en WebP et JPEG par Chromium
+  preparer-photos.py     dérivés AVIF/WebP des photographies + src/photos.sh
+  placer-photos.py       répartit photographies et schémas dans les pages
   refonte-heros.py       applique le gabarit de héros aux pages intérieures
   refonte-articles.py    applique le gabarit d'article et génère les sommaires
   capturer.py            captures d'écran des pages, pour contrôle visuel
@@ -172,6 +181,62 @@ l'action, Plus Jakarta Sans pour les titres et Inter pour le texte, deux
 polices variables auto-hébergées. Tout passe par des variables CSS déclarées
 en tête de `static/assets/css/style.css` ; aucune page n'écrit de couleur en
 dur.
+
+---
+
+## Photographies, carte et avis
+
+### Photographies
+
+Cinq photographies d'intervention vivent dans `photos-source/`. Elles sont la
+**source** : `scripts/preparer-photos.py` en tire cinq largeurs (480 → 1536)
+en AVIF et WebP, puis écrit `src/photos.sh`, où chaque variante d'affichage
+devient un bloc `<picture>` complet. Une page écrit `{{PHOTO_EVIER_HERO}}` et
+hérite du `srcset`, du `sizes`, des dimensions réelles et du texte alternatif.
+
+Pour ajouter ou remplacer une photographie :
+
+```bash
+cp ma-photo.webp photos-source/debouchage-evier-cuisine.webp
+python3 scripts/preparer-photos.py     # dérivés + markup
+bash scripts/build.sh
+```
+
+Le texte alternatif et la légende se déclarent dans le dictionnaire `PHOTOS`
+en tête de `scripts/preparer-photos.py` — un seul endroit, pour qu'une
+description ne puisse pas diverger d'une page à l'autre.
+
+Photographies et schémas ne jouent pas le même rôle : la photographie ouvre
+la page et montre qui intervient, le schéma descend dans le texte et explique
+où se forme un bouchon. `scripts/placer-photos.py` applique cette règle.
+
+### Carte des zones d'intervention
+
+`src/partials/carte-zone.html`, affichée par `{{SECTION_CARTE}}`. Leaflet est
+auto-hébergé (`static/assets/vendor/leaflet/`) et **chargé seulement après un
+clic du visiteur** : les tuiles viennent d'OpenStreetMap, donc d'un tiers qui
+verrait sinon l'adresse IP de chacun sans que personne l'ait demandé.
+
+La liste des six départements est dans le HTML dès le départ : c'est elle que
+lisent les moteurs de recherche et les lecteurs d'écran. Les coordonnées des
+préfectures sont dans `static/assets/js/site.js` (`PREFECTURES`).
+
+### Avis clients
+
+`src/avis.tsv`. **Le fichier est vide, et c'est volontaire** : aucun avis n'a
+été inventé. Tant qu'aucune ligne n'est renseignée, la section n'est pas
+publiée du tout — mieux vaut pas de section qu'une section vide.
+
+Pour l'activer, recopiez-y de vrais avis reçus, avec l'accord des personnes
+concernées ; le format est décrit en tête du fichier.
+
+> Un faux témoignage est une pratique commerciale trompeuse (article L121-2
+> du code de la consommation), et Google supprime les fiches qui en publient.
+>
+> Ces avis ne sont volontairement **pas** balisés en JSON-LD : Google
+> interdit le balisage d'avis que l'on collecte soi-même à son propre sujet.
+> Pour obtenir des étoiles dans les résultats de recherche, il faut passer par
+> la fiche d'établissement Google.
 
 ---
 

@@ -128,8 +128,11 @@ def teinte_dominante(image, boite):
     # Quantifier évite qu'un dégradé produise mille couleurs distinctes et
     # qu'aucune ne ressorte comme dominante.
     brut = zone.convert("RGB")
-    pixels = [(r // 8 * 8, g // 8 * 8, b // 8 * 8)
-              for r, g, b in brut.getdata()]
+    # `list(brut.getdata())` est déprécié en Pillow 12 ; `tobytes` donne les
+    # mêmes octets et reste stable.
+    octets = brut.tobytes()
+    pixels = [(octets[i] // 8 * 8, octets[i + 1] // 8 * 8, octets[i + 2] // 8 * 8)
+              for i in range(0, len(octets), 3)]
     return Counter(pixels).most_common(1)[0][0]
 
 

@@ -5,7 +5,7 @@ schema: service
 breadcrumb: Débouchage lavabo
 parent_nom: Nos prestations
 parent_url: /services
-image: /assets/img/og-debouchage-evier.jpg
+image: /assets/img/partage/og-debouchage-evier-cuisine.jpg
 priority: 0.8
 -->
 
@@ -38,9 +38,7 @@ priority: 0.8
       </div>
 
       <div class="hero-media">
-        <img src="/assets/img/photos/debouchage-evier.webp"
-             width="960" height="720" fetchpriority="high" decoding="async"
-             alt="Coupe d'un évier et de son siphon en S obstrué par des graisses figées">
+        {{PHOTO_EVIER_MEDIA}}
       </div>
     </div>
   </div>
@@ -66,6 +64,14 @@ priority: 0.8
         <li><span class="cle">Quand</span><span>{{HORAIRES_URGENCE}} ; rarement une urgence.</span></li>
       </ul>
     </div>
+
+    <figure class="schema">
+      <img src="/assets/img/schemas/debouchage-evier.webp" width="960" height="720"
+           loading="lazy" decoding="async"
+           alt="Coupe d'un évier et de son siphon en S obstrué par des graisses figées">
+      <figcaption>Le siphon en S d'un évier, et l'endroit où les graisses se figent.</figcaption>
+    </figure>
+
 
     <h2>La bonde à commande, pièce maîtresse et point faible</h2>
     <p>

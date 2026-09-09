@@ -147,6 +147,88 @@
     });
   }
 
+  /* --- 1 quater. Carte des zones d'intervention ---------------------------
+     Leaflet et les tuiles OpenStreetMap ne sont chargés qu'après un clic
+     explicite. Les tuiles viennent d'un tiers, qui verrait sinon l'adresse IP
+     de chaque visiteur sans que personne l'ait demandé ; et la bibliothèque
+     pèse à elle seule plus lourd que le reste de la page. La liste des
+     départements, elle, est dans le HTML dès le départ : c'est elle qui porte
+     l'information, la carte ne fait que l'illustrer.
+     ------------------------------------------------------------------------ */
+
+  // Préfectures des six départements couverts. La couverture porte sur
+  // l'ensemble de chaque département ; ces points ne sont que des repères.
+  var PREFECTURES = [
+    { nom: "Saint-Brieuc",  dep: "Côtes-d'Armor (22)",   url: '/departements/cotes-d-armor',     lat: 48.5136, lon: -2.7653 },
+    { nom: 'Quimper',       dep: 'Finistère (29)',       url: '/departements/finistere',         lat: 47.9960, lon: -4.0970 },
+    { nom: 'Rennes',        dep: 'Ille-et-Vilaine (35)', url: '/departements/ille-et-vilaine',   lat: 48.1173, lon: -1.6778 },
+    { nom: 'Vannes',        dep: 'Morbihan (56)',        url: '/departements/morbihan',          lat: 47.6582, lon: -2.7608 },
+    { nom: 'Nantes',        dep: 'Loire-Atlantique (44)', url: '/departements/loire-atlantique', lat: 47.2184, lon: -1.5536 },
+    { nom: 'Angers',        dep: 'Maine-et-Loire (49)',  url: '/departements/maine-et-loire',    lat: 47.4784, lon: -0.5632 }
+  ];
+
+  var boutonCarte = document.querySelector('[data-carte-charger]');
+
+  function chargerRessource(balise, attributs) {
+    return new Promise(function (resoudre, rejeter) {
+      var el = document.createElement(balise);
+      Object.keys(attributs).forEach(function (k) { el[k] = attributs[k]; });
+      el.onload = resoudre;
+      el.onerror = function () { rejeter(new Error('chargement impossible')); };
+      document.head.appendChild(el);
+    });
+  }
+
+  function dessinerCarte() {
+    var toile = document.getElementById('carte');
+    if (!toile || !window.L) { return; }
+
+    toile.innerHTML = '';
+    toile.setAttribute('data-actif', 'true');
+
+    var carte = L.map(toile, { scrollWheelZoom: false, attributionControl: true });
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 12, minZoom: 6,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(carte);
+
+    var points = [];
+    PREFECTURES.forEach(function (p) {
+      points.push([p.lat, p.lon]);
+      L.circleMarker([p.lat, p.lon], {
+        radius: 11, weight: 3,
+        color: '#0369a1', fillColor: '#38bdf8', fillOpacity: 0.85
+      }).addTo(carte).bindPopup(
+        '<strong>' + p.dep + '</strong><br>Préfecture : ' + p.nom +
+        '<br><a href="' + p.url + '">Voir la page du département</a>'
+      // Étiquette permanente : la carte doit rester lisible sans cliquer,
+      // et sans dépendre des tuiles — si elles ne chargent pas, les six
+      // départements restent identifiables.
+      ).bindTooltip(p.dep.replace(/ \(.*/, ''), {
+        permanent: true, direction: 'right', offset: [10, 0],
+        className: 'carte-etiquette'
+      });
+    });
+    carte.fitBounds(points, { padding: [36, 36] });
+  }
+
+  if (boutonCarte) {
+    boutonCarte.addEventListener('click', function () {
+      boutonCarte.disabled = true;
+      boutonCarte.textContent = 'Chargement…';
+      Promise.all([
+        chargerRessource('link', { rel: 'stylesheet', href: '/assets/vendor/leaflet/leaflet.css' }),
+        chargerRessource('script', { src: '/assets/vendor/leaflet/leaflet.js', defer: true })
+      ]).then(dessinerCarte).catch(function () {
+        // Échec du chargement : la liste des départements reste affichée à
+        // côté, le visiteur n'a donc rien perdu. On le dit plutôt que de
+        // laisser un bouton inerte.
+        boutonCarte.disabled = false;
+        boutonCarte.textContent = 'Carte indisponible — réessayer';
+      });
+    });
+  }
+
   /* --- 2. Année du copyright ---------------------------------------------- */
 
   var annee = document.getElementById('annee');

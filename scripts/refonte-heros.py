@@ -238,7 +238,7 @@ def convertir(chemin: Path) -> bool:
       </div>
 
       <div class="hero-media">
-        <img src="/assets/img/photos/{visuel}.webp"
+        <img src="/assets/img/schemas/{visuel}.webp"
              width="{l}" height="{h}" fetchpriority="high" decoding="async"
              alt="{ALT[visuel]}">
       </div>

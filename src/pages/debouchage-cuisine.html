@@ -5,7 +5,7 @@ schema: service
 breadcrumb: Débouchage cuisine
 parent_nom: Nos prestations
 parent_url: /services
-image: /assets/img/og-debouchage-evier.jpg
+image: /assets/img/partage/og-debouchage-evier-cuisine.jpg
 priority: 0.8
 -->
 
@@ -38,9 +38,7 @@ priority: 0.8
       </div>
 
       <div class="hero-media">
-        <img src="/assets/img/photos/debouchage-cuisine.webp"
-             width="960" height="720" fetchpriority="high" decoding="async"
-             alt="Coupe d'une installation de cuisine : évier, siphon et bac à graisses raccordés au réseau">
+        {{PHOTO_EVIER_MEDIA}}
       </div>
     </div>
   </div>
@@ -66,6 +64,14 @@ priority: 0.8
         <li><span class="cle">Quand</span><span>{{HORAIRES_URGENCE}}.</span></li>
       </ul>
     </div>
+
+    <figure class="schema">
+      <img src="/assets/img/schemas/debouchage-cuisine.webp" width="960" height="720"
+           loading="lazy" decoding="async"
+           alt="Coupe d'une installation de cuisine : évier, siphon et bac à graisses raccordés au réseau">
+      <figcaption>D'un évier de cuisine au bac à graisses : le trajet complet des eaux grasses.</figcaption>
+    </figure>
+
 
     <h2>Pourquoi une cuisine encrasse plus vite que le reste du logement</h2>
     <p>

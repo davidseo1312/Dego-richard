@@ -75,7 +75,7 @@ echo
 echo "2. Fichiers techniques et pages cles"
 for chemin in / /robots.txt /sitemap.xml /manifest.webmanifest \
               /assets/css/style.css /assets/js/site.js \
-              /assets/img/favicon.svg /assets/img/og-default.jpg \
+              /assets/img/favicon.svg /assets/img/partage/og-default.jpg \
               /degorgement /degorgement-urgence /debouchage-canalisation /debouchage-wc \
               /departements/cotes-d-armor /departements/finistere \
               /departements/ille-et-vilaine /departements/morbihan \

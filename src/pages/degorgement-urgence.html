@@ -5,7 +5,7 @@ schema: service
 breadcrumb: Dégorgement d'urgence
 parent_nom: Nos prestations
 parent_url: /services
-image: /assets/img/og-degorgement.jpg
+image: /assets/img/partage/og-urgence-degorgement-douche.jpg
 priority: 0.9
 -->
 
@@ -47,9 +47,8 @@ priority: 0.9
 
   <div class="wrap" style="margin-top:2.5rem">
     <figure class="article-visuel" style="margin:0">
-      <img src="/assets/img/photos/urgence-degorgement.webp"
-           width="1120" height="700" fetchpriority="high" decoding="async"
-           alt="Vue intérieure d'une canalisation en refoulement : conduite pleine et bouchon bloquant l'écoulement">
+      {{PHOTO_URGENCE_LARGE}}
+      <figcaption>{{PHOTO_URGENCE_LEGENDE}}</figcaption>
     </figure>
   </div>
 </section>
@@ -73,6 +72,14 @@ priority: 0.9
         <li><span class="cle">Combien</span><span>Une intervention de nuit, un dimanche ou un jour férié est majorée. Le montant vous est annoncé <em>avant</em> le déplacement. <a href="/tarifs">Voir les tarifs</a>.</span></li>
       </ul>
     </div>
+
+    <figure class="schema">
+      <img src="/assets/img/schemas/urgence-degorgement.webp" width="1120" height="700"
+           loading="lazy" decoding="async"
+           alt="Vue intérieure d'une canalisation en refoulement : conduite pleine et bouchon bloquant l'écoulement">
+      <figcaption>Une conduite en refoulement : l'écoulement s'inverse et remonte vers les appareils les plus bas du logement.</figcaption>
+    </figure>
+
 
     <h2>Les cinq gestes à faire tout de suite</h2>
     <ol>

@@ -51,6 +51,26 @@ d'être de ce document autant que du fichier.
 `--bordure` `#e2e8f0` · `--bordure-forte` `#cbd5e1`
 `--gris-50` `#f8fafc` · `--blanc` `#ffffff`
 
+### Deux jeux de noms, et pourquoi
+
+Les jetons ci-dessus décrivent une **échelle** : `--bleu-100` à `--bleu-900`.
+Un second jeu, déclaré juste après, décrit un **rôle** :
+
+```css
+--color-primary        --color-background        --color-text
+--color-primary-dark   --color-background-soft   --color-text-strong
+--color-primary-light  --color-background-tint   --color-text-secondary
+--color-primary-pale   --color-surface           --color-border
+--color-accent         --color-accent-light      --color-border-strong
+--color-accent-strong  --color-white
+```
+
+Les deux pointent sur les mêmes couleurs et suivent tous deux le mode sombre.
+L'intérêt de les avoir séparés : un rôle peut changer de place dans l'échelle
+— décider que la couleur principale passe de `--bleu-500` à `--bleu-600` —
+sans qu'aucun composant ne bouge. Écrire les composants avec l'échelle seule
+reviendrait à figer ce choix dans cent règles.
+
 ### Règle de contraste
 
 Chaque couleur de texte tient **4,5:1** sur son fond (3:1 pour un grand
@@ -119,7 +139,11 @@ Largeurs : `--largeur` 1200 px, `--largeur-etroite` 760 px pour les articles
 | `.hero` `.hero-interieur` `.hero-article` `.hero-page` | quatre déclinaisons de la bande d'ouverture |
 | `.reponse-rapide` `.definition` `.qr-liste` `.cle` | bloc GEO : réponse autoportante + QUI/QUOI/OÙ/QUAND/COMMENT/POURQUOI/COMBIEN |
 | `.etapes` (`.horizontale`) | chronologie numérotée, verticale sur mobile, horizontale au-delà de 900 px |
-| `.galerie` (`.mise-en-avant`) | galerie 3 colonnes, première vignette en 2×2 |
+| `.galerie` (`.mise-en-avant`) | galerie 4 colonnes, première vignette en 2×2 : les cinq photographies remplissent la grille sans trou |
+| `.confiance` `.confiance-icone` | les huit arguments vérifiables, icône animée au survol |
+| `.schema` `.schemas-grille` | schéma technique accompagné de sa légende, dans le corps du texte |
+| `.carte-bloc` `.carte-toile` `.carte-legende` `.carte-liste` | carte des zones et sa liste HTML |
+| `.avis-carte` `.avis-note` `.etoile` | avis clients — inactifs tant qu'aucun avis réel n'est renseigné |
 | `.stats` `.reassurance` | chiffres clés et engagements |
 | `.bandeau-urgence` `.urgence-encart` | la seule section où l'orange domine |
 | `.departements` `.departement-carte` `.numero` | les six départements |
@@ -162,15 +186,65 @@ défilement doux et les survols qui déplacent.
 
 ---
 
-## 7. Performance
+## 7. Images
 
-| Ressource | Poids |
-|---|---|
-| CSS | ~56 Ko non compressé, un seul fichier, aucune dépendance |
-| JS | ~16 Ko, sans framework, chargé en `defer` |
-| Polices | 75 Ko, deux fichiers variables, préchargés |
-| Visuel du héros | ~38 Ko en WebP, `fetchpriority="high"` |
-| Bibliothèque de visuels | 15 fichiers, ~350 Ko au total |
+Deux familles, deux rôles, et les confondre les affaiblit toutes les deux.
+
+| | Rôle | Où |
+|---|---|---|
+| **Photographies** (`assets/img/interventions/`) | montrer qui intervient | ouverture de page, galerie, cartes d'article |
+| **Schémas** (`assets/img/schemas/`) | expliquer où se forme un bouchon | corps du texte, accompagnés d'une légende |
+
+Les photographies sont produites par `scripts/preparer-photos.py` en cinq
+largeurs (480 → 1536) et deux formats, AVIF puis WebP en repli. Le script
+écrit aussi `src/photos.sh`, où chaque variante d'affichage devient un bloc
+`<picture>` complet : une page écrit `{{PHOTO_EVIER_HERO}}` et hérite du
+`srcset`, du `sizes`, des dimensions réelles et du texte alternatif.
+
+Écrire ces attributs à la main serait la garantie qu'ils divergent au premier
+recadrage — et une dimension fausse produit exactement le décalage de mise en
+page que `width`/`height` servent à supprimer.
+
+`sizes` décrit la largeur que l'image occupera vraiment, mise en page
+comprise. C'est cette valeur, et non `srcset` seule, qui détermine le fichier
+téléchargé : sur un écran de 1440 px, le héros reçoit la version 768 px, pas
+la 1536.
+
+---
+
+## 8. Carte des zones
+
+Leaflet 1.9.4 (BSD 2-Clause), **auto-hébergé** dans `assets/vendor/leaflet/` :
+la politique de sécurité du site interdit les scripts venus d'un CDN.
+
+La carte n'est chargée **qu'après un clic**. Deux raisons, dans cet ordre :
+les tuiles viennent d'OpenStreetMap, donc d'un tiers qui verrait l'adresse IP
+de chaque visiteur sans que personne l'ait demandé ; et la bibliothèque pèse à
+elle seule plus lourd que le reste de la page.
+
+La liste des six départements, elle, est dans le HTML dès le départ. C'est
+elle qui porte l'information — pour un moteur de recherche comme pour un
+lecteur d'écran ; la carte ne fait que l'illustrer. Les repères marquent les
+préfectures et portent une étiquette permanente : la carte reste lisible même
+si les tuiles ne chargent pas.
+
+---
+
+## 9. Performance
+
+| Ressource | Poids | Chargée |
+|---|---|---|
+| CSS | ~60 Ko non compressé, un seul fichier | toujours |
+| JS | ~17 Ko, sans framework | `defer` |
+| Polices | 75 Ko, deux fichiers variables | préchargées |
+| Photographie du héros | ~45 Ko en AVIF à 768 px | `fetchpriority="high"` |
+| Autres photographies | AVIF/WebP, 5 largeurs | `loading="lazy"` |
+| Schémas techniques | 15 fichiers, ~350 Ko | `loading="lazy"` |
+| Leaflet | 163 Ko | **uniquement après un clic** |
+
+Sur un écran de 1440 px, le héros ne télécharge pas la version 1536 px mais
+la 768 px : c'est `sizes` qui le décide, et c'est pour cela qu'il est calculé
+à partir de la mise en page réelle plutôt qu'écrit au jugé.
 
 Les images hors écran portent `loading="lazy"` et `decoding="async"` ; toutes
 déclarent `width` et `height`, ce qui supprime le décalage de mise en page.

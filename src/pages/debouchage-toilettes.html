@@ -5,7 +5,7 @@ schema: service
 breadcrumb: Débouchage toilettes
 parent_nom: Nos prestations
 parent_url: /services
-image: /assets/img/og-debouchage-wc.jpg
+image: /assets/img/partage/og-debouchage-wc-inspection-camera.jpg
 priority: 0.8
 -->
 
@@ -39,9 +39,7 @@ priority: 0.8
       </div>
 
       <div class="hero-media">
-        <img src="/assets/img/photos/debouchage-wc.webp"
-             width="960" height="720" fetchpriority="high" decoding="async"
-             alt="Coupe d'un WC montrant la garde d'eau du siphon et l'emplacement d'un bouchon">
+        {{PHOTO_WC_MEDIA}}
       </div>
     </div>
   </div>
@@ -68,6 +66,14 @@ priority: 0.8
         <li><span class="cle">Quand</span><span>{{HORAIRES_URGENCE}}.</span></li>
       </ul>
     </div>
+
+    <figure class="schema">
+      <img src="/assets/img/schemas/debouchage-wc.webp" width="960" height="720"
+           loading="lazy" decoding="async"
+           alt="Coupe d'un WC montrant la garde d'eau du siphon et l'emplacement d'un bouchon">
+      <figcaption>Où se forme le bouchon dans un WC : la garde d'eau du siphon intégré.</figcaption>
+    </figure>
+
 
     <h2>Toilettes bouchées en appartement</h2>
     <p>

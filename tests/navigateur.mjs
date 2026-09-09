@@ -271,6 +271,102 @@ const sansTexte = await bureau.evaluate(() => {
 verifier(sansTexte.length === 0, `tous les liens ont un intitulé${sansTexte.length ? ' — ' + sansTexte.join(', ') : ''}`);
 await ctxBureau.close();
 
+/* --- 11. Photographies : sources responsives ------------------------------ */
+
+titre('11. Photographies');
+
+const ctxPhoto = await navigateur.newContext({ locale: 'fr-FR', viewport: { width: 1440, height: 900 } });
+const photo = await ctxPhoto.newPage();
+await photo.goto(BASE + '/');
+
+// Les visuels hors écran sont en chargement différé : sans parcourir la page,
+// on mesurerait un état que le visiteur ne voit jamais.
+await photo.evaluate(async () => {
+  const h = document.body.scrollHeight;
+  for (let y = 0; y < h; y += 600) {
+    window.scrollTo(0, y);
+    await new Promise((r) => setTimeout(r, 60));
+  }
+  window.scrollTo(0, 0);
+  // Le chargement différé est ensuite neutralisé : ce qu'on vérifie ici, c'est
+  // que chaque fichier référencé existe et se décode — pas l'heuristique par
+  // laquelle Chromium décide du moment de le demander. Attente bornée, sinon
+  // un test qui pend finit par être désactivé.
+  const attendre = (i) => Promise.race([
+    i.decode().catch(() => {}),
+    new Promise((r) => setTimeout(r, 5000))
+  ]);
+  [...document.images].forEach((i) => { i.loading = 'eager'; });
+  await Promise.all([...document.images].map(attendre));
+});
+
+const visuels = await photo.evaluate(() => {
+  const r = [];
+  for (const img of document.querySelectorAll('picture img')) {
+    r.push({
+      alt: (img.getAttribute('alt') || '').trim(),
+      srcset: Boolean(img.getAttribute('srcset')),
+      sizes: Boolean(img.getAttribute('sizes')),
+      dims: Boolean(img.getAttribute('width') && img.getAttribute('height')),
+      avif: Boolean(img.parentElement.querySelector('source[type="image/avif"]')),
+      charge: img.naturalWidth > 0
+    });
+  }
+  return r;
+});
+verifier(visuels.length >= 5, `${visuels.length} photographie(s) sur l’accueil`);
+verifier(visuels.every((v) => v.charge), 'toutes les photographies se chargent');
+verifier(visuels.every((v) => v.srcset && v.sizes), 'toutes déclarent srcset et sizes');
+verifier(visuels.every((v) => v.dims), 'toutes déclarent leurs dimensions');
+verifier(visuels.every((v) => v.avif), 'toutes proposent une source AVIF');
+verifier(
+  visuels.every((v) => v.alt.length > 15 && !/^(image|photo|img)/i.test(v.alt)),
+  'toutes portent un texte alternatif descriptif'
+);
+
+// Le navigateur doit choisir une largeur adaptée, pas la plus grande.
+const choisie = await photo.evaluate(
+  () => document.querySelector('.hero-media picture img')?.currentSrc || ''
+);
+verifier(/-(480|768|1024|1366)\./.test(choisie),
+  `la largeur servie est adaptée à l’affichage (${choisie.split('/').pop()})`);
+
+/* --- 12. Carte des zones d’intervention ---------------------------------- */
+
+titre('12. Carte des zones d’intervention');
+
+verifier(
+  (await photo.locator('.carte-liste a').count()) === 6,
+  'les six départements sont listés en HTML, sans JavaScript'
+);
+verifier(
+  await photo.evaluate(() => typeof window.L === 'undefined'),
+  'aucune bibliothèque de carte chargée avant le clic'
+);
+
+await photo.locator('.carte-bloc').scrollIntoViewIfNeeded();
+await photo.locator('[data-carte-charger]').click();
+await photo.waitForFunction(() => typeof window.L !== 'undefined', null, { timeout: 15000 });
+await photo.waitForTimeout(1200);
+
+verifier(
+  (await photo.locator('#carte path.leaflet-interactive').count()) === 6,
+  'la carte affiche un repère par département'
+);
+verifier(
+  (await photo.locator('.leaflet-control-attribution').innerText()).includes('OpenStreetMap'),
+  'l’attribution OpenStreetMap est présente'
+);
+const horsZone = await photo.evaluate(() => {
+  const interdits = ['Manche', 'Calvados', 'Mayenne', 'Sarthe', 'Vendée', 'Orne'];
+  const texte = document.querySelector('#zone')?.textContent || '';
+  return interdits.filter((d) => texte.includes(d));
+});
+verifier(horsZone.length === 0,
+  `aucun département hors zone sur la carte${horsZone.length ? ' — ' + horsZone.join(', ') : ''}`);
+
+await ctxPhoto.close();
+
 await navigateur.close();
 
 console.log('\n\x1b[1mBilan\x1b[0m');

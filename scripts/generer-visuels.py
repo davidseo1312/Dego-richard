@@ -47,7 +47,7 @@ from PIL import Image
 from playwright.async_api import async_playwright
 
 RACINE = Path(__file__).resolve().parent.parent
-SORTIE = RACINE / "static" / "assets" / "img" / "photos"
+SORTIE = RACINE / "static" / "assets" / "img" / "schemas"
 CHROMIUM = "/opt/pw-browsers/chromium"
 
 # --- Palette (identique aux jetons de la feuille de style) ------------------
@@ -922,8 +922,10 @@ VISUELS = [
 # Images de partage (Open Graph). Un SVG n'est pas affiché par les réseaux
 # sociaux et WebP reste inégalement pris en charge : ces images-là sont donc
 # des JPEG 1200×630, la seule combinaison acceptée partout.
+# og-default.jpg n'est PAS produit ici : c'est une photographie, écrite par
+# scripts/preparer-photos.py. Deux scripts pour un même fichier, et c'est le
+# dernier exécuté qui gagne — donc le résultat dépend de l'ordre.
 OG = [
-    ("og-default", sc_hero),
     ("og-degorgement", sc_hero),
     ("og-debouchage-canalisation", sc_canalisation),
     ("og-canalisation-exterieure", sc_exterieure),
@@ -1001,7 +1003,7 @@ async def rendre():
             png = await page.screenshot(type="png")
             await page.close()
             image = Image.open(io.BytesIO(png)).convert("RGB")
-            chemin = SORTIE.parent / f"{nom}.jpg"
+            chemin = SORTIE.parent / "partage" / f"{nom}.jpg"
             image.save(chemin, "JPEG", quality=82, optimize=True, progressive=True)
             print(f"  ✓ {nom}.jpg  {OG_L}×{OG_H}  {chemin.stat().st_size/1024:.0f} Ko")
 

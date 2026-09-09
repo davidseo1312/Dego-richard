@@ -151,7 +151,7 @@ def convertir(chemin: Path) -> bool:
     </div>
 
     <figure class="article-visuel">
-      <img src="/assets/img/photos/{visuel}.webp"
+      <img src="/assets/img/schemas/{visuel}.webp"
            width="{l}" height="{h}" fetchpriority="high" decoding="async"
            alt="{ALT[visuel]}">
     </figure>

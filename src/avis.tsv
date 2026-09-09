@@ -1,0 +1,29 @@
+# Avis clients — une ligne par avis, colonnes séparées par une TABULATION.
+#
+# prenom	note	ville	date	commentaire
+#
+# Ce fichier est VIDE volontairement. Aucun avis n'a été inventé, et aucun ne
+# doit l'être : un faux témoignage est une pratique commerciale trompeuse
+# (article L121-2 du code de la consommation), et Google supprime les fiches
+# qui en publient.
+#
+# Tant qu'aucune ligne n'est renseignée, la section « Avis clients » n'est pas
+# publiée du tout — mieux vaut pas de section qu'une section vide.
+#
+# Pour l'activer, recopiez ici de VRAIS avis reçus (Google, courriel, SMS),
+# avec l'accord des personnes concernées :
+#
+#   Marie	5	Rennes	2026-08-14	Intervention en moins d'une heure un dimanche…
+#
+# Colonnes :
+#   prenom      prénom seul, ou initiale. Jamais de nom complet sans accord.
+#   note        entier de 1 à 5, tel que la personne l'a donné.
+#   ville       commune de l'intervention, ou vide.
+#   date        AAAA-MM-JJ, ou vide.
+#   commentaire texte de l'avis, repris sans le réécrire.
+#
+# Note importante sur les données structurées : ces avis ne sont PAS balisés
+# en JSON-LD. Google interdit le balisage d'avis collectés sur son propre site
+# à propos de soi-même (« self-serving reviews ») et peut sanctionner la page.
+# Pour obtenir des étoiles dans les résultats de recherche, il faut passer par
+# la fiche d'établissement Google, pas par ce fichier.

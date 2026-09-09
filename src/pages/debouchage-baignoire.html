@@ -5,7 +5,7 @@ schema: service
 breadcrumb: Débouchage baignoire
 parent_nom: Nos prestations
 parent_url: /services
-image: /assets/img/og-debouchage-evier.jpg
+image: /assets/img/partage/og-debouchage-baignoire-inspection.jpg
 priority: 0.75
 -->
 
@@ -38,9 +38,7 @@ priority: 0.75
       </div>
 
       <div class="hero-media">
-        <img src="/assets/img/photos/debouchage-baignoire.webp"
-             width="960" height="720" fetchpriority="high" decoding="async"
-             alt="Coupe d'une baignoire remplie d'eau stagnante et de son siphon de vidage">
+        {{PHOTO_BAIGNOIRE_MEDIA}}
       </div>
     </div>
   </div>
@@ -66,6 +64,14 @@ priority: 0.75
         <li><span class="cle">Quand</span><span>{{HORAIRES_URGENCE}}.</span></li>
       </ul>
     </div>
+
+    <figure class="schema">
+      <img src="/assets/img/schemas/debouchage-baignoire.webp" width="960" height="720"
+           loading="lazy" decoding="async"
+           alt="Coupe d'une baignoire remplie d'eau stagnante et de son siphon de vidage">
+      <figcaption>Le vidage d'une baignoire et son siphon, en coupe.</figcaption>
+    </figure>
+
 
     <h2>Le test qui localise le bouchon en deux minutes</h2>
     <p>

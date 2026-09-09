@@ -1,0 +1,59 @@
+<section class="alt" id="zone">
+  <div class="wrap">
+    <div class="section-titre">
+      <p class="sur-titre">Zone d'intervention</p>
+      <h2>Six départements du Grand Ouest</h2>
+      <p>
+        Nous intervenons dans ces six départements et nulle part ailleurs. Cette limite est
+        volontaire : au-delà, le délai d'arrivée n'aurait plus rien à voir avec ce que nous
+        annonçons au téléphone.
+      </p>
+    </div>
+
+    <div class="carte-bloc">
+      <!-- La carte n'est chargée qu'à la demande. Deux raisons : les tuiles
+           viennent d'OpenStreetMap, donc d'un tiers qui verrait l'adresse IP
+           du visiteur sans qu'il l'ait demandé ; et la bibliothèque pèse plus
+           que le reste de la page. Sans JavaScript, ou avant le clic, la liste
+           ci-contre porte déjà toute l'information — c'est elle que lisent les
+           moteurs de recherche. -->
+      <div class="carte-zone">
+        <div id="carte" class="carte-toile" role="application"
+             aria-label="Carte des six départements couverts">
+          <div class="carte-attente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M9 3 3 5.4v15.2L9 18l6 3 6-2.4V3.4L15 6z"/>
+              <path d="M9 3v15M15 6v15"/>
+            </svg>
+            <p><strong>Carte des zones d'intervention</strong></p>
+            <p class="carte-note">
+              Elle est chargée depuis OpenStreetMap. Nous ne l'affichons qu'à votre demande,
+              pour ne pas transmettre votre adresse IP sans votre accord.
+            </p>
+            <button type="button" class="btn btn-devis" data-carte-charger>
+              Afficher la carte
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="carte-legende">
+        <h3>Les départements couverts</h3>
+        <ul class="carte-liste">
+          <li><a href="/departements/cotes-d-armor"><span class="numero">22</span> Côtes-d'Armor <small>Saint-Brieuc, Lannion, Dinan</small></a></li>
+          <li><a href="/departements/finistere"><span class="numero">29</span> Finistère <small>Brest, Quimper, Morlaix</small></a></li>
+          <li><a href="/departements/ille-et-vilaine"><span class="numero">35</span> Ille-et-Vilaine <small>Rennes, Saint-Malo, Fougères</small></a></li>
+          <li><a href="/departements/morbihan"><span class="numero">56</span> Morbihan <small>Lorient, Vannes, Pontivy</small></a></li>
+          <li><a href="/departements/loire-atlantique"><span class="numero">44</span> Loire-Atlantique <small>Nantes, Saint-Nazaire, Rezé</small></a></li>
+          <li><a href="/departements/maine-et-loire"><span class="numero">49</span> Maine-et-Loire <small>Angers, Cholet, Saumur</small></a></li>
+        </ul>
+        <p class="carte-precision">
+          Les repères marquent les préfectures. La couverture porte sur
+          <strong>l'ensemble de chaque département</strong>, communes rurales et littorales
+          comprises, et non sur ces seules villes.
+        </p>
+        <a class="btn btn-ghost" href="/zone-intervention">Voir les 60 communes détaillées</a>
+      </div>
+    </div>
+  </div>
+</section>
