@@ -7,7 +7,7 @@
 <meta name="description" content="Une remontée d'eau dans l'évier ne vient presque jamais du siphon. Ce qu'elle révèle du réseau, comment situer l'obstruction et pourquoi réagir vite.">
 <link rel="canonical" href="https://degorgement-richard.fr/blog/eau-remonte-evier">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#06283d">
+<meta name="theme-color" content="#0f172a">
 <meta name="format-detection" content="telephone=yes">
 <meta name="geo.region" content="FR-BRE">
 
@@ -31,7 +31,17 @@
 <link rel="icon" href="/assets/img/favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
+<!-- Les deux familles variables sont servies depuis ce domaine. Les
+     précharger évite le saut de police sur le H1, qui est l'élément LCP. -->
+<link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/jakarta-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/style.css">
+
+<!-- Active l'apparition au défilement. Placé ici, et non dans site.js qui est
+     différé, pour que l'état initial soit posé avant le premier rendu : sinon
+     les blocs s'affichent puis disparaissent. Sans JavaScript, la classe n'est
+     jamais posée et rien n'est masqué. -->
+<script>try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){document.documentElement.className+=' anim'}}catch(e){}</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -61,6 +71,13 @@
 </head>
 <body>
 <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <span class="topbar-dispo"><span class="pastille" aria-hidden="true"></span> Dépannage <strong>24h/24 et 7j/7</strong></span>
+    <span class="topbar-zone">Côtes-d'Armor · Finistère · Ille-et-Vilaine · Morbihan · Loire-Atlantique · Maine-et-Loire</span>
+  </div>
+</div>
+
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="/">
@@ -70,7 +87,7 @@
       </svg>
       <span class="brand-text">
         <strong>Dégorgement Richard</strong>
-        <small>Dégorgement, débouchage et assainissement dans le Grand Ouest</small>
+        <small>Débouchage · Curage · Assainissement</small>
       </span>
     </a>
 
@@ -81,39 +98,83 @@
 
     <nav id="nav-principal" class="nav" aria-label="Navigation principale">
       <ul>
-        <li><a href="/services">Nos prestations</a></li>
+        <li><a href="/services">Prestations</a></li>
         <li><a href="/degorgement-urgence">Urgence</a></li>
-        <li><a href="/assainissement">Assainissement</a></li>
-        <li><a href="/zone-intervention">Zone d'intervention</a></li>
+        <li><a href="/zone-intervention">Zones d'intervention</a></li>
         <li><a href="/tarifs">Tarifs</a></li>
-        <li><a href="/faq">FAQ</a></li>
-        <li><a href="/devis" class="nav-devis">Devis gratuit</a></li>
+        <li><a href="/blog/">Conseils</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
+
+      <!-- Reprise des deux actions dans le tiroir : sur mobile, l'en-tête ne
+           peut pas les afficher, et elles doivent rester à portée de pouce. -->
+      <div class="nav-actions">
+        <a class="btn btn-call btn-bloc" href="tel:+33220060075" data-track="appel" data-track-zone="menu-mobile">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
+          <span>02 20 06 00 75</span>
+        </a>
+        <a class="btn btn-ghost btn-bloc" href="/devis" data-track="clic_devis" data-track-zone="menu-mobile">Devis gratuit</a>
+      </div>
     </nav>
 
-    <a class="btn btn-call header-call" href="tel:+33220060075" data-track="appel" data-track-zone="entete">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
-      <span>02 20 06 00 75</span>
-    </a>
+    <div class="header-actions">
+      <a class="header-call" href="tel:+33220060075" data-track="appel" data-track-zone="entete">
+        <span class="tel-icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
+        </span>
+        <span class="tel-texte">
+          <small>Appel direct</small>
+          <strong>02 20 06 00 75</strong>
+        </span>
+      </a>
+      <a class="btn btn-devis" href="/devis" data-track="clic_devis" data-track-zone="entete">Devis gratuit</a>
+    </div>
   </div>
 </header>
 
 <main id="contenu">
 
-<div class="wrap fil">
-  <nav aria-label="Fil d'Ariane">
-    <ol>
-      <li><a href="/">Accueil</a></li>
-      <li><a href="/blog/">Conseils canalisations</a></li>
-      <li>L'eau remonte dans l'évier</li>
-    </ol>
-  </nav>
-</div>
+<section class="hero hero-interieur hero-article">
+  <div class="wrap">
+    <div class="fil">
+      <nav aria-label="Fil d'Ariane">
+        <ol>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/blog/">Conseils canalisations</a></li>
+          <li>L'eau remonte dans l'évier</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="article-entete">
+      <p class="carte-etiquettes">
+        <span>Diagnostic</span><span class="duree">Lecture 5 min</span>
+      </p>
+      <h1>Pourquoi l'eau remonte dans l'évier ?</h1>
+      <p class="article-meta">Mis à jour le 9 septembre 2026 · Lecture 5 minutes</p>
+    </div>
+
+    <figure class="article-visuel">
+      <img src="/assets/img/photos/debouchage-evier.webp"
+           width="960" height="720" fetchpriority="high" decoding="async"
+           alt="Coupe d'un évier et de son siphon en S obstrué par des graisses figées">
+    </figure>
+  </div>
+</section>
 
 <section>
   <div class="wrap article">
-    <h1>Pourquoi l'eau remonte dans l'évier ?</h1>
-    <p class="article-meta">Mis à jour le 9 septembre 2026 · Lecture 5 minutes</p>
+    <nav class="sommaire" aria-label="Sommaire de l'article">
+      <h2>Dans cet article</h2>
+      <ol>
+        <li><a href="#distinguer-un-ecoulement-lent-d-une-remontee">Distinguer un écoulement lent d'une remontée</a></li>
+        <li><a href="#trois-scenarios-trois-lectures">Trois scénarios, trois lectures</a></li>
+        <li><a href="#ce-qu-il-faut-faire-immediatement">Ce qu'il faut faire immédiatement</a></li>
+        <li><a href="#pourquoi-il-ne-faut-pas-attendre">Pourquoi il ne faut pas attendre</a></li>
+        <li><a href="#le-cas-particulier-des-odeurs-sans-remontee">Le cas particulier des odeurs sans remontée</a></li>
+        <li><a href="#ce-que-fera-le-professionnel">Ce que fera le professionnel</a></li>
+      </ol>
+    </nav>
 
     <div class="encadre">
       <h2>En bref</h2>
@@ -125,7 +186,7 @@
       </p>
     </div>
 
-    <h2>Distinguer un écoulement lent d'une remontée</h2>
+    <h2 id="distinguer-un-ecoulement-lent-d-une-remontee">Distinguer un écoulement lent d'une remontée</h2>
     <p>
       Un écoulement lent, c'est l'eau que vous versez qui met du temps à partir : le bouchon est
       local, généralement dans le siphon ou la première portion de descente. Une remontée, c'est
@@ -138,7 +199,7 @@
       que le point d'où vient la pression.
     </p>
 
-    <h2>Trois scénarios, trois lectures</h2>
+    <h2 id="trois-scenarios-trois-lectures">Trois scénarios, trois lectures</h2>
     <h3>Le lave-vaisselle refoule dans l'évier</h3>
     <p>
       Le tuyau de vidange du lave-vaisselle se raccorde presque toujours sur le siphon de l'évier
@@ -162,7 +223,7 @@
       <a href="/degorgement-collectif">dégorgement collectif</a>.
     </p>
 
-    <h2>Ce qu'il faut faire immédiatement</h2>
+    <h2 id="ce-qu-il-faut-faire-immediatement">Ce qu'il faut faire immédiatement</h2>
     <ol>
       <li>Cessez d'utiliser tous les points d'eau du logement, et en immeuble, prévenez les voisins du dessus.</li>
       <li>Arrêtez le lave-vaisselle et le lave-linge, même en cours de cycle.</li>
@@ -170,7 +231,7 @@
       <li>Épongez et protégez ce qui craint l'eau sous le meuble.</li>
     </ol>
 
-    <h2>Pourquoi il ne faut pas attendre</h2>
+    <h2 id="pourquoi-il-ne-faut-pas-attendre">Pourquoi il ne faut pas attendre</h2>
     <p>
       Une remontée signifie que la section libre est déjà très réduite. Chaque utilisation
       supplémentaire compacte le bouchon et augmente le volume à évacuer. Une intervention à ce
@@ -178,7 +239,7 @@
       collecteur, avec un dégât des eaux en prime.
     </p>
 
-    <h2>Le cas particulier des odeurs sans remontée</h2>
+    <h2 id="le-cas-particulier-des-odeurs-sans-remontee">Le cas particulier des odeurs sans remontée</h2>
     <p>
       Si l'évier sent mauvais mais s'écoule normalement, il ne s'agit pas d'une obstruction mais
       du film gras qui tapisse la paroi et fermente. C'est le signal qu'un dépôt s'installe et
@@ -186,7 +247,7 @@
       cause ; les blocs désodorisants ne font que la masquer.
     </p>
 
-    <h2>Ce que fera le professionnel</h2>
+    <h2 id="ce-que-fera-le-professionnel">Ce que fera le professionnel</h2>
     <p>
       Il déterminera d'abord le niveau de l'obstruction — descente du logement, colonne, ou
       collecteur en pied — car cela décide du point d'attaque et, en immeuble, de qui prend la
@@ -220,14 +281,23 @@
 <footer class="site-footer">
   <div class="wrap footer-grid">
     <div class="footer-col footer-brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <path d="M16 3c5.2 7.2 7.6 10.7 7.6 14A7.6 7.6 0 0 1 16 24.6 7.6 7.6 0 0 1 8.4 17c0-3.3 2.4-6.8 7.6-14z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M11 28.4h10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
       <strong>Dégorgement Richard</strong>
-      <p>Dégorgement, débouchage et assainissement dans le Grand Ouest. Intervention en Côtes-d'Armor (22), Finistère (29), Ille-et-Vilaine (35), Morbihan (56), Loire-Atlantique (44) et Maine-et-Loire (49).</p>
-      <a class="btn btn-call" href="tel:+33220060075" data-track="appel" data-track-zone="pied-de-page">Appeler le 02 20 06 00 75</a>
+      <p>Dégorgement, débouchage et assainissement dans le Grand Ouest. Débouchage de WC, d'évier, de douche et de canalisation, curage, inspection caméra et assainissement pour les particuliers et les professionnels.</p>
+      <a class="footer-tel" href="tel:+33220060075" data-track="appel" data-track-zone="pied-de-page">
+        <span class="icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
+        </span>
+        02 20 06 00 75
+      </a>
       <p class="footer-horaires">Dépannage : 24 heures sur 24, 7 jours sur 7, jours fériés compris.<br>Devis et administratif : du lundi au vendredi, 8h – 19h.</p>
     </div>
 
     <div class="footer-col">
-      <h2>Débouchage</h2>
+      <h2>Prestations</h2>
       <ul>
         <li><a href="/degorgement">Dégorgement</a></li>
         <li><a href="/degorgement-urgence">Dégorgement urgence</a></li>
@@ -239,13 +309,11 @@
         <li><a href="/debouchage-douche">Débouchage douche</a></li>
         <li><a href="/debouchage-baignoire">Débouchage baignoire</a></li>
         <li><a href="/debouchage-cuisine">Débouchage cuisine</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h2>Réseaux et entretien</h2>
-      <ul>
         <li><a href="/debouchage-canalisation-exterieure">Canalisation extérieure</a></li>
+      </ul>
+
+      <h2 style="margin-top:1.75rem">Réseaux et entretien</h2>
+      <ul>
         <li><a href="/curage-canalisation">Curage et hydrocurage</a></li>
         <li><a href="/inspection-camera-canalisation">Inspection caméra</a></li>
         <li><a href="/recherche-bouchon">Recherche de bouchon</a></li>
@@ -258,7 +326,7 @@
     </div>
 
     <div class="footer-col">
-      <h2>Départements</h2>
+      <h2>Zones d'intervention</h2>
       <ul>
         <li><a href="/departements/cotes-d-armor">Côtes-d'Armor (22)</a></li>
         <li><a href="/departements/finistere">Finistère (29)</a></li>
@@ -266,27 +334,46 @@
         <li><a href="/departements/morbihan">Morbihan (56)</a></li>
         <li><a href="/departements/loire-atlantique">Loire-Atlantique (44)</a></li>
         <li><a href="/departements/maine-et-loire">Maine-et-Loire (49)</a></li>
-        <li><a href="/zone-intervention">Toute la zone couverte</a></li>
+        <li><a href="/zone-intervention">Toutes les communes couvertes</a></li>
+      </ul>
+
+      <h2 style="margin-top:1.75rem">Principales villes</h2>
+      <ul>
+        <li><a href="/degorgement-rennes">Rennes</a></li>
+        <li><a href="/degorgement-nantes">Nantes</a></li>
+        <li><a href="/degorgement-brest">Brest</a></li>
+        <li><a href="/degorgement-angers">Angers</a></li>
+        <li><a href="/degorgement-vannes">Vannes</a></li>
+        <li><a href="/degorgement-saint-brieuc">Saint-Brieuc</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
-      <h2>Informations</h2>
+      <h2>Contact</h2>
       <ul>
+        <li><a href="tel:+33220060075" data-track="appel" data-track-zone="pied-de-page-liste">02 20 06 00 75</a></li>
+        <li><a href="mailto:contact@degorgement-richard.fr">contact@degorgement-richard.fr</a></li>
         <li><a href="/devis">Demander une intervention</a></li>
+        <li><a href="/contact">Nous écrire</a></li>
+      </ul>
+
+      <h2 style="margin-top:1.75rem">Informations</h2>
+      <ul>
         <li><a href="/tarifs">Tarifs</a></li>
         <li><a href="/faq">Questions fréquentes</a></li>
         <li><a href="/a-propos">Qui sommes-nous</a></li>
-        <li><a href="/contact">Contact</a></li>
         <li><a href="/blog/">Conseils canalisations</a></li>
-        <li><a href="/mentions-legales">Mentions légales</a></li>
-        <li><a href="/conditions-generales">CGV et rétractation</a></li>
-        <li><a href="/politique-confidentialite">Confidentialité</a></li>
       </ul>
     </div>
   </div>
 
   <div class="wrap footer-legal">
+    <ul class="footer-liens-legaux">
+      <li><a href="/mentions-legales">Mentions légales</a></li>
+      <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
+      <li><a href="/conditions-generales">CGV et rétractation</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
     <p>Bilal Assoul — SIRET 901 133 041 00011 — Assurance responsabilité civile professionnelle [ASSUREUR RC PRO].</p>
     <p>Devis gratuit et écrit remis avant toute intervention, conformément à l'arrêté du 24 janvier 2017. Aucun travaux n'est engagé sans votre accord signé.</p>
     <p class="copyright">&copy; <span id="annee">2026</span> Dégorgement Richard. Tous droits réservés.</p>
@@ -296,7 +383,7 @@
 <div class="barre-mobile">
   <a class="barre-mobile-appel" href="tel:+33220060075" data-track="appel" data-track-zone="barre-mobile">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
-    <span>Appeler maintenant</span>
+    <span>Appeler</span>
   </a>
   <a class="barre-mobile-devis" href="/devis" data-track="clic_devis" data-track-zone="barre-mobile">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zm0 2 4.5 4.5H14zM8 13h8v2H8zm0 4h8v2H8z" fill="currentColor"/></svg>
