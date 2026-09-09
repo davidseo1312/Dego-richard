@@ -178,8 +178,11 @@ RewriteRule ^(.+?)/?$ /$1.html [L]
 
   # Content-Security-Policy
   # 'unsafe-inline' sur script-src reste nécessaire pour les blocs JSON-LD.
+  # tile.openstreetmap.org n'est ouvert que sur img-src : la carte des zones
+  # y récupère ses tuiles, et rien d'autre n'en vient. Ce chargement n'a lieu
+  # qu'après un clic du visiteur (voir assets/js/site.js).
   # Retirez googletagmanager.com si vous n'utilisez pas de mesure d'audience.
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://tile.openstreetmap.org https://*.tile.openstreetmap.org https://www.google-analytics.com https://www.googletagmanager.com; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
 
   # Le nom du serveur applicatif n'a pas à être publié.
   Header unset X-Powered-By

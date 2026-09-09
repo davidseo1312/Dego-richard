@@ -125,6 +125,30 @@
   --fond-doux:  var(--gris-50);
   --fond-bleu:  var(--bleu-50);
   --surface:    var(--blanc);
+
+  /* --- Noms canoniques du système ----------------------------------------
+     Les jetons ci-dessus décrivent une ÉCHELLE (bleu-100 à bleu-900) ; ceux
+     ci-dessous décrivent un RÔLE. Un rôle peut changer de place dans
+     l'échelle sans qu'aucune page ne bouge : c'est tout l'intérêt d'avoir
+     les deux. Les deux jeux suivent le mode sombre, puisqu'ils pointent sur
+     les mêmes variables. */
+  --color-primary:        var(--bleu-500);
+  --color-primary-dark:   var(--bleu-700);
+  --color-primary-light:  var(--bleu-100);
+  --color-primary-pale:   var(--bleu-50);
+  --color-accent:         var(--orange);
+  --color-accent-strong:  var(--orange-cta);
+  --color-accent-light:   var(--orange-100);
+  --color-background:     var(--fond);
+  --color-background-soft: var(--fond-doux);
+  --color-background-tint: var(--fond-bleu);
+  --color-surface:        var(--surface);
+  --color-text:           var(--texte);
+  --color-text-strong:    var(--texte-fort);
+  --color-text-secondary: var(--texte-doux);
+  --color-border:         var(--bordure);
+  --color-border-strong:  var(--bordure-forte);
+  --color-white:          #ffffff;
 }
 
 /* Mode sombre : mêmes rôles, mêmes contrastes, teintes inversées. Le bleu
@@ -192,6 +216,7 @@ body {
 }
 
 img, svg, video { max-width: 100%; height: auto; display: block; }
+picture { display: contents; }   /* la mise en page vise l'<img>, pas l'enveloppe */
 
 h1, h2, h3, h4, h5 {
   font-family: var(--police-titre);
@@ -1075,11 +1100,13 @@ main > section.hero-interieur { padding-block: 0 clamp(2rem, 1rem + 3vw, 3.25rem
 }
 /* La galerie met en avant la première image sur les grands écrans. */
 @media (min-width: 900px) {
-  /* Trois colonnes exactement : la vignette mise en avant occupe un carré de
-     2×2, les cinq autres remplissent le reste sans laisser de trou. */
-  .galerie.mise-en-avant { grid-template-columns: repeat(3, 1fr); }
+  /* Quatre colonnes : la vignette mise en avant occupe un carré de 2×2 et les
+     quatre autres remplissent exactement les deux colonnes restantes. Aucun
+     trou dans la grille — c'est ce qui distingue une galerie composée d'une
+     galerie qui déborde. */
+  .galerie.mise-en-avant { grid-template-columns: repeat(4, 1fr); }
   .galerie.mise-en-avant > li:first-child { grid-column: span 2; grid-row: span 2; }
-  .galerie.mise-en-avant > li:first-child img { aspect-ratio: 16 / 11; height: 100%; }
+  .galerie.mise-en-avant > li:first-child img { aspect-ratio: 3 / 2; height: 100%; object-fit: cover; }
   .galerie.mise-en-avant > li:first-child figure { height: 100%; }
 }
 
@@ -1392,6 +1419,18 @@ tbody tr:hover { background: var(--fond-doux); }
   background: var(--bleu-50);
 }
 .article-visuel img { width: 100%; aspect-ratio: 21 / 9; object-fit: cover; }
+.article-visuel figcaption {
+  padding: .75rem var(--e-5);
+  font-size: .88rem; color: var(--texte-doux);
+  background: var(--fond-doux); border-top: 1px solid var(--bordure);
+}
+/* Fond OPAQUE, et non translucide : la légende est adjacente à la
+   photographie, et un fond semi-transparent laisserait sa lisibilité dépendre
+   de ce qui se trouve derrière — donc de l'image. */
+.bandeau-urgence .article-visuel figcaption {
+  background: #0d1e33; color: #cbd5e1;
+  border-top-color: rgba(255,255,255,.16);
+}
 
 /* Sommaire d'article. */
 .sommaire {
@@ -1519,6 +1558,189 @@ tbody tr:hover { background: var(--fond-doux); }
 @media (prefers-color-scheme: dark) {
   .barre-mobile { background: rgba(11, 18, 32, .93); }
 }
+
+/* --- Confiance : les arguments vérifiables -------------------------------- */
+.confiance {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: var(--e-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+}
+.confiance > li {
+  display: flex; gap: var(--e-4); margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--bordure);
+  border-radius: var(--r-lg);
+  padding: var(--e-5);
+  box-shadow: var(--ombre-xs);
+  transition: transform .2s cubic-bezier(.2,.7,.4,1), box-shadow .2s ease, border-color .2s ease;
+}
+.confiance > li:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ombre-md);
+  border-color: var(--bleu-200);
+}
+.confiance-icone {
+  width: 2.9rem; height: 2.9rem; flex: none;
+  display: grid; place-items: center;
+  border-radius: var(--r-md);
+  background: linear-gradient(145deg, var(--bleu-100), var(--bleu-50));
+  border: 1px solid var(--bleu-200);
+  color: var(--bleu-700);
+  transition: background .22s ease, color .22s ease, transform .22s ease;
+}
+.confiance-icone svg { width: 1.4rem; height: 1.4rem; }
+.confiance > li:hover .confiance-icone {
+  background: linear-gradient(145deg, var(--bleu-500), var(--bleu-700));
+  border-color: transparent; color: #fff;
+  transform: rotate(-4deg) scale(1.06);
+}
+.confiance strong {
+  display: block; font-family: var(--police-titre);
+  font-size: 1.05rem; margin-bottom: .3rem;
+}
+.confiance span { display: block; font-size: .95rem; color: var(--texte); }
+
+/* --- Schémas explicatifs -------------------------------------------------- */
+/* Le schéma n'est plus un visuel d'ouverture : il appuie une explication, et
+   se lit donc avec sa légende. */
+.schema {
+  margin: var(--e-6) 0;
+  background: var(--surface);
+  border: 1px solid var(--bordure);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--ombre-xs);
+}
+.schema img { width: 100%; background: var(--bleu-50); }
+.schema figcaption {
+  padding: var(--e-4) var(--e-5);
+  font-size: .93rem; color: var(--texte);
+  border-top: 1px solid var(--bordure);
+  background: var(--fond-doux);
+}
+.schema figcaption strong { color: var(--texte-fort); }
+.schemas-grille .schema { margin: 0; display: flex; flex-direction: column; }
+.schemas-grille .schema figcaption { flex: 1; }
+
+/* --- Carte des zones d'intervention --------------------------------------- */
+.carte-bloc {
+  display: grid; gap: var(--e-5);
+  grid-template-columns: 1fr;
+  align-items: stretch;
+}
+@media (min-width: 900px) {
+  .carte-bloc { grid-template-columns: 1.25fr .75fr; gap: var(--e-6); }
+}
+.carte-toile {
+  position: relative;
+  min-height: clamp(20rem, 16rem + 18vw, 30rem);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--bleu-50);
+  border: 1px solid var(--bleu-200);
+}
+.carte-attente {
+  position: absolute; inset: 0;
+  display: grid; place-content: center; justify-items: center;
+  gap: .5rem; padding: var(--e-6);
+  text-align: center;
+  background:
+    radial-gradient(28rem 18rem at 50% 30%, var(--bleu-100), transparent 70%),
+    var(--fond-bleu);
+}
+.carte-attente svg { width: 3rem; height: 3rem; color: var(--bleu-600); opacity: .8; }
+.carte-attente p { margin: 0; }
+.carte-attente .carte-note {
+  font-size: .87rem; color: var(--texte-doux);
+  max-width: 34ch; margin-bottom: .6rem;
+}
+.carte-toile[data-actif="true"] { border-color: var(--bordure); }
+/* Leaflet impose ses propres polices et couleurs de contrôle ; on les
+   raccorde au reste du site plutôt que de laisser deux chartes cohabiter. */
+.carte-toile .leaflet-container { font-family: var(--police); background: var(--bleu-50); }
+.carte-toile .leaflet-popup-content { font-size: .93rem; line-height: 1.5; }
+.carte-toile .leaflet-popup-content a { color: var(--bleu-700); font-weight: 600; }
+.carte-toile .leaflet-bar a {
+  color: var(--texte-fort); border-bottom-color: var(--bordure);
+}
+.carte-toile .leaflet-control-attribution {
+  font-size: .72rem; background: rgba(255,255,255,.86);
+}
+.carte-toile .carte-etiquette {
+  background: var(--surface); color: var(--texte-fort);
+  border: 1px solid var(--bleu-200); border-radius: var(--r-full);
+  box-shadow: var(--ombre-sm);
+  padding: .18rem .6rem;
+  font-family: var(--police); font-size: .78rem; font-weight: 650;
+  white-space: nowrap;
+}
+.carte-toile .carte-etiquette::before { display: none; }
+
+.carte-legende {
+  display: flex; flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--bordure);
+  border-radius: var(--r-lg);
+  padding: var(--e-5);
+  box-shadow: var(--ombre-xs);
+}
+.carte-legende h3 { font-size: 1.05rem; margin-bottom: var(--e-4); }
+.carte-liste { list-style: none; margin: 0 0 var(--e-4); padding: 0; }
+.carte-liste li { margin: 0; }
+.carte-liste a {
+  display: flex; align-items: center; gap: .7rem;
+  padding: .5rem 0;
+  border-top: 1px solid var(--bordure);
+  color: var(--texte-fort); text-decoration: none;
+  font-weight: 600; font-size: .96rem;
+}
+.carte-liste li:first-child a { border-top: 0; }
+.carte-liste a:hover { color: var(--bleu-700); }
+.carte-liste a:hover .numero { transform: scale(1.06); }
+.carte-liste .numero {
+  min-width: 2.1rem; height: 2.1rem; font-size: .82rem;
+  transition: transform .18s cubic-bezier(.2,.7,.4,1);
+}
+.carte-liste small {
+  display: block; font-weight: 400; font-size: .8rem;
+  color: var(--texte-doux); margin-left: auto; text-align: right;
+}
+/* Sous 560 px, aligner les villes à droite du nom force le département à se
+   couper en deux lignes. Elles passent donc dessous, sur toute la largeur. */
+@media (max-width: 559px) {
+  .carte-liste a { flex-wrap: wrap; }
+  .carte-liste small {
+    flex-basis: 100%; margin-left: 2.8rem; text-align: left;
+    margin-top: -.15rem;
+  }
+}
+.carte-precision {
+  font-size: .87rem; color: var(--texte-doux);
+  padding-top: var(--e-4); border-top: 1px solid var(--bordure);
+}
+.carte-legende .btn { margin-top: auto; }
+
+/* --- Avis clients --------------------------------------------------------- */
+/* La section n'est publiée que si src/avis.tsv contient de vrais avis ; ces
+   règles ne s'appliquent donc à rien tant que le fichier est vide. */
+.avis-carte blockquote {
+  margin: 0 0 var(--e-4); padding: 0; border: 0;
+  font-style: normal; font-size: 1rem; color: var(--texte);
+}
+.avis-carte blockquote p { margin: 0; }
+.avis-carte blockquote::before { content: "« "; color: var(--bleu-300); }
+.avis-carte blockquote::after  { content: " »"; color: var(--bleu-300); }
+.avis-note { margin: 0 0 .8rem; letter-spacing: .1em; line-height: 1; }
+.etoile { color: var(--bordure-forte); font-size: 1.05rem; }
+.etoile.pleine { color: #f59e0b; }
+.avis-auteur {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem;
+  margin: auto 0 0; padding-top: var(--e-4);
+  border-top: 1px solid var(--bordure);
+  font-size: .88rem; color: var(--texte-doux);
+}
+.avis-auteur strong { color: var(--texte-fort); }
+.avis-auteur time { margin-left: auto; }
 
 /* Bandeau de consentement — injecté par site.js, jamais présent sans mesure
    d'audience configurée. Il se place au-dessus de la barre d'action mobile. */
