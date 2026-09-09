@@ -14,8 +14,8 @@ name: Build et publication vers Hostinger
 # « deploy ». Hostinger n'a plus qu'à cloner cette branche : index.html s'y
 # trouve au premier niveau.
 #
-#   main    -> sources + scripts + documentation
-#   deploy  -> uniquement le site, prêt à servir, index.html à la racine
+#   branche source -> sources + scripts + documentation
+#   deploy         -> uniquement le site, prêt à servir, index.html à la racine
 #
 # Aucun secret n'est nécessaire : GITHUB_TOKEN suffit à écrire dans le dépôt.
 # ---------------------------------------------------------------------------

@@ -7,7 +7,7 @@ hPanel et d'un accès au dépôt GitHub.
 Objectif :
 
 ```
-GitHub (main) → GitHub Actions → branche deploy → Hostinger → public_html/index.html → HTTP 200
+GitHub (branche source) → GitHub Actions → branche deploy → Hostinger → public_html/index.html → HTTP 200
 ```
 
 Aucun 403 Forbidden. Aucun `index.html` manquant. Aucun `deploy/public/`.
@@ -48,7 +48,7 @@ que ce projet publie une branche `deploy` dont **la racine est le site**.
 
 | Branche | Contenu | À déployer ? |
 |---|---|---|
-| `main` | sources, scripts, documentation. Aucun `public/` versionné. | **Non** |
+| branche source (`claude/plumbing-site-brittany-eoxa6x`) | sources, scripts, documentation. Aucun `public/` versionné. | **Non** |
 | `deploy` | uniquement le site construit, `index.html` au premier niveau | **Oui** |
 
 ---
@@ -241,7 +241,7 @@ Dans l'ordre :
    Git est mal réglé, ou vous avez téléversé le dossier au lieu de son contenu.
    Corrigez le réglage — ne déplacez pas les fichiers à la main, le prochain
    déploiement recréerait le problème.
-2. **Vérifiez la branche déployée.** Ce doit être `deploy`. `main` ne contient
+2. **Vérifiez la branche déployée.** Ce doit être `deploy`. La branche source ne contient
    aucun `public/` versionné : la racine web serait vide.
 3. **Permissions.** Dossiers `755`, fichiers `644`.
 4. **`.htaccess`.** Aucune de ses directives ne refuse une page du site ; les

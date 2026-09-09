@@ -9,9 +9,13 @@ installer. Un seul élément dynamique : le formulaire de demande d'intervention
 en PHP. Le résultat se sert tel quel par n'importe quel hébergement mutualisé.
 
 ```
-main    → sources, scripts, documentation
-deploy  → uniquement le site construit, index.html à la racine
+branche source → sources, scripts, documentation
+deploy         → uniquement le site construit, index.html à la racine
 ```
+
+La branche source est la branche par défaut du dépôt, aujourd'hui
+`claude/plumbing-site-brittany-eoxa6x` ; `main` reste acceptée si le dépôt est
+réorganisé plus tard.
 
 ---
 
@@ -139,7 +143,8 @@ docs/
 .github/workflows/deploy.yml
 ```
 
-`public/` est **régénéré à chaque build** et n'est pas versionné sur `main` :
+`public/` est **régénéré à chaque build** et n'est pas versionné sur la branche
+source :
 c'est la branche `deploy` qui porte le site prêt à servir.
 
 ---
@@ -289,7 +294,7 @@ racine de la branche `deploy`**. Hostinger clone cette branche dans
 `public_html/`. `index.html` s'y trouve au premier niveau.
 
 ```
-git push (main)  →  GitHub Actions  →  branche deploy  →  Hostinger  →  public_html/index.html  →  HTTP 200
+git push (branche source)  →  GitHub Actions  →  branche deploy  →  Hostinger  →  public_html/index.html  →  HTTP 200
 ```
 
 ### Pourquoi une branche `deploy`
@@ -320,7 +325,7 @@ test ! -d public      || exit 1   # sinon deploy/public/index.html → 403
 2. *Repository* : `https://github.com/davidseo1312/Dego-richard.git`
    (ou l'URL SSH si le dépôt est privé — déposez alors la clé publique
    d'Hostinger dans **Settings → Deploy keys** sur GitHub).
-3. **Branch : `deploy`** — jamais `main`.
+3. **Branch : `deploy`** — jamais la branche source.
 4. **Directory : `public_html`** — laissez le champ vide s'il correspond déjà
    à la racine web. **Ne mettez jamais `public_html/public`.**
 5. *Create*, puis *Deploy*.
@@ -367,7 +372,7 @@ Dans l'ordre :
    gestionnaire de fichiers hPanel. Si vous voyez `public_html/public/index.html`,
    le dossier de déploiement est mal réglé : corrigez-le, ne déplacez pas les
    fichiers à la main.
-2. **La branche déployée est-elle `deploy` ?** `main` ne contient pas de
+2. **La branche déployée est-elle `deploy` ?** La branche source ne contient pas de
    `public/` versionné : la racine web serait vide.
 3. **Permissions.** Dossiers `755`, fichiers `644`. `build.sh` les applique,
    mais un dépôt par FTP peut les écraser.
@@ -380,7 +385,8 @@ Le détail complet, étape par étape, figure dans
 
 ### Le workflow GitHub Actions
 
-`.github/workflows/deploy.yml`, déclenché par une poussée sur `main` :
+`.github/workflows/deploy.yml`, déclenché par une poussée sur la branche source
+(`claude/plumbing-site-brittany-eoxa6x`, ou `main`) :
 
 1. checkout ;
 2. `scripts/build.sh` ;
@@ -397,9 +403,10 @@ Le détail complet, étape par étape, figure dans
 
 Aucun secret n'est nécessaire : `GITHUB_TOKEN` suffit.
 
-> Le workflow ne publie que depuis `main`. Tant que le travail est sur une
-> branche de développement, lancez-le manuellement depuis l'onglet **Actions**
-> (`workflow_dispatch`) une fois la branche fusionnée, ou fusionnez d'abord.
+> Le workflow ne publie que depuis les branches listées dans son déclencheur
+> `push`. Depuis toute autre branche, lancez-le manuellement depuis l'onglet
+> **Actions** (`workflow_dispatch`), ou fusionnez d'abord dans la branche
+> source.
 
 ---
 
