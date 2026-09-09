@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://degorgement-richard.fr/a-propos</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.5</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/assainissement</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.85</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/blog/canalisation-bouchee-que-faire</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/blog/canalisation-bouchee-signes</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/blog/comment-entretenir-canalisations</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/blog/degorgement-ou-curage</loc>
@@ -34,6 +40,7 @@
     <loc>https://degorgement-richard.fr/blog/eau-remonte-evier</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/blog/entretenir-assainissement-non-collectif</loc>
@@ -59,21 +66,25 @@
     <loc>https://degorgement-richard.fr/blog/prix-degorgement</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/blog/quand-utiliser-camera-inspection</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/blog/residence-secondaire-reouverture</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.55</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/blog/wc-bouche-que-faire</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/conditions-generales</loc>
@@ -89,426 +100,528 @@
     <loc>https://degorgement-richard.fr/curage-canalisation</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.85</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/debouchage-baignoire</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.75</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/debouchage-canalisation-exterieure</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.85</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/debouchage-canalisation</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.9</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/debouchage-cuisine</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/controle-ecoulement-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/debouchage-douche</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/debouchage-evier</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.85</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/debouchage-lavabo</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/debouchage-toilettes</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/plomberie/installation-broyeur-sanitaire-wc-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/debouchage-wc</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.9</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-ancenis-saint-gereon</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.64</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-angers</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-auray</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.7</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-avrille</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.64</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-beaucouze</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.62</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-betton</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.64</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-brest</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-bruz</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.66</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-carhaix-plouguer</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.66</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-carquefou</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.66</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-cesson-sevigne</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.66</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-chantepie</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.64</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-chateaubriant</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.64</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-chemille-en-anjou</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.62</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-cholet</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.78</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-collectif</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-concarneau</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.72</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-dinan</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.72</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-douarnenez</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.68</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-fouesnant</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.66</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-fougeres</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.7</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-guidel</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.62</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-guingamp</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.7</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-guipavas</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.66</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-hennebont</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.66</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-lamballe-armor</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.7</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-landerneau</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.68</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-lanester</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.66</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-lannion</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.75</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-les-ponts-de-ce</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.64</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-lorient</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-montreuil-juigne</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.62</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-morlaix</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.75</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-nantes</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-orvault</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.66</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-paimpol</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.7</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-perros-guirec</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.7</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-plerin</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.68</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-ploemeur</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.64</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-ploufragan</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.66</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-pontivy</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.7</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-pornic</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.66</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-professionnel</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-questembert</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.62</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-quimper</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-quimperle</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.68</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-redon</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.7</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-rennes</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-reze</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.68</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-saint-brieuc</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-saint-gregoire</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.64</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-saint-herblain</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.68</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-saint-malo</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.78</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-saint-nazaire</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.78</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-sarzeau</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.64</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-saumur</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.78</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-segre-en-anjou-bleu</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.64</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-tregueux</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.66</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-trelaze</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.64</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-urgence</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.9</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-vannes</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-vertou</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.66</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement-vitre</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.7</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/degorgement</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.9</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/departements/cotes-d-armor</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.85</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/departements/finistere</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.85</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/controle-ecoulement-evier-cuisine-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/departements/ille-et-vilaine</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.85</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/departements/loire-atlantique</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.85</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/controle-ecoulement-evier-cuisine-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/departements/maine-et-loire</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.85</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/departements/morbihan</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.85</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/controle-ecoulement-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/devis</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.9</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/entretien-canalisation</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.75</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/faq</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.7</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>1.0</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/plomberie/installation-broyeur-sanitaire-wc-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/inspection-camera-canalisation</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.85</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/mentions-legales</loc>
@@ -524,25 +637,38 @@
     <loc>https://degorgement-richard.fr/pompage</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/recherche-bouchon</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.75</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/services</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.9</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/controle-ecoulement-evier-cuisine-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/tarifs</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.8</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/zone-intervention</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.85</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
 </urlset>

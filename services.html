@@ -45,6 +45,27 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://degorgement-richard.fr/services#page",
+  "url": "https://degorgement-richard.fr/services",
+  "name": "Nos prestations de dégorgement et d'assainissement",
+  "description": "Les 19 prestations de dégorgement, débouchage, curage, inspection caméra, pompage et assainissement assurées dans les six départements du Grand Ouest.",
+  "inLanguage": "fr-FR",
+  "dateModified": "2026-09-09",
+  "isPartOf": { "@id": "https://degorgement-richard.fr/#site" },
+  "about": { "@id": "https://degorgement-richard.fr/#entreprise" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://degorgement-richard.fr/assets/img/partage/og-debouchage-evier-cuisine.jpg",
+    "contentUrl": "https://degorgement-richard.fr/assets/img/partage/og-debouchage-evier-cuisine.jpg",
+    "width": 1200,
+    "height": 630
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "Service",
   "name": "Nos prestations",
   "description": "Les 19 prestations de dégorgement, débouchage, curage, inspection caméra, pompage et assainissement assurées dans les six départements du Grand Ouest.",
@@ -134,11 +155,6 @@
       </span>
     </a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-principal">
-      <span class="nav-toggle-bars" aria-hidden="true"></span>
-      <span class="visually-hidden">Ouvrir le menu</span>
-    </button>
-
     <nav id="nav-principal" class="nav" aria-label="Navigation principale">
       <ul>
         <li><a href="/services">Prestations</a></li>
@@ -149,14 +165,15 @@
         <li><a href="/contact">Contact</a></li>
       </ul>
 
-      <!-- Reprise des deux actions dans le tiroir : sur mobile, l'en-tête ne
-           peut pas les afficher, et elles doivent rester à portée de pouce. -->
+      <!-- Reprise des deux actions dans le tiroir : sur mobile, la barre ne
+           peut pas afficher le bouton d'intervention, et il doit rester à
+           portée de pouce une fois le menu ouvert. -->
       <div class="nav-actions">
         <a class="btn btn-call btn-bloc" href="tel:+33220060075" data-track="appel" data-track-zone="menu-mobile">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
           <span>02 20 06 00 75</span>
         </a>
-        <a class="btn btn-ghost btn-bloc" href="/devis" data-track="clic_devis" data-track-zone="menu-mobile">Devis gratuit</a>
+        <a class="btn btn-devis btn-bloc" href="/devis" data-track="clic_devis" data-track-zone="menu-mobile">Demander une intervention</a>
       </div>
     </nav>
 
@@ -170,8 +187,20 @@
           <strong>02 20 06 00 75</strong>
         </span>
       </a>
-      <a class="btn btn-devis" href="/devis" data-track="clic_devis" data-track-zone="entete">Devis gratuit</a>
+      <a class="btn btn-devis" href="/devis" data-track="clic_devis" data-track-zone="entete">Demander une intervention</a>
     </div>
+
+    <!-- Barre mobile : le numéro doit rester visible sans ouvrir le menu. -->
+    <a class="header-call-compact" href="tel:+33220060075" data-track="appel" data-track-zone="entete-mobile">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
+      <span class="header-call-compact-num">02 20 06 00 75</span>
+      <span class="visually-hidden">Appeler le 02 20 06 00 75</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-principal">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+      <span class="visually-hidden">Ouvrir le menu</span>
+    </button>
   </div>
 </header>
 
@@ -238,6 +267,110 @@
 
 <section class="alt">
   <div class="wrap">
+    <div class="section-titre">
+      <p class="sur-titre">Les plus demandées</p>
+      <h2>Huit prestations, huit situations</h2>
+      <p>
+        Le catalogue complet suit. Voici d'abord ce pour quoi on nous appelle le
+        plus souvent, avec ce qui se passe concrètement dans chaque cas.
+      </p>
+    </div>
+
+    <div class="grille grille-4">
+      <article class="carte carte-media" data-reveal>
+        <a href="/debouchage-wc" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="/assets/img/interventions/debouchage-wc-inspection-camera-480.avif 480w, /assets/img/interventions/debouchage-wc-inspection-camera-768.avif 768w, /assets/img/interventions/debouchage-wc-inspection-camera-1024.avif 1024w, /assets/img/interventions/debouchage-wc-inspection-camera-1366.avif 1366w, /assets/img/interventions/debouchage-wc-inspection-camera-1536.avif 1536w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)"><img src="/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp" srcset="/assets/img/interventions/debouchage-wc-inspection-camera-480.webp 480w, /assets/img/interventions/debouchage-wc-inspection-camera-768.webp 768w, /assets/img/interventions/debouchage-wc-inspection-camera-1024.webp 1024w, /assets/img/interventions/debouchage-wc-inspection-camera-1366.webp 1366w, /assets/img/interventions/debouchage-wc-inspection-camera-1536.webp 1536w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)" width="1536" height="1024" loading="lazy" decoding="async" alt="Technicien introduisant une caméra d'inspection dans la cuvette d'un WC, enrouleur de furet posé au sol"></picture></a>
+        <div class="carte-corps">
+          <h3><a href="/debouchage-wc">Débouchage WC</a></h3>
+          <p>L'eau monte dans la cuvette au lieu de partir. Furet à tête adaptée, sans dépose de la cuvette dans la grande majorité des cas.</p>
+          <span class="carte-pied">
+            <a class="lien-fleche" href="/debouchage-wc">Voir la prestation</a>
+            <a class="btn btn-call" href="tel:+33220060075" data-track="appel" data-track-zone="carte-wc">Appeler</a>
+          </span>
+        </div>
+      </article>
+      <article class="carte carte-media" data-reveal>
+        <a href="/debouchage-evier" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="/assets/img/interventions/controle-ecoulement-evier-cuisine-480.avif 480w, /assets/img/interventions/controle-ecoulement-evier-cuisine-768.avif 768w, /assets/img/interventions/controle-ecoulement-evier-cuisine-1024.avif 1024w, /assets/img/interventions/controle-ecoulement-evier-cuisine-1366.avif 1366w, /assets/img/interventions/controle-ecoulement-evier-cuisine-1536.avif 1536w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)"><img src="/assets/img/interventions/controle-ecoulement-evier-cuisine-1536.webp" srcset="/assets/img/interventions/controle-ecoulement-evier-cuisine-480.webp 480w, /assets/img/interventions/controle-ecoulement-evier-cuisine-768.webp 768w, /assets/img/interventions/controle-ecoulement-evier-cuisine-1024.webp 1024w, /assets/img/interventions/controle-ecoulement-evier-cuisine-1366.webp 1366w, /assets/img/interventions/controle-ecoulement-evier-cuisine-1536.webp 1536w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)" width="1536" height="1024" loading="lazy" decoding="async" alt="Technicien contrôlant l'écoulement d'un évier de cuisine, robinet ouvert et clé à molette en main"></picture></a>
+        <div class="carte-corps">
+          <h3><a href="/debouchage-evier">Débouchage évier</a></h3>
+          <p>Graisses figées et résidus alimentaires dans le siphon ou la dérivation. Démontage, nettoyage, puis furet si le bouchon est plus loin.</p>
+          <span class="carte-pied">
+            <a class="lien-fleche" href="/debouchage-evier">Voir la prestation</a>
+            <a class="btn btn-call" href="tel:+33220060075" data-track="appel" data-track-zone="carte-cuisine">Appeler</a>
+          </span>
+        </div>
+      </article>
+      <article class="carte carte-media" data-reveal>
+        <a href="/debouchage-lavabo" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="/assets/img/debouchage/demontage-siphon-lavabo-480.avif 480w, /assets/img/debouchage/demontage-siphon-lavabo-768.avif 768w, /assets/img/debouchage/demontage-siphon-lavabo-1024.avif 1024w, /assets/img/debouchage/demontage-siphon-lavabo-1366.avif 1366w, /assets/img/debouchage/demontage-siphon-lavabo-1536.avif 1536w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)"><img src="/assets/img/debouchage/demontage-siphon-lavabo-1536.webp" srcset="/assets/img/debouchage/demontage-siphon-lavabo-480.webp 480w, /assets/img/debouchage/demontage-siphon-lavabo-768.webp 768w, /assets/img/debouchage/demontage-siphon-lavabo-1024.webp 1024w, /assets/img/debouchage/demontage-siphon-lavabo-1366.webp 1366w, /assets/img/debouchage/demontage-siphon-lavabo-1536.webp 1536w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)" width="1536" height="1024" loading="lazy" decoding="async" alt="Technicien démontant à la pince le siphon chromé sous un lavabo de salle de bains"></picture></a>
+        <div class="carte-corps">
+          <h3><a href="/debouchage-lavabo">Débouchage lavabo</a></h3>
+          <p>Cheveux et savon agglomérés dans le culot du siphon. Dépose, nettoyage complet et contrôle d'étanchéité en eau.</p>
+          <span class="carte-pied">
+            <a class="lien-fleche" href="/debouchage-lavabo">Voir la prestation</a>
+            <a class="btn btn-call" href="tel:+33220060075" data-track="appel" data-track-zone="carte-siphon">Appeler</a>
+          </span>
+        </div>
+      </article>
+      <article class="carte carte-media" data-reveal>
+        <a href="/debouchage-douche" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="/assets/img/degorgement/aspiration-eau-receveur-douche-480.avif 480w, /assets/img/degorgement/aspiration-eau-receveur-douche-768.avif 768w, /assets/img/degorgement/aspiration-eau-receveur-douche-1024.avif 1024w, /assets/img/degorgement/aspiration-eau-receveur-douche-1366.avif 1366w, /assets/img/degorgement/aspiration-eau-receveur-douche-1536.avif 1536w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)"><img src="/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp" srcset="/assets/img/degorgement/aspiration-eau-receveur-douche-480.webp 480w, /assets/img/degorgement/aspiration-eau-receveur-douche-768.webp 768w, /assets/img/degorgement/aspiration-eau-receveur-douche-1024.webp 1024w, /assets/img/degorgement/aspiration-eau-receveur-douche-1366.webp 1366w, /assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp 1536w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)" width="1536" height="1024" loading="lazy" decoding="async" alt="Technicien aspirant l'eau stagnante d'un receveur de douche à l'aide d'un aspirateur eau et poussière"></picture></a>
+        <div class="carte-corps">
+          <h3><a href="/debouchage-douche">Débouchage douche</a></h3>
+          <p>Le receveur garde l'eau. Aspiration pour travailler à sec, nettoyage de la bonde siphoïde, puis collecteur si nécessaire.</p>
+          <span class="carte-pied">
+            <a class="lien-fleche" href="/debouchage-douche">Voir la prestation</a>
+            <a class="btn btn-call" href="tel:+33220060075" data-track="appel" data-track-zone="carte-douche">Appeler</a>
+          </span>
+        </div>
+      </article>
+      <article class="carte carte-media" data-reveal>
+        <a href="/debouchage-baignoire" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="/assets/img/interventions/debouchage-baignoire-inspection-480.avif 480w, /assets/img/interventions/debouchage-baignoire-inspection-768.avif 768w, /assets/img/interventions/debouchage-baignoire-inspection-1024.avif 1024w, /assets/img/interventions/debouchage-baignoire-inspection-1366.avif 1366w, /assets/img/interventions/debouchage-baignoire-inspection-1536.avif 1536w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)"><img src="/assets/img/interventions/debouchage-baignoire-inspection-1536.webp" srcset="/assets/img/interventions/debouchage-baignoire-inspection-480.webp 480w, /assets/img/interventions/debouchage-baignoire-inspection-768.webp 768w, /assets/img/interventions/debouchage-baignoire-inspection-1024.webp 1024w, /assets/img/interventions/debouchage-baignoire-inspection-1366.webp 1366w, /assets/img/interventions/debouchage-baignoire-inspection-1536.webp 1536w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)" width="1536" height="1024" loading="lazy" decoding="async" alt="Technicien inspectant l'évacuation d'une baignoire à l'aide d'une caméra endoscopique"></picture></a>
+        <div class="carte-corps">
+          <h3><a href="/debouchage-baignoire">Débouchage baignoire</a></h3>
+          <p>Vidage et trop-plein encrassés. Contrôle du siphon avant toute intervention plus lourde sur l'évacuation.</p>
+          <span class="carte-pied">
+            <a class="lien-fleche" href="/debouchage-baignoire">Voir la prestation</a>
+            <a class="btn btn-call" href="tel:+33220060075" data-track="appel" data-track-zone="carte-baignoire">Appeler</a>
+          </span>
+        </div>
+      </article>
+      <article class="carte carte-media" data-reveal>
+        <a href="/debouchage-canalisation" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="/assets/img/interventions/reseau-collectif-sous-sol-480.avif 480w, /assets/img/interventions/reseau-collectif-sous-sol-768.avif 768w, /assets/img/interventions/reseau-collectif-sous-sol-1024.avif 1024w, /assets/img/interventions/reseau-collectif-sous-sol-1366.avif 1366w, /assets/img/interventions/reseau-collectif-sous-sol-1536.avif 1536w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)"><img src="/assets/img/interventions/reseau-collectif-sous-sol-1536.webp" srcset="/assets/img/interventions/reseau-collectif-sous-sol-480.webp 480w, /assets/img/interventions/reseau-collectif-sous-sol-768.webp 768w, /assets/img/interventions/reseau-collectif-sous-sol-1024.webp 1024w, /assets/img/interventions/reseau-collectif-sous-sol-1366.webp 1366w, /assets/img/interventions/reseau-collectif-sous-sol-1536.webp 1536w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)" width="1536" height="1024" loading="lazy" decoding="async" alt="Technicien intervenant sur la tuyauterie d'un local technique d'immeuble"></picture></a>
+        <div class="carte-corps">
+          <h3><a href="/debouchage-canalisation">Débouchage de canalisation</a></h3>
+          <p>Plusieurs appareils touchés : le bouchon est sur le réseau commun. Traitement depuis le regard ou le pied de colonne.</p>
+          <span class="carte-pied">
+            <a class="lien-fleche" href="/debouchage-canalisation">Voir la prestation</a>
+            <a class="btn btn-call" href="tel:+33220060075" data-track="appel" data-track-zone="carte-collectif">Appeler</a>
+          </span>
+        </div>
+      </article>
+      <article class="carte carte-media" data-reveal>
+        <a href="/inspection-camera-canalisation" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="/assets/img/camera/inspection-camera-regard-voirie-480.avif 480w, /assets/img/camera/inspection-camera-regard-voirie-768.avif 768w, /assets/img/camera/inspection-camera-regard-voirie-1024.avif 1024w, /assets/img/camera/inspection-camera-regard-voirie-1366.avif 1366w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)"><img src="/assets/img/camera/inspection-camera-regard-voirie-1366.webp" srcset="/assets/img/camera/inspection-camera-regard-voirie-480.webp 480w, /assets/img/camera/inspection-camera-regard-voirie-768.webp 768w, /assets/img/camera/inspection-camera-regard-voirie-1024.webp 1024w, /assets/img/camera/inspection-camera-regard-voirie-1366.webp 1366w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)" width="1366" height="1024" loading="lazy" decoding="async" alt="Technicien descendant une caméra d'inspection dans un regard de voirie ouvert, fourgon d'intervention à l'arrière-plan"></picture></a>
+        <div class="carte-corps">
+          <h3><a href="/inspection-camera-canalisation">Inspection caméra</a></h3>
+          <p>Voir avant d'agir : la caméra situe l'obstacle et montre l'état réel de la conduite, racines et affaissements compris.</p>
+          <span class="carte-pied">
+            <a class="lien-fleche" href="/inspection-camera-canalisation">Voir la prestation</a>
+            <a class="btn btn-call" href="tel:+33220060075" data-track="appel" data-track-zone="carte-regard">Appeler</a>
+          </span>
+        </div>
+      </article>
+      <article class="carte carte-media" data-reveal>
+        <a href="/degorgement-urgence" tabindex="-1" aria-hidden="true"><picture><source type="image/avif" srcset="/assets/img/interventions/urgence-degorgement-douche-480.avif 480w, /assets/img/interventions/urgence-degorgement-douche-768.avif 768w, /assets/img/interventions/urgence-degorgement-douche-1024.avif 1024w, /assets/img/interventions/urgence-degorgement-douche-1366.avif 1366w, /assets/img/interventions/urgence-degorgement-douche-1536.avif 1536w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)"><img src="/assets/img/interventions/urgence-degorgement-douche-1536.webp" srcset="/assets/img/interventions/urgence-degorgement-douche-480.webp 480w, /assets/img/interventions/urgence-degorgement-douche-768.webp 768w, /assets/img/interventions/urgence-degorgement-douche-1024.webp 1024w, /assets/img/interventions/urgence-degorgement-douche-1366.webp 1366w, /assets/img/interventions/urgence-degorgement-douche-1536.webp 1536w" sizes="(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, calc(100vw - 2.4rem)" width="1536" height="1024" loading="lazy" decoding="async" alt="Technicien aspirant l'eau répandue au sol devant une douche après un refoulement"></picture></a>
+        <div class="carte-corps">
+          <h3><a href="/degorgement-urgence">Dégorgement d'urgence</a></h3>
+          <p>Refoulement en cours, eau répandue : mise hors d'eau d'abord, recherche du bouchon ensuite.</p>
+          <span class="carte-pied">
+            <a class="lien-fleche" href="/degorgement-urgence">Voir la prestation</a>
+            <a class="btn btn-call" href="tel:+33220060075" data-track="appel" data-track-zone="carte-urgence">Appeler</a>
+          </span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <h2>Un appareil sanitaire ne s'écoule plus</h2>
     <p>
       Quand un seul point d'eau est touché, l'obstruction se situe presque toujours entre
@@ -254,7 +387,7 @@
       </article>
       <article class="carte carte-service" data-reveal>
         <div class="carte-icone" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h10v6H6z"/><path d="M7 9c0 5 1 9 5 9s5-4 5-9"/><path d="M8 20h8"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7.5" height="16" rx="1"/><rect x="13.5" y="4" width="7.5" height="16" rx="1"/><path d="M8.4 12h.01"/><path d="M18.9 12h.01"/></svg>
         </div>
         <h3>Toilettes bouchées</h3>
         <p>Sanitaires d'immeuble, de commerce ou raccordés à une fosse : le contexte change la méthode.</p>
@@ -270,7 +403,7 @@
       </article>
       <article class="carte carte-service" data-reveal>
         <div class="carte-icone" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M12 16v5"/><path d="M16 4a3 3 0 0 0-6 0v5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v1.5a4.5 4.5 0 0 1-4.5 4.5h-7A4.5 4.5 0 0 1 4 11.5z"/><path d="M9 16v5"/><path d="M15 16v5"/><path d="M12 10V6a2 2 0 0 1 2-2h2"/></svg>
         </div>
         <h3>Lavabo bouché</h3>
         <p>Cheveux, savon et calcaire agglomérés sur la tige de la bonde à commande.</p>
@@ -564,6 +697,18 @@
     </div>
   </div>
 
+  <div class="wrap footer-departements">
+    <p class="footer-departements-titre">Nos six départements</p>
+    <ul>
+      <li><a href="/departements/cotes-d-armor"><span class="numero">22</span> Côtes-d'Armor</a></li>
+      <li><a href="/departements/finistere"><span class="numero">29</span> Finistère</a></li>
+      <li><a href="/departements/ille-et-vilaine"><span class="numero">35</span> Ille-et-Vilaine</a></li>
+      <li><a href="/departements/morbihan"><span class="numero">56</span> Morbihan</a></li>
+      <li><a href="/departements/loire-atlantique"><span class="numero">44</span> Loire-Atlantique</a></li>
+      <li><a href="/departements/maine-et-loire"><span class="numero">49</span> Maine-et-Loire</a></li>
+    </ul>
+  </div>
+
   <div class="wrap footer-legal">
     <ul class="footer-liens-legaux">
       <li><a href="/mentions-legales">Mentions légales</a></li>
@@ -580,11 +725,11 @@
 <div class="barre-mobile">
   <a class="barre-mobile-appel" href="tel:+33220060075" data-track="appel" data-track-zone="barre-mobile">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
-    <span>Appeler</span>
+    <span>02 20 06 00 75</span>
   </a>
   <a class="barre-mobile-devis" href="/devis" data-track="clic_devis" data-track-zone="barre-mobile">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zm0 2 4.5 4.5H14zM8 13h8v2H8zm0 4h8v2H8z" fill="currentColor"/></svg>
-    <span>Devis</span>
+    <span>Intervention</span>
   </a>
 </div>
 

@@ -18,14 +18,14 @@
 <meta property="og:title" content="Débouchage toilettes — immeuble, commerce, fosse">
 <meta property="og:description" content="Toilettes bouchées en appartement, en commerce ou raccordées à une fosse : le contexte change la méthode. Diagnostic, débouchage et devis écrit avant travaux.">
 <meta property="og:url" content="https://degorgement-richard.fr/debouchage-toilettes">
-<meta property="og:image" content="https://degorgement-richard.fr/assets/img/partage/og-debouchage-wc-inspection-camera.jpg">
+<meta property="og:image" content="https://degorgement-richard.fr/assets/img/partage/og-installation-broyeur-sanitaire-wc.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Dégorgement Richard — Dégorgement, débouchage et assainissement dans le Grand Ouest">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Débouchage toilettes — immeuble, commerce, fosse">
 <meta name="twitter:description" content="Toilettes bouchées en appartement, en commerce ou raccordées à une fosse : le contexte change la méthode. Diagnostic, débouchage et devis écrit avant travaux.">
-<meta name="twitter:image" content="https://degorgement-richard.fr/assets/img/partage/og-debouchage-wc-inspection-camera.jpg">
+<meta name="twitter:image" content="https://degorgement-richard.fr/assets/img/partage/og-installation-broyeur-sanitaire-wc.jpg">
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/img/favicon.ico" sizes="32x32">
@@ -42,6 +42,27 @@
      les blocs s'affichent puis disparaissent. Sans JavaScript, la classe n'est
      jamais posée et rien n'est masqué. -->
 <script>try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){document.documentElement.className+=' anim'}}catch(e){}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://degorgement-richard.fr/debouchage-toilettes#page",
+  "url": "https://degorgement-richard.fr/debouchage-toilettes",
+  "name": "Débouchage toilettes — immeuble, commerce, fosse",
+  "description": "Toilettes bouchées en appartement, en commerce ou raccordées à une fosse : le contexte change la méthode. Diagnostic, débouchage et devis écrit avant travaux.",
+  "inLanguage": "fr-FR",
+  "dateModified": "2026-09-09",
+  "isPartOf": { "@id": "https://degorgement-richard.fr/#site" },
+  "about": { "@id": "https://degorgement-richard.fr/#entreprise" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://degorgement-richard.fr/assets/img/partage/og-installation-broyeur-sanitaire-wc.jpg",
+    "contentUrl": "https://degorgement-richard.fr/assets/img/partage/og-installation-broyeur-sanitaire-wc.jpg",
+    "width": 1200,
+    "height": 630
+  }
+}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -135,11 +156,6 @@
       </span>
     </a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-principal">
-      <span class="nav-toggle-bars" aria-hidden="true"></span>
-      <span class="visually-hidden">Ouvrir le menu</span>
-    </button>
-
     <nav id="nav-principal" class="nav" aria-label="Navigation principale">
       <ul>
         <li><a href="/services">Prestations</a></li>
@@ -150,14 +166,15 @@
         <li><a href="/contact">Contact</a></li>
       </ul>
 
-      <!-- Reprise des deux actions dans le tiroir : sur mobile, l'en-tête ne
-           peut pas les afficher, et elles doivent rester à portée de pouce. -->
+      <!-- Reprise des deux actions dans le tiroir : sur mobile, la barre ne
+           peut pas afficher le bouton d'intervention, et il doit rester à
+           portée de pouce une fois le menu ouvert. -->
       <div class="nav-actions">
         <a class="btn btn-call btn-bloc" href="tel:+33220060075" data-track="appel" data-track-zone="menu-mobile">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
           <span>02 20 06 00 75</span>
         </a>
-        <a class="btn btn-ghost btn-bloc" href="/devis" data-track="clic_devis" data-track-zone="menu-mobile">Devis gratuit</a>
+        <a class="btn btn-devis btn-bloc" href="/devis" data-track="clic_devis" data-track-zone="menu-mobile">Demander une intervention</a>
       </div>
     </nav>
 
@@ -171,8 +188,20 @@
           <strong>02 20 06 00 75</strong>
         </span>
       </a>
-      <a class="btn btn-devis" href="/devis" data-track="clic_devis" data-track-zone="entete">Devis gratuit</a>
+      <a class="btn btn-devis" href="/devis" data-track="clic_devis" data-track-zone="entete">Demander une intervention</a>
     </div>
+
+    <!-- Barre mobile : le numéro doit rester visible sans ouvrir le menu. -->
+    <a class="header-call-compact" href="tel:+33220060075" data-track="appel" data-track-zone="entete-mobile">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
+      <span class="header-call-compact-num">02 20 06 00 75</span>
+      <span class="visually-hidden">Appeler le 02 20 06 00 75</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-principal">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+      <span class="visually-hidden">Ouvrir le menu</span>
+    </button>
   </div>
 </header>
 
@@ -208,7 +237,7 @@
       </div>
 
       <div class="hero-media">
-        <picture><source type="image/avif" srcset="/assets/img/interventions/debouchage-wc-inspection-camera-480.avif 480w, /assets/img/interventions/debouchage-wc-inspection-camera-768.avif 768w, /assets/img/interventions/debouchage-wc-inspection-camera-1024.avif 1024w, /assets/img/interventions/debouchage-wc-inspection-camera-1366.avif 1366w, /assets/img/interventions/debouchage-wc-inspection-camera-1536.avif 1536w" sizes="(min-width: 1240px) 500px, (min-width: 980px) 42vw, calc(100vw - 2.4rem)"><img src="/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp" srcset="/assets/img/interventions/debouchage-wc-inspection-camera-480.webp 480w, /assets/img/interventions/debouchage-wc-inspection-camera-768.webp 768w, /assets/img/interventions/debouchage-wc-inspection-camera-1024.webp 1024w, /assets/img/interventions/debouchage-wc-inspection-camera-1366.webp 1366w, /assets/img/interventions/debouchage-wc-inspection-camera-1536.webp 1536w" sizes="(min-width: 1240px) 500px, (min-width: 980px) 42vw, calc(100vw - 2.4rem)" width="1536" height="1024" fetchpriority="high" decoding="async" alt="Technicien introduisant une caméra d'inspection dans la cuvette d'un WC, enrouleur de furet posé au sol"></picture>
+        <picture><source type="image/avif" srcset="/assets/img/plomberie/installation-broyeur-sanitaire-wc-480.avif 480w, /assets/img/plomberie/installation-broyeur-sanitaire-wc-768.avif 768w, /assets/img/plomberie/installation-broyeur-sanitaire-wc-1024.avif 1024w, /assets/img/plomberie/installation-broyeur-sanitaire-wc-1366.avif 1366w, /assets/img/plomberie/installation-broyeur-sanitaire-wc-1536.avif 1536w" sizes="(min-width: 1240px) 500px, (min-width: 980px) 42vw, calc(100vw - 2.4rem)"><img src="/assets/img/plomberie/installation-broyeur-sanitaire-wc-1536.webp" srcset="/assets/img/plomberie/installation-broyeur-sanitaire-wc-480.webp 480w, /assets/img/plomberie/installation-broyeur-sanitaire-wc-768.webp 768w, /assets/img/plomberie/installation-broyeur-sanitaire-wc-1024.webp 1024w, /assets/img/plomberie/installation-broyeur-sanitaire-wc-1366.webp 1366w, /assets/img/plomberie/installation-broyeur-sanitaire-wc-1536.webp 1536w" sizes="(min-width: 1240px) 500px, (min-width: 980px) 42vw, calc(100vw - 2.4rem)" width="1536" height="1024" fetchpriority="high" decoding="async" alt="Technicien raccordant un broyeur sanitaire derrière une cuvette de WC, coudes PVC et boîte à outils au sol"></picture>
       </div>
     </div>
   </div>
@@ -480,6 +509,18 @@
     </div>
   </div>
 
+  <div class="wrap footer-departements">
+    <p class="footer-departements-titre">Nos six départements</p>
+    <ul>
+      <li><a href="/departements/cotes-d-armor"><span class="numero">22</span> Côtes-d'Armor</a></li>
+      <li><a href="/departements/finistere"><span class="numero">29</span> Finistère</a></li>
+      <li><a href="/departements/ille-et-vilaine"><span class="numero">35</span> Ille-et-Vilaine</a></li>
+      <li><a href="/departements/morbihan"><span class="numero">56</span> Morbihan</a></li>
+      <li><a href="/departements/loire-atlantique"><span class="numero">44</span> Loire-Atlantique</a></li>
+      <li><a href="/departements/maine-et-loire"><span class="numero">49</span> Maine-et-Loire</a></li>
+    </ul>
+  </div>
+
   <div class="wrap footer-legal">
     <ul class="footer-liens-legaux">
       <li><a href="/mentions-legales">Mentions légales</a></li>
@@ -496,11 +537,11 @@
 <div class="barre-mobile">
   <a class="barre-mobile-appel" href="tel:+33220060075" data-track="appel" data-track-zone="barre-mobile">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
-    <span>Appeler</span>
+    <span>02 20 06 00 75</span>
   </a>
   <a class="barre-mobile-devis" href="/devis" data-track="clic_devis" data-track-zone="barre-mobile">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zm0 2 4.5 4.5H14zM8 13h8v2H8zm0 4h8v2H8z" fill="currentColor"/></svg>
-    <span>Devis</span>
+    <span>Intervention</span>
   </a>
 </div>
 

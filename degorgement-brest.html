@@ -45,6 +45,27 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://degorgement-richard.fr/degorgement-brest#page",
+  "url": "https://degorgement-richard.fr/degorgement-brest",
+  "name": "Dégorgement et débouchage à Brest (29)",
+  "description": "Dégorgement et débouchage à Brest : colonnes en fonte du bâti de reconstruction, WC et éviers bouchés, curage d'immeuble. Intervention 24h/24, devis écrit.",
+  "inLanguage": "fr-FR",
+  "dateModified": "2026-09-09",
+  "isPartOf": { "@id": "https://degorgement-richard.fr/#site" },
+  "about": { "@id": "https://degorgement-richard.fr/#entreprise" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://degorgement-richard.fr/assets/img/partage/og-reseau-collectif-sous-sol.jpg",
+    "contentUrl": "https://degorgement-richard.fr/assets/img/partage/og-reseau-collectif-sous-sol.jpg",
+    "width": 1200,
+    "height": 630
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "Service",
   "name": "Dégorgement à Brest",
   "description": "Dégorgement et débouchage à Brest : colonnes en fonte du bâti de reconstruction, WC et éviers bouchés, curage d'immeuble. Intervention 24h/24, devis écrit.",
@@ -127,11 +148,6 @@
       </span>
     </a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-principal">
-      <span class="nav-toggle-bars" aria-hidden="true"></span>
-      <span class="visually-hidden">Ouvrir le menu</span>
-    </button>
-
     <nav id="nav-principal" class="nav" aria-label="Navigation principale">
       <ul>
         <li><a href="/services">Prestations</a></li>
@@ -142,14 +158,15 @@
         <li><a href="/contact">Contact</a></li>
       </ul>
 
-      <!-- Reprise des deux actions dans le tiroir : sur mobile, l'en-tête ne
-           peut pas les afficher, et elles doivent rester à portée de pouce. -->
+      <!-- Reprise des deux actions dans le tiroir : sur mobile, la barre ne
+           peut pas afficher le bouton d'intervention, et il doit rester à
+           portée de pouce une fois le menu ouvert. -->
       <div class="nav-actions">
         <a class="btn btn-call btn-bloc" href="tel:+33220060075" data-track="appel" data-track-zone="menu-mobile">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
           <span>02 20 06 00 75</span>
         </a>
-        <a class="btn btn-ghost btn-bloc" href="/devis" data-track="clic_devis" data-track-zone="menu-mobile">Devis gratuit</a>
+        <a class="btn btn-devis btn-bloc" href="/devis" data-track="clic_devis" data-track-zone="menu-mobile">Demander une intervention</a>
       </div>
     </nav>
 
@@ -163,8 +180,20 @@
           <strong>02 20 06 00 75</strong>
         </span>
       </a>
-      <a class="btn btn-devis" href="/devis" data-track="clic_devis" data-track-zone="entete">Devis gratuit</a>
+      <a class="btn btn-devis" href="/devis" data-track="clic_devis" data-track-zone="entete">Demander une intervention</a>
     </div>
+
+    <!-- Barre mobile : le numéro doit rester visible sans ouvrir le menu. -->
+    <a class="header-call-compact" href="tel:+33220060075" data-track="appel" data-track-zone="entete-mobile">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
+      <span class="header-call-compact-num">02 20 06 00 75</span>
+      <span class="visually-hidden">Appeler le 02 20 06 00 75</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-principal">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+      <span class="visually-hidden">Ouvrir le menu</span>
+    </button>
   </div>
 </header>
 
@@ -468,6 +497,18 @@
     </div>
   </div>
 
+  <div class="wrap footer-departements">
+    <p class="footer-departements-titre">Nos six départements</p>
+    <ul>
+      <li><a href="/departements/cotes-d-armor"><span class="numero">22</span> Côtes-d'Armor</a></li>
+      <li><a href="/departements/finistere"><span class="numero">29</span> Finistère</a></li>
+      <li><a href="/departements/ille-et-vilaine"><span class="numero">35</span> Ille-et-Vilaine</a></li>
+      <li><a href="/departements/morbihan"><span class="numero">56</span> Morbihan</a></li>
+      <li><a href="/departements/loire-atlantique"><span class="numero">44</span> Loire-Atlantique</a></li>
+      <li><a href="/departements/maine-et-loire"><span class="numero">49</span> Maine-et-Loire</a></li>
+    </ul>
+  </div>
+
   <div class="wrap footer-legal">
     <ul class="footer-liens-legaux">
       <li><a href="/mentions-legales">Mentions légales</a></li>
@@ -484,11 +525,11 @@
 <div class="barre-mobile">
   <a class="barre-mobile-appel" href="tel:+33220060075" data-track="appel" data-track-zone="barre-mobile">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
-    <span>Appeler</span>
+    <span>02 20 06 00 75</span>
   </a>
   <a class="barre-mobile-devis" href="/devis" data-track="clic_devis" data-track-zone="barre-mobile">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zm0 2 4.5 4.5H14zM8 13h8v2H8zm0 4h8v2H8z" fill="currentColor"/></svg>
-    <span>Devis</span>
+    <span>Intervention</span>
   </a>
 </div>
 
