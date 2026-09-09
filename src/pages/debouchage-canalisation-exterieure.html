@@ -5,34 +5,49 @@ schema: service
 breadcrumb: Canalisation extérieure
 parent_nom: Nos prestations
 parent_url: /services
-image: /assets/img/canalisation-exterieure.svg
+image: /assets/img/og-canalisation-exterieure.jpg
 priority: 0.85
 -->
 
-<div class="wrap fil">
-  <nav aria-label="Fil d'Ariane">
-    <ol>
-      <li><a href="/">Accueil</a></li>
-      <li><a href="/services">Nos prestations</a></li>
-      <li>Canalisation extérieure</li>
-    </ol>
-  </nav>
-</div>
+<section class="hero hero-interieur">
+  <div class="wrap">
+    <div class="fil">
+      <nav aria-label="Fil d'Ariane">
+        <ol>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/services">Nos prestations</a></li>
+          <li>Canalisation extérieure</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <p class="urgence-badge"><span class="pastille" aria-hidden="true"></span> Intervention {{DISPONIBILITE}} · 6 départements</p>
+        <h1>Débouchage de canalisation extérieure</h1>
+        <p class="chapeau">
+          Entre la sortie de la maison et le réseau public s'étend une portion enterrée que
+          personne ne voit jamais. C'est pourtant là que se produisent les obstructions les plus
+          durables — et les seules qui reviennent inlassablement au même endroit.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-exterieure">Appeler le {{TELEPHONE}}</a>
+          <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="hero-exterieure">Demander une intervention</a>
+
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <img src="/assets/img/photos/canalisation-exterieure.webp"
+             width="960" height="720" fetchpriority="high" decoding="async"
+             alt="Coupe d'une canalisation extérieure enterrée traversée par des racines d'arbre, avec son regard de visite">
+      </div>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
-    <div class="section-titre">
-      <h1>Débouchage de canalisation extérieure</h1>
-      <p>
-        Entre la sortie de la maison et le réseau public s'étend une portion enterrée que
-        personne ne voit jamais. C'est pourtant là que se produisent les obstructions les plus
-        durables — et les seules qui reviennent inlassablement au même endroit.
-      </p>
-      <p class="hero-actions">
-        <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-exterieure">Appeler le {{TELEPHONE}}</a>
-        <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="hero-exterieure">Demander une intervention</a>
-      </p>
-    </div>
 
     <div class="reponse-rapide">
       <h2>Réponse rapide</h2>
@@ -53,7 +68,7 @@ priority: 0.85
       </ul>
     </div>
 
-    <img src="/assets/img/canalisation-exterieure.svg" width="640" height="420" loading="lazy"
+    <img src="/assets/img/og-canalisation-exterieure.jpg" width="640" height="420" loading="lazy"
          alt="Regard de visite ouvert dans un jardin, raccordé au collecteur d'eaux usées de la maison">
 
     <h2>La méthode : sectionner avant d'agir</h2>

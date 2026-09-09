@@ -25,7 +25,7 @@ etape() { RESULTATS="${RESULTATS}$1|$2"$'\n'; }
 titre() { echo; echo "${GRAS}=== $1 ===${FIN}"; echo; }
 
 # --- 1. Construction --------------------------------------------------------
-titre "1/6  Construction"
+titre "1/7  Construction"
 if bash scripts/build.sh; then
   etape "BUILD" "OK"
 else
@@ -35,7 +35,7 @@ else
 fi
 
 # --- 2. SEO, GEO, liens, ressources ----------------------------------------
-titre "2/6  Contrôle SEO / GEO, liens internes et ressources"
+titre "2/7  Contrôle SEO / GEO, liens internes et ressources"
 if bash scripts/check-seo.sh; then
   etape "SEO / GEO / LIENS" "OK"
 else
@@ -43,7 +43,7 @@ else
 fi
 
 # --- 3. Structure HTML ------------------------------------------------------
-titre "3/6  Structure HTML"
+titre "3/7  Structure HTML"
 if command -v python3 >/dev/null; then
   if python3 scripts/check-html.py; then
     etape "STRUCTURE HTML" "OK"
@@ -56,7 +56,7 @@ else
 fi
 
 # --- 4. Contenu local -------------------------------------------------------
-titre "4/6  Similarité des pages locales"
+titre "4/7  Similarité des pages locales"
 if command -v python3 >/dev/null; then
   if python3 scripts/check-contenu-local.py; then
     etape "CONTENU LOCAL" "OK"
@@ -69,7 +69,7 @@ else
 fi
 
 # --- 5. Données structurées -------------------------------------------------
-titre "5/6  Données structurées (JSON-LD)"
+titre "5/7  Données structurées (JSON-LD)"
 if command -v python3 >/dev/null; then
   if python3 - <<'PY'
 import json, re, glob, sys
@@ -98,7 +98,7 @@ else
 fi
 
 # --- 6. Test HTTP -----------------------------------------------------------
-titre "6/6  Test HTTP du dossier de production"
+titre "6/7  Test HTTP du dossier de production"
 if command -v php >/dev/null && command -v curl >/dev/null; then
   if bash scripts/test-http.sh; then
     etape "TEST HTTP / 403" "OK"
@@ -108,6 +108,22 @@ if command -v php >/dev/null && command -v curl >/dev/null; then
 else
   echo "PHP ou curl absent : test ignoré."
   etape "TEST HTTP / 403" "IGNOREE"
+fi
+
+titre "7/7  Contrastes (WCAG 1.4.3)"
+
+# Le contrôle mesure les couleurs sur la page RENDUE : il lui faut donc un
+# navigateur. Sur un poste qui n'en a pas, l'étape est signalée ignorée
+# plutôt que de faire échouer un audit par ailleurs complet.
+if python3 -c 'import playwright, PIL' 2>/dev/null && [ -x /opt/pw-browsers/chromium ]; then
+  if python3 scripts/check-contraste.py; then
+    etape "CONTRASTES" "OK"
+  else
+    etape "CONTRASTES" "ECHEC"; ECHEC=1
+  fi
+else
+  echo "playwright ou Chromium absent : contrôle des contrastes ignoré."
+  etape "CONTRASTES" "IGNOREE"
 fi
 
 # --- Synthèse ---------------------------------------------------------------

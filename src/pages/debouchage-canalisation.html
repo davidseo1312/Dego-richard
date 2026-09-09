@@ -5,34 +5,49 @@ schema: service
 breadcrumb: Débouchage de canalisation
 parent_nom: Nos prestations
 parent_url: /services
-image: /assets/img/canalisation.svg
+image: /assets/img/og-debouchage-canalisation.jpg
 priority: 0.9
 -->
 
-<div class="wrap fil">
-  <nav aria-label="Fil d'Ariane">
-    <ol>
-      <li><a href="/">Accueil</a></li>
-      <li><a href="/services">Nos prestations</a></li>
-      <li>Débouchage de canalisation</li>
-    </ol>
-  </nav>
-</div>
+<section class="hero hero-interieur">
+  <div class="wrap">
+    <div class="fil">
+      <nav aria-label="Fil d'Ariane">
+        <ol>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/services">Nos prestations</a></li>
+          <li>Débouchage de canalisation</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <p class="urgence-badge"><span class="pastille" aria-hidden="true"></span> Intervention {{DISPONIBILITE}} · 6 départements</p>
+        <h1>Débouchage de canalisation</h1>
+        <p class="chapeau">
+          Quand le problème n'est plus dans un siphon mais dans le tuyau lui-même, la méthode
+          change complètement. Cette page décrit ce qu'est une canalisation d'évacuation, comment
+          on y accède, et pourquoi le point d'attaque compte autant que l'outil.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-canalisation">Appeler le {{TELEPHONE}}</a>
+          <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="hero-canalisation">Demander une intervention</a>
+
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <img src="/assets/img/photos/debouchage-canalisation.webp"
+             width="1120" height="700" fetchpriority="high" decoding="async"
+             alt="Coupe d'une canalisation enterrée obstruée, buse rotative haute pression progressant vers le bouchon">
+      </div>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
-    <div class="section-titre">
-      <h1>Débouchage de canalisation</h1>
-      <p>
-        Quand le problème n'est plus dans un siphon mais dans le tuyau lui-même, la méthode
-        change complètement. Cette page décrit ce qu'est une canalisation d'évacuation, comment
-        on y accède, et pourquoi le point d'attaque compte autant que l'outil.
-      </p>
-      <p class="hero-actions">
-        <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-canalisation">Appeler le {{TELEPHONE}}</a>
-        <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="hero-canalisation">Demander une intervention</a>
-      </p>
-    </div>
 
     <div class="reponse-rapide">
       <h2>Réponse rapide</h2>
@@ -54,7 +69,7 @@ priority: 0.9
       </ul>
     </div>
 
-    <img src="/assets/img/hydrocurage.svg" width="640" height="420" loading="lazy"
+    <img src="/assets/img/og-curage-canalisation.jpg" width="640" height="420" loading="lazy"
          alt="Buse d'hydrocurage projetant de l'eau sous haute pression dans une canalisation encrassée">
 
     <h2>Comprendre votre réseau en trois minutes</h2>

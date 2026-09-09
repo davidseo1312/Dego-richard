@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 # ---------------------------------------------------------------------------
-# Génère les images matricielles que le format vectoriel ne peut pas couvrir :
-# la vignette de partage social, les icônes d'application et le favicon .ico.
+# Génère les icônes d'application et le favicon .ico — les seules images
+# matricielles que le format vectoriel ne peut pas couvrir.
 #
 #   python3 scripts/generer-images.py
+#
+# Les visuels du site et les images de partage (Open Graph) relèvent d'un
+# autre script, scripts/generer-visuels.py : deux scripts ne doivent pas se
+# disputer les mêmes fichiers.
 #
 # Ce script est FACULTATIF. Les fichiers qu'il produit sont déjà versionnés
 # dans static/assets/img/ : le site se construit et se déploie sans lui.
@@ -13,9 +17,6 @@
 # Dépendance : Pillow (pip install Pillow). Volontairement hors du build, qui
 # doit rester exécutable avec bash seul.
 #
-# Le numéro de téléphone n'est PAS incrusté dans la vignette : une image est
-# mise en cache des mois par les réseaux sociaux, et un numéro périmé y ferait
-# plus de dégâts que son absence.
 # ---------------------------------------------------------------------------
 
 import re
@@ -30,14 +31,14 @@ except ImportError:
 RACINE = Path(__file__).resolve().parent.parent
 SORTIE = RACINE / "static" / "assets" / "img"
 
-# --- Charte ----------------------------------------------------------------
-BLEU_900 = (4, 28, 43)
-BLEU_800 = (6, 40, 61)
-BLEU_700 = (11, 61, 92)
-CYAN = (18, 165, 184)
-ORANGE = (255, 122, 26)
+# --- Charte (identique aux jetons de static/assets/css/style.css) -----------
+BLEU_900 = (12, 74, 110)     # #0c4a6e
+BLEU_800 = (7, 89, 133)      # #075985
+BLEU_700 = (3, 105, 161)     # #0369a1
+CYAN = (125, 211, 252)       # #7dd3fc — la goutte, sur fond bleu foncé
+ORANGE = (249, 115, 22)      # #f97316 — accent, sur fond sombre uniquement
 BLANC = (255, 255, 255)
-BLEU_CLAIR = (180, 214, 230)
+BLEU_CLAIR = (186, 230, 253) # #bae6fd
 
 POLICES = [
     "/usr/share/fonts/truetype/dejavu/DejaVuSans{suffixe}.ttf",
@@ -57,7 +58,7 @@ def police(taille: int, gras: bool = False):
 
 
 def lire_config(cle: str, defaut: str) -> str:
-    """Lit une valeur de src/config.sh, pour que la vignette suive le nom
+    """Lit une valeur de src/config.sh, pour que les icônes suivent le nom
     commercial sans qu'on ait à l'écrire deux fois."""
     fichier = RACINE / "src" / "config.sh"
     if not fichier.exists():
@@ -114,38 +115,6 @@ def icone(taille: int, marge_ratio: float = 0.0) -> Image.Image:
     return img
 
 
-def vignette() -> Image.Image:
-    L, H = 1200, 630
-    img = Image.new("RGB", (L, H), BLEU_800)
-    d = ImageDraw.Draw(img)
-
-    # Dégradé vertical discret : deux aplats suffisent à donner du relief
-    # sans alourdir le fichier.
-    for y in range(H):
-        t = y / H
-        c = tuple(int(BLEU_900[i] + (BLEU_700[i] - BLEU_900[i]) * t) for i in range(3))
-        d.line([(0, y), (L, y)], fill=c)
-
-    goutte(d, 150, 262, 66, CYAN, 11)
-
-    d.text((260, 168), NOM, font=police(70, gras=True), fill=BLANC)
-    # La baseline complète déborderait : la vignette porte une accroche courte,
-    # le texte long reste dans les métadonnées Open Graph.
-    d.text((260, 262), "Débouchage · Curage · Assainissement",
-           font=police(36), fill=BLEU_CLAIR)
-
-    d.line([(262, 344), (262 + 120, 344)], fill=ORANGE, width=8)
-
-    zones = "Côtes-d'Armor · Finistère · Ille-et-Vilaine"
-    zones2 = "Morbihan · Loire-Atlantique · Maine-et-Loire"
-    d.text((260, 384), zones, font=police(29), fill=BLANC)
-    d.text((260, 426), zones2, font=police(29), fill=BLANC)
-
-    d.text((260, 502), "Intervention 24h/24 — devis écrit avant travaux",
-           font=police(27), fill=BLEU_CLAIR)
-    return img
-
-
 def main() -> int:
     SORTIE.mkdir(parents=True, exist_ok=True)
 
@@ -157,10 +126,9 @@ def main() -> int:
     base = icone(256)
     base.save(SORTIE / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)])
 
-    vignette().save(SORTIE / "og-default.jpg", quality=82, optimize=True, progressive=True)
 
     for f in ("icone-192.png", "icone-512.png", "icone-512-maskable.png",
-              "apple-touch-icon.png", "favicon.ico", "og-default.jpg"):
+              "apple-touch-icon.png", "favicon.ico"):
         chemin = SORTIE / f
         print(f"  ✓ {f} — {chemin.stat().st_size // 1024} Ko")
     return 0

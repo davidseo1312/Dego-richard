@@ -24,14 +24,15 @@ réorganisé plus tard.
 1. [Démarrage rapide](#démarrage-rapide)
 2. [Comment le site est construit](#comment-le-site-est-construit)
 3. [Organisation des fichiers](#organisation-des-fichiers)
-4. [Modifier le site](#modifier-le-site)
-5. [Le formulaire de demande](#le-formulaire-de-demande)
-6. [Google Search Console, Analytics, Tag Manager](#google-search-console-analytics-tag-manager)
-7. [Contrôles avant mise en ligne](#contrôles-avant-mise-en-ligne)
-8. [DEPLOYMENT HOSTINGER](#deployment-hostinger)
-9. [Cohérence géographique et commerciale](#cohérence-géographique-et-commerciale)
-10. [Avant la mise en ligne : informations à fournir](#avant-la-mise-en-ligne--informations-à-fournir)
-11. [Sécurité](#sécurité)
+4. [Design system](#design-system)
+5. [Modifier le site](#modifier-le-site)
+6. [Le formulaire de demande](#le-formulaire-de-demande)
+7. [Google Search Console, Analytics, Tag Manager](#google-search-console-analytics-tag-manager)
+8. [Contrôles avant mise en ligne](#contrôles-avant-mise-en-ligne)
+9. [DEPLOYMENT HOSTINGER](#deployment-hostinger)
+10. [Cohérence géographique et commerciale](#cohérence-géographique-et-commerciale)
+11. [Avant la mise en ligne : informations à fournir](#avant-la-mise-en-ligne--informations-à-fournir)
+12. [Sécurité](#sécurité)
 
 ---
 
@@ -121,7 +122,12 @@ static/
   .htaccess              configuration Apache, copiée telle quelle
   envoi-demande.php      traitement du formulaire
   manifest.webmanifest
-  assets/css|js|img/
+  assets/
+    css/style.css        design system complet (jetons, composants)
+    js/site.js           menu, micro-interactions, consentement, mesure
+    fonts/               Inter et Plus Jakarta Sans, variables, auto-hébergées
+    img/                 favicon, icônes, images de partage (Open Graph)
+    img/photos/          bibliothèque de visuels du site
 scripts/
   build.sh               construit public/ et refuse un résultat non déployable
   gen-sitemap.sh         sitemap.xml + robots.txt
@@ -129,16 +135,23 @@ scripts/
   check-seo.sh           17 familles de contrôles SEO, GEO, liens, périmètre
   check-html.py          structure HTML, hiérarchie des titres, labels
   check-contenu-local.py similarité des pages locales (anti-duplication)
+  check-contraste.py     contrastes mesurés sur la page rendue (WCAG 1.4.3)
   audit.sh               enchaîne tous les contrôles
   test-http.sh           sert public/ et interroge toutes les URLs (aucun 403)
   apercu.sh              aperçu local avec les URLs de production
   routeur-local.php      reproduit les règles du .htaccess en local
-  generer-images.py      régénère favicon, icônes et vignette sociale
+  generer-images.py      régénère favicon et icônes d'application
+  generer-visuels.py     régénère la bibliothèque de visuels et les images
+                         de partage, rendues en WebP et JPEG par Chromium
+  refonte-heros.py       applique le gabarit de héros aux pages intérieures
+  refonte-articles.py    applique le gabarit d'article et génère les sommaires
+  capturer.py            captures d'écran des pages, pour contrôle visuel
 tests/
   lancer.sh              parcours réels dans un navigateur (facultatif)
   navigateur.mjs
 docs/
   configuration.md       référence de src/config.sh
+  design-system.md       couleurs, typographie, composants, contrastes
   deploiement-hostinger.md
 .github/workflows/deploy.yml
 ```
@@ -146,6 +159,19 @@ docs/
 `public/` est **régénéré à chaque build** et n'est pas versionné sur la branche
 source :
 c'est la branche `deploy` qui porte le site prêt à servir.
+
+---
+
+## Design system
+
+Couleurs, typographie, composants, règles de contraste et de mouvement :
+**[`docs/design-system.md`](docs/design-system.md)**.
+
+En résumé : bleu azur dominant, orange réservé à l'urgence et aux appels à
+l'action, Plus Jakarta Sans pour les titres et Inter pour le texte, deux
+polices variables auto-hébergées. Tout passe par des variables CSS déclarées
+en tête de `static/assets/css/style.css` ; aucune page n'écrit de couleur en
+dur.
 
 ---
 
@@ -207,10 +233,21 @@ correspondante dans `src/pages/blog/index.html`.
 `src/partials/header.html` et `src/partials/footer.html`. Une seule
 modification se répercute sur les 111 pages au build suivant.
 
-### Remplacer les illustrations par des photos
+### Remplacer les illustrations par des photographies
 
-Voir `static/assets/img/README.md`. Gardez les mêmes noms de fichiers et les
-mêmes proportions : aucune page n'est alors à modifier.
+Les visuels du site sont des **illustrations originales** produites par
+`scripts/generer-visuels.py`, et non des photographies : l'environnement de
+construction n'a accès à aucune banque d'images. Elles n'appartiennent donc
+à personne d'autre — aucun filigrane, aucun logo tiers, aucune licence à
+respecter au-delà de celle du dépôt.
+
+Pour passer à de vraies photographies, déposez un fichier WebP de **mêmes nom
+et dimensions** dans `static/assets/img/photos/`. Le HTML référence les
+fichiers par leur nom et porte déjà `width`, `height`, `loading`, `decoding`
+et `alt` : aucune page n'est à modifier. Vérifiez seulement que la
+photographie est libre de droits pour un usage commercial et que le texte
+alternatif la décrit toujours. L'inventaire complet, avec dimensions et
+textes alternatifs, est dans `static/assets/img/photos/README.md`.
 
 ---
 
@@ -278,6 +315,7 @@ bash scripts/audit.sh
 | `check-contenu-local.py` | similarité des pages locales, longueur minimale |
 | JSON-LD | validité de chaque bloc de données structurées |
 | `test-http.sh` | toutes les URLs du sitemap en 200, redirections 301, 404 personnalisée, **aucun 403** |
+| `check-contraste.py` | rapport de contraste de chaque texte, mesuré sur la page **rendue** (dégradés et images compris) — 4,5:1, ou 3:1 pour un grand texte |
 
 Le build **échoue** (code de sortie ≠ 0) si le dossier produit n'est pas
 déployable. Un build qui n'a pas planté n'est pas un build valide : c'est

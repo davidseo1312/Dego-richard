@@ -121,12 +121,15 @@ verifier(
 );
 
 await mobile.keyboard.press('Escape');
+// La fermeture est animée : le tiroir ne redevient invisible qu'une fois la
+// glissade terminée. On observe donc l'état final, pas un état transitoire.
+await menu.waitFor({ state: 'hidden', timeout: 2000 }).catch(() => {});
 verifier(!(await menu.isVisible()), 'la touche Échap referme le menu');
 
 await mobile.locator('.nav-toggle').click();
-await mobile.locator('#nav-principal a[href="/faq"]').click();
+await mobile.locator('#nav-principal a[href="/tarifs"]').click();
 await mobile.waitForLoadState('domcontentloaded');
-verifier(mobile.url().endsWith('/faq'), 'un lien du menu navigue bien');
+verifier(mobile.url().endsWith('/tarifs'), 'un lien du menu navigue bien');
 
 titre('3. Barre d’appel fixe');
 
@@ -150,9 +153,15 @@ const petites = await mobile.evaluate(() => {
   for (const el of document.querySelectorAll('a, button, input:not([type=hidden]), select, textarea')) {
     const r = el.getBoundingClientRect();
     if (!r.width && !r.height) continue;
-    const dansUnParagraphe = el.closest('p') && el.parentElement.tagName === 'P'
-      && el.parentElement.textContent.trim().length > (el.textContent || '').trim().length + 20;
-    if (dansUnParagraphe) continue;
+    // Exception « Inline » du critère : un lien inséré dans une phrase est
+    // dispensé. Ce qui la caractérise, c'est d'être rendu en display:inline
+    // au milieu d'un texte plus long — pas d'avoir un <p> pour parent direct.
+    // Un lien d'action, lui, est en inline-flex ou en bloc : il reste soumis.
+    const bloc = el.closest('p, li, td, dd, figcaption, blockquote, summary');
+    const enPleinePhrase = bloc
+      && getComputedStyle(el).display === 'inline'
+      && bloc.textContent.trim().length > (el.textContent || '').trim().length + 20;
+    if (enPleinePhrase) continue;
     if (r.height < 24) trop.push(`${el.tagName} « ${(el.textContent || '').trim().slice(0, 25)} » ${Math.round(r.height)}px`);
   }
   return trop;

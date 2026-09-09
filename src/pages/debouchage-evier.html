@@ -5,34 +5,49 @@ schema: service
 breadcrumb: Débouchage évier
 parent_nom: Nos prestations
 parent_url: /services
-image: /assets/img/debouchage-evier.svg
+image: /assets/img/og-debouchage-evier.jpg
 priority: 0.85
 -->
 
-<div class="wrap fil">
-  <nav aria-label="Fil d'Ariane">
-    <ol>
-      <li><a href="/">Accueil</a></li>
-      <li><a href="/services">Nos prestations</a></li>
-      <li>Débouchage évier</li>
-    </ol>
-  </nav>
-</div>
+<section class="hero hero-interieur">
+  <div class="wrap">
+    <div class="fil">
+      <nav aria-label="Fil d'Ariane">
+        <ol>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/services">Nos prestations</a></li>
+          <li>Débouchage évier</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <p class="urgence-badge"><span class="pastille" aria-hidden="true"></span> Intervention {{DISPONIBILITE}} · 6 départements</p>
+        <h1>Débouchage d'évier</h1>
+        <p class="chapeau">
+          L'évier de cuisine se bouche pour une raison très précise, différente de celle d'un
+          lavabo : les graisses. Comprendre ce mécanisme explique pourquoi l'eau bouillante seule
+          ne règle rien durablement.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-evier">Appeler le {{TELEPHONE}}</a>
+          <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="hero-evier">Demander une intervention</a>
+
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <img src="/assets/img/photos/debouchage-evier.webp"
+             width="960" height="720" fetchpriority="high" decoding="async"
+             alt="Coupe d'un évier et de son siphon en S obstrué par des graisses figées">
+      </div>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
-    <div class="section-titre">
-      <h1>Débouchage d'évier</h1>
-      <p>
-        L'évier de cuisine se bouche pour une raison très précise, différente de celle d'un
-        lavabo : les graisses. Comprendre ce mécanisme explique pourquoi l'eau bouillante seule
-        ne règle rien durablement.
-      </p>
-      <p class="hero-actions">
-        <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-evier">Appeler le {{TELEPHONE}}</a>
-        <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="hero-evier">Demander une intervention</a>
-      </p>
-    </div>
 
     <div class="reponse-rapide">
       <h2>Réponse rapide</h2>
@@ -52,7 +67,7 @@ priority: 0.85
       </ul>
     </div>
 
-    <img src="/assets/img/debouchage-evier.svg" width="640" height="420" loading="lazy"
+    <img src="/assets/img/og-debouchage-evier.jpg" width="640" height="420" loading="lazy"
          alt="Évier de cuisine bouché avec le siphon démonté sous le meuble et un seau de récupération">
 
     <h2>Pourquoi la graisse bouche, et pourquoi l'eau chaude ne suffit pas</h2>

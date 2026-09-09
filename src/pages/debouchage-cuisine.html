@@ -5,34 +5,49 @@ schema: service
 breadcrumb: Débouchage cuisine
 parent_nom: Nos prestations
 parent_url: /services
-image: /assets/img/debouchage-evier.svg
+image: /assets/img/og-debouchage-evier.jpg
 priority: 0.8
 -->
 
-<div class="wrap fil">
-  <nav aria-label="Fil d'Ariane">
-    <ol>
-      <li><a href="/">Accueil</a></li>
-      <li><a href="/services">Nos prestations</a></li>
-      <li>Débouchage cuisine</li>
-    </ol>
-  </nav>
-</div>
+<section class="hero hero-interieur">
+  <div class="wrap">
+    <div class="fil">
+      <nav aria-label="Fil d'Ariane">
+        <ol>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/services">Nos prestations</a></li>
+          <li>Débouchage cuisine</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <p class="urgence-badge"><span class="pastille" aria-hidden="true"></span> Intervention {{DISPONIBILITE}} · 6 départements</p>
+        <h1>Débouchage du réseau de cuisine</h1>
+        <p class="chapeau">
+          Une cuisine ne se résume pas à son évier. Évier, lave-vaisselle et souvent lave-linge se
+          raccordent à une même descente, et c'est ce partage qui explique la plupart des
+          obstructions rencontrées.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-cuisine">Appeler le {{TELEPHONE}}</a>
+          <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="hero-cuisine">Demander une intervention</a>
+
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <img src="/assets/img/photos/debouchage-cuisine.webp"
+             width="960" height="720" fetchpriority="high" decoding="async"
+             alt="Coupe d'une installation de cuisine : évier, siphon et bac à graisses raccordés au réseau">
+      </div>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
-    <div class="section-titre">
-      <h1>Débouchage du réseau de cuisine</h1>
-      <p>
-        Une cuisine ne se résume pas à son évier. Évier, lave-vaisselle et souvent lave-linge se
-        raccordent à une même descente, et c'est ce partage qui explique la plupart des
-        obstructions rencontrées.
-      </p>
-      <p class="hero-actions">
-        <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-cuisine">Appeler le {{TELEPHONE}}</a>
-        <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="hero-cuisine">Demander une intervention</a>
-      </p>
-    </div>
 
     <div class="reponse-rapide">
       <h2>Réponse rapide</h2>

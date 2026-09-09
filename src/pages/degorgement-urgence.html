@@ -5,23 +5,26 @@ schema: service
 breadcrumb: Dégorgement d'urgence
 parent_nom: Nos prestations
 parent_url: /services
-image: /assets/img/hero-degorgement.svg
+image: /assets/img/og-degorgement.jpg
 priority: 0.9
 -->
 
-<div class="wrap fil">
-  <nav aria-label="Fil d'Ariane">
-    <ol>
-      <li><a href="/">Accueil</a></li>
-      <li><a href="/services">Nos prestations</a></li>
-      <li>Dégorgement d'urgence</li>
-    </ol>
-  </nav>
-</div>
+<section class="bandeau-urgence bandeau-urgence-entete">
+  <div class="wrap">
+    <div class="fil">
+      <nav aria-label="Fil d'Ariane">
+        <ol>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/services">Nos prestations</a></li>
+          <li>Dégorgement d'urgence</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
 
-<section class="bandeau-urgence">
   <div class="wrap urgence-inner">
     <div>
+      <p class="sur-titre">Intervention immédiate</p>
       <h1>Dégorgement d'urgence</h1>
       <p>
         Un refoulement d'eaux usées ne se met pas en attente : chaque heure aggrave les dégâts
@@ -29,11 +32,25 @@ priority: 0.9
         quand nous arrivons.
       </p>
     </div>
-    <div>
-      <a class="btn btn-call btn-large btn-bloc" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-urgence">
-        Appeler le {{TELEPHONE}}
+    <div class="urgence-encart">
+      <a class="numero-tel" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-urgence">{{TELEPHONE}}</a>
+      <p class="horaires">{{HORAIRES_URGENCE}}</p>
+      <a class="btn btn-call btn-large btn-bloc" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-urgence-bouton">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
+        <span>Appeler maintenant</span>
       </a>
+      <p style="margin:.75rem 0 0">
+        <a class="btn btn-ghost clair btn-bloc" href="/devis" data-track="clic_devis" data-track-zone="hero-urgence">Demander une intervention</a>
+      </p>
     </div>
+  </div>
+
+  <div class="wrap" style="margin-top:2.5rem">
+    <figure class="article-visuel" style="margin:0">
+      <img src="/assets/img/photos/urgence-degorgement.webp"
+           width="1120" height="700" fetchpriority="high" decoding="async"
+           alt="Vue intérieure d'une canalisation en refoulement : conduite pleine et bouchon bloquant l'écoulement">
+    </figure>
   </div>
 </section>
 

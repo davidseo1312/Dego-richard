@@ -4,10 +4,12 @@
    Aucune dépendance, aucun framework, aucune requête réseau au chargement.
    Le fichier reste sous 5 Ko afin de ne pas peser sur le temps d'affichage.
 
-   Trois responsabilités, et rien d'autre :
+   Cinq responsabilités, et rien d'autre :
      1. le menu mobile ;
-     2. le consentement aux cookies de mesure d'audience ;
-     3. le suivi des conversions, uniquement après consentement.
+     2. les micro-interactions (en-tête collant, apparition au défilement) ;
+     3. le consentement aux cookies de mesure d'audience ;
+     4. le suivi des conversions, uniquement après consentement ;
+     5. le confort du formulaire de devis.
 
    Tout le site fonctionne sans JavaScript : navigation, formulaire de devis,
    liens d'appel. Ce fichier n'ajoute que du confort et de la mesure.
@@ -21,22 +23,127 @@
 
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.getElementById('nav-principal');
+  var voile = null;
+  var dernierFocus = null;
+
+  function basculerMenu(ouvrir) {
+    if (!toggle || !nav) { return; }
+
+    nav.setAttribute('data-ouvert', String(ouvrir));
+    toggle.setAttribute('aria-expanded', String(ouvrir));
+
+    var libelle = toggle.querySelector('.visually-hidden');
+    if (libelle) { libelle.textContent = ouvrir ? 'Fermer le menu' : 'Ouvrir le menu'; }
+
+    // Le fond ne doit pas défiler derrière le tiroir : sur iOS, un fond qui
+    // bouge donne l'impression que le menu a « sauté ».
+    document.body.setAttribute('data-menu', ouvrir ? 'ouvert' : 'ferme');
+
+    if (voile) { voile.setAttribute('data-visible', String(ouvrir)); }
+
+    if (ouvrir) {
+      dernierFocus = document.activeElement;
+      var premier = nav.querySelector('a, button');
+      if (premier) { premier.focus(); }
+    } else if (dernierFocus) {
+      dernierFocus.focus();
+      dernierFocus = null;
+    }
+  }
 
   if (toggle && nav) {
+    // Le voile est créé en JavaScript : sans script, le menu ne s'ouvre pas,
+    // donc un voile inerte n'aurait rien à masquer.
+    voile = document.createElement('div');
+    voile.className = 'voile';
+    voile.setAttribute('data-visible', 'false');
+    voile.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(voile);
+    voile.addEventListener('click', function () { basculerMenu(false); });
+
     toggle.addEventListener('click', function () {
-      var ouvert = nav.getAttribute('data-ouvert') === 'true';
-      nav.setAttribute('data-ouvert', String(!ouvert));
-      toggle.setAttribute('aria-expanded', String(!ouvert));
-      toggle.querySelector('.visually-hidden').textContent =
-        ouvert ? 'Ouvrir le menu' : 'Fermer le menu';
+      basculerMenu(nav.getAttribute('data-ouvert') !== 'true');
+    });
+
+    // Suivre un lien depuis le tiroir doit le refermer : sinon il reste
+    // ouvert par-dessus la page d'arrivée lors d'un retour arrière.
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a') && nav.getAttribute('data-ouvert') === 'true') {
+        basculerMenu(false);
+      }
     });
 
     // Échap referme le menu : sans cela, le focus reste piégé au clavier.
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && nav.getAttribute('data-ouvert') === 'true') {
-        toggle.click();
-        toggle.focus();
+        basculerMenu(false);
       }
+    });
+
+    // Le tiroir n'existe qu'en dessous de 1080 px. Repasser au-dessus alors
+    // qu'il est ouvert laisserait le corps de page bloqué en non-défilable.
+    var large = window.matchMedia('(min-width: 1080px)');
+    var surChangement = function (e) {
+      if (e.matches && nav.getAttribute('data-ouvert') === 'true') { basculerMenu(false); }
+    };
+    if (large.addEventListener) { large.addEventListener('change', surChangement); }
+    else if (large.addListener) { large.addListener(surChangement); }
+  }
+
+  /* --- 1 bis. Lien de navigation correspondant à la page courante ---------- */
+
+  var chemin = location.pathname.replace(/\/$/, '') || '/';
+  Array.prototype.forEach.call(
+    document.querySelectorAll('.nav a[href]'),
+    function (lien) {
+      var href = lien.getAttribute('href').replace(/\/$/, '') || '/';
+      if (href === chemin) { lien.setAttribute('aria-current', 'page'); }
+    }
+  );
+
+  /* --- 1 ter. Micro-interactions ------------------------------------------
+     Deux effets, tous deux purement décoratifs : une ombre sur l'en-tête dès
+     que la page défile, et une apparition en fondu des blocs qui entrent dans
+     le champ. Le contenu est visible sans JavaScript, et l'apparition est
+     désactivée si le visiteur a demandé moins d'animations.
+     ------------------------------------------------------------------------ */
+
+  var entete = document.querySelector('.site-header');
+  if (entete) {
+    var majOmbre = function () {
+      entete.classList.toggle('est-colle', window.scrollY > 8);
+    };
+    majOmbre();
+    window.addEventListener('scroll', majOmbre, { passive: true });
+  }
+
+  var mouvementReduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var aReveler = document.querySelectorAll('[data-reveal]');
+
+  function toutReveler() {
+    Array.prototype.forEach.call(aReveler, function (el) { el.classList.add('est-visible'); });
+  }
+
+  // Filet de sécurité : passé trois secondes, tout est visible quoi qu'il
+  // arrive. Un contenu commercial ne peut pas dépendre d'un observateur.
+  setTimeout(toutReveler, 3000);
+
+  if (mouvementReduit || !('IntersectionObserver' in window)) {
+    toutReveler();
+  } else if (aReveler.length) {
+    var observateur = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (entree) {
+        if (!entree.isIntersecting) { return; }
+        entree.target.classList.add('est-visible');
+        observateur.unobserve(entree.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+    Array.prototype.forEach.call(aReveler, function (el, i) {
+      // Un décalage très court entre éléments voisins évite l'effet « tout
+      // arrive d'un bloc », sans jamais faire attendre le lecteur.
+      el.style.transitionDelay = Math.min(i % 6, 5) * 55 + 'ms';
+      observateur.observe(el);
     });
   }
 

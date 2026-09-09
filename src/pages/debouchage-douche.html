@@ -5,34 +5,49 @@ schema: service
 breadcrumb: Débouchage douche
 parent_nom: Nos prestations
 parent_url: /services
-image: /assets/img/debouchage-evier.svg
+image: /assets/img/og-debouchage-evier.jpg
 priority: 0.8
 -->
 
-<div class="wrap fil">
-  <nav aria-label="Fil d'Ariane">
-    <ol>
-      <li><a href="/">Accueil</a></li>
-      <li><a href="/services">Nos prestations</a></li>
-      <li>Débouchage douche</li>
-    </ol>
-  </nav>
-</div>
+<section class="hero hero-interieur">
+  <div class="wrap">
+    <div class="fil">
+      <nav aria-label="Fil d'Ariane">
+        <ol>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/services">Nos prestations</a></li>
+          <li>Débouchage douche</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <p class="urgence-badge"><span class="pastille" aria-hidden="true"></span> Intervention {{DISPONIBILITE}} · 6 départements</p>
+        <h1>Débouchage de douche</h1>
+        <p class="chapeau">
+          Une douche qui s'écoule mal se remarque tout de suite : l'eau monte au-dessus des
+          chevilles. Ce qui se joue en dessous dépend entièrement du type de receveur — et c'est
+          là que les interventions se compliquent.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-douche">Appeler le {{TELEPHONE}}</a>
+          <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="hero-douche">Demander une intervention</a>
+
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <img src="/assets/img/photos/debouchage-douche.webp"
+             width="960" height="720" fetchpriority="high" decoding="async"
+             alt="Coupe d'un receveur de douche dont la bonde siphoïde est obstruée par des cheveux">
+      </div>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
-    <div class="section-titre">
-      <h1>Débouchage de douche</h1>
-      <p>
-        Une douche qui s'écoule mal se remarque tout de suite : l'eau monte au-dessus des
-        chevilles. Ce qui se joue en dessous dépend entièrement du type de receveur — et c'est
-        là que les interventions se compliquent.
-      </p>
-      <p class="hero-actions">
-        <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-douche">Appeler le {{TELEPHONE}}</a>
-        <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="hero-douche">Demander une intervention</a>
-      </p>
-    </div>
 
     <div class="reponse-rapide">
       <h2>Réponse rapide</h2>

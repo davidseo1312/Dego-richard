@@ -6,34 +6,49 @@ breadcrumb: Finistère (29)
 zone_nom: Finistère
 parent_nom: Zone d'intervention
 parent_url: /zone-intervention
-image: /assets/img/hydrocurage.svg
+image: /assets/img/og-curage-canalisation.jpg
 priority: 0.85
 -->
 
-<div class="wrap fil">
-  <nav aria-label="Fil d'Ariane">
-    <ol>
-      <li><a href="/">Accueil</a></li>
-      <li><a href="/zone-intervention">Zone d'intervention</a></li>
-      <li>Finistère (29)</li>
-    </ol>
-  </nav>
-</div>
+<section class="hero hero-interieur">
+  <div class="wrap">
+    <div class="fil">
+      <nav aria-label="Fil d'Ariane">
+        <ol>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/zone-intervention">Zone d'intervention</a></li>
+          <li>Finistère (29)</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <p class="urgence-badge"><span class="pastille" aria-hidden="true"></span> Intervention {{DISPONIBILITE}} dans tout le département</p>
+        <h1>Dégorgement et débouchage dans le Finistère</h1>
+        <p class="chapeau">
+          Le plus vaste des six départements que nous couvrons, et le plus contrasté : une
+          métropole de reconstruction à Brest, une Cornouaille très étendue, et un Centre-Finistère
+          rural où l'assainissement individuel est la règle.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-29">Appeler le {{TELEPHONE}}</a>
+          <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="hero-29">Demander une intervention</a>
+
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <img src="/assets/img/photos/inspection-camera-canalisation.webp"
+             width="1120" height="700" fetchpriority="high" decoding="async"
+             alt="Vue depuis l'intérieur d'une canalisation inspectée par caméra motorisée, paroi éclairée et lame d'eau au radier">
+      </div>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
-    <div class="section-titre">
-      <h1>Dégorgement et débouchage dans le Finistère</h1>
-      <p>
-        Le plus vaste des six départements que nous couvrons, et le plus contrasté : une
-        métropole de reconstruction à Brest, une Cornouaille très étendue, et un Centre-Finistère
-        rural où l'assainissement individuel est la règle.
-      </p>
-      <p class="hero-actions">
-        <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-29">Appeler le {{TELEPHONE}}</a>
-        <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="hero-29">Demander une intervention</a>
-      </p>
-    </div>
 
     <div class="reponse-rapide">
       <h2>Réponse rapide</h2>

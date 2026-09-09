@@ -7,7 +7,7 @@
 <meta name="description" content="{{PAGE_DESC}}">
 <link rel="canonical" href="{{PAGE_URL}}">
 <meta name="robots" content="{{ROBOTS_POLICY}}, follow, max-image-preview:large">
-<meta name="theme-color" content="#06283d">
+<meta name="theme-color" content="#0f172a">
 <meta name="format-detection" content="telephone=yes">
 <meta name="geo.region" content="FR-BRE">
 {{BLOC_VERIFICATION}}
@@ -31,4 +31,14 @@
 <link rel="icon" href="/assets/img/favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
+<!-- Les deux familles variables sont servies depuis ce domaine. Les
+     précharger évite le saut de police sur le H1, qui est l'élément LCP. -->
+<link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/jakarta-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/style.css">
+
+<!-- Active l'apparition au défilement. Placé ici, et non dans site.js qui est
+     différé, pour que l'état initial soit posé avant le premier rendu : sinon
+     les blocs s'affichent puis disparaissent. Sans JavaScript, la classe n'est
+     jamais posée et rien n'est masqué. -->
+<script>try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){document.documentElement.className+=' anim'}}catch(e){}</script>
