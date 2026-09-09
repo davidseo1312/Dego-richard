@@ -1,0 +1,23 @@
+# Le dossier de production est régénéré à chaque build par scripts/build.sh.
+# Il n'est pas versionné sur main : c'est la branche « deploy », publiée par
+# GitHub Actions, qui porte le site prêt à servir.
+/public/
+
+# Secrets et configuration locale — ne doivent JAMAIS être poussés.
+.env
+.env.*
+!.env.exemple
+*.pem
+*.key
+
+# Outils et systèmes
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+*.swp
+
+# Dépendance facultative des tests de navigateur (npm install playwright).
+/package.json
+/package-lock.json

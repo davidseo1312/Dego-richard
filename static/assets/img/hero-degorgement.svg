@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 540" width="720" height="540" role="img"
+     aria-label="Technicien en intervention de dégorgement, camion hydrocureur et regard de canalisation ouvert">
+  <defs>
+    <linearGradient id="ciel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b3d5c"/><stop offset="1" stop-color="#06283d"/>
+    </linearGradient>
+    <linearGradient id="eau" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3fd0e0"/><stop offset="1" stop-color="#12a5b8"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="540" rx="14" fill="url(#ciel)"/>
+  <!-- sol -->
+  <path d="M0 392h720v148H0z" fill="#0a3450"/>
+  <path d="M0 392h720v10H0z" fill="#12a5b8" opacity=".35"/>
+  <!-- camion hydrocureur -->
+  <g>
+    <rect x="404" y="238" width="252" height="106" rx="12" fill="#0e4a6e"/>
+    <rect x="404" y="238" width="252" height="106" rx="12" fill="none" stroke="#12a5b8" stroke-width="3"/>
+    <rect x="430" y="262" width="120" height="58" rx="26" fill="#e4f0f6" opacity=".9"/>
+    <rect x="566" y="266" width="70" height="50" rx="8" fill="#0b3d5c" stroke="#12a5b8" stroke-width="2.5"/>
+    <path d="M324 344V286a14 14 0 0 1 14-14h66v72z" fill="#0e4a6e" stroke="#12a5b8" stroke-width="3"/>
+    <rect x="340" y="286" width="52" height="34" rx="5" fill="#9fd8e6"/>
+    <circle cx="376" cy="360" r="26" fill="#08283c" stroke="#12a5b8" stroke-width="4"/>
+    <circle cx="376" cy="360" r="9" fill="#12a5b8"/>
+    <circle cx="592" cy="360" r="26" fill="#08283c" stroke="#12a5b8" stroke-width="4"/>
+    <circle cx="592" cy="360" r="9" fill="#12a5b8"/>
+  </g>
+  <!-- flexible haute pression -->
+  <path d="M404 330c-70 22-104 6-148 30-38 21-52 44-92 44" fill="none" stroke="#ff7a1a" stroke-width="10" stroke-linecap="round"/>
+  <!-- regard ouvert et canalisation -->
+  <g>
+    <ellipse cx="150" cy="416" rx="86" ry="26" fill="#062232"/>
+    <ellipse cx="150" cy="410" rx="86" ry="26" fill="#0a3450" stroke="#12a5b8" stroke-width="3"/>
+    <ellipse cx="150" cy="410" rx="56" ry="16" fill="#041c2b"/>
+    <path d="M206 410c40 0 60 34 108 34" fill="none" stroke="#12a5b8" stroke-width="12" opacity=".45" stroke-linecap="round"/>
+  </g>
+  <!-- technicien -->
+  <g>
+    <path d="M120 300c0-26 18-44 40-44s40 18 40 44v96h-80z" fill="#12406b" stroke="#12a5b8" stroke-width="3"/>
+    <circle cx="160" cy="232" r="26" fill="#e9c9a8"/>
+    <path d="M132 230a28 28 0 0 1 56 0z" fill="#ff7a1a"/>
+    <path d="M126 232h68" stroke="#ff7a1a" stroke-width="7" stroke-linecap="round"/>
+    <path d="M198 320c26 6 48 12 62 22" fill="none" stroke="#12406b" stroke-width="18" stroke-linecap="round"/>
+  </g>
+  <!-- jet d'eau -->
+  <g fill="url(#eau)" opacity=".85">
+    <circle cx="248" cy="366" r="7"/><circle cx="268" cy="376" r="5"/><circle cx="230" cy="380" r="4"/>
+    <circle cx="286" cy="362" r="4"/><circle cx="212" cy="368" r="3"/>
+  </g>
+  <text x="48" y="80" fill="#e4f0f6" font-family="system-ui, sans-serif" font-size="34" font-weight="700">Dégorgement</text>
+  <text x="48" y="122" fill="#8fd3e0" font-family="system-ui, sans-serif" font-size="26">et débouchage de canalisation</text>
+</svg>

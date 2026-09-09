@@ -1,0 +1,38 @@
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <path d="M16 3c5.2 7.2 7.6 10.7 7.6 14A7.6 7.6 0 0 1 16 24.6 7.6 7.6 0 0 1 8.4 17c0-3.3 2.4-6.8 7.6-14z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M11 28.4h10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text">
+        <strong>{{NOM_COMMERCIAL}}</strong>
+        <small>{{BASELINE}}</small>
+      </span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-principal">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+      <span class="visually-hidden">Ouvrir le menu</span>
+    </button>
+
+    <nav id="nav-principal" class="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="/services">Nos prestations</a></li>
+        <li><a href="/degorgement-urgence">Urgence</a></li>
+        <li><a href="/assainissement">Assainissement</a></li>
+        <li><a href="/zone-intervention">Zone d'intervention</a></li>
+        <li><a href="/tarifs">Tarifs</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/devis" class="nav-devis">Devis gratuit</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn btn-call header-call" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="entete">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
+      <span>{{TELEPHONE}}</span>
+    </a>
+  </div>
+</header>
+
+<main id="contenu">

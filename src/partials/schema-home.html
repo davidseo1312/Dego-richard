@@ -1,0 +1,68 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "{{BASE_URL}}/#site",
+      "url": "{{BASE_URL}}/",
+      "name": "{{NOM_COMMERCIAL}}",
+      "description": "{{BASELINE}}",
+      "inLanguage": "fr-FR",
+      "publisher": { "@id": "{{BASE_URL}}/#entreprise" }
+    },
+    {
+      "@type": ["Plumber", "LocalBusiness"],
+      "@id": "{{BASE_URL}}/#entreprise",
+      "name": "{{NOM_COMMERCIAL}}",
+      "legalName": "{{RAISON_SOCIALE}}",
+      "description": "{{BASELINE}}",
+      "url": "{{BASE_URL}}",
+      "telephone": "{{TELEPHONE_E164}}",
+      "email": "{{EMAIL}}",
+      "image": "{{BASE_URL}}/assets/img/og-default.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ADRESSE_RUE}}",
+        "postalCode": "{{ADRESSE_CP}}",
+        "addressLocality": "{{ADRESSE_VILLE}}",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "{{LATITUDE}}",
+        "longitude": "{{LONGITUDE}}"
+      },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Côtes-d'Armor" },
+        { "@type": "AdministrativeArea", "name": "Finistère" },
+        { "@type": "AdministrativeArea", "name": "Ille-et-Vilaine" },
+        { "@type": "AdministrativeArea", "name": "Morbihan" },
+        { "@type": "AdministrativeArea", "name": "Loire-Atlantique" },
+        { "@type": "AdministrativeArea", "name": "Maine-et-Loire" }
+      ],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Carte bancaire, espèces, virement",
+      "knowsLanguage": "fr-FR",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Prestations de dégorgement et d'assainissement",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dégorgement de canalisation", "url": "{{BASE_URL}}/degorgement" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Débouchage de WC", "url": "{{BASE_URL}}/debouchage-wc" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Curage et hydrocurage de canalisation", "url": "{{BASE_URL}}/curage-canalisation" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Inspection vidéo de canalisation", "url": "{{BASE_URL}}/inspection-camera-canalisation" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pompage de fosse et de bac", "url": "{{BASE_URL}}/pompage" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Assainissement", "url": "{{BASE_URL}}/assainissement" } }
+        ]
+      }
+    }
+  ]
+}
+</script>

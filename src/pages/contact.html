@@ -1,0 +1,90 @@
+<!--meta
+title: Contact — Dégorgement Richard, Grand Ouest
+description: Contacter Dégorgement Richard : téléphone joignable 24h/24 pour les urgences, e-mail, coordonnées de l'entreprise et zone d'intervention sur six départements.
+breadcrumb: Contact
+priority: 0.5
+faq: non
+-->
+
+<div class="wrap fil">
+  <nav aria-label="Fil d'Ariane">
+    <ol>
+      <li><a href="/">Accueil</a></li>
+      <li>Contact</li>
+    </ol>
+  </nav>
+</div>
+
+<section>
+  <div class="wrap article">
+    <h1>Nous contacter</h1>
+    <p>
+      Un seul numéro, une seule entreprise. Aucun standard externalisé, aucune plateforme qui
+      revendrait votre demande à plusieurs prestataires.
+    </p>
+
+    <div class="encadre">
+      <h2>Téléphone</h2>
+      <p style="font-size:1.3rem">
+        <a href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="page-contact"><strong>{{TELEPHONE}}</strong></a>
+      </p>
+      <p>
+        Urgences : {{HORAIRES_URGENCE}}.<br>
+        Devis, rendez-vous et administratif : {{HORAIRES_BUREAU}}.
+      </p>
+    </div>
+
+    <h2>Par écrit</h2>
+    <ul>
+      <li><strong>E-mail :</strong> <a href="mailto:{{EMAIL}}">{{EMAIL}}</a></li>
+      <li><strong>Formulaire :</strong> <a href="/devis">demande d'intervention ou de devis</a>, relevé {{HORAIRES_BUREAU}}, réponse sous {{DELAI_REPONSE}}</li>
+    </ul>
+    <p>
+      Les demandes écrites ne conviennent pas aux urgences. Si de l'eau déborde en ce moment,
+      seul le téléphone permet une réponse immédiate.
+    </p>
+
+    <h2>L'entreprise</h2>
+    <ul>
+      <li><strong>Nom commercial :</strong> {{NOM_COMMERCIAL}}</li>
+      <li><strong>Dénomination :</strong> {{RAISON_SOCIALE}}</li>
+      <li><strong>Forme juridique :</strong> {{FORME_JURIDIQUE}}</li>
+      <li><strong>SIRET :</strong> {{SIRET}}</li>
+      <li><strong>Siège social :</strong> {{SIEGE_RUE}}, {{SIEGE_CP}} {{SIEGE_VILLE}}</li>
+      <li><strong>Régime de TVA :</strong> {{MENTION_TVA}}</li>
+    </ul>
+    <p>
+      Le siège social est l'adresse administrative de l'entreprise ; il ne s'agit pas d'un
+      point d'accueil du public. Nous n'avons pas d'agence dans les communes où nous
+      intervenons : nos techniciens se déplacent depuis leurs secteurs, et nous préférons le
+      dire clairement plutôt que d'afficher des adresses fictives.
+    </p>
+
+    <h2>Où nous intervenons</h2>
+    <p>
+      {{ZONE_INTERVENTION}}. Nous n'intervenons dans aucun autre département : au-delà, les
+      délais annoncés ne seraient plus tenables. Le détail des communes couvertes figure sur la
+      page <a href="/zone-intervention">zone d'intervention</a>.
+    </p>
+
+    <h2>Réclamations</h2>
+    <p>
+      Toute réclamation doit être adressée par écrit, par e-mail à
+      <a href="mailto:{{EMAIL}}">{{EMAIL}}</a> ou par courrier au siège. Nous répondons sous
+      {{DELAI_REPONSE}}. En l'absence de solution satisfaisante, les voies de recours et les
+      coordonnées du médiateur de la consommation figurent dans nos
+      <a href="/mentions-legales">mentions légales</a>.
+    </p>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="wrap">
+    <h2>Un problème d'écoulement ?</h2>
+    <p>Appelez : nous vous dirons en deux minutes s'il faut intervenir tout de suite ou si cela peut attendre.</p>
+    <p style="margin-top:1.5rem">
+      <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="cta-final">Appeler le {{TELEPHONE}}</a>
+      <a class="btn btn-ghost btn-large" href="/devis" data-track="clic_devis" data-track-zone="cta-final">Demander un devis</a>
+    </p>
+  </div>
+</section>

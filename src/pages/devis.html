@@ -1,0 +1,101 @@
+<!--meta
+title: Demander une intervention ou un devis de dégorgement
+description: Formulaire de demande d'intervention et de devis : décrivez votre problème de canalisation, joignez une photo, nous vous rappelons sous 24 à 48 heures ouvrées.
+breadcrumb: Demander un devis
+image: /assets/img/canalisation.svg
+priority: 0.9
+faq: non
+-->
+
+<div class="wrap fil">
+  <nav aria-label="Fil d'Ariane">
+    <ol>
+      <li><a href="/">Accueil</a></li>
+      <li>Demander un devis</li>
+    </ol>
+  </nav>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-titre">
+      <h1>Demander une intervention ou un devis</h1>
+      <p>
+        Décrivez votre situation : nous vous rappelons sous {{DELAI_REPONSE}} avec une
+        estimation et un créneau. Une photo du siphon, du regard ou de la zone qui déborde nous
+        permet souvent d'arriver avec le bon matériel dès le premier passage.
+      </p>
+    </div>
+
+    <div class="encadre alerte">
+      <h2>Ça déborde en ce moment ?</h2>
+      <p>
+        N'utilisez pas ce formulaire : il est relevé {{HORAIRES_BUREAU}}. Pour une urgence,
+        appelez le <a href="tel:{{TELEPHONE_E164}}"><strong>{{TELEPHONE}}</strong></a>, joignable
+        {{HORAIRES_URGENCE}}.
+      </p>
+    </div>
+
+    {{FORMULAIRE_DEVIS}}
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Ce qui se passe après l'envoi</h2>
+    <ol class="etapes">
+      <li>
+        <h3>Réception</h3>
+        <p>Votre demande arrive directement dans notre boîte, sans plateforme intermédiaire ni revente de votre numéro à d'autres entreprises.</p>
+      </li>
+      <li>
+        <h3>Rappel</h3>
+        <p>Nous vous appelons sous {{DELAI_REPONSE}} pour préciser deux ou trois points qu'un formulaire ne permet pas de saisir.</p>
+      </li>
+      <li>
+        <h3>Estimation</h3>
+        <p>Une fourchette de prix et un créneau vous sont annoncés au téléphone, déplacement compris.</p>
+      </li>
+      <li>
+        <h3>Intervention</h3>
+        <p>Le technicien diagnostique sur place, remet un devis écrit, et ne démarre qu'après votre accord signé.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Comment bien décrire votre problème</h2>
+    <p>
+      Plus la description est précise, plus notre réponse le sera — et plus l'intervention a de
+      chances d'être réglée en une seule visite. Les éléments qui nous aident le plus :
+    </p>
+    <ul>
+      <li><strong>Quel appareil</strong> est touché, et depuis quand.</li>
+      <li><strong>Combien d'appareils</strong> sont concernés : un seul, ou plusieurs.</li>
+      <li><strong>Si l'eau remonte</strong> quelque part, et à quel endroit du logement.</li>
+      <li><strong>Maison ou appartement</strong>, étage, présence d'un ascenseur.</li>
+      <li><strong>Type d'assainissement</strong> : tout-à-l'égout ou fosse.</li>
+      <li><strong>Présence d'un regard</strong> accessible, et sa position approximative.</li>
+      <li><strong>Produit déjà versé</strong> dans la canalisation, le cas échéant — ce n'est pas un reproche, c'est une consigne de sécurité pour le technicien.</li>
+      <li><strong>Contraintes d'accès</strong> : stationnement, code, digicode, horaires.</li>
+    </ul>
+    <p>
+      Vous préférez expliquer de vive voix ? Appelez le
+      <a href="tel:{{TELEPHONE_E164}}">{{TELEPHONE}}</a> : c'est souvent plus rapide, et
+      l'estimation est immédiate.
+    </p>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="wrap">
+    <h2>Une question avant d'envoyer ?</h2>
+    <p>Le téléphone reste le moyen le plus rapide d'obtenir une réponse précise.</p>
+    <p style="margin-top:1.5rem">
+      <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="cta-final">Appeler le {{TELEPHONE}}</a>
+      <a class="btn btn-ghost btn-large" href="/contact">Coordonnées complètes</a>
+    </p>
+  </div>
+</section>

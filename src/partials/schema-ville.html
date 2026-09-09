@@ -1,0 +1,23 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "{{PAGE_BREADCRUMB}}",
+  "description": "{{PAGE_DESC}}",
+  "serviceType": "Dégorgement et débouchage de canalisation",
+  "url": "{{PAGE_URL}}",
+  "provider": {
+    "@type": "Plumber",
+    "@id": "{{BASE_URL}}/#entreprise",
+    "name": "{{NOM_COMMERCIAL}}",
+    "telephone": "{{TELEPHONE_E164}}",
+    "url": "{{BASE_URL}}"
+  },
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "servicePhone": { "@type": "ContactPoint", "telephone": "{{TELEPHONE_E164}}", "contactType": "customer service", "availableLanguage": "fr" },
+    "serviceUrl": "{{BASE_URL}}/devis"
+  },
+  "areaServed": { "@type": "City", "name": "{{PAGE_ZONE_NOM}}", "containedInPlace": { "@type": "AdministrativeArea", "name": "{{PAGE_ZONE_PARENT}}" } }
+}
+</script>

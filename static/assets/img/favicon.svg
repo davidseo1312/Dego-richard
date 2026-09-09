@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Dégorgement Richard">
+  <rect width="32" height="32" rx="7" fill="#06283d"/>
+  <path d="M16 5c5 7 7.4 10.4 7.4 13.6A7.4 7.4 0 0 1 16 26a7.4 7.4 0 0 1-7.4-7.4C8.6 15.4 11 12 16 5z"
+        fill="none" stroke="#12a5b8" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M11.4 28.6h9.2" fill="none" stroke="#ff7a1a" stroke-width="2.2" stroke-linecap="round"/>
+</svg>

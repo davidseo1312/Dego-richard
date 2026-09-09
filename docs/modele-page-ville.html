@@ -1,0 +1,183 @@
+<!--meta
+title: Dégorgement et débouchage à [COMMUNE] ([NN])
+description: Dégorgement et débouchage à [COMMUNE] : [deux ou trois spécificités locales réelles]. Intervention 24h/24 et devis écrit avant travaux.
+schema: ville
+breadcrumb: Dégorgement à [COMMUNE]
+zone_nom: [COMMUNE]
+zone_parent: [DÉPARTEMENT]
+parent_nom: [DÉPARTEMENT] ([NN])
+parent_url: /departements/[slug-departement]
+image: /assets/img/canalisation.svg
+priority: 0.65
+-->
+
+<!-- ===========================================================================
+     MODÈLE DE PAGE COMMUNALE — à copier dans src/pages/degorgement-<slug>.html
+     Ce fichier vit dans docs/ : il n'est ni construit, ni publié.
+
+     RÈGLE DE FOND : une page communale n'existe que si elle a quelque chose de
+     propre à dire. Remplacer un nom de ville dans un texte type ne se
+     positionne pas, et scripts/check-contenu-local.py le refuse.
+
+     Avant de créer la page, réunissez au minimum :
+       - le type de bâti dominant (ancien, collectif, pavillonnaire, année) ;
+       - la nature des réseaux qu'on y rencontre (grès, fonte, PVC, pente) ;
+       - la ou les contraintes locales réelles (relief, littoral, nappe,
+         saisonnalité, activité économique, assainissement autonome) ;
+       - les problématiques qui en découlent concrètement ;
+       - les communes alentour effectivement desservies.
+     Si vous ne réunissez pas ces cinq éléments, traitez la commune dans la
+     page départementale plutôt que de créer une page vide.
+
+     Seuils appliqués par scripts/check-contenu-local.py :
+       - similarité ≥ 42 % avec une autre page locale : avertissement ;
+       - similarité ≥ 60 % : échec, la page ne doit pas être publiée ;
+       - moins de 380 mots de contenu propre : avertissement.
+     =========================================================================== -->
+
+<div class="wrap fil">
+  <nav aria-label="Fil d'Ariane">
+    <ol>
+      <li><a href="/">Accueil</a></li>
+      <li><a href="/departements/[slug-departement]">[DÉPARTEMENT] ([NN])</a></li>
+      <li>[COMMUNE]</li>
+    </ol>
+  </nav>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-titre">
+      <h1>Dégorgement et débouchage à [COMMUNE]</h1>
+      <p>
+        [Deux ou trois phrases d'introduction RÉELLEMENT locales : ce qui
+        caractérise cette commune du point de vue des réseaux d'évacuation.
+        Pas de généralité applicable à n'importe quelle ville.]
+      </p>
+      <p class="hero-actions">
+        <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero-ville">Appeler le {{TELEPHONE}}</a>
+        <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="hero-ville">Demander une intervention</a>
+      </p>
+    </div>
+
+    <!-- Bloc GEO obligatoire : scripts/check-seo.sh échoue sans lui.
+         Il doit répondre, en texte autoportant et citable tel quel :
+         QUI, QUOI, OÙ, QUAND, COMMENT, COMBIEN. -->
+    <div class="reponse-rapide">
+      <h2>Réponse rapide</h2>
+      <p class="definition">
+        <strong>{{NOM_COMMERCIAL}} assure le dégorgement et le débouchage de
+        canalisation à [COMMUNE], {{HORAIRES_URGENCE}}.</strong>
+        [Une ou deux phrases précisant ce qui domine RÉELLEMENT dans les
+        interventions locales.]
+      </p>
+      <ul class="qr-liste">
+        <li><span class="cle">Ville</span><span>[COMMUNE] ([code postal]), [DÉPARTEMENT].</span></li>
+        <li><span class="cle">Quand</span><span>{{HORAIRES_URGENCE}}.</span></li>
+        <li><span class="cle">Cas fréquents</span><span>[trois ou quatre cas réellement observés localement].</span></li>
+        <li><span class="cle">Devis</span><span>Écrit et gratuit avant tout démarrage.</span></li>
+        <li><span class="cle">Téléphone</span><span><a href="tel:{{TELEPHONE_E164}}">{{TELEPHONE}}</a></span></li>
+      </ul>
+    </div>
+
+    <h2>[Titre propre au contexte local : bâti, relief, littoral, activité…]</h2>
+    <p>
+      [Développement de la spécificité principale. C'est ce paragraphe qui
+      justifie l'existence de la page : il doit être impossible de le recopier
+      tel quel sur une autre commune.]
+    </p>
+
+    <h2>[Seconde spécificité locale, ou seconde partie de la commune]</h2>
+    <p>
+      [Second angle : un autre quartier, une autre logique de réseau, une autre
+      clientèle. Placez ici un ou deux liens contextuels vers les pages de
+      prestation réellement concernées.]
+    </p>
+
+    <h2>Ce que nous traitons le plus souvent à [COMMUNE]</h2>
+    <ul>
+      <li><strong>[Cas 1]</strong> — [précision locale].</li>
+      <li><strong>[Cas 2]</strong> — [précision locale].</li>
+      <li><strong>[Cas 3]</strong> — [précision locale].</li>
+      <li><strong>[Cas 4]</strong> — [précision locale].</li>
+      <li><strong>[Cas 5]</strong> — [précision locale].</li>
+      <li><strong>[Cas 6]</strong> — [précision locale].</li>
+    </ul>
+
+    <h2>Conseils pour [COMMUNE]</h2>
+    <ul>
+      <li>[Conseil découlant de la spécificité locale, pas un conseil générique.]</li>
+      <li>[…]</li>
+      <li>[…]</li>
+      <li>[…]</li>
+      <li>[…]</li>
+    </ul>
+
+    <h2>Autour de [COMMUNE]</h2>
+    <p>
+      Nous intervenons également à [huit à dix communes réellement voisines].
+    </p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Nos prestations à [COMMUNE]</h2>
+    <ul class="liens-connexes">
+      <!-- Choisissez les prestations RÉELLEMENT pertinentes ici, dans l'ordre
+           de pertinence locale. Ne recopiez pas la même liste partout. -->
+      <li><a href="/degorgement">Dégorgement</a></li>
+      <li><a href="/degorgement-urgence">Urgence dégorgement</a></li>
+      <li><a href="/debouchage-canalisation">Débouchage de canalisation</a></li>
+      <li><a href="/debouchage-wc">Débouchage WC</a></li>
+      <li><a href="/curage-canalisation">Curage et hydrocurage</a></li>
+      <li><a href="/inspection-camera-canalisation">Inspection caméra</a></li>
+      <li><a href="/tarifs">Tarifs</a></li>
+    </ul>
+    <h2 style="margin-top:2.2rem">Communes voisines</h2>
+    <ul class="liens-connexes">
+      <li><a href="/degorgement-[voisine-1]">[Voisine 1]</a></li>
+      <li><a href="/degorgement-[voisine-2]">[Voisine 2]</a></li>
+      <li><a href="/departements/[slug-departement]">Tout le [DÉPARTEMENT]</a></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Questions fréquentes à [COMMUNE]</h2>
+    <!-- Les questions doivent être UNIQUES sur tout le site : scripts/check-seo.sh
+         avertit dès qu'une même question apparaît sur deux pages, parce que les
+         deux se concurrenceraient dans les résultats enrichis de Google.
+         Le moyen le plus simple : ancrer la question dans le contexte local. -->
+    <div class="faq">
+      <details>
+        <summary>[Question locale 1 ?]</summary>
+        <p>[Réponse factuelle, sans promesse invérifiable.]</p>
+      </details>
+      <details>
+        <summary>[Question locale 2 ?]</summary>
+        <p>[…]</p>
+      </details>
+      <details>
+        <summary>[Question locale 3 ?]</summary>
+        <p>[…]</p>
+      </details>
+      <details>
+        <summary>[Question locale 4 ?]</summary>
+        <p>[…]</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="wrap">
+    <h2>[Accroche finale ancrée dans le contexte local]</h2>
+    <p>[Une phrase utile, pas un slogan.]</p>
+    <p style="margin-top:1.5rem">
+      <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="cta-final">Appeler le {{TELEPHONE}}</a>
+      <a class="btn btn-ghost btn-large" href="/devis" data-track="clic_devis" data-track-zone="cta-final">Être rappelé</a>
+    </p>
+  </div>
+</section>

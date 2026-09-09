@@ -1,0 +1,133 @@
+<form class="formulaire" method="post" action="/envoi-demande.php" enctype="multipart/form-data" data-devis>
+
+  <!-- Piège à robots : déplacé hors de l'écran, jamais affiché ni annoncé.
+       Un automate remplit tous les champs qu'il trouve ; un visiteur, non. -->
+  <div class="pot-de-miel" aria-hidden="true">
+    <label for="champ-site">Ne remplissez pas ce champ</label>
+    <input type="text" id="champ-site" name="_site" tabindex="-1" autocomplete="off">
+  </div>
+  <input type="hidden" name="_horodatage" value="0">
+
+  <div class="champs">
+    <p class="champ">
+      <label for="devis-nom">Nom <span class="requis" aria-hidden="true">*</span></label>
+      <input type="text" id="devis-nom" name="nom" required minlength="2" maxlength="80"
+             autocomplete="name" placeholder="Prénom et nom">
+    </p>
+
+    <p class="champ">
+      <label for="devis-telephone">Téléphone <span class="requis" aria-hidden="true">*</span></label>
+      <input type="tel" id="devis-telephone" name="telephone" required
+             inputmode="tel" autocomplete="tel" maxlength="20"
+             pattern="^(?:\+33|0033|0)\s*[1-9](?:[\s.\-]*[0-9]{2}){4}$"
+             placeholder="06 12 34 56 78">
+      <span class="aide">C'est par là que nous vous rappellerons.</span>
+    </p>
+
+    <p class="champ">
+      <label for="devis-email">E-mail</label>
+      <input type="email" id="devis-email" name="email" maxlength="120"
+             autocomplete="email" placeholder="vous@exemple.fr">
+      <span class="aide">Facultatif — utile pour vous transmettre un devis écrit.</span>
+    </p>
+
+    <p class="champ">
+      <label for="devis-ville">Ville d'intervention <span class="requis" aria-hidden="true">*</span></label>
+      <input type="text" id="devis-ville" name="ville" required minlength="2" maxlength="80"
+             autocomplete="address-level2" placeholder="Rennes, Nantes, Brest, Vannes…">
+    </p>
+
+    <p class="champ">
+      <label for="devis-departement">Département <span class="requis" aria-hidden="true">*</span></label>
+      <select id="devis-departement" name="departement" required>
+        <option value="">— Choisissez —</option>
+        <option value="22">22 — Côtes-d'Armor</option>
+        <option value="29">29 — Finistère</option>
+        <option value="35">35 — Ille-et-Vilaine</option>
+        <option value="56">56 — Morbihan</option>
+        <option value="44">44 — Loire-Atlantique</option>
+        <option value="49">49 — Maine-et-Loire</option>
+      </select>
+      <span class="aide">Nous n'intervenons que dans ces six départements.</span>
+    </p>
+
+    <p class="champ">
+      <label for="devis-cp">Code postal</label>
+      <input type="text" id="devis-cp" name="code_postal" maxlength="5"
+             inputmode="numeric" pattern="[0-9]{5}" autocomplete="postal-code" placeholder="35000">
+    </p>
+
+    <p class="champ champ-large">
+      <label for="devis-type">Type de problème <span class="requis" aria-hidden="true">*</span></label>
+      <select id="devis-type" name="type" required>
+        <option value="">— Choisissez —</option>
+        <option value="wc">WC ou toilettes bouchés</option>
+        <option value="evier">Évier bouché</option>
+        <option value="lavabo">Lavabo bouché</option>
+        <option value="douche">Douche bouchée</option>
+        <option value="baignoire">Baignoire bouchée</option>
+        <option value="cuisine">Réseau de cuisine bouché</option>
+        <option value="canalisation">Canalisation intérieure bouchée</option>
+        <option value="canalisation-exterieure">Canalisation ou regard extérieur bouché</option>
+        <option value="remontee">Remontée d'eau ou d'odeurs</option>
+        <option value="curage">Curage ou hydrocurage préventif</option>
+        <option value="camera">Inspection caméra / recherche de bouchon</option>
+        <option value="pompage">Pompage (fosse, bac, cave inondée)</option>
+        <option value="assainissement">Assainissement individuel ou collectif</option>
+        <option value="entretien">Contrat d'entretien</option>
+        <option value="autre">Autre demande</option>
+      </select>
+    </p>
+  </div>
+
+  <fieldset class="champ champ-large bloc-urgence">
+    <legend>Degré d'urgence <span class="requis" aria-hidden="true">*</span></legend>
+    <span class="champ-radio">
+      <label><input type="radio" name="urgence" value="immediate" required> Urgent, ça déborde</label>
+      <label><input type="radio" name="urgence" value="jour"> Dans la journée</label>
+      <label><input type="radio" name="urgence" value="semaine"> Dans la semaine</label>
+      <label><input type="radio" name="urgence" value="devis" checked> Devis, pas urgent</label>
+    </span>
+  </fieldset>
+
+  <p class="champ champ-large">
+    <label for="devis-description">Décrivez votre situation <span class="requis" aria-hidden="true">*</span></label>
+    <textarea id="devis-description" name="description" required minlength="10" maxlength="4000"
+              placeholder="Quel appareil est touché, depuis quand, est-ce que l'eau remonte ailleurs, maison ou appartement, étage, présence d'un regard accessible…"></textarea>
+    <span class="aide">Plus la description est précise, plus notre réponse le sera. Dix caractères minimum.</span>
+  </p>
+
+  <p class="champ champ-large">
+    <label for="devis-photo">Photo de l'installation</label>
+    <input type="file" id="devis-photo" name="photo" accept="image/jpeg,image/png,image/webp,image/gif">
+    <span class="aide">
+      Facultatif, mais très utile : une photo du siphon, du regard ou de la zone qui déborde
+      permet souvent d'arriver avec le bon matériel du premier coup.
+      Formats JPG, PNG, WEBP ou GIF, {{DEVIS_PHOTO_MAX_MO}} Mo maximum.
+      Les photos iPhone au format HEIC ne sont pas acceptées — réglez votre appareil sur « Le plus compatible ».
+    </span>
+  </p>
+
+  <p class="champ champ-case champ-large">
+    <input type="checkbox" id="devis-consentement" name="consentement" value="1" required>
+    <label for="devis-consentement">
+      J'accepte que ces informations soient utilisées pour traiter ma demande et me recontacter.
+      Elles ne sont ni revendues ni transmises à des tiers, et sont conservées trois ans.
+      <a href="/politique-confidentialite">Politique de confidentialité</a>.
+      <span class="requis" aria-hidden="true">*</span>
+    </label>
+  </p>
+
+  <div class="formulaire-actions">
+    <button type="submit" class="btn btn-devis btn-large" data-track="clic_devis" data-track-zone="formulaire">
+      Envoyer ma demande
+    </button>
+    <span class="aide">Réponse sous {{DELAI_REPONSE}}.</span>
+  </div>
+
+  <p class="formulaire-note">
+    <strong>Ça déborde en ce moment ?</strong> N'utilisez pas ce formulaire :
+    appelez le <a href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="formulaire">{{TELEPHONE}}</a>.
+    Le formulaire est relevé aux heures de bureau, {{HORAIRES_BUREAU}}.
+  </p>
+</form>

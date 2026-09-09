@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" role="img"
+     aria-label="Regard de visite ouvert dans un jardin, raccordé au collecteur d'eaux usées de la maison">
+  <rect width="640" height="420" rx="12" fill="#cfe4f0"/>
+  <path d="M0 220h640v200H0z" fill="#7fa05a"/>
+  <path d="M0 262h640v158H0z" fill="#c9b79a" opacity=".55"/>
+  <!-- maison -->
+  <g>
+    <path d="M60 220V126l86-58 86 58v94z" fill="#fff" stroke="#0b3d5c" stroke-width="6"/>
+    <path d="M40 132 146 58l106 74" fill="none" stroke="#0b3d5c" stroke-width="8" stroke-linejoin="round"/>
+    <rect x="120" y="164" width="52" height="56" fill="#0b3d5c"/>
+    <rect x="76" y="140" width="34" height="30" fill="#9fd8e6" stroke="#0b3d5c" stroke-width="4"/>
+    <rect x="182" y="140" width="34" height="30" fill="#9fd8e6" stroke="#0b3d5c" stroke-width="4"/>
+  </g>
+  <!-- collecteur enterré -->
+  <path d="M200 288h230" fill="none" stroke="#fff" stroke-width="26"/>
+  <path d="M200 288h230" fill="none" stroke="#0b3d5c" stroke-width="4" stroke-dasharray="0 0"/>
+  <path d="M200 288h230" fill="none" stroke="#9fd8e6" stroke-width="14"/>
+  <!-- regard ouvert -->
+  <g>
+    <rect x="416" y="238" width="120" height="120" rx="8" fill="#0b3d5c"/>
+    <rect x="430" y="252" width="92" height="92" rx="4" fill="#041c2b"/>
+    <path d="M430 320h92v24h-92z" fill="#12a5b8" opacity=".55"/>
+    <path d="M548 232l52-26v34z" fill="#ff7a1a"/>
+    <rect x="536" y="216" width="26" height="26" rx="5" fill="#ff7a1a" transform="rotate(-18 549 229)"/>
+  </g>
+</svg>
