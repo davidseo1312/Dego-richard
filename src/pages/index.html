@@ -11,10 +11,10 @@ priority: 1.0
     <div>
       <p class="urgence-badge">
         <span class="pastille" aria-hidden="true"></span>
-        Intervention {{DISPONIBILITE}} · 6 départements
+        Dépannage · Dégorgement · Débouchage
       </p>
 
-      <h1>Débouchage et <span class="accent">dégorgement</span> de canalisations</h1>
+      <h1>Dégorgement et <span class="accent">débouchage</span> de canalisations</h1>
 
       <p class="chapeau">
         WC bouché, évier qui ne s'écoule plus, eau qui remonte dans la douche, canalisation
@@ -27,17 +27,10 @@ priority: 1.0
       <div class="hero-actions">
         <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="hero">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
-          <span>Besoin d'une intervention&nbsp;?</span>
+          <span>{{TELEPHONE}}</span>
         </a>
-        <a class="btn btn-ghost btn-large" href="/devis" data-track="clic_devis" data-track-zone="hero">Obtenir un devis</a>
+        <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="hero">Demander une intervention</a>
       </div>
-
-      <ul class="hero-badges">
-        <li><span class="badge">Intervention rapide, jour et nuit</span></li>
-        <li><span class="badge">6 départements</span></li>
-        <li><span class="badge">Particuliers et professionnels</span></li>
-        <li><span class="badge">Devis écrit avant intervention</span></li>
-      </ul>
 
       <div class="hero-preuves">
         <div class="preuve"><strong>24h/24</strong><span>Nuits, week-ends et jours fériés</span></div>
@@ -58,6 +51,53 @@ priority: 1.0
         </span>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <!-- Titre masqué : la bande se comprend d'un regard et n'a pas besoin d'un
+         intertitre visible, mais la hiérarchie des titres, elle, ne doit pas
+         sauter du h1 aux h3 des cartes. -->
+    <h2 class="visually-hidden">Notre façon de travailler</h2>
+    <ul class="rassurance">
+      <li>
+        <div class="rassurance-carte" data-reveal>
+          <span class="icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </span>
+          <h3>Intervention rapide</h3>
+          <p>Selon la disponibilité de l'équipe et votre localisation. Le créneau réel vous est annoncé au téléphone, jamais promis à l'aveugle.</p>
+        </div>
+      </li>
+      <li>
+        <div class="rassurance-carte" data-reveal>
+          <span class="icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 14h6"/><path d="M9 17h4"/></svg>
+          </span>
+          <h3>Devis écrit</h3>
+          <p>Le prix est présenté par écrit avant l'intervention. Rien n'est engagé sans votre accord signé.</p>
+        </div>
+      </li>
+      <li>
+        <div class="rassurance-carte" data-reveal>
+          <span class="icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+          </span>
+          <h3>Diagnostic d'abord</h3>
+          <p>On cherche la cause et l'emplacement du bouchon avant de choisir la méthode. C'est ce qui évite de casser ce qui n'a pas à l'être.</p>
+        </div>
+      </li>
+      <li>
+        <div class="rassurance-carte" data-reveal>
+          <span class="icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l6-4 6 4v12"/><path d="M15 21V13h6v8"/><path d="M3 21h18"/><path d="M8 12h2"/><path d="M8 16h2"/></svg>
+          </span>
+          <h3>Particuliers &amp; professionnels</h3>
+          <p>Maisons, appartements, commerces, bureaux et copropriétés — du siphon d'évier au collecteur d'immeuble.</p>
+        </div>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -328,10 +368,53 @@ priority: 1.0
   </div>
 </section>
 
+<section class="alt">
+  <div class="wrap">
+    <div class="section-titre">
+      <p class="sur-titre">Évacuations</p>
+      <h2>Dégorgement et problèmes d'évacuation</h2>
+      <p>
+        Un écoulement qui ralentit ne vient pas toujours de la canalisation enterrée. Le
+        siphon, la bonde, le raccordement d'un appareil ou la ventilation du réseau font
+        partie du même circuit — et c'est souvent là que se trouve la cause.
+      </p>
+    </div>
+
+    <div class="cas">
+      <figure class="cas-visuel">
+        {{PHOTO_BROYEUR_LARGE}}
+        <figcaption>{{PHOTO_BROYEUR_LEGENDE}}.</figcaption>
+      </figure>
+      <div class="cas-corps">
+        <h3>Ce que nous traitons sur les évacuations</h3>
+        <p>
+          Notre métier est le dégorgement : rétablir un écoulement. Cela nous amène
+          régulièrement à intervenir sur les pièces d'évacuation elles-mêmes — démonter
+          un siphon, contrôler une bonde, vérifier une pente ou un raccordement mal
+          repris lors de travaux. Nous ne sommes pas une entreprise de plomberie
+          générale : nous n'installons pas de salle de bains et ne reprenons pas un
+          réseau d'alimentation.
+        </p>
+        <ul class="evacuations">
+          <li><a href="/debouchage-evier"><strong>Évier</strong><span>Graisses figées dans le siphon</span></a></li>
+          <li><a href="/debouchage-lavabo"><strong>Lavabo</strong><span>Cheveux et savon dans le culot</span></a></li>
+          <li><a href="/debouchage-douche"><strong>Douche</strong><span>Bonde siphoïde obstruée</span></a></li>
+          <li><a href="/debouchage-baignoire"><strong>Baignoire</strong><span>Vidage et trop-plein encrassés</span></a></li>
+          <li><a href="/debouchage-wc"><strong>WC</strong><span>Siphon de cuvette ou chute</span></a></li>
+          <li><a href="/debouchage-cuisine"><strong>Siphon</strong><span>Démontage et nettoyage complet</span></a></li>
+          <li><a href="/debouchage-canalisation"><strong>Canalisation</strong><span>Collecteur intérieur ou enterré</span></a></li>
+          <li><a href="/debouchage-canalisation-exterieure"><strong>Regard</strong><span>Regard de visite en charge</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 {{SECTION_CARTE}}
 
 {{SECTION_AVIS}}
-<section class="alt">
+<section>
   <div class="wrap">
     <div class="section-titre">
       <p class="sur-titre">Notre méthode</p>
@@ -364,7 +447,7 @@ priority: 1.0
   </div>
 </section>
 
-<section>
+<section class="alt">
   <div class="wrap">
     <div class="section-titre">
       <p class="sur-titre">Questions fréquentes</p>

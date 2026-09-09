@@ -6,7 +6,7 @@ breadcrumb: Loire-Atlantique (44)
 zone_nom: Loire-Atlantique
 parent_nom: Zone d'intervention
 parent_url: /zone-intervention
-image: /assets/img/partage/og-urgence-degorgement-douche.jpg
+image: /assets/img/partage/og-controle-ecoulement-evier-cuisine.jpg
 priority: 0.85
 -->
 
@@ -39,9 +39,33 @@ priority: 0.85
       </div>
 
       <div class="hero-media">
-        {{PHOTO_URGENCE_MEDIA}}
+        {{PHOTO_CUISINE_MEDIA}}
       </div>
     </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-titre">
+      <p class="sur-titre">Ce que l'on nous signale</p>
+      <h2>Les situations pour lesquelles on nous appelle en Loire-Atlantique</h2>
+      <p>
+        Reconnaissez la vôtre : le symptôme oriente le diagnostic bien plus
+        sûrement que le nom donné au problème.
+      </p>
+    </div>
+
+    <ul class="problemes">
+      <li><strong>Poste de relevage en défaut</strong>Sous-sol ou cave : la pompe s'arrête, le niveau monte.</li>
+      <li><strong>Refoulement en secteur bas</strong>Estuaire, Brière, marais : le réseau se met en charge et l'écoulement s'inverse.</li>
+      <li><strong>WC bouché</strong>Le symptôme le plus courant, en appartement comme en maison.</li>
+      <li><strong>Évier de cuisine</strong>Graisses figées dans le siphon ou la dérivation.</li>
+      <li><strong>Colonne d'immeuble</strong>Nantes : réseaux de plusieurs générations sur un même bâtiment.</li>
+      <li><strong>Cave inondée</strong>Eaux usées qui remontent par le sol quand le réseau est saturé.</li>
+      <li><strong>Réseau saisonnier</strong>Côte de Jade : forte variation d'occupation entre l'hiver et l'été.</li>
+      <li><strong>Canalisation extérieure</strong>Racines et affaissements sur les raccordements de pavillon.</li>
+    </ul>
   </div>
 </section>
 
@@ -124,7 +148,7 @@ priority: 0.85
       <a href="/degorgement-professionnel">dégorgement professionnel</a>.
     </p>
 
-    <h2>Problèmes les plus fréquents dans le département</h2>
+    <h2>Ce qui revient le plus souvent, secteur par secteur</h2>
     <ol>
       <li><strong>Refoulement en sous-sol ou en cave</strong> — le motif d'urgence numéro un du département.</li>
       <li><strong>Poste de relevage en panne</strong> — lingettes, flotteur bloqué, clapet encrassé.</li>
@@ -163,11 +187,94 @@ priority: 0.85
       <li><a href="/entretien-canalisation">Entretien préventif</a></li>
     </ul>
 
-    <h2 style="margin-top:2.2rem">Communes avec une page dédiée</h2>
-    <ul class="liens-connexes">
-      <li><a href="/degorgement-nantes">Nantes</a></li>
-      <li><a href="/degorgement-saint-nazaire">Saint-Nazaire</a></li>
-      <li><a href="/degorgement-reze">Rezé</a></li>
+
+    <div class="cta-clair" style="margin-top:var(--e-7)">
+      <div>
+        <h2>Maison, appartement, cave ou local professionnel&nbsp;?</h2>
+        <p>Un niveau enterré ne se traite pas comme un rez-de-chaussée. Décrivez les lieux, nous prévoyons le matériel en conséquence.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="cta2-44">Demander une intervention</a>
+        <a class="btn btn-ghost btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="cta2-44">{{TELEPHONE}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-titre">
+      <p class="sur-titre">Comment nous procédons</p>
+      <h2>Deux situations courantes en Loire-Atlantique, du symptôme au résultat</h2>
+      <p>
+        Ces deux cas décrivent la séquence de travail — ce que l'on constate, ce
+        que l'on cherche, l'outil retenu et ce qui est rétabli. Ce ne sont pas des
+        chantiers datés : aucune intervention passée n'est présentée ici tant
+        qu'elle n'est pas documentée et vérifiable.
+      </p>
+    </div>
+
+    <div class="cas" data-reveal>
+      <figure class="cas-visuel">
+        {{PHOTO_COLLECTIF_CARTE}}
+        <figcaption>{{PHOTO_COLLECTIF_LEGENDE}}.</figcaption>
+      </figure>
+      <div class="cas-corps">
+        <p class="cas-lieu">Cas de figure — immeuble avec niveau enterré</p>
+        <h3>Poste de relevage arrêté dans un sous-sol</h3>
+        <ul class="cas-etapes">
+          <li><span class="cle-cas">Problème</span>Le niveau monte dans la cuve et les évacuations du niveau bas refoulent. Tant que la pompe ne repart pas, rien ne s'évacue.</li>
+          <li><span class="cle-cas">Diagnostic</span>Contrôle du flotteur, du clapet anti-retour et de l'état de la cuve. Une pompe arrêtée par un chiffon dans la roue ne se distingue d'une panne électrique qu'à l'ouverture.</li>
+          <li><span class="cle-cas">Méthode</span>Pompage de la cuve pour travailler au sec, dégagement de la roue et nettoyage des parois, puis essai en charge avant de refermer.</li>
+          <li><span class="cle-cas">Résultat</span>Le poste repart et les évacuations du niveau bas suivent. Ce qui a bloqué la roue est montré et consigné : c'est ce qui évite la récidive.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cas inverse" data-reveal>
+      <figure class="cas-visuel">
+        {{PHOTO_URGENCE_CARTE}}
+        <figcaption>{{PHOTO_URGENCE_LEGENDE}}.</figcaption>
+      </figure>
+      <div class="cas-corps">
+        <p class="cas-lieu">Cas de figure — vallée ou zone de marais</p>
+        <h3>Refoulement dans une maison de secteur bas</h3>
+        <ul class="cas-etapes">
+          <li><span class="cle-cas">Problème</span>L'eau remonte par la douche et le WC pendant un épisode pluvieux. Le phénomène cesse en partie quand la pluie s'arrête.</li>
+          <li><span class="cle-cas">Diagnostic</span>Vérification de la concomitance avec la pluie, puis contrôle du regard et du clapet anti-retour s'il en existe un. Un réseau en charge et un bouchon ne se traitent pas de la même façon.</li>
+          <li><span class="cle-cas">Méthode</span>Aspiration de l'eau répandue, mise hors d'eau des pièces touchées, puis curage du raccordement. Le clapet anti-retour est contrôlé, et signalé s'il manque.</li>
+          <li><span class="cle-cas">Résultat</span>L'écoulement est rétabli et les pièces sont assainies. Quand le réseau public est en cause, le constat écrit sert de base auprès du gestionnaire.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cta-plein" style="margin-top:var(--e-7)">
+      <h2>Refoulement ou canalisation bouchée en Loire-Atlantique&nbsp;?</h2>
+      <p>Précisez si de l'eau est déjà répandue : cela change complètement l'ordre des opérations à l'arrivée.</p>
+      <div class="cta-actions">
+        <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="cta3-44">{{TELEPHONE}}</a>
+        <a class="btn btn-ghost btn-large" href="/devis" data-track="clic_devis" data-track-zone="cta3-44">Demander une intervention</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-titre">
+      <p class="sur-titre">Communes</p>
+      <h2>Où nous intervenons en Loire-Atlantique</h2>
+      <p>
+        Les communes ci-dessous disposent d'une page dédiée. Le département est
+        couvert en entier : l'absence d'une commune dans cette liste ne signifie
+        pas que nous n'y intervenons pas.
+      </p>
+    </div>
+
+    <ul class="villes-liste">
+      <li class="principale"><a href="/degorgement-nantes">Nantes</a></li>
+      <li class="principale"><a href="/degorgement-saint-nazaire">Saint-Nazaire</a></li>
+      <li class="principale"><a href="/degorgement-reze">Rezé</a></li>
       <li><a href="/degorgement-saint-herblain">Saint-Herblain</a></li>
       <li><a href="/degorgement-orvault">Orvault</a></li>
       <li><a href="/degorgement-vertou">Vertou</a></li>
@@ -176,7 +283,7 @@ priority: 0.85
       <li><a href="/degorgement-pornic">Pornic</a></li>
       <li><a href="/degorgement-chateaubriant">Châteaubriant</a></li>
     </ul>
-    <p style="margin-top:1rem">
+    <p class="villes-autres">
       Nous intervenons également à Saint-Sébastien-sur-Loire, Bouguenais, Couëron, La Chapelle-sur-Erdre,
       Sainte-Luce-sur-Loire, Basse-Goulaine, Guérande, La Baule-Escoublac, Pornichet, Saint-Brevin-les-Pins,
       Savenay, Blain, Nort-sur-Erdre, Clisson, Machecoul-Saint-Même et dans toutes les autres communes du
@@ -185,7 +292,25 @@ priority: 0.85
   </div>
 </section>
 
+{{SECTION_AVIS}}
+
 <section>
+  <div class="wrap">
+    <div class="cta-clair">
+      <div>
+        <h2>Parler à quelqu'un plutôt que remplir un formulaire</h2>
+        <p>
+          Pour une évacuation déjà bloquée, l'appel reste le moyen le plus court :
+          quelques questions suffisent à savoir quel matériel emporter.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="cta4-44">Appeler maintenant</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="alt">
   <div class="wrap">
     <h2>Questions fréquentes en Loire-Atlantique</h2>
     <div class="faq">
@@ -245,7 +370,7 @@ priority: 0.85
     <p>Si de l'eau remonte dans un sous-sol, coupez l'usage de tous les points d'eau et appelez : chaque minute compte.</p>
     <p style="margin-top:1.5rem">
       <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="cta-final">Appeler le {{TELEPHONE}}</a>
-      <a class="btn btn-ghost btn-large" href="/devis" data-track="clic_devis" data-track-zone="cta-final">Demander un devis</a>
+      <a class="btn btn-ghost btn-large" href="/devis" data-track="clic_devis" data-track-zone="cta-final">Obtenir un devis</a>
     </p>
   </div>
 </section>

@@ -55,7 +55,11 @@ BLEU_100, BLEU_200, BLEU_300 = "#e0f2fe", "#bae6fd", "#7dd3fc"
 BLEU_400, BLEU_500, BLEU_600 = "#38bdf8", "#0ea5e9", "#0284c7"
 BLEU_700, BLEU_800, BLEU_900 = "#0369a1", "#075985", "#0c4a6e"
 NUIT, NUIT_800, NUIT_700 = "#0f172a", "#1e293b", "#334155"
-ORANGE, ORANGE_F = "#f97316", "#c2410c"
+# Rouge d'alerte, et rien d'autre. L'identité du site est entièrement bleue :
+# une couleur chaude n'y a sa place que là où elle signale un incident — un
+# refoulement, un danger. Un carter de matériel en orange, lui, n'apporte
+# aucune information et jure avec le reste du site.
+ALERTE, ALERTE_F = "#dc2626", "#991b1b"
 ARDOISE, GRIS_C, BLANC = "#64748b", "#e2e8f0", "#ffffff"
 TERRE, TERRE_F = "#c9b28c", "#a8906a"
 
@@ -116,9 +120,9 @@ def defs() -> str:
         <stop offset=".55" stop-color="#e2e8f0"/>
         <stop offset="1" stop-color="#7c8ba1"/>
       </linearGradient>
-      <linearGradient id="orange" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#fb923c"/>
-        <stop offset="1" stop-color="{ORANGE_F}"/>
+      <linearGradient id="alerte" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ef4444"/>
+        <stop offset="1" stop-color="{ALERTE_F}"/>
       </linearGradient>
       <linearGradient id="ceramique" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0" stop-color="{BLANC}"/>
@@ -129,9 +133,9 @@ def defs() -> str:
         <stop offset="0" stop-color="{BLEU_400}" stop-opacity=".35"/>
         <stop offset="1" stop-color="{BLEU_400}" stop-opacity="0"/>
       </radialGradient>
-      <radialGradient id="haloOrange" cx=".5" cy=".5" r=".5">
-        <stop offset="0" stop-color="{ORANGE}" stop-opacity=".55"/>
-        <stop offset="1" stop-color="{ORANGE}" stop-opacity="0"/>
+      <radialGradient id="haloAlerte" cx=".5" cy=".5" r=".5">
+        <stop offset="0" stop-color="{ALERTE}" stop-opacity=".55"/>
+        <stop offset="1" stop-color="{ALERTE}" stop-opacity="0"/>
       </radialGradient>
       <radialGradient id="lampe" cx=".5" cy=".5" r=".5">
         <stop offset="0" stop-color="#fffbeb" stop-opacity=".92"/>
@@ -181,7 +185,7 @@ def fond_clair(w, h) -> str:
 
 
 def fond_sombre(w, h, chaud=False) -> str:
-    halo = "haloOrange" if chaud else "halo"
+    halo = "haloAlerte" if chaud else "halo"
     return f"""
     <rect width="{w}" height="{h}" fill="#080e1a"/>
     <ellipse cx="{w*0.5:.0f}" cy="{h*0.5:.0f}" rx="{w*0.5:.0f}" ry="{h*0.5:.0f}" fill="url(#{halo})"/>"""
@@ -355,7 +359,7 @@ def buse(x, y, e=1.0, jets=True):
       {faisceaux}
       <path d="M-78 -34 h96 l40 34 l-40 34 h-96 z" fill="url(#inox)"/>
       <path d="M-78 -34 h96 l40 34 l-40 34 h-96 z" fill="none" stroke="#7c8ba1" stroke-width="3"/>
-      <rect x="-104" y="-22" width="30" height="44" rx="10" fill="url(#orange)"/>
+      <rect x="-104" y="-22" width="30" height="44" rx="10" fill="{BLEU_700}"/>
       <circle cx="18" cy="0" r="9" fill="#1e293b"/>
       <path d="M-104 0 h-52" stroke="#0b1220" stroke-width="21" stroke-linecap="round"/>
       <path d="M-104 0 h-52" stroke="{BLEU_500}" stroke-width="6" stroke-linecap="round" opacity=".45"/>
@@ -642,7 +646,7 @@ def sc_materiel(w, h):
               f'<circle r="150" fill="none" stroke="{BLEU_500}" stroke-width="7" opacity=".45"/>'
               f'<circle r="122" fill="none" stroke="{NUIT_700}" stroke-width="10" opacity=".7"/>'
               f'<circle r="56" fill="url(#inox)" stroke="#7c8ba1" stroke-width="3"/>'
-              f'<circle r="26" fill="url(#orange)"/><circle r="10" fill="{NUIT}"/>'
+              f'<circle r="26" fill="{BLEU_400}"/><circle r="10" fill="{NUIT}"/>'
               f'<path d="M0 -150 A150 150 0 0 1 130 76" fill="none" stroke="{BLEU_400}" '
               f'stroke-width="11" opacity=".6" stroke-linecap="round"/></g>'
             # Flexible reliant l'enrouleur à la buse.
@@ -784,7 +788,7 @@ def sc_pompage(w, h):
               f'C {w*0.42:.0f} {y_sol-150:.0f}, {w*0.72:.0f} {y_sol-160:.0f}, {w*0.84:.0f} {y_sol-96:.0f}" '
               f'fill="none" stroke="{BLEU_500}" stroke-width="9" stroke-linecap="round" opacity=".45"/>'
             + f'<g transform="translate({w*0.42:.0f},{y_sol+250:.0f})">'
-              f'<rect x="-26" y="-16" width="52" height="32" rx="10" fill="url(#orange)"/></g>'
+              f'<rect x="-26" y="-16" width="52" height="32" rx="10" fill="{BLEU_700}"/></g>'
             # Flèches de remontée du liquide.
             + "".join(f'<path d="M{w*0.42:.0f} {y_sol+180-i*70:.0f} v-40" stroke="{BLEU_300}" '
                       f'stroke-width="5" opacity=".8" marker-end="url(#fl)"/>' for i in range(3))
@@ -817,7 +821,7 @@ def sc_professionnel(w, h):
               f'stroke="#7c8ba1" stroke-width="3"/>'
               f'<rect x="-134" y="-104" width="128" height="112" rx="6" fill="#4b5563"/>'
               f'<rect x="6" y="-104" width="128" height="112" rx="6" fill="#4b5563"/>'
-              f'<circle cx="-70" cy="-48" r="19" fill="{ORANGE}" opacity=".9"/>'
+              f'<circle cx="-70" cy="-48" r="19" fill="{ALERTE}" opacity=".9"/>'
               f'<circle cx="70" cy="-48" r="19" fill="{BLEU_400}" opacity=".8"/>'
               f'<rect x="-150" y="30" width="300" height="14" rx="6" fill="#94a3b8"/></g>'
             + f'<rect x="0" y="{h*0.52:.0f}" width="{w}" height="{h*0.48:.0f}" fill="url(#gravier)" opacity=".6"/>'
@@ -864,11 +868,11 @@ def sc_urgence(w, h):
             + amas(w * 0.60, h * 0.42, 60, 40, sombre=True)
             # Flèche de refoulement : le sens de l'eau s'inverse.
             + f'<g transform="translate({w*0.30:.0f},{h*0.50:.0f})">'
-              f'<path d="M120 0 H-40" stroke="{ORANGE}" stroke-width="13" stroke-linecap="round"/>'
-              f'<path d="M-72 0 l44 -30 v60 z" fill="{ORANGE}"/></g>'
-            + hud(w * 0.045, h * 0.075, "Refoulement", "#f97316")
+              f'<path d="M120 0 H-40" stroke="{ALERTE}" stroke-width="13" stroke-linecap="round"/>'
+              f'<path d="M-72 0 l44 -30 v60 z" fill="{ALERTE}"/></g>'
+            + hud(w * 0.045, h * 0.075, "Refoulement", ALERTE)
             + f'<g transform="translate({w*0.80:.0f},{h*0.20:.0f})">'
-              f'<path d="M0 -54 L50 38 H-50 Z" fill="url(#orange)" stroke="#fdba74" '
+              f'<path d="M0 -54 L50 38 H-50 Z" fill="url(#alerte)" stroke="#fca5a5" '
               f'stroke-width="4" stroke-linejoin="round"/>'
               f'<rect x="-5.5" y="-26" width="11" height="36" rx="5.5" fill="{NUIT}"/>'
               f'<circle cx="0" cy="22" r="6" fill="{NUIT}"/></g>')

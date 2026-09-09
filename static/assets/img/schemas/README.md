@@ -40,8 +40,8 @@ que le texte alternatif la décrit toujours correctement.
 | `debouchage-canalisation.webp` | 1120×700 | 27 Ko | Coupe d'une canalisation enterrée obstruée, buse rotative haute pression progressant vers le bouchon |
 | `inspection-camera-canalisation.webp` | 1120×700 | 24 Ko | Vue depuis l'intérieur d'une canalisation inspectée par caméra motorisée, paroi éclairée et lame d'eau au radier |
 | `curage-canalisation.webp` | 1120×700 | 25 Ko | Vue depuis l'intérieur d'une canalisation en cours de curage haute pression, dépôt décollé de la paroi |
-| `pompage-canalisation.webp` | 960×720 | 25 Ko | Coupe d'un regard de visite rempli, flexible d'aspiration plongé jusqu'au fond pour le pompage |
+| `pompage-canalisation.webp` | 960×720 | 24 Ko | Coupe d'un regard de visite rempli, flexible d'aspiration plongé jusqu'au fond pour le pompage |
 | `assainissement.webp` | 1120×700 | 26 Ko | Coupe d'une installation d'assainissement individuel : maison, fosse toutes eaux à deux compartiments, ventilation et départ vers l'épandage |
 | `debouchage-professionnel.webp` | 960×720 | 28 Ko | Coupe d'une installation de cuisine professionnelle raccordée à un bac à graisses enterré |
 | `canalisation-exterieure.webp` | 960×720 | 26 Ko | Coupe d'une canalisation extérieure enterrée traversée par des racines d'arbre, avec son regard de visite |
-| `urgence-degorgement.webp` | 1120×700 | 21 Ko | Vue intérieure d'une canalisation en refoulement : conduite pleine et bouchon bloquant l'écoulement |
+| `urgence-degorgement.webp` | 1120×700 | 20 Ko | Vue intérieure d'une canalisation en refoulement : conduite pleine et bouchon bloquant l'écoulement |

@@ -189,17 +189,24 @@ dur.
 
 ### Photographies
 
-Cinq photographies d'intervention vivent dans `photos-source/`. Elles sont la
+Dix photographies d'intervention vivent dans `photos-source/`. Elles sont la
 **source** : `scripts/preparer-photos.py` en tire cinq largeurs (480 → 1536)
 en AVIF et WebP, puis écrit `src/photos.sh`, où chaque variante d'affichage
 devient un bloc `<picture>` complet. Une page écrit `{{PHOTO_EVIER_HERO}}` et
 hérite du `srcset`, du `sizes`, des dimensions réelles et du texte alternatif.
 
-Pour ajouter ou remplacer une photographie :
+Chaque photographie appartient à une **famille**, qui décide de son dossier :
+`interventions/`, `debouchage/`, `degorgement/`, `plomberie/`, `camera/` sont
+peuplées ; `curage/`, `assainissement/`, `avant-apres/` et `zones/<code>/`
+attendent leurs premières prises de vue. Un dossier n'est créé que lorsqu'une
+photographie l'occupe.
+
+Pour ajouter une photographie :
 
 ```bash
-cp ma-photo.webp photos-source/debouchage-evier-cuisine.webp
-python3 scripts/preparer-photos.py     # dérivés + markup
+cp ma-photo.webp photos-source/curage-canalisation-hydrocureur.webp
+$EDITOR scripts/preparer-photos.py     # déclarer alt, légende et famille
+python3 scripts/preparer-photos.py     # dérivés + markup + vignette de partage
 bash scripts/build.sh
 ```
 
@@ -207,9 +214,30 @@ Le texte alternatif et la légende se déclarent dans le dictionnaire `PHOTOS`
 en tête de `scripts/preparer-photos.py` — un seul endroit, pour qu'une
 description ne puisse pas diverger d'une page à l'autre.
 
+**Ils ne décrivent que ce que la photographie montre.** Pas de lieu, pas de
+date, pas de résultat, pas de client : rien qui ne soit visible à l'image. Une
+photographie légendée « intervention à Saint-Brieuc » alors que rien ne le
+prouve est exactement le genre de détail qui ruine la crédibilité du reste.
+
 Photographies et schémas ne jouent pas le même rôle : la photographie ouvre
 la page et montre qui intervient, le schéma descend dans le texte et explique
 où se forme un bouchon. `scripts/placer-photos.py` applique cette règle.
+
+Les photographies portées par une page sont déclarées au sitemap sous
+`<image:image>` : c'est ce qui les rend éligibles à Google Images. Les schémas
+ne le sont pas — ils n'ont rien à y faire.
+
+### Cas de figure et avant / après
+
+Les pages départementales portent deux **cas de figure** chacune : problème,
+diagnostic, méthode, résultat. Ils décrivent une séquence de travail, pas un
+chantier passé — ni date, ni adresse, ni client. Le composant `.cas` est prêt
+à recevoir de vraies interventions documentées le jour où il en existe.
+
+Le composant `.avant-apres` existe dans la feuille de style et n'est posé sur
+aucune page : il attend un couple de clichés du même ouvrage, pris avant puis
+après. Deux photographies d'ouvrages différents présentées comme un avant /
+après seraient un faux résultat.
 
 ### Carte des zones d'intervention
 
@@ -221,6 +249,20 @@ verrait sinon l'adresse IP de chacun sans que personne l'ait demandé.
 La liste des six départements est dans le HTML dès le départ : c'est elle que
 lisent les moteurs de recherche et les lecteurs d'écran. Les coordonnées des
 préfectures sont dans `static/assets/js/site.js` (`PREFECTURES`).
+
+### Pages d'atterrissage départementales
+
+`scripts/landing-departements.py` a transformé les six pages de département en
+pages locales à conversion : bloc de symptômes sous le héros, cas de figure
+illustrés, liste de communes, emplacement des avis, cinq appels à l'action de
+formes différentes. Le script est **idempotent** — il ne retouche pas une page
+déjà traitée.
+
+Les contenus (symptômes, cas de figure, formulation des appels à l'action)
+sont écrits département par département dans le dictionnaire `DEPARTEMENTS` du
+script. `tests/navigateur.mjs` mesure la similarité de Jaccard entre les
+quatre pages prioritaires : au-delà de 0,4, deux pages raconteraient la même
+chose avec un nom substitué, et le test échoue.
 
 ### Avis clients
 

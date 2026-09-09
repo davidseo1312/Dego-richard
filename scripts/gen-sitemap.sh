@@ -19,12 +19,28 @@ TODAY="$(date +%Y-%m-%d)"
 
 {
   echo '<?xml version="1.0" encoding="UTF-8"?>'
-  echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+  echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
+  echo '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'
   while IFS='|' read -r url priority lastmod; do
     [ -n "$url" ] || continue
     [ -n "$lastmod" ] || lastmod="$TODAY"
-    printf '  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n    <priority>%s</priority>\n  </url>\n' \
+    printf '  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n    <priority>%s</priority>\n' \
       "$url" "$lastmod" "$priority"
+    # Photographies portées par la page. Seules les prises de vue réelles sont
+    # déclarées : un schéma technique n'a rien à faire dans Google Images, et
+    # les déclarer toutes reviendrait à noyer les cinq qui comptent.
+    chemin="public${url#${BASE_URL}}"
+    [ "$chemin" = "public" ] && chemin="public/"
+    [ -d "$chemin" ] && chemin="${chemin%/}/index.html"
+    [ -f "$chemin" ] || chemin="${chemin}.html"
+    if [ -f "$chemin" ]; then
+      { grep -oE 'src="/assets/img/(interventions|plomberie|debouchage|degorgement|camera|curage|assainissement|avant-apres)/[^"]+"' "$chemin" || true; } \
+        | sed 's/^src="//;s/"$//' | sort -u \
+        | while read -r img; do
+            printf '    <image:image><image:loc>%s%s</image:loc></image:image>\n' "$BASE_URL" "$img"
+          done
+    fi
+    printf '  </url>\n'
   done <<< "$ENTRIES"
   echo '</urlset>'
 } > public/sitemap.xml

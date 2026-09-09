@@ -6,7 +6,7 @@ breadcrumb: Ille-et-Vilaine (35)
 zone_nom: Ille-et-Vilaine
 parent_nom: Zone d'intervention
 parent_url: /zone-intervention
-image: /assets/img/partage/og-reseau-collectif-sous-sol.jpg
+image: /assets/img/partage/og-debouchage-wc-inspection-camera.jpg
 priority: 0.85
 -->
 
@@ -39,9 +39,33 @@ priority: 0.85
       </div>
 
       <div class="hero-media">
-        {{PHOTO_COLLECTIF_MEDIA}}
+        {{PHOTO_WC_MEDIA}}
       </div>
     </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-titre">
+      <p class="sur-titre">Ce que l'on nous signale</p>
+      <h2>Les situations pour lesquelles on nous appelle en Ille-et-Vilaine</h2>
+      <p>
+        Reconnaissez la vôtre : le symptôme oriente le diagnostic bien plus
+        sûrement que le nom donné au problème.
+      </p>
+    </div>
+
+    <ul class="problemes">
+      <li><strong>Lingettes en colonne</strong>Rennes : la cause la plus fréquente des bouchons de chute en collectif.</li>
+      <li><strong>Studio étudiant</strong>Lavabo et douche encrassés par les cheveux et le savon, sans entretien du siphon.</li>
+      <li><strong>WC bouché</strong>Chute commune : le refoulement se manifeste souvent à l'étage le plus bas.</li>
+      <li><strong>Évier de cuisine</strong>Graisses figées dans le siphon, aggravées par une eau calcaire.</li>
+      <li><strong>Tartre sur les évacuations</strong>Est du département : le dépôt calcaire réduit lentement la section.</li>
+      <li><strong>Refoulement en secteur bas</strong>Redon et vallées : le réseau se met en charge lors des épisodes pluvieux.</li>
+      <li><strong>Canalisation extérieure</strong>Racines et affaissements sur les raccordements de maison individuelle.</li>
+      <li><strong>Odeurs en logement fermé</strong>Siphons désamorcés dans un logement laissé vide plusieurs semaines.</li>
+    </ul>
   </div>
 </section>
 
@@ -127,7 +151,7 @@ priority: 0.85
       </p>
     </div>
 
-    <h2>Problèmes les plus fréquents dans le département</h2>
+    <h2>Ce qui revient le plus souvent, secteur par secteur</h2>
     <ol>
       <li><strong>Colonne de cuisine encrassée</strong> — immeubles rennais de toutes générations.</li>
       <li><strong>WC bouchés par des lingettes</strong> — logements étudiants et meublés touristiques.</li>
@@ -166,11 +190,94 @@ priority: 0.85
       <li><a href="/degorgement-professionnel">Professionnels</a></li>
     </ul>
 
-    <h2 style="margin-top:2.2rem">Communes avec une page dédiée</h2>
-    <ul class="liens-connexes">
-      <li><a href="/degorgement-rennes">Rennes</a></li>
-      <li><a href="/degorgement-saint-malo">Saint-Malo</a></li>
-      <li><a href="/degorgement-fougeres">Fougères</a></li>
+
+    <div class="cta-clair" style="margin-top:var(--e-7)">
+      <div>
+        <h2>Locataire, propriétaire, bailleur ou syndic&nbsp;?</h2>
+        <p>Dites-nous à quel titre vous appelez : cela détermine qui reçoit le devis et qui donne l'accord avant l'intervention.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="cta2-35">Demander une intervention</a>
+        <a class="btn btn-ghost btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="cta2-35">{{TELEPHONE}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-titre">
+      <p class="sur-titre">Comment nous procédons</p>
+      <h2>Deux situations courantes en Ille-et-Vilaine, du symptôme au résultat</h2>
+      <p>
+        Ces deux cas décrivent la séquence de travail — ce que l'on constate, ce
+        que l'on cherche, l'outil retenu et ce qui est rétabli. Ce ne sont pas des
+        chantiers datés : aucune intervention passée n'est présentée ici tant
+        qu'elle n'est pas documentée et vérifiable.
+      </p>
+    </div>
+
+    <div class="cas" data-reveal>
+      <figure class="cas-visuel">
+        {{PHOTO_COLLECTIF_CARTE}}
+        <figcaption>{{PHOTO_COLLECTIF_LEGENDE}}.</figcaption>
+      </figure>
+      <div class="cas-corps">
+        <p class="cas-lieu">Cas de figure — immeuble rennais</p>
+        <h3>Chute commune bouchée par des lingettes</h3>
+        <ul class="cas-etapes">
+          <li><span class="cle-cas">Problème</span>Les WC des étages bas refoulent alors que ceux du haut fonctionnent. Signe classique d'un bouchon dans la chute, pas dans un appareil.</li>
+          <li><span class="cle-cas">Diagnostic</span>Inspection vidéo depuis le regard de pied d'immeuble. Un amas fibreux compacté se distingue immédiatement d'un dépôt graisseux : il ne se dilue pas.</li>
+          <li><span class="cle-cas">Méthode</span>Débouchage mécanique pour rétablir un passage, puis hydrocurage pour retirer l'amas au lieu de le repousser plus bas dans le réseau.</li>
+          <li><span class="cle-cas">Résultat</span>L'écoulement redevient normal à tous les étages. Un affichage dans les parties communes évite la récidive mieux que n'importe quel outil.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cas inverse" data-reveal>
+      <figure class="cas-visuel">
+        {{PHOTO_SIPHON_CARTE}}
+        <figcaption>{{PHOTO_SIPHON_LEGENDE}}.</figcaption>
+      </figure>
+      <div class="cas-corps">
+        <p class="cas-lieu">Cas de figure — parc locatif étudiant</p>
+        <h3>Lavabo de studio qui ne s'écoule plus</h3>
+        <ul class="cas-etapes">
+          <li><span class="cle-cas">Problème</span>L'eau stagne dans la vasque et met plusieurs minutes à descendre. Le logement change d'occupant chaque année, le siphon n'a jamais été ouvert.</li>
+          <li><span class="cle-cas">Diagnostic</span>Contrôle visuel sous la vasque. Un culot de siphon plein de cheveux agglomérés au savon se voit dès la dépose : inutile d'aller plus loin.</li>
+          <li><span class="cle-cas">Méthode</span>Démontage du siphon, nettoyage complet du culot et du joint, remontage avec contrôle d'étanchéité en eau.</li>
+          <li><span class="cle-cas">Résultat</span>L'écoulement est rétabli sans produit ni démontage de mobilier. L'opération se refait en dix minutes à chaque changement de locataire.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cta-plein" style="margin-top:var(--e-7)">
+      <h2>Une évacuation bouchée en Ille-et-Vilaine&nbsp;?</h2>
+      <p>Précisez s'il s'agit d'un logement individuel ou d'un immeuble : en collectif, l'intervention se traite avec le syndic ou le bailleur.</p>
+      <div class="cta-actions">
+        <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="cta3-35">{{TELEPHONE}}</a>
+        <a class="btn btn-ghost btn-large" href="/devis" data-track="clic_devis" data-track-zone="cta3-35">Demander une intervention</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-titre">
+      <p class="sur-titre">Communes</p>
+      <h2>Où nous intervenons en Ille-et-Vilaine</h2>
+      <p>
+        Les communes ci-dessous disposent d'une page dédiée. Le département est
+        couvert en entier : l'absence d'une commune dans cette liste ne signifie
+        pas que nous n'y intervenons pas.
+      </p>
+    </div>
+
+    <ul class="villes-liste">
+      <li class="principale"><a href="/degorgement-rennes">Rennes</a></li>
+      <li class="principale"><a href="/degorgement-saint-malo">Saint-Malo</a></li>
+      <li class="principale"><a href="/degorgement-fougeres">Fougères</a></li>
       <li><a href="/degorgement-vitre">Vitré</a></li>
       <li><a href="/degorgement-redon">Redon</a></li>
       <li><a href="/degorgement-bruz">Bruz</a></li>
@@ -179,7 +286,7 @@ priority: 0.85
       <li><a href="/degorgement-chantepie">Chantepie</a></li>
       <li><a href="/degorgement-betton">Betton</a></li>
     </ul>
-    <p style="margin-top:1rem">
+    <p class="villes-autres">
       Nous intervenons également à Pacé, Le Rheu, Mordelles, Thorigné-Fouillard, Acigné,
       Chartres-de-Bretagne, Noyal-Châtillon-sur-Seiche, Dinard, Cancale, Combourg, Dol-de-Bretagne,
       Montfort-sur-Meu, Guichen, Bain-de-Bretagne, Janzé et dans toutes les autres communes du
@@ -188,7 +295,25 @@ priority: 0.85
   </div>
 </section>
 
+{{SECTION_AVIS}}
+
 <section>
+  <div class="wrap">
+    <div class="cta-clair">
+      <div>
+        <h2>Parler à quelqu'un plutôt que remplir un formulaire</h2>
+        <p>
+          Pour une évacuation déjà bloquée, l'appel reste le moyen le plus court :
+          quelques questions suffisent à savoir quel matériel emporter.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="cta4-35">Appeler maintenant</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="alt">
   <div class="wrap">
     <h2>Questions fréquentes en Ille-et-Vilaine</h2>
     <div class="faq">
@@ -250,7 +375,7 @@ priority: 0.85
     <p>Immeuble ou maison, Rennes ou Redon : dites-nous simplement ce que vous constatez.</p>
     <p style="margin-top:1.5rem">
       <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="cta-final">Appeler le {{TELEPHONE}}</a>
-      <a class="btn btn-ghost btn-large" href="/devis" data-track="clic_devis" data-track-zone="cta-final">Demander un devis</a>
+      <a class="btn btn-ghost btn-large" href="/devis" data-track="clic_devis" data-track-zone="cta-final">Obtenir un devis</a>
     </p>
   </div>
 </section>

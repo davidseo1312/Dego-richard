@@ -29,7 +29,53 @@ Le numéro de téléphone n'y est **pas** incrusté : ces images sont mises en
 cache des mois par les plateformes, et un numéro périmé y ferait plus de
 dégâts que son absence.
 
-## Visuels du site — `photos/`
+## Photographies d'intervention — `scripts/preparer-photos.py`
 
-Voir [`photos/README.md`](photos/README.md) : origine, licence, inventaire, et
-la marche à suivre pour remplacer une illustration par une photographie.
+Les photographies fournies par l'entreprise sont déposées dans
+`photos-source/` à la racine du dépôt, puis déclarées dans le dictionnaire
+`PHOTOS` du script. Chacune y indique **ce qu'elle montre** (`alt`,
+`legende`) et **à quelle famille elle appartient** (`famille`). Le script
+produit alors, dans `/assets/img/<famille>/` :
+
+* cinq largeurs (480, 768, 1024, 1366, 1536 px) en AVIF **et** en WebP ;
+* le markup `<picture>` complet — `srcset`, `sizes`, `width`, `height`,
+  `alt`, chargement — écrit dans `src/photos.sh` sous quatre variantes
+  (`HERO`, `MEDIA`, `CARTE`, `LARGE`) ;
+* la vignette de partage `partage/og-<slug>.jpg`.
+
+Une page n'écrit alors que `{{PHOTO_REGARD_MEDIA}}` : les dimensions
+déclarées sont celles des fichiers réellement produits, ce qui supprime tout
+décalage de mise en page au chargement.
+
+### Familles
+
+Une famille est un dossier. Elle n'existe que lorsqu'une photographie
+l'occupe : le projet ne crée pas de dossier vide.
+
+| Famille | Ce qu'elle contient | Peuplée |
+|---|---|:--:|
+| `interventions/` | vue générale d'une intervention, sans matériel spécifique | ✅ |
+| `debouchage/` | dépose de siphon, débouchage d'un appareil sanitaire | ✅ |
+| `degorgement/` | rétablissement d'un écoulement, aspiration | ✅ |
+| `plomberie/` | pièces d'évacuation : siphon, bonde, broyeur, raccordement | ✅ |
+| `camera/` | inspection vidéo, regard ouvert, écran de contrôle | ✅ |
+| `curage/` | hydrocureur, enrouleur haute pression, buse | — |
+| `assainissement/` | fosse, préfiltre, épandage, bac à graisses | — |
+| `avant-apres/` | **couples** de clichés du même ouvrage, avant puis après | — |
+| `zones/22/` … `zones/49/` | prise de vue dont le lieu est réellement identifiable | — |
+
+Pour ajouter une photographie : la déposer dans `photos-source/` sous un nom
+descriptif (`curage-canalisation-hydrocureur.webp`), ajouter son entrée dans
+`PHOTOS` avec sa famille, relancer `python3 scripts/preparer-photos.py`, puis
+poser `{{PHOTO_<CLÉ>_<VARIANTE>}}` dans la page voulue.
+
+**Règle absolue** : le texte alternatif et la légende ne décrivent que ce que
+la photographie montre. Ni lieu, ni date, ni résultat, ni client — rien qui ne
+soit visible à l'image.
+
+## Schémas techniques — `schemas/`
+
+Voir [`schemas/README.md`](schemas/README.md). Ils sont entièrement bleus :
+le rouge n'y apparaît que là où il signale un incident (refoulement, danger)
+ou une convention établie (repère d'eau chaude). Aucune couleur chaude
+décorative.

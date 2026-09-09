@@ -367,6 +367,108 @@ verifier(horsZone.length === 0,
 
 await ctxPhoto.close();
 
+// --- 13. En-tête et pages d'atterrissage départementales --------------------
+titre('13. En-tête et pages d’atterrissage');
+
+const ctxLanding = await navigateur.newContext({ viewport: { width: 1440, height: 900 }, locale: 'fr-FR' });
+const landing = await ctxLanding.newPage();
+
+await landing.goto(BASE + '/');
+const entete = await landing.evaluate(() => {
+  const inner = document.querySelector('.header-inner');
+  const b = (s) => document.querySelector(s)?.getBoundingClientRect();
+  const marque = b('.brand'), nav = b('.nav'), actions = b('.header-actions');
+  return {
+    ordre: marque && nav && actions
+      && marque.right <= nav.left + 1 && nav.right <= actions.left + 1,
+    // Le menu est centré dans l'espace laissé entre la marque et les actions,
+    // et non sur la largeur totale de la barre : le bloc de droite (téléphone
+    // + bouton) est nettement plus large que la marque, et un centrage
+    // mathématique le ferait chevaucher dès 1440 px. On mesure donc ce qui est
+    // réellement visé : des marges égales de part et d'autre du menu.
+    centre: nav && marque && actions
+      ? Math.abs((nav.left - marque.right) - (actions.left - nav.right)) < 24
+      : false,
+    tel: document.querySelector('.header-call .tel-texte strong')?.textContent.trim() || '',
+    bouton: document.querySelector('.header-actions .btn-devis')?.textContent.trim() || '',
+    entrees: [...document.querySelectorAll('.nav ul a')].map((a) => a.textContent.trim()),
+  };
+});
+verifier(entete.ordre, 'l’en-tête range marque, menu puis actions dans cet ordre');
+verifier(entete.centre, 'le menu est centré entre la marque et les actions');
+verifier(entete.tel.replace(/\s+/g, ' ') === '02 20 06 00 75',
+  `le numéro de l’en-tête est le bon (${entete.tel})`);
+verifier(entete.bouton === 'Demander une intervention',
+  `le bouton d’en-tête invite à demander une intervention (${entete.bouton})`);
+verifier(
+  ['Prestations', 'Urgence', 'Zones', 'Tarifs', 'Conseils', 'Contact']
+    .every((e, i) => entete.entrees[i] === e),
+  'les six entrées du menu sont dans l’ordre demandé');
+
+// Quatre cartes de réassurance, sous le héros.
+const rassurance = await landing.locator('.rassurance > li').count();
+verifier(rassurance === 4, `quatre cartes de réassurance sous le héros (${rassurance})`);
+
+// Les quatre pages départementales prioritaires.
+const LANDINGS = [
+  ['/departements/cotes-d-armor', 'Côtes-d’Armor'],
+  ['/departements/finistere', 'Finistère'],
+  ['/departements/ille-et-vilaine', 'Ille-et-Vilaine'],
+  ['/departements/morbihan', 'Morbihan'],
+];
+const empreintes = [];
+for (const [url, nom] of LANDINGS) {
+  await landing.goto(BASE + url);
+  const p = await landing.evaluate(() => ({
+    problemes: document.querySelectorAll('.problemes > li').length,
+    cas: document.querySelectorAll('.cas').length,
+    etapes: [...document.querySelectorAll('.cas .cle-cas')].map((e) => e.textContent.trim()),
+    villes: document.querySelectorAll('.villes-liste a').length,
+    cta: document.querySelectorAll('[data-track="appel"], [data-track="clic_devis"]').length,
+    faq: document.querySelectorAll('.faq details').length,
+    photos: [...document.querySelectorAll('.cas-visuel img, .hero-media img')]
+      .map((i) => i.currentSrc.split('/').pop().replace(/-\d+\.(avif|webp)$/, '')),
+    texte: document.querySelector('main').textContent.replace(/\s+/g, ' '),
+  }));
+  verifier(p.problemes >= 6, `${nom} : ${p.problemes} symptômes listés`);
+  verifier(p.cas >= 2, `${nom} : ${p.cas} cas détaillés`);
+  verifier(
+    ['Problème', 'Diagnostic', 'Méthode', 'Résultat'].every((c) => p.etapes.includes(c)),
+    `${nom} : chaque cas va du problème au résultat`);
+  verifier(p.villes >= 8, `${nom} : ${p.villes} communes liées`);
+  verifier(p.cta >= 5, `${nom} : ${p.cta} appels à l’action`);
+  verifier(p.faq >= 4, `${nom} : ${p.faq} questions locales`);
+  empreintes.push({ nom, photos: p.photos, texte: p.texte });
+}
+
+// Pas de clones : ni les mêmes photographies, ni le même texte.
+const photosDoublons = empreintes.filter((a, i) =>
+  empreintes.some((b, j) => j !== i && b.photos.join() === a.photos.join()));
+verifier(photosDoublons.length === 0,
+  `les quatre pages montrent des photographies différentes${photosDoublons.length ? ' — ' + photosDoublons.map((e) => e.nom).join(', ') : ''}`);
+
+// Similarité de Jaccard sur les 5-grammes de mots : au-delà de 0,4 deux pages
+// racontent la même chose avec un nom de département substitué.
+const grammes = (t) => {
+  const m = t.toLowerCase().split(' ');
+  const s = new Set();
+  for (let i = 0; i + 5 <= m.length; i += 1) s.add(m.slice(i, i + 5).join(' '));
+  return s;
+};
+let pire = 0, pireNoms = '';
+for (let i = 0; i < empreintes.length; i += 1) {
+  for (let j = i + 1; j < empreintes.length; j += 1) {
+    const a = grammes(empreintes[i].texte), b = grammes(empreintes[j].texte);
+    const inter = [...a].filter((g) => b.has(g)).length;
+    const jac = inter / (a.size + b.size - inter);
+    if (jac > pire) { pire = jac; pireNoms = `${empreintes[i].nom}/${empreintes[j].nom}`; }
+  }
+}
+verifier(pire < 0.4,
+  `aucune paire de pages départementales n’est un clone (max ${pire.toFixed(2)} — ${pireNoms})`);
+
+await ctxLanding.close();
+
 await navigateur.close();
 
 console.log('\n\x1b[1mBilan\x1b[0m');

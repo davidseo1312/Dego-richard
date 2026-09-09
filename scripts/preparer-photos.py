@@ -32,7 +32,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 RACINE = Path(__file__).resolve().parent.parent
 SOURCE = RACINE / "photos-source"
-SORTIE = RACINE / "static" / "assets" / "img" / "interventions"
+IMAGES = RACINE / "static" / "assets" / "img"
 MANIFESTE = RACINE / "src" / "photos.sh"
 PARTAGE = RACINE / "static" / "assets" / "img" / "partage"
 
@@ -42,31 +42,75 @@ LARGEURS = [480, 768, 1024, 1366, 1536]
 # Le texte alternatif décrit la scène, sans énumérer de mots-clés : il est lu
 # à voix haute par une synthèse vocale, et une liste de villes n'y a rien à
 # faire.
+# `famille` décide du dossier de destination — /assets/img/<famille>/ — et
+# rend l'ajout d'une photographie mécanique : on la dépose dans photos-source,
+# on déclare ici ce qu'elle montre et à quelle famille elle appartient, et le
+# script produit les dérivés, le markup et la vignette de partage. Les dossiers
+# ne sont créés que lorsqu'une photographie les remplit : pas de dossier vide.
 PHOTOS = {
     "debouchage-wc-inspection-camera": {
+        "famille": "interventions",
         "alt": "Technicien introduisant une caméra d'inspection dans la cuvette "
                "d'un WC, enrouleur de furet posé au sol",
         "legende": "Inspection caméra d'un WC bouché",
     },
     "debouchage-evier-cuisine": {
+        "famille": "interventions",
         "alt": "Technicien éclairant le siphon sous un évier de cuisine avant "
                "de le démonter",
         "legende": "Débouchage d'un évier de cuisine",
     },
     "debouchage-baignoire-inspection": {
+        "famille": "interventions",
         "alt": "Technicien inspectant l'évacuation d'une baignoire à l'aide "
                "d'une caméra endoscopique",
         "legende": "Contrôle de l'évacuation d'une baignoire",
     },
     "reseau-collectif-sous-sol": {
+        "famille": "interventions",
         "alt": "Technicien intervenant sur la tuyauterie d'un local technique "
                "d'immeuble",
         "legende": "Intervention sur un réseau collectif",
     },
     "urgence-degorgement-douche": {
+        "famille": "interventions",
         "alt": "Technicien aspirant l'eau répandue au sol devant une douche "
                "après un refoulement",
         "legende": "Aspiration après un refoulement",
+    },
+
+    # --- Second envoi -------------------------------------------------------
+    # Chaque description ne dit que ce que la photographie montre : ni lieu,
+    # ni date, ni résultat. Rien de ce qui n'est pas visible n'y figure.
+    "installation-broyeur-sanitaire-wc": {
+        "famille": "plomberie",
+        "alt": "Technicien raccordant un broyeur sanitaire derrière une cuvette "
+               "de WC, coudes PVC et boîte à outils au sol",
+        "legende": "Raccordement d'un broyeur sanitaire",
+    },
+    "demontage-siphon-lavabo": {
+        "famille": "debouchage",
+        "alt": "Technicien démontant à la pince le siphon chromé sous un lavabo "
+               "de salle de bains",
+        "legende": "Démontage du siphon d'un lavabo",
+    },
+    "aspiration-eau-receveur-douche": {
+        "famille": "degorgement",
+        "alt": "Technicien aspirant l'eau stagnante d'un receveur de douche à "
+               "l'aide d'un aspirateur eau et poussière",
+        "legende": "Évacuation de l'eau stagnante d'une douche",
+    },
+    "controle-ecoulement-evier-cuisine": {
+        "famille": "interventions",
+        "alt": "Technicien contrôlant l'écoulement d'un évier de cuisine, "
+               "robinet ouvert et clé à molette en main",
+        "legende": "Contrôle de l'écoulement d'un évier",
+    },
+    "inspection-camera-regard-voirie": {
+        "famille": "camera",
+        "alt": "Technicien descendant une caméra d'inspection dans un regard de "
+               "voirie ouvert, fourgon d'intervention à l'arrière-plan",
+        "legende": "Inspection caméra d'un regard de voirie",
     },
 }
 
@@ -115,13 +159,24 @@ def variable(slug: str, variante: str) -> str:
         "debouchage-baignoire-inspection": "BAIGNOIRE",
         "reseau-collectif-sous-sol": "COLLECTIF",
         "urgence-degorgement-douche": "URGENCE",
+        "installation-broyeur-sanitaire-wc": "BROYEUR",
+        "demontage-siphon-lavabo": "SIPHON",
+        "aspiration-eau-receveur-douche": "DOUCHE",
+        "controle-ecoulement-evier-cuisine": "CUISINE",
+        "inspection-camera-regard-voirie": "REGARD",
     }[slug]
     return f"PHOTO_{court}_{variante}"
+
+
+def dossier(slug: str) -> Path:
+    return IMAGES / PHOTOS[slug]["famille"]
 
 
 def produire(slug: str) -> list:
     """Écrit les dérivés d'une photographie et rend la liste (largeur, hauteur)."""
     src = SOURCE / f"{slug}.webp"
+    sortie = dossier(slug)
+    sortie.mkdir(parents=True, exist_ok=True)
     origine = Image.open(src).convert("RGB")
     tailles = []
     for l in LARGEURS:
@@ -132,15 +187,15 @@ def produire(slug: str) -> list:
         # AVIF d'abord : à qualité perçue égale il pèse environ un tiers de
         # moins que WebP. WebP reste servi en repli — Safari 15 et les
         # navigateurs d'avant 2023 ne lisent pas l'AVIF.
-        vignette.save(SORTIE / f"{slug}-{l}.avif", "AVIF", quality=58, speed=4)
-        vignette.save(SORTIE / f"{slug}-{l}.webp", "WEBP", quality=80, method=6)
+        vignette.save(sortie / f"{slug}-{l}.avif", "AVIF", quality=58, speed=4)
+        vignette.save(sortie / f"{slug}-{l}.webp", "WEBP", quality=80, method=6)
         tailles.append((l, h))
     return tailles
 
 
 def markup(slug: str, variante: str, tailles: list, infos: dict) -> str:
     v = VARIANTES[variante]
-    base = f"/assets/img/interventions/{slug}"
+    base = f"/assets/img/{PHOTOS[slug]['famille']}/{slug}"
     srcset = lambda ext: ", ".join(f"{base}-{l}.{ext} {l}w" for l, _ in tailles)
     l_ref, h_ref = tailles[-1]
     classe = f' class="{v["classe"]}"' if v["classe"] else ""
@@ -213,7 +268,7 @@ def main() -> int:
     if not SOURCE.is_dir():
         print(f"Dossier introuvable : {SOURCE}", file=sys.stderr)
         return 1
-    SORTIE.mkdir(parents=True, exist_ok=True)
+    IMAGES.mkdir(parents=True, exist_ok=True)
 
     lignes = [
         "# Généré par scripts/preparer-photos.py — NE PAS MODIFIER À LA MAIN.",
@@ -232,10 +287,11 @@ def main() -> int:
         # « image ». Une photographie y vaut mieux qu'un schéma.
         if slug == "debouchage-evier-cuisine":
             image_partage(slug, PARTAGE / "og-default.jpg")
-        poids = sum((SORTIE / f"{slug}-{l}.{e}").stat().st_size
+        poids = sum((dossier(slug) / f"{slug}-{l}.{e}").stat().st_size
                     for l, _ in tailles for e in ("avif", "webp"))
         total += poids
-        print(f"  ✓ {slug} — {len(tailles)} largeurs × 2 formats, {poids/1024:.0f} Ko")
+        print(f"  ✓ {PHOTOS[slug]['famille']}/{slug} — {len(tailles)} largeurs "
+              f"× 2 formats, {poids/1024:.0f} Ko")
         # Le markup et les textes contiennent des apostrophes ; shlex.quote
         # produit la seule forme que bash relit sans surprise.
         for variante in VARIANTES:

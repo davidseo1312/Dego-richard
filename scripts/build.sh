@@ -148,6 +148,38 @@ export SECTION_CARTE="$(cat src/partials/carte-zone.html)"
 # Google exige que le fil d'Ariane balisé corresponde à celui affiché.
 # Les pages composent le leur avec <nav class="fil"> ; ce bloc produit le
 # JSON-LD équivalent à partir des métadonnées « breadcrumb » et « parent ».
+# --- WebPage + ImageObject ---------------------------------------------------
+# Chaque page décrit ce qu'elle est, à quel site elle appartient et quelle
+# image la représente. Les dimensions sont celles des vignettes de partage
+# réellement produites par scripts/preparer-photos.py (1200 × 630) : les
+# déclarer au jugé produirait une donnée structurée qui ne correspond pas au
+# fichier, exactement ce que Google reproche.
+schema_webpage() {
+  cat <<LD
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "${PAGE_URL}#page",
+  "url": "${PAGE_URL}",
+  "name": "${PAGE_TITLE}",
+  "description": "${PAGE_DESC}",
+  "inLanguage": "fr-FR",
+  "dateModified": "${PAGE_DATE}",
+  "isPartOf": { "@id": "${BASE_URL}/#site" },
+  "about": { "@id": "${BASE_URL}/#entreprise" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "${BASE_URL}${PAGE_IMAGE}",
+    "contentUrl": "${BASE_URL}${PAGE_IMAGE}",
+    "width": 1200,
+    "height": 630
+  }
+}
+</script>
+LD
+}
+
 schema_breadcrumb() {
   local nom_page="$1" url_page="$2" nom_parent="$3" url_parent="$4"
   local position=2 items
@@ -249,6 +281,7 @@ while IFS= read -r src_file; do
 
   {
     cat src/partials/head.html
+    schema_webpage
     if [ -n "$PAGE_SCHEMA" ] && [ -f "src/partials/schema-${PAGE_SCHEMA}.html" ]; then
       cat "src/partials/schema-${PAGE_SCHEMA}.html"
     fi

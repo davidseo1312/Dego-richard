@@ -30,6 +30,8 @@ demandent un contraste fort. Le blanc domine en surface.
 | `--color-background` | `#f8fafc` | fond neutre |
 | `--color-background-blue` | `#f0f9ff` | fond bleu très clair |
 | `--color-border` | `#e2e8f0` | filets |
+| `--color-success` | `#16a34a` | jalon franchi, résultat rétabli |
+| `--color-success-deep` | `#15803d` | même rôle **en texte** — 4,6:1 sur blanc |
 | `--shadow-soft` | `0 10px 30px rgba(15,23,42,.06)` | ombre par défaut |
 
 Une **échelle** (`--bleu-50` … `--bleu-900`, `--nuit`) est déclarée à côté. Les
@@ -54,6 +56,21 @@ plutôt que sur la teinte.
 Le compromis mérite d'être connu : un accent chaud attire l'œil plus vite
 qu'un contraste de valeur. Si le taux d'appel devait baisser, c'est la piste
 à rouvrir en premier.
+
+### Appels à l'action : quatre formes, quatre moments
+
+Répéter le même pavé cinq fois dans une page le rend invisible. Chaque
+emplacement a donc son traitement :
+
+| Classe | Fond | Où | Ce qu'il demande |
+|---|---|---|---|
+| héros | clair | ouverture | le numéro, en toutes lettres |
+| `.cta-clair` | bleu très pâle, filet gauche épais | après une explication | une demande d'intervention |
+| `.cta-plein` | dégradé bleu profond, texte centré | après une démonstration | l'un ou l'autre, au choix |
+| `.cta-final` | bande de bas de page | avant le pied de page | un devis |
+
+Les pages départementales en portent cinq, dans cet ordre : héros, après les
+prestations, après les cas de figure, après les avis, avant le pied de page.
 
 ### Boutons
 
@@ -143,14 +160,36 @@ Largeurs : `--largeur` 1200 px, `--largeur-etroite` 760 px pour les articles
 
 ---
 
-## 4. Composants
+## 4. En-tête
+
+Trois zones sur une grille `auto 1fr auto` : la marque à gauche, le menu au
+centre, le téléphone et le bouton d'intervention à droite.
+
+Le menu est centré **dans l'espace laissé entre les deux blocs latéraux**, et
+non sur la largeur totale de la barre. Ce n'est pas un raccourci : le bloc de
+droite (téléphone + « Demander une intervention ») fait environ 415 px contre
+232 px pour la marque, et un centrage mathématique ferait chevaucher le menu
+et les actions dès 1440 px. `tests/navigateur.mjs` mesure l'égalité des marges
+de part et d'autre du menu, ce qui est la propriété réellement visée.
+
+Deux détails ne survivent qu'aux largeurs qui peuvent les payer : la ligne
+d'accroche de la marque et l'étiquette « Appel direct » n'apparaissent qu'à
+partir de 1400 px. Entre 1180 et 1339 px, le menu et le bouton perdent deux
+crans de respiration. Sans ces deux réglages, la barre dépasse la largeur
+utile à 1180 px et met **toutes** les pages en défilement horizontal.
+
+Sous 1180 px, le menu devient un tiroir ; le numéro reste visible dans la
+barre sous forme de raccourci, réduit à son icône sous 560 px.
+
+---
+
+## 5. Composants
 
 | Classe | Rôle |
 |---|---|
-| `.btn` `.btn-call` `.btn-devis` `.btn-ghost` `.btn-large` `.btn-bloc` | boutons ; `.btn-call` est l'appel, seule action à porter l'orange plein |
+| `.btn` `.btn-call` `.btn-devis` `.btn-ghost` `.btn-large` `.btn-bloc` | boutons ; `.btn-call` porte l'aplat bleu profond, `.btn-devis` le bleu ciel, `.btn-ghost` le contour |
 | `.carte` `.carte-service` `.carte-media` `.carte-icone` `.carte-pied` | cartes : fond blanc, rayon 20 px, filet 1 px, ombre légère, survol qui soulève de 3 px |
 | `.hero` `.hero-interieur` `.hero-article` `.hero-page` | quatre déclinaisons de la bande d'ouverture |
-| `.hero-badges` | pastilles de réassurance sous les boutons, repliables |
 | `.reponse-rapide` `.definition` `.qr-liste` `.cle` | bloc GEO : réponse autoportante, puis QUI/QUOI/OÙ/QUAND/COMMENT/POURQUOI/COMBIEN en blocs — chacun se cite isolément, ce qui est l'usage qu'en fait un moteur génératif |
 | `.etapes` (`.horizontale`) | chronologie numérotée, verticale sur mobile, horizontale au-delà de 900 px |
 | `.galerie` (`.mise-en-avant`) | galerie 4 colonnes, première vignette en 2×2 : les cinq photographies remplissent la grille sans trou |
@@ -158,17 +197,25 @@ Largeurs : `--largeur` 1200 px, `--largeur-etroite` 760 px pour les articles
 | `.schema` `.schemas-grille` | schéma technique accompagné de sa légende, dans le corps du texte |
 | `.carte-bloc` `.carte-toile` `.carte-legende` `.carte-liste` | carte des zones et sa liste HTML |
 | `.avis-carte` `.avis-note` `.etoile` | avis clients — inactifs tant qu'aucun avis réel n'est renseigné |
-| `.bandeau-urgence` `.urgence-encart` | la seule section où l'orange domine |
+| `.bandeau-urgence` `.urgence-encart` | la seule section sur fond sombre |
 | `.departements` `.departement-carte` `.numero` | les six départements |
 | `.faq details` | accordéons natifs, sans JavaScript |
 | `.formulaire` `.champ` `.champs` | formulaire de demande |
 | `.champ-radio` `.champ-case` | l'étiquette devient la cible tactile : un bouton radio natif fait 19 px |
-| `.sur-titre` `.badge` `.pastille` `.lien-fleche` | micro-éléments |
-| `.barre-mobile` | barre d'action fixe, sous 768 px |
+| `.sur-titre` `.pastille` `.lien-fleche` | micro-éléments |
+| `.barre-mobile` | barre d'action fixe, sous 768 px : numéro complet à gauche, demande d'intervention à droite |
+| `.rassurance` `.rassurance-carte` | les quatre points de réassurance, sous le héros |
+| `.problemes` | grille de symptômes : le visiteur reconnaît sa situation avant de lire |
+| `.cas` `.cas-visuel` `.cas-corps` `.cas-etapes` `.cle-cas` | cas de figure : problème → diagnostic → méthode → résultat, illustré |
+| `.avant-apres` (`.avant` `.apres`) | **réservé** : ne s'affiche que si un couple de clichés du même ouvrage existe |
+| `.villes-liste` (`.principale`) | communes d'un département, préfecture et sous-préfectures en tête |
+| `.cta-clair` `.cta-plein` | deux des quatre traitements d'appel à l'action (voir plus bas) |
+| `.evacuations` | les points d'évacuation traités, en pavés cliquables |
+| `.footer-departements` | les six départements, jusqu'au bas de la dernière page |
 
 ---
 
-## 5. Mouvement
+## 6. Mouvement
 
 Trois effets, tous discrets : soulèvement des cartes au survol, décalage de
 la flèche des liens d'action, apparition en fondu des blocs au défilement.
@@ -185,7 +232,7 @@ défilement doux et les survols qui déplacent.
 
 ---
 
-## 6. Accessibilité
+## 7. Accessibilité
 
 - contrastes AA vérifiés sur la page rendue (voir ci-dessus) ;
 - anneau de focus visible de 3 px sur tout élément interactif ;
@@ -205,14 +252,26 @@ défilement doux et les survols qui déplacent.
 
 ---
 
-## 7. Images
+## 8. Images
 
 Deux familles, deux rôles, et les confondre les affaiblit toutes les deux.
 
 | | Rôle | Où |
 |---|---|---|
-| **Photographies** (`assets/img/interventions/`) | montrer qui intervient | ouverture de page, galerie, cartes d'article |
-| **Schémas** (`assets/img/schemas/`) | expliquer où se forme un bouchon | corps du texte, accompagnés d'une légende |
+| **Photographies** (`assets/img/<famille>/`) | montrer qui intervient | ouverture de page, galerie, cartes de prestation, cas de figure |
+| **Schémas** (`assets/img/schemas/`) | expliquer où se forme un bouchon | corps du texte, accompagnés d'une légende, largeur limitée à 44 rem |
+
+Les photographies sont rangées par famille — `interventions/`, `debouchage/`,
+`degorgement/`, `plomberie/`, `camera/`, et `curage/`, `assainissement/`,
+`avant-apres/`, `zones/<code>/` réservées pour la suite. Le dossier n'existe
+que lorsqu'une photographie l'occupe. Voir
+[`static/assets/img/README.md`](../static/assets/img/README.md) pour la marche
+à suivre à chaque nouvel envoi.
+
+Les schémas sont eux aussi entièrement bleus : le rouge n'y sert qu'à signaler
+un incident (refoulement, danger) ou une convention établie (repère d'eau
+chaude). Aucune couleur chaude décorative — le contraire ferait mentir la
+page d'à côté.
 
 Les photographies sont produites par `scripts/preparer-photos.py` en cinq
 largeurs (480 → 1536) et deux formats, AVIF puis WebP en repli. Le script
@@ -231,7 +290,7 @@ la 1536.
 
 ---
 
-## 8. Carte des zones
+## 9. Carte des zones
 
 Leaflet 1.9.4 (BSD 2-Clause), **auto-hébergé** dans `assets/vendor/leaflet/` :
 la politique de sécurité du site interdit les scripts venus d'un CDN.
@@ -249,7 +308,7 @@ si les tuiles ne chargent pas.
 
 ---
 
-## 9. Responsive
+## 10. Responsive
 
 Le site est vérifié à **onze largeurs** — 320, 375, 390, 414, 430, 768, 820,
 1024, 1280, 1440, 1920 — sur seize gabarits, soit 176 rendus, par
@@ -278,7 +337,7 @@ passe.
 
 ---
 
-## 10. Performance
+## 11. Performance
 
 | Ressource | Poids | Chargée |
 |---|---|---|

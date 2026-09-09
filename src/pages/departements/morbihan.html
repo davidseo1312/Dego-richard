@@ -6,7 +6,7 @@ breadcrumb: Morbihan (56)
 zone_nom: Morbihan
 parent_nom: Zone d'intervention
 parent_url: /zone-intervention
-image: /assets/img/partage/og-reseau-collectif-sous-sol.jpg
+image: /assets/img/partage/og-aspiration-eau-receveur-douche.jpg
 priority: 0.85
 -->
 
@@ -39,9 +39,33 @@ priority: 0.85
       </div>
 
       <div class="hero-media">
-        {{PHOTO_COLLECTIF_MEDIA}}
+        {{PHOTO_DOUCHE_MEDIA}}
       </div>
     </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-titre">
+      <p class="sur-titre">Ce que l'on nous signale</p>
+      <h2>Les situations pour lesquelles on nous appelle dans le Morbihan</h2>
+      <p>
+        Reconnaissez la vôtre : le symptôme oriente le diagnostic bien plus
+        sûrement que le nom donné au problème.
+      </p>
+    </div>
+
+    <ul class="problemes">
+      <li><strong>Remise en eau de résidence</strong>Odeurs et écoulement lent au retour, après des mois de fermeture.</li>
+      <li><strong>Douche qui ne se vide plus</strong>Bonde siphoïde obstruée par les cheveux et le sable rapporté de la plage.</li>
+      <li><strong>WC bouché</strong>Premier appareil touché lors d'une reprise d'usage après une longue absence.</li>
+      <li><strong>Évier de cuisine</strong>Graisses figées, souvent après une période d'occupation intensive.</li>
+      <li><strong>Réseau en surcharge estivale</strong>Golfe et presqu'îles : la population double, le réseau ne change pas.</li>
+      <li><strong>Fosse en zone dispersée</strong>Intérieur du département : préfiltre colmaté, épandage saturé.</li>
+      <li><strong>Regard extérieur</strong>Regard de visite en charge sur un raccordement de maison individuelle.</li>
+      <li><strong>Siphon désamorcé</strong>Garde d'eau évaporée dans un logement inoccupé : l'odeur remonte du réseau.</li>
+    </ul>
   </div>
 </section>
 
@@ -129,7 +153,7 @@ priority: 0.85
       </p>
     </div>
 
-    <h2>Problèmes les plus fréquents dans le département</h2>
+    <h2>Ce qui revient le plus souvent, secteur par secteur</h2>
     <ol>
       <li><strong>Siphons désamorcés et odeurs à la réouverture</strong> — résidences secondaires du littoral, très majoritaire en volume.</li>
       <li><strong>Réseaux saturés en pic estival</strong> — Rhuys, Quiberon, Carnac, Erdeven, Damgan.</li>
@@ -168,12 +192,95 @@ priority: 0.85
       <li><a href="/entretien-canalisation">Entretien préventif</a></li>
     </ul>
 
-    <h2 style="margin-top:2.2rem">Communes avec une page dédiée</h2>
-    <ul class="liens-connexes">
-      <li><a href="/degorgement-lorient">Lorient</a></li>
-      <li><a href="/degorgement-vannes">Vannes</a></li>
+
+    <div class="cta-clair" style="margin-top:var(--e-7)">
+      <div>
+        <h2>Vous ouvrez une maison restée fermée&nbsp;?</h2>
+        <p>C'est le moment où presque tout se déclare d'un coup. Décrivez ce que vous constatez, nous dirons ce qui relève d'un dépannage et ce qui relève d'un entretien.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-devis btn-large" href="/devis" data-track="clic_devis" data-track-zone="cta2-56">Demander une intervention</a>
+        <a class="btn btn-ghost btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="cta2-56">{{TELEPHONE}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-titre">
+      <p class="sur-titre">Comment nous procédons</p>
+      <h2>Deux situations courantes dans le Morbihan, du symptôme au résultat</h2>
+      <p>
+        Ces deux cas décrivent la séquence de travail — ce que l'on constate, ce
+        que l'on cherche, l'outil retenu et ce qui est rétabli. Ce ne sont pas des
+        chantiers datés : aucune intervention passée n'est présentée ici tant
+        qu'elle n'est pas documentée et vérifiable.
+      </p>
+    </div>
+
+    <div class="cas" data-reveal>
+      <figure class="cas-visuel">
+        {{PHOTO_REGARD_CARTE}}
+        <figcaption>{{PHOTO_REGARD_LEGENDE}}.</figcaption>
+      </figure>
+      <div class="cas-corps">
+        <p class="cas-lieu">Cas de figure — littoral morbihannais</p>
+        <h3>Remise en service d'une résidence secondaire</h3>
+        <ul class="cas-etapes">
+          <li><span class="cle-cas">Problème</span>Au retour, l'eau s'écoule mal sur plusieurs appareils et une odeur d'égout est présente dans toute la maison. Rien ne fonctionnait depuis l'automne.</li>
+          <li><span class="cle-cas">Diagnostic</span>Ouverture du regard de visite en limite de propriété. Un regard plein oriente vers le réseau extérieur ; un regard vide renvoie la cause à l'intérieur, siphons compris.</li>
+          <li><span class="cle-cas">Méthode</span>Inspection vidéo de la conduite depuis le regard, puis curage du tronçon obstrué. Remise en eau de tous les siphons, ventilation primaire contrôlée.</li>
+          <li><span class="cle-cas">Résultat</span>L'écoulement et la garde d'eau sont rétablis. Le compte rendu indique ce qu'il faut faire avant la prochaine fermeture pour ne pas recommencer.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cas inverse" data-reveal>
+      <figure class="cas-visuel">
+        {{PHOTO_CUISINE_CARTE}}
+        <figcaption>{{PHOTO_CUISINE_LEGENDE}}.</figcaption>
+      </figure>
+      <div class="cas-corps">
+        <p class="cas-lieu">Cas de figure — location de vacances</p>
+        <h3>Évier de cuisine bloqué après une période d'affluence</h3>
+        <ul class="cas-etapes">
+          <li><span class="cle-cas">Problème</span>L'évier ne se vide plus entre deux locations. Le créneau de ménage est court : l'intervention doit tenir dans la journée de rotation.</li>
+          <li><span class="cle-cas">Diagnostic</span>Contrôle de l'écoulement robinet ouvert, puis dépose du siphon. Un bouchon graisseux au-delà du siphon ne se voit qu'au furet.</li>
+          <li><span class="cle-cas">Méthode</span>Nettoyage du siphon, puis furet sur la dérivation. Curage court si le dépôt s'étend sur la conduite plutôt que de se concentrer en un point.</li>
+          <li><span class="cle-cas">Résultat</span>L'évier se vide à plein débit avant l'arrivée suivante. Un rappel écrit sur les graisses est laissé pour les occupants.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cta-plein" style="margin-top:var(--e-7)">
+      <h2>Un problème d'écoulement dans le Morbihan&nbsp;?</h2>
+      <p>Résidence principale, maison de vacances ou location : dites-nous si le logement est occupé, cela change l'organisation de l'intervention.</p>
+      <div class="cta-actions">
+        <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="cta3-56">{{TELEPHONE}}</a>
+        <a class="btn btn-ghost btn-large" href="/devis" data-track="clic_devis" data-track-zone="cta3-56">Demander une intervention</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-titre">
+      <p class="sur-titre">Communes</p>
+      <h2>Où nous intervenons dans le Morbihan</h2>
+      <p>
+        Les communes ci-dessous disposent d'une page dédiée. Le département est
+        couvert en entier : l'absence d'une commune dans cette liste ne signifie
+        pas que nous n'y intervenons pas.
+      </p>
+    </div>
+
+    <ul class="villes-liste">
+      <li class="principale"><a href="/degorgement-lorient">Lorient</a></li>
+      <li class="principale"><a href="/degorgement-vannes">Vannes</a></li>
+      <li class="principale"><a href="/degorgement-pontivy">Pontivy</a></li>
       <li><a href="/degorgement-auray">Auray</a></li>
-      <li><a href="/degorgement-pontivy">Pontivy</a></li>
       <li><a href="/degorgement-hennebont">Hennebont</a></li>
       <li><a href="/degorgement-lanester">Lanester</a></li>
       <li><a href="/degorgement-ploemeur">Ploemeur</a></li>
@@ -181,7 +288,7 @@ priority: 0.85
       <li><a href="/degorgement-sarzeau">Sarzeau</a></li>
       <li><a href="/degorgement-questembert">Questembert</a></li>
     </ul>
-    <p style="margin-top:1rem">
+    <p class="villes-autres">
       Nous intervenons également à Séné, Saint-Avé, Theix-Noyalo, Arradon, Ploeren, Carnac,
       Quiberon, Erdeven, Étel, La Trinité-sur-Mer, Ploërmel, Josselin, Locminé, Malestroit,
       Baud, Le Faouët, Gourin, Damgan, Arzon et dans toutes les autres communes du département.
@@ -189,7 +296,25 @@ priority: 0.85
   </div>
 </section>
 
+{{SECTION_AVIS}}
+
 <section>
+  <div class="wrap">
+    <div class="cta-clair">
+      <div>
+        <h2>Parler à quelqu'un plutôt que remplir un formulaire</h2>
+        <p>
+          Pour une évacuation déjà bloquée, l'appel reste le moyen le plus court :
+          quelques questions suffisent à savoir quel matériel emporter.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="cta4-56">Appeler maintenant</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="alt">
   <div class="wrap">
     <h2>Questions fréquentes dans le Morbihan</h2>
     <div class="faq">
@@ -247,7 +372,7 @@ priority: 0.85
     <p>Résidence principale, maison de vacances ou hébergement touristique : la réponse n'est pas la même, dites-nous laquelle.</p>
     <p style="margin-top:1.5rem">
       <a class="btn btn-call btn-large" href="tel:{{TELEPHONE_E164}}" data-track="appel" data-track-zone="cta-final">Appeler le {{TELEPHONE}}</a>
-      <a class="btn btn-ghost btn-large" href="/devis" data-track="clic_devis" data-track-zone="cta-final">Demander un devis</a>
+      <a class="btn btn-ghost btn-large" href="/devis" data-track="clic_devis" data-track-zone="cta-final">Obtenir un devis</a>
     </p>
   </div>
 </section>
