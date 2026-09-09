@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Le formulaire n'a rien à indexer : c'est un point de traitement, pas une page.
+Disallow: /envoi-demande.php
+
+Sitemap: https://degorgement-richard.fr/sitemap.xml

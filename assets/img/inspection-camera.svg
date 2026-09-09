@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" role="img"
+     aria-label="Caméra d'inspection introduite dans une canalisation et écran de contrôle affichant l'intérieur du tuyau">
+  <rect width="640" height="420" rx="12" fill="#06283d"/>
+  <!-- tuyau en perspective -->
+  <g>
+    <ellipse cx="180" cy="250" rx="120" ry="96" fill="#0b3d5c" stroke="#12a5b8" stroke-width="5"/>
+    <ellipse cx="180" cy="250" rx="86" ry="68" fill="#082e46" stroke="#12a5b8" stroke-width="3" opacity=".8"/>
+    <ellipse cx="180" cy="250" rx="52" ry="40" fill="#041c2b"/>
+  </g>
+  <!-- câble et tête de caméra -->
+  <path d="M180 250c60-6 96-32 150-32" fill="none" stroke="#ff7a1a" stroke-width="9" stroke-linecap="round"/>
+  <g>
+    <rect x="150" y="234" width="46" height="32" rx="10" fill="#0f5a80" stroke="#12a5b8" stroke-width="3"/>
+    <circle cx="164" cy="250" r="9" fill="#9fd8e6"/>
+    <circle cx="164" cy="250" r="4" fill="#06283d"/>
+  </g>
+  <!-- écran -->
+  <g>
+    <rect x="330" y="96" width="272" height="188" rx="12" fill="#0a3450" stroke="#12a5b8" stroke-width="5"/>
+    <rect x="350" y="116" width="232" height="148" rx="6" fill="#041c2b"/>
+    <ellipse cx="466" cy="190" rx="72" ry="56" fill="none" stroke="#12a5b8" stroke-width="4"/>
+    <ellipse cx="466" cy="190" rx="40" ry="30" fill="none" stroke="#12a5b8" stroke-width="3" opacity=".7"/>
+    <path d="M430 206h72" stroke="#ff7a1a" stroke-width="6" stroke-linecap="round"/>
+    <text x="360" y="140" fill="#8fd3e0" font-family="system-ui, sans-serif" font-size="16">12,4 m — fissure</text>
+    <rect x="440" y="284" width="52" height="42" fill="#0a3450"/>
+    <rect x="396" y="326" width="140" height="14" rx="7" fill="#0a3450"/>
+  </g>
+</svg>

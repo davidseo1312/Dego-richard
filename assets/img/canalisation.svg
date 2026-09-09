@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" role="img"
+     aria-label="Coupe d'une canalisation enterrée obstruée par des racines et des dépôts">
+  <rect width="640" height="420" rx="12" fill="#e4f0f6"/>
+  <path d="M0 120h640v300H0z" fill="#c9b79a"/>
+  <path d="M0 120h640v14H0z" fill="#7fa05a"/>
+  <!-- tuyau -->
+  <g>
+    <rect x="20" y="212" width="600" height="88" rx="14" fill="#fff" stroke="#0b3d5c" stroke-width="7"/>
+    <rect x="20" y="236" width="600" height="42" fill="#9fd8e6" opacity=".7"/>
+    <path d="M212 212v88M420 212v88" stroke="#0b3d5c" stroke-width="5"/>
+  </g>
+  <!-- bouchon : dépôts + racines -->
+  <path d="M300 236h96v42h-96z" fill="#7a6a4f"/>
+  <g stroke="#4f6b33" stroke-width="6" fill="none" stroke-linecap="round">
+    <path d="M348 134v78M348 176c-22 6-34 22-38 40M348 168c22 8 34 24 38 44"/>
+  </g>
+  <!-- flèche d'écoulement bloqué -->
+  <path d="M60 257h180" stroke="#12a5b8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M240 257 214 240v34z" fill="#12a5b8"/>
+  <g stroke="#ff7a1a" stroke-width="10" stroke-linecap="round">
+    <path d="M430 240l38 34M468 240l-38 34"/>
+  </g>
+</svg>
