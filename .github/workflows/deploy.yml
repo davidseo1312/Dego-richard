@@ -22,7 +22,11 @@ name: Build et publication vers Hostinger
 
 on:
   push:
-    branches: [main]
+    # La branche par défaut du dépôt porte les sources ; « main » est conservée
+    # au cas où le dépôt serait renommé plus tard.
+    branches:
+      - main
+      - claude/plumbing-site-brittany-eoxa6x
     # Une modification de documentation ne justifie pas une republication.
     paths-ignore:
       - 'docs/**'
