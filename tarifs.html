@@ -35,7 +35,7 @@
      précharger évite le saut de police sur le H1, qui est l'élément LCP. -->
 <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/jakarta-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/style.css?v=0d06681d">
+<link rel="stylesheet" href="/assets/css/style.css?v=4eff916e">
 
 <!-- Active l'apparition au défilement. Placé ici, et non dans site.js qui est
      différé, pour que l'état initial soit posé avant le premier rendu : sinon
@@ -230,9 +230,10 @@
         <p class="urgence-badge"><span class="pastille" aria-hidden="true"></span> Intervention 24h/24 et 7j/7 · 6 départements</p>
         <h1>Tarifs : comment le prix d'un dégorgement se construit</h1>
         <p class="chapeau">
-          Nous n'affichons pas de « prix à partir de » séduisant qui n'aurait rien à voir avec la
-          facture. Cette page explique ce qui fait réellement varier le montant, et comment il
-          vous est communiqué avant que quoi que ce soit ne commence.
+          Le prix d'un dégorgement n'est pas un chiffre unique : il dépend de
+          ce que l'on trouve. Cette page explique ce qui le fait varier, et comment le montant
+          vous est annoncé — au téléphone d'abord, par écrit ensuite, avant que quoi que ce soit
+          ne commence.
         </p>
       </div>
 
@@ -309,26 +310,21 @@
       </li>
     </ol>
 
-    <div class="encadre">
-      <h2>Nos tarifs détaillés</h2>
-      <p>
-        <strong>Taux horaire de main-d'œuvre :</strong> [TAUX HORAIRE À RENSEIGNER]<br>
-        <strong>Frais de déplacement :</strong> [FRAIS DE DÉPLACEMENT À RENSEIGNER]<br>
-        <strong>Majoration nuit, dimanche et jours fériés :</strong> [MAJORATION NUIT ET WEEK-END À RENSEIGNER]<br>
-        <strong>Forfait débouchage simple :</strong> [FORFAIT DÉBOUCHAGE SIMPLE À RENSEIGNER]<br>
-        <strong>Forfait débouchage WC :</strong> [FORFAIT DÉBOUCHAGE WC À RENSEIGNER]<br>
-        <strong>Forfait hydrocurage :</strong> [FORFAIT HYDROCURAGE À RENSEIGNER]<br>
-        <strong>Forfait inspection caméra :</strong> [FORFAIT INSPECTION CAMÉRA À RENSEIGNER]<br>
-        <strong>Forfait pompage :</strong> [FORFAIT POMPAGE À RENSEIGNER]
-      </p>
-      <p>
-        Ces montants sont renseignés dans la configuration du site et doivent correspondre
-        exactement aux tarifs pratiqués, comme l'exige l'arrêté du 24 janvier 2017 relatif à la
-        publicité des prix des prestations de dépannage. Tant qu'ils apparaissent entre crochets,
-        c'est qu'ils n'ont pas encore été communiqués : appelez-nous, le prix vous sera donné de
-        vive voix et confirmé par écrit.
-      </p>
-    </div>
+    <div class="tarifs tarifs-absents">
+    <h2>Nos tarifs</h2>
+    <p>
+      Le prix dépend de la nature du bouchon, de son emplacement, de
+      l'accessibilité et du matériel nécessaire : un siphon d'évier et un
+      collecteur enterré ne demandent ni le même temps, ni le même matériel.
+      C'est pourquoi nous annonçons un prix au téléphone, après quelques
+      questions, puis un <strong>devis écrit remis avant toute
+      intervention</strong>. Rien n'est engagé sans votre accord.
+    </p>
+    <p>
+      <a class="btn btn-call btn-large" href="tel:+33220060075" data-track="appel" data-track-zone="tarifs">02 20 06 00 75</a>
+      <a class="btn btn-ghost btn-large" href="/devis" data-track="clic_devis" data-track-zone="tarifs">Demander un devis</a>
+    </p>
+  </div>
 
     <h2>Comment nous annonçons un prix</h2>
     <ol>
@@ -533,7 +529,7 @@
       <h2>Contact</h2>
       <ul>
         <li><a href="tel:+33220060075" data-track="appel" data-track-zone="pied-de-page-liste">02 20 06 00 75</a></li>
-        <li><a href="mailto:contact@degorgement-richard.fr">contact@degorgement-richard.fr</a></li>
+        <li><a href="mailto:contact@deboucheur-richard.fr">contact@deboucheur-richard.fr</a></li>
         <li><a href="/devis">Demander une intervention</a></li>
         <li><a href="/contact">Nous écrire</a></li>
       </ul>
