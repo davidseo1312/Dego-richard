@@ -153,7 +153,7 @@ DEVIS_PHOTO_MAX_MO="5"
 #   GA4_ID   : « G-XXXXXXXXXX »
 #   GTM_ID   : « GTM-XXXXXXX » (laisser vide si GA4 est utilisé seul)
 #   GSC_CODE : contenu de l'attribut « content » fourni par Search Console
-GA4_ID=""
+GA4_ID="G-3Y8Q871H5L"
 GTM_ID=""
 GSC_CODE=""
 

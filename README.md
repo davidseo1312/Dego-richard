@@ -425,7 +425,7 @@ Trois identifiants, tous dans `src/config.sh`, tous vides par défaut :
 
 | Clé | Valeur | Effet si vide |
 |---|---|---|
-| `GA4_ID` | `G-XXXXXXXXXX` | aucun script tiers chargé, aucun bandeau cookies |
+| `GA4_ID` | `G-XXXXXXXXXX` — **renseigné : `G-3Y8Q871H5L`** | aucun script tiers chargé, aucun bandeau cookies |
 | `GTM_ID` | `GTM-XXXXXXX` | idem — n'utilisez pas GA4 et GTM ensemble |
 | `GSC_CODE` | contenu de l'attribut `content` fourni par Search Console | aucune balise écrite |
 
@@ -436,6 +436,42 @@ bandeau apparaît et rien n'est chargé avant acceptation explicite
 
 Pour Search Console, la vérification par fichier HTML ou par DNS est préférable :
 elle ne pèse rien sur les pages.
+
+### Ce que mesure la balise, et quand
+
+La balise fournie par Google est un `<script>` à coller dans `<head>`. Elle
+n'est **pas** collée telle quelle : posée en dur, elle se charge avant tout
+consentement, ce que la CNIL sanctionne. L'identifiant est déposé sur la
+balise `<html>` au build, et `static/assets/js/site.js` ne charge `gtag.js`
+qu'après acceptation explicite.
+
+Le **mode consentement v2** est déclaré : tout part de `denied`, signaux
+publicitaires compris, et seul `analytics_storage` passe à `granted`. Les
+quatre signaux `ad_*` ne sont jamais accordés — le site ne fait pas de
+publicité, et le bandeau le promet.
+
+Le lien « Gestion des cookies » du pied de page rouvre le bandeau et repasse
+la mesure à `denied` : le RGPD veut qu'un consentement se retire aussi
+simplement qu'il se donne.
+
+### Les trois conversions à déclarer dans GA4
+
+Les événements partent avec le nom ci-dessous. Dans GA4, allez dans
+**Administration → Événements** et marquez-les comme **événements clés** — sans
+cela ils sont collectés mais ne remontent dans aucun rapport de conversion.
+
+| Événement | Déclenché par | Paramètres |
+|---|---|---|
+| `appel` | clic sur un numéro de téléphone | `zone`, `page` |
+| `clic_devis` | clic sur un bouton de demande d'intervention | `zone`, `page` |
+| `devis_envoye` | affichage de `/merci`, donc formulaire réellement transmis | `page` |
+
+Le paramètre `zone` dit QUEL appel à l'action a converti — en-tête, héros,
+barre mobile, carte de prestation, bandeau d'urgence, pied de page. C'est
+l'information qui permet d'arbitrer la mise en page sur autre chose que des
+impressions. Pour l'exploiter, créez une **dimension personnalisée** de portée
+« événement » sur le paramètre `zone` (Administration → Définitions
+personnalisées) : sans elle, GA4 collecte le paramètre mais ne l'affiche pas.
 
 ---
 

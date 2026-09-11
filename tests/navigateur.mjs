@@ -554,6 +554,98 @@ verifier(pire < 0.4,
 
 await ctxLanding.close();
 
+// --- 14. Mesure d'audience et consentement ---------------------------------
+titre('14. Mesure d’audience et consentement');
+
+const ctxMesure = await navigateur.newContext({ viewport: { width: 1280, height: 900 }, locale: 'fr-FR' });
+const requetesGoogle = [];
+ctxMesure.on('request', (r) => { if (/google/.test(r.url())) requetesGoogle.push(r.url()); });
+// Le réseau sortant n'est pas disponible pendant les tests : on répond à la
+// place de Google pour que le chargement aille à son terme.
+await ctxMesure.route('**://*.googletagmanager.com/**', (route) =>
+  route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }));
+const mesure = await ctxMesure.newPage();
+
+await mesure.goto(BASE + '/');
+await mesure.waitForTimeout(300);
+const identifiant = await mesure.evaluate(() => document.documentElement.getAttribute('data-ga') || '');
+verifier(/^G-[A-Z0-9]{8,}$/.test(identifiant),
+  `l’identifiant de mesure est posé sur la page (${identifiant || 'aucun'})`);
+
+// AVANT consentement : rien ne doit partir. C'est l'exigence de la CNIL, et
+// c'est la seule partie du dispositif qui expose à une sanction.
+const bandeau = mesure.locator('.cookie-bandeau');
+verifier(await bandeau.isVisible(), 'le bandeau de consentement s’affiche à la première visite');
+verifier(requetesGoogle.length === 0,
+  `aucune requête vers Google avant consentement (${requetesGoogle.length})`);
+verifier(await mesure.evaluate(() => (window.dataLayer || []).length) === 0,
+  'aucune donnée poussée avant consentement');
+verifier(await mesure.evaluate(() => document.cookie.indexOf('_ga') === -1),
+  'aucun cookie de mesure avant consentement');
+
+// APRÈS acceptation : la balise se charge, avec les signaux de consentement.
+await bandeau.locator('[data-action="accepter"]').click();
+await mesure.waitForTimeout(500);
+verifier(await mesure.locator('.cookie-bandeau').count() === 0, 'le bandeau disparaît après le choix');
+verifier(requetesGoogle.some((u) => u.includes('gtag/js') && u.includes(identifiant)),
+  'la balise gtag est chargée avec le bon identifiant');
+
+const signaux = await mesure.evaluate(() =>
+  (window.dataLayer || []).map((a) => Array.from(a)).filter((a) => a[0] === 'consent'));
+const defaut = signaux.find((s) => s[1] === 'default');
+const maj = signaux.find((s) => s[1] === 'update');
+verifier(Boolean(defaut) && Object.keys(defaut[2]).filter((k) => k.startsWith('ad_'))
+           .every((k) => defaut[2][k] === 'denied'),
+  'le mode consentement part de « denied », signaux publicitaires compris');
+verifier(Boolean(maj) && maj[2].analytics_storage === 'granted',
+  'seule la mesure d’audience passe à « granted »');
+verifier(!signaux.some((s) => Object.entries(s[2] || {})
+           .some(([k, v]) => k.startsWith('ad_') && v === 'granted')),
+  'aucun signal publicitaire n’est jamais accordé');
+
+// Les conversions du site.
+const evenements = await mesure.evaluate(() => {
+  document.addEventListener('click', (e) => e.preventDefault(), true);
+  document.querySelector('.hero-actions .btn-call').click();
+  document.querySelector('.header-actions .btn-devis').click();
+  return (window.dataLayer || []).map((a) => Array.from(a)).filter((a) => a[0] === 'event');
+});
+verifier(evenements.some((e) => e[1] === 'appel' && e[2].zone === 'hero'),
+  'un clic sur le numéro du héros émet « appel », avec sa zone');
+verifier(evenements.some((e) => e[1] === 'clic_devis' && e[2].zone === 'entete'),
+  'un clic sur le bouton d’en-tête émet « clic_devis », avec sa zone');
+
+await mesure.goto(BASE + '/merci');
+await mesure.waitForTimeout(400);
+verifier(await mesure.evaluate(() => (window.dataLayer || []).map((a) => Array.from(a))
+           .some((a) => a[0] === 'event' && a[1] === 'devis_envoye')),
+  'la page de remerciement émet la conversion « devis_envoye »');
+
+// Retrait du consentement : le RGPD le veut aussi simple que l'acceptation.
+await mesure.goto(BASE + '/');
+await mesure.locator('[data-consentement="rouvrir"]').first().click();
+await mesure.waitForTimeout(400);
+verifier(await mesure.locator('.cookie-bandeau').isVisible(),
+  'le lien « Gestion des cookies » repropose le bandeau');
+const apresRetrait = await mesure.evaluate(() =>
+  (window.dataLayer || []).map((a) => Array.from(a)).filter((a) => a[0] === 'consent').pop());
+verifier(apresRetrait && apresRetrait[2].analytics_storage === 'denied',
+  'le retrait repasse la mesure à « denied »');
+verifier(await mesure.evaluate(() => localStorage.getItem('consentement-mesure-audience')) === null,
+  'le choix mémorisé est effacé');
+
+// Un refus doit tenir : ni requête, ni bandeau au retour.
+await mesure.locator('.cookie-bandeau [data-action="refuser"]').click();
+const compteAvant = requetesGoogle.length;
+await mesure.goto(BASE + '/tarifs');
+await mesure.waitForTimeout(400);
+verifier(await mesure.locator('.cookie-bandeau').count() === 0,
+  'le bandeau ne revient pas après un refus');
+verifier(requetesGoogle.length === compteAvant,
+  'un refus empêche toute requête vers Google sur les pages suivantes');
+
+await ctxMesure.close();
+
 await navigateur.close();
 
 console.log('\n\x1b[1mBilan\x1b[0m');

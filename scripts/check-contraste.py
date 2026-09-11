@@ -72,6 +72,18 @@ RELEVE = r"""
     const p = m[1].split(',').map(x => parseFloat(x));
     if (p.length > 3 && p[3] < 0.5) continue;
 
+    /* Texte recouvert par un élément fixe — bandeau de consentement, barre
+       d'action de bas d'écran. Il n'est pas illisible : il est CACHÉ. Mesurer
+       la couleur de ce qui passe par-dessus rendrait un écart de contraste qui
+       ne décrit rien, et masquerait les vrais. On vérifie donc que le point
+       central du texte lui appartient encore. */
+    const cx = Math.min(Math.max(r.left + r.width / 2, 1), window.innerWidth - 1);
+    const cy = Math.min(Math.max(r.top + r.height / 2, 1), window.innerHeight - 1);
+    if (r.top >= 0 && r.top < window.innerHeight) {
+      const dessus = document.elementFromPoint(cx, cy);
+      if (dessus && dessus !== el && !el.contains(dessus) && !dessus.contains(el)) continue;
+    }
+
     const px = parseFloat(cs.fontSize);
     const gras = parseInt(cs.fontWeight, 10) >= 700;
     out.push({
