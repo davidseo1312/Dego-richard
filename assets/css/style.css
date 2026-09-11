@@ -110,9 +110,13 @@
   --vert:  #15803d;
   --rouge: #b91c1c;
 
-  /* Rayons. */
-  --r-xs: 8px;  --r-sm: 12px;  --r-md: 16px;
-  --r-lg: 20px; --r-xl: 28px;  --r-full: 999px;
+  /* Rayons — l'identité est à angles vifs.
+     Les six jetons sont conservés, et valent tous zéro : un composant
+     continue d'écrire l'intention (« ce bloc porte le rayon d'une carte »),
+     et revenir à des angles adoucis se fait ici, en une ligne, sans toucher
+     à une seule règle. */
+  --r-xs: 0;  --r-sm: 0;  --r-md: 0;
+  --r-lg: 0;  --r-xl: 0;  --r-full: 0;
 
   /* Ombres — douces et bleutées, jamais lourdes. */
   --ombre-xs: 0 1px 2px rgba(15, 23, 42, .04);
@@ -278,7 +282,7 @@ section.alt + section.alt { background: var(--color-surface); }
 :focus-visible {
   outline: 3px solid var(--bleu-500);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 /* Titre de section : sur-titre discret, titre, chapeau. */
@@ -300,7 +304,7 @@ section.alt + section.alt { background: var(--color-surface); }
   margin: 0 0 .85rem;
 }
 .sur-titre::before {
-  content: ""; width: 1.6rem; height: 2px; border-radius: 2px;
+  content: ""; width: 1.6rem; height: 2px; border-radius: 0;
   background: linear-gradient(90deg, var(--bleu-500), var(--bleu-300));
 }
 .sur-titre.accent { color: var(--color-primary-deep); }
@@ -308,7 +312,7 @@ section.alt + section.alt { background: var(--color-surface); }
 
 /* Point clignotant de disponibilité. */
 .pastille {
-  width: .6rem; height: .6rem; border-radius: 50%;
+  width: .6rem; height: .6rem; border-radius: 0;
   background: #22c55e; flex: none;
   box-shadow: 0 0 0 0 rgba(34, 197, 94, .55);
   animation: pouls 2.4s ease-out infinite;
@@ -496,7 +500,7 @@ section.alt + section.alt { background: var(--color-surface); }
    menu, et il remplace l'aplat de fond qui alourdissait la barre. */
 .nav ul a::after {
   content: ""; position: absolute; left: .58rem; right: .58rem; bottom: .18rem;
-  height: 2px; border-radius: 2px;
+  height: 2px; border-radius: 0;
   background: var(--color-primary-dark);
   transform: scaleX(0); transform-origin: center;
   transition: transform .22s ease;
@@ -517,7 +521,7 @@ section.alt + section.alt { background: var(--color-surface); }
 .header-call .tel-icone {
   width: 2.15rem; height: 2.15rem; flex: none;
   display: grid; place-items: center;
-  border-radius: 50%;
+  border-radius: 0;
   background: var(--color-primary-light); color: var(--color-primary-deep);
   transition: background .18s ease, color .18s ease;
 }
@@ -569,7 +573,7 @@ section.alt + section.alt { background: var(--color-surface); }
   border-radius: var(--r-sm); cursor: pointer; color: var(--texte-fort);
 }
 .nav-toggle-bars, .nav-toggle-bars::before, .nav-toggle-bars::after {
-  display: block; width: 1.15rem; height: 2px; border-radius: 2px;
+  display: block; width: 1.15rem; height: 2px; border-radius: 0;
   background: currentColor; transition: transform .22s ease, opacity .18s ease;
 }
 .nav-toggle-bars { position: relative; }
@@ -756,7 +760,7 @@ main > section.hero { padding-block: clamp(2.25rem, 1rem + 4.4vw, 4.5rem); }
 }
 .hero-carte .icone {
   width: 2.4rem; height: 2.4rem; flex: none;
-  display: grid; place-items: center; border-radius: 50%;
+  display: grid; place-items: center; border-radius: 0;
   background: var(--color-primary-light); color: var(--color-primary-deep);
 }
 .hero-carte .icone svg { width: 1.2rem; height: 1.2rem; }
@@ -967,7 +971,7 @@ main > section.hero-interieur { padding-block: 0 clamp(2rem, 1rem + 3vw, 3.25rem
 }
 .cle::before {
   content: ""; width: .45rem; height: .45rem; flex: none;
-  border-radius: 50%; background: var(--color-primary);
+  border-radius: 0; background: var(--color-primary);
 }
 
 /* --- Bandeau d'urgence — le seul aplat de bleu soutenu de la page --------- */
@@ -1029,7 +1033,7 @@ main > section.hero-interieur { padding-block: 0 clamp(2rem, 1rem + 3vw, 3.25rem
 .liste-situations li::before {
   content: "";
   width: .45rem; height: .45rem; margin-top: .55rem; flex: none;
-  border-radius: 50%; background: var(--color-primary);
+  border-radius: 0; background: var(--color-primary);
 }
 
 .urgence-encart {
@@ -1067,7 +1071,7 @@ main > section.hero-interieur { padding-block: 0 clamp(2rem, 1rem + 3vw, 3.25rem
   position: absolute; left: 0; top: 0;
   width: 2.5rem; height: 2.5rem;
   display: grid; place-items: center;
-  border-radius: 50%;
+  border-radius: 0;
   background: var(--surface);
   border: 1.5px solid var(--bleu-200);
   color: var(--bleu-700);
@@ -1344,7 +1348,7 @@ ul.liens-connexes { padding: var(--e-5); }
 }
 .problemes > li::before {
   content: ""; position: absolute; left: 1rem; top: 1.35rem;
-  width: .55rem; height: .55rem; border-radius: 50%;
+  width: .55rem; height: .55rem; border-radius: 0;
   background: var(--color-primary-dark);
   box-shadow: 0 0 0 4px var(--color-primary-light);
 }
@@ -1450,7 +1454,7 @@ ul.liens-connexes { padding: var(--e-5); }
   transition: border-color .18s ease, background .18s ease, transform .18s ease;
 }
 .villes-liste a::before {
-  content: ""; width: .4rem; height: .4rem; border-radius: 50%; flex: none;
+  content: ""; width: .4rem; height: .4rem; border-radius: 0; flex: none;
   background: var(--color-primary-dark);
 }
 .villes-liste a:hover {
@@ -1549,7 +1553,7 @@ ul.liens-connexes { padding: var(--e-5); }
 .faq summary::after {
   content: "";
   width: 1.5rem; height: 1.5rem; flex: none;
-  border-radius: 50%;
+  border-radius: 0;
   background: var(--bleu-50) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230369a1' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center / .85rem no-repeat;
   transition: transform .22s ease;
 }
@@ -1834,7 +1838,7 @@ tbody tr:hover { background: var(--fond-doux); }
 }
 .footer-tel .icone {
   width: 2.4rem; height: 2.4rem; flex: none;
-  display: grid; place-items: center; border-radius: 50%;
+  display: grid; place-items: center; border-radius: 0;
   background: var(--color-accent); color: #06283d;
 }
 .footer-tel .icone svg { width: 1.15rem; height: 1.15rem; }
@@ -2048,6 +2052,18 @@ tbody tr:hover { background: var(--fond-doux); }
 .carte-toile .leaflet-control-attribution {
   font-size: .72rem; background: rgba(255,255,255,.86);
 }
+/* La feuille de Leaflet arrondit ses bulles, ses boutons de zoom et sa ligne
+   d'attribution. On ne modifie pas le fichier du fournisseur : on le corrige
+   ici, là où la décision se lit. */
+.carte-toile .leaflet-popup-content-wrapper,
+.carte-toile .leaflet-popup-tip,
+.carte-toile .leaflet-bar,
+.carte-toile .leaflet-bar a,
+.carte-toile .leaflet-bar a:first-child,
+.carte-toile .leaflet-bar a:last-child,
+.carte-toile .leaflet-control-attribution,
+.carte-toile .leaflet-control-zoom-in,
+.carte-toile .leaflet-control-zoom-out { border-radius: 0; }
 .carte-toile .carte-etiquette {
   background: var(--surface); color: var(--texte-fort);
   border: 1px solid var(--bleu-200); border-radius: var(--r-full);
