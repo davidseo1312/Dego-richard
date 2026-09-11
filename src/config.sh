@@ -13,9 +13,20 @@ NOM_COMMERCIAL="Dégorgement Richard"
 BASELINE="Dégorgement, débouchage et assainissement dans le Grand Ouest"
 # ⚠ DOMAINE À CONFIRMER : aucun nom de domaine n'était fixé pour ce nouveau
 # site. Celui-ci est un choix par défaut, cohérent avec le nom commercial.
-# S'il change, modifiez ces deux lignes et rien d'autre : tout le site suit.
-DOMAINE="degorgement-richard.fr"
-BASE_URL="https://degorgement-richard.fr"
+# S'il change, modifiez cette ligne et rien d'autre : tout le site suit.
+#
+# Ce domaine est écrit dans TOUTES les adresses canoniques et dans le sitemap.
+# Une page servie depuis un autre domaine — un sous-domaine de
+# prévisualisation, par exemple — désigne donc une adresse qui n'est pas la
+# sienne, et aucun moteur ne l'indexera. C'est sans conséquence tant que le
+# site est en préparation, et bloquant le jour de l'ouverture.
+#
+# Pour construire une version de démonstration cohérente avec l'adresse où
+# elle sera servie, sans toucher à ce fichier :
+#
+#     DOMAINE=exemple.hostingersite.com bash scripts/build.sh
+DOMAINE="${DOMAINE:-degorgement-richard.fr}"
+BASE_URL="https://${DOMAINE}"
 
 # --- Contact ----------------------------------------------------------------
 # Numéro repris à l'identique du site serrurerie : même entreprise, même

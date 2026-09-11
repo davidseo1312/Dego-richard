@@ -284,6 +284,29 @@ L'expéditeur n'appartient pas au domaine, ou les enregistrements SPF et DKIM ne
 sont pas publiés. **hPanel → Emails → Configuration DNS** : activez SPF et DKIM
 pour le domaine.
 
+### Une page répond 404 alors qu'elle existe
+
+Regardez d'abord les **redirections** du `.htaccess`. Une règle qui renvoie
+vers sa propre adresse boucle indéfiniment ; selon le serveur, le visiteur
+reçoit une erreur de redirection ou, sur LiteSpeed, la page 404. C'est arrivé
+sur `/services`, et le site local n'en montrait rien : le serveur de
+développement PHP n'applique pas le `.htaccess`.
+
+Deux garde-fous ont été posés depuis :
+
+* `scripts/routeur-local.php` **lit** les redirections dans le `.htaccess` au
+  lieu d'en tenir une copie. C'est la divergence entre les deux listes qui
+  rendait le défaut invisible en local.
+* `scripts/test-http.sh` et `scripts/check-indexation.py` suivent chaque
+  redirection déclarée et vérifient qu'elle aboutit à un 200 **en un seul
+  saut**. Vérifier le code 301 ne suffisait pas : une boucle répond 301 elle
+  aussi.
+
+`tests/navigateur.mjs` clique en plus sur les six entrées du menu et vérifie
+qu'aucune ne mène à une 404 — c'est par là que le défaut s'était manifesté.
+
+---
+
 ### Une modification n'apparaît pas en ligne
 
 1. Le workflow GitHub est-il vert ?

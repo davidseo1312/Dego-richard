@@ -42,7 +42,7 @@ CHROMIUM = "/opt/pw-browsers/chromium"
 
 # Un échantillon couvrant tous les gabarits du site.
 PAGES = [
-    "/", "/services", "/debouchage-wc", "/curage-canalisation",
+    "/", "/prestations", "/debouchage-wc", "/curage-canalisation",
     "/departements/finistere", "/degorgement-rennes", "/degorgement-vannes",
     "/blog/", "/blog/prix-degorgement", "/devis", "/contact", "/faq",
     "/tarifs", "/zone-intervention", "/degorgement-urgence",

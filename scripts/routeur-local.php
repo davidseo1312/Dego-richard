@@ -16,31 +16,38 @@ $racine = __DIR__ . '/../public';
 $chemin = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '/';
 $chemin = rawurldecode($chemin);
 
-// Les mêmes redirections 301 que le .htaccess.
-$redirections = [
-    '/urgence'                      => '/degorgement-urgence',
-    '/degorgement-urgent'           => '/degorgement-urgence',
-    '/debouchage'                   => '/debouchage-canalisation',
-    '/canalisation-bouchee'         => '/debouchage-canalisation',
-    '/wc-bouche'                    => '/debouchage-wc',
-    '/toilettes-bouchees'           => '/debouchage-toilettes',
-    '/evier-bouche'                 => '/debouchage-evier',
-    '/lavabo-bouche'                => '/debouchage-lavabo',
-    '/douche-bouchee'               => '/debouchage-douche',
-    '/baignoire-bouchee'            => '/debouchage-baignoire',
-    '/hydrocurage'                  => '/curage-canalisation',
-    '/camera-canalisation'          => '/inspection-camera-canalisation',
-    '/prestations'                  => '/services',
-    '/zones-d-intervention'         => '/zone-intervention',
-    '/zones'                        => '/zone-intervention',
-    '/devis-degorgement'            => '/devis',
-    '/tarif'                        => '/tarifs',
-    '/politique-de-confidentialite' => '/politique-confidentialite',
-];
+/* Les redirections 301 sont LUES dans le .htaccess, pas recopiées ici.
+ *
+ * Elles l'étaient, et les deux listes ont divergé : le .htaccess a fini par
+ * contenir « /services -> /services », une boucle infinie qui rendait la page
+ * des prestations inaccessible en production, pendant que cette liste-ci,
+ * restée saine, laissait l'aperçu local fonctionner. Un bug invisible chez
+ * soi et fatal en ligne : exactement ce qu'une seconde source de vérité
+ * produit. */
+$redirections = [];
+$htaccess = __DIR__ . '/../static/.htaccess';
+if (is_file($htaccess)) {
+    foreach (file($htaccess) as $ligne) {
+        if (preg_match('#^RewriteRule\s+\^([a-z0-9/-]+)/\?\$\s+(/\S*)\s+\[R=301#i',
+                       $ligne, $m)) {
+            $redirections['/' . $m[1]] = $m[2];
+        }
+    }
+}
 
 $sansSlash = rtrim($chemin, '/');
 if ($sansSlash !== '' && isset($redirections[$sansSlash])) {
     header('Location: ' . $redirections[$sansSlash], true, 301);
+    exit;
+}
+
+/* /page/ -> /page, sauf si c'est un vrai dossier (/blog/).
+ * Le .htaccess le fait en production ; sans cette regle ici, l'aperçu local
+ * servait /tarifs/ en 200 et laissait croire à deux adresses valides pour la
+ * même page — le doublon que la redirection est censée supprimer. */
+if ($chemin !== '/' && substr($chemin, -1) === '/'
+    && !is_dir($racine . rtrim($chemin, '/'))) {
+    header('Location: ' . rtrim($chemin, '/'), true, 301);
     exit;
 }
 

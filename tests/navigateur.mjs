@@ -40,7 +40,7 @@ function titre(texte) {
 
 const PAGES = [
   ['accueil', '/'],
-  ['prestations', '/services'],
+  ['prestations', '/prestations'],
   ['urgence', '/degorgement-urgence'],
   ['débouchage WC', '/debouchage-wc'],
   ['canalisation extérieure', '/debouchage-canalisation-exterieure'],
@@ -455,6 +455,40 @@ verifier(
   ['Prestations', 'Urgence', 'Zones', 'Tarifs', 'Conseils', 'Contact']
     .every((e, i) => entete.entrees[i] === e),
   'les six entrées du menu sont dans l’ordre demandé');
+
+// Les six entrées du menu doivent MENER quelque part. « Prestations »
+// pointait vers /services, qui se redirigeait vers lui-même : boucle infinie
+// en production, page inaccessible. Vérifier le href ne suffit donc pas — il
+// faut suivre le lien.
+await landing.goto(BASE + '/');
+const menuCasse = [];
+const entrees = await landing.$$eval('.nav ul a', (as) =>
+  as.map((a) => [a.textContent.trim(), a.getAttribute('href')]));
+for (const [libelle, href] of entrees) {
+  const reponse = await landing.goto(BASE + href, { waitUntil: 'domcontentloaded' });
+  const titre404 = await landing.evaluate(() => document.title.includes('404'));
+  if (!reponse || reponse.status() !== 200 || titre404) {
+    menuCasse.push(`${libelle} (${href} → ${reponse ? reponse.status() : 'nul'})`);
+  }
+}
+verifier(menuCasse.length === 0,
+  `les ${entrees.length} entrées du menu mènent à une page servie${menuCasse.length ? ' — ' + menuCasse.join(', ') : ''}`);
+
+// Les anciennes adresses doivent encore aboutir, en un seul saut.
+const redirections = [['/services', '/prestations'], ['/urgence', '/degorgement-urgence'],
+                      ['/zones', '/zone-intervention'], ['/tarif', '/tarifs']];
+const mauvaises = [];
+for (const [ancienne, attendue] of redirections) {
+  const r = await landing.goto(BASE + ancienne, { waitUntil: 'domcontentloaded' });
+  const arrivee = new URL(landing.url()).pathname;
+  if (arrivee !== attendue || !r || r.status() !== 200) {
+    mauvaises.push(`${ancienne} → ${arrivee}`);
+  }
+}
+verifier(mauvaises.length === 0,
+  `les anciennes adresses aboutissent sans boucle${mauvaises.length ? ' — ' + mauvaises.join(', ') : ''}`);
+
+await landing.goto(BASE + '/');
 
 // Quatre cartes de réassurance, sous le héros.
 const rassurance = await landing.locator('.rassurance > li').count();

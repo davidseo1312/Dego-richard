@@ -74,7 +74,7 @@ echo "  ${VERT}v${FIN} $NB_SITEMAP URL(s) du sitemap repondent 200"
 echo
 echo "2. Fichiers techniques et pages cles"
 for chemin in / /robots.txt /sitemap.xml /manifest.webmanifest \
-              /assets/css/style.css /assets/js/site.js \
+              /prestations /assets/css/style.css /assets/js/site.js \
               /assets/img/favicon.svg /assets/img/partage/og-default.jpg \
               /degorgement /degorgement-urgence /debouchage-canalisation /debouchage-wc \
               /departements/cotes-d-armor /departements/finistere \
@@ -90,8 +90,37 @@ done
 # --- 3. Redirections 301 ---------------------------------------------------
 echo
 echo "3. Redirections 301"
-for chemin in /urgence /wc-bouche /hydrocurage /tarif /zones-d-intervention \
-              /politique-de-confidentialite /index.html /tarifs.html; do
+# La liste vient du .htaccess lui-meme, pas d'une copie : c'est une copie
+# divergente qui a laisse passer « /services -> /services », une boucle
+# infinie invisible en local et fatale en ligne.
+#
+# Chaque redirection est suivie : elle doit aboutir a un 200 EN UN SEUL SAUT.
+# Verifier le seul code 301 ne suffisait pas - une boucle repond 301, elle
+# aussi.
+NB_REDIR=0
+ECHECS_AVANT_REDIR="$ECHECS"
+while IFS='|' read -r source cible; do
+  [ -z "$source" ] && continue
+  NB_REDIR=$((NB_REDIR + 1))
+  NB=$((NB + 1))
+  RECU=$(curl -s -o /dev/null -w "%{http_code}" "${BASE}${source}")
+  ARRIVEE=$(curl -s -o /dev/null -w "%{redirect_url}" "${BASE}${source}")
+  FINAL=$(curl -s -o /dev/null -w "%{http_code}" --max-redirs 3 -L "${BASE}${source}")
+  if [ "$RECU" != "301" ]; then
+    echo "  ${ROUGE}x${FIN} ${source} repond $RECU au lieu de 301"
+    ECHECS=$((ECHECS + 1))
+  elif [ "${ARRIVEE##*"${BASE}"}" = "$source" ]; then
+    echo "  ${ROUGE}x${FIN} ${source} redirige vers lui-meme - boucle infinie"
+    ECHECS=$((ECHECS + 1))
+  elif [ "$FINAL" != "200" ]; then
+    echo "  ${ROUGE}x${FIN} ${source} aboutit a $FINAL (attendu : $cible)"
+    ECHECS=$((ECHECS + 1))
+  fi
+done <<< "$(sed -n 's#^RewriteRule \^\([a-z0-9/-]*\)/?\$ *\(/[^ ]*\).*\[R=301.*#/\1|\2#p' public/.htaccess)"
+[ "$ECHECS" -eq "$ECHECS_AVANT_REDIR" ] \
+  && echo "  ${VERT}v${FIN} $NB_REDIR redirection(s) du .htaccess aboutissent en un saut"
+
+for chemin in /index.html /tarifs.html /tarifs/; do
   verifier "$chemin" 301
 done
 

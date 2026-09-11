@@ -46,7 +46,7 @@ LARGEURS = [320, 375, 390, 414, 430, 768, 820, 1024, 1280, 1440, 1920]
 # construites à partir des mêmes partiels et des mêmes composants.
 PAGES = [
     "/",                              # accueil, la plus dense
-    "/services",                      # sommaire des prestations
+    "/prestations",                   # sommaire des prestations
     "/debouchage-wc",                 # page de prestation
     "/curage-canalisation",           # prestation avec tableau
     "/departements/finistere",        # page départementale
