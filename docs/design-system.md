@@ -378,6 +378,21 @@ passe.
 
 ## 12. Performance
 
+### Versionnement des ressources
+
+Feuilles de style, scripts et icônes sont servis `immutable` pour un an. Leur
+URL porte donc une empreinte de leur contenu — `style.css?v=c3ea0a87` — sans
+quoi un visiteur déjà venu garderait l'ancienne version pendant un an sans
+même la revalider, et ne verrait jamais une refonte. Le HTML, servi en
+`must-revalidate`, pointe toujours vers la bonne empreinte.
+
+C'est un vrai piège, et il a été rencontré : le logo est apparu en pleine
+largeur chez un visiteur dont le navigateur servait encore la feuille de style
+d'avant. Deux protections ont été posées — l'empreinte ci-dessus, et des
+attributs `width`/`height` qui portent la taille **d'affichage** du logo et
+non celle de son tracé, pour qu'une page privée de CSS reste sensée.
+
+
 | Ressource | Poids | Chargée |
 |---|---|---|
 | CSS | ~60 Ko non compressé, un seul fichier | toujours |

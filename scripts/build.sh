@@ -148,6 +148,23 @@ export SECTION_CARTE="$(cat src/partials/carte-zone.html)"
 # Google exige que le fil d'Ariane balisé corresponde à celui affiché.
 # Les pages composent le leur avec <nav class="fil"> ; ce bloc produit le
 # JSON-LD équivalent à partir des métadonnées « breadcrumb » et « parent ».
+# --- Empreintes de contenu ---------------------------------------------------
+# Les feuilles de style, les scripts et les favicons sont servis avec
+# « Cache-Control: immutable, max-age=1 an ». C'est le bon réglage — mais à une
+# condition : que leur URL change quand leur contenu change. Sans cela, un
+# visiteur déjà venu garde l'ancienne feuille pendant un an et ne la
+# redemande même pas, « immutable » dispensant le navigateur de revalider.
+# L'empreinte du fichier devient donc son numéro de version.
+empreinte() { sha1sum "$1" 2>/dev/null | cut -c1-8; }
+export V_CSS="$(empreinte static/assets/css/style.css)"
+export V_JS="$(empreinte static/assets/js/site.js)"
+# Les icônes changent ensemble : une seule empreinte pour le lot suffit, et
+# elle évite de multiplier les jetons dans l'en-tête.
+export V_ICONES="$(cat static/assets/img/favicon.svg \
+                       static/assets/img/favicon.ico \
+                       static/assets/img/apple-touch-icon.png 2>/dev/null \
+                   | sha1sum | cut -c1-8)"
+
 # --- WebPage + ImageObject ---------------------------------------------------
 # Chaque page décrit ce qu'elle est, à quel site elle appartient et quelle
 # image la représente. Les dimensions sont celles des vignettes de partage
@@ -379,7 +396,7 @@ RESSOURCES=$( { grep -rhoE 'src="/[^"]+"' "$OUT" --include='*.html'
                 grep -rhoE 'srcset="[^"]+"' "$OUT" --include='*.html' \
                   | sed 's/^srcset="//;s/"$//' | tr ',' '\n' \
                   | sed 's/^ *//;s/ [0-9]*w$//' | sed 's/^/src="/;s/$/"/'
-              } 2>/dev/null | sed 's/^[a-z]*="//;s/"$//' | sort -u )
+              } 2>/dev/null | sed 's/^[a-z]*="//;s/"$//;s/?.*$//' | sort -u )
 NB_RESSOURCES=0
 while IFS= read -r ref; do
   [ -n "$ref" ] || continue

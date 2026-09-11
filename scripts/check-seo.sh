@@ -127,6 +127,8 @@ while IFS= read -r f; do
   while IFS= read -r lien; do
     [ -z "$lien" ] && continue
     case "$lien" in /assets/*) continue ;; esac
+    # Le jeton de version (?v=...) ne fait pas partie du chemin sur le disque.
+    lien="${lien%%\?*}"
     cible="public${lien}"
     if   [ "$lien" = "/" ] && [ -f public/index.html ]; then continue
     elif [ -f "$cible" ];          then continue
@@ -287,11 +289,31 @@ REFS=$( { grep -rhoE 'src="/[^"]+"'  public --include='*.html'
         } | sed 's/^[a-z]*="//;s/"$//' | sort -u )
 while IFS= read -r ref; do
   [ -z "$ref" ] && continue
-  if [ ! -f "public$ref" ]; then erreur "ressource absente : $ref"; PB=1; fi
+  if [ ! -f "public${ref%%\?*}" ]; then erreur "ressource absente : $ref"; PB=1; fi
 done <<< "$REFS"
 [ "$PB" -eq 0 ] && ok "Toutes les ressources referencees existent ($(echo "$REFS" | grep -c .) fichiers)"
 
-NB_SVG=$(grep -rhoE 'src="/assets/img/[a-z0-9-]+\.svg"' public --include='*.html' | sort -u | grep -c . || true)
+# --- 13 bis. Versionnement des ressources mises en cache un an -------------
+# style.css, site.js et les favicons sont servis « immutable » pour un an. Si
+# leur URL ne change pas avec leur contenu, un visiteur deja venu garde
+# l'ancienne version sans meme la revalider - c'est exactement ce qui fait
+# qu'une refonte ne se voit pas chez ceux qui connaissent deja le site.
+titre "13 bis. Versionnement des ressources mises en cache"
+PB=0
+for couple in "assets/css/style.css" "assets/js/site.js" "assets/img/favicon.svg"; do
+  ATTENDU_URL=$(grep -rhoE "\"/$couple\?v=[0-9a-f]{8}\"" public --include='*.html' | sort -u)
+  NB=$(echo "$ATTENDU_URL" | grep -c . || true)
+  if [ "${NB:-0}" -eq 0 ]; then
+    erreur "$couple est reference sans jeton de version - le cache d'un an le figera"
+    PB=1
+  elif [ "${NB:-0}" -gt 1 ]; then
+    erreur "$couple porte $NB jetons differents - construction incoherente"
+    PB=1
+  fi
+done
+[ "$PB" -eq 0 ] && ok "Feuille de style, script et favicon versionnes par empreinte de contenu"
+
+NB_SVG=$(grep -rhoE 'src="/assets/img/(schemas|)[a-z0-9/-]*\.svg"' public --include='*.html' | grep -v '/logo/' | grep -v favicon | sort -u | grep -c . || true)
 [ "${NB_SVG:-0}" -gt 0 ] && avert "$NB_SVG illustration(s) encore vectorielle(s) - voir static/assets/img/README.md pour deposer de vraies photos"
 
 # --- 14. Redirections 301 --------------------------------------------------

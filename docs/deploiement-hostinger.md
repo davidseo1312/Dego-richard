@@ -289,9 +289,32 @@ pour le domaine.
 1. Le workflow GitHub est-il vert ?
 2. La branche `deploy` a-t-elle bien été mise à jour (dernier commit) ?
 3. Hostinger a-t-il redéployé ? Relancez *Deploy* dans hPanel.
-4. Videz le cache de votre navigateur. Le `.htaccess` demande déjà au
-   navigateur de ne pas mettre le HTML en cache ; les CSS, JS et images sont en
-   revanche mis en cache un an.
+4. Essayez dans une fenêtre de navigation privée. Si la modification apparaît
+   là et pas ailleurs, c'est le cache du navigateur.
+
+**Sur le cache, et pourquoi ce n'est normalement plus un problème.** Le
+`.htaccess` sert les feuilles de style, les scripts et les icônes avec
+`Cache-Control: immutable, max-age=1 an`. C'est le bon réglage pour la
+vitesse, mais `immutable` signifie littéralement « ne me redemande pas » : un
+visiteur déjà venu garde son ancienne copie pendant un an, sans même
+revalider. Une refonte complète peut ainsi rester invisible pour tous ceux qui
+connaissent déjà le site.
+
+Le build résout cela en donnant à chaque fichier un numéro de version tiré de
+son propre contenu :
+
+```html
+<link rel="stylesheet" href="/assets/css/style.css?v=c3ea0a87">
+<script src="/assets/js/site.js?v=4491cc3a" defer></script>
+<link rel="icon" href="/assets/img/favicon.svg?v=efe59b56">
+```
+
+Le contenu change, l'empreinte change, l'URL change, le navigateur redemande.
+Le HTML, lui, est servi en `must-revalidate` : il est toujours à jour, donc il
+pointe toujours vers la bonne version. Rien à vider, rien à purger.
+
+`scripts/check-seo.sh` vérifie à chaque audit que ces trois fichiers portent
+bien un jeton, et qu'il est le même sur les 111 pages.
 
 ---
 

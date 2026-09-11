@@ -27,15 +27,15 @@
 <meta name="twitter:description" content="{{PAGE_DESC}}">
 <meta name="twitter:image" content="{{BASE_URL}}{{PAGE_IMAGE}}">
 
-<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/assets/img/favicon.ico" sizes="32x32">
-<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/assets/img/favicon.svg?v={{V_ICONES}}" type="image/svg+xml">
+<link rel="icon" href="/assets/img/favicon.ico?v={{V_ICONES}}" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v={{V_ICONES}}">
+<link rel="manifest" href="/manifest.webmanifest?v={{V_ICONES}}">
 <!-- Les deux familles variables sont servies depuis ce domaine. Les
      précharger évite le saut de police sur le H1, qui est l'élément LCP. -->
 <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/jakarta-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css?v={{V_CSS}}">
 
 <!-- Active l'apparition au défilement. Placé ici, et non dans site.js qui est
      différé, pour que l'état initial soit posé avant le premier rendu : sinon

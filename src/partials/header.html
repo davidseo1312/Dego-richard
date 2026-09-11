@@ -9,10 +9,15 @@
   <div class="wrap header-inner">
     <a class="brand" href="/">
       <!-- Logo vectoriel : net à toutes les définitions, et un seul fichier
-           mis en cache pour les 111 pages. Les dimensions portées par la
-           balise réservent sa place avant même qu'il soit chargé. -->
+           mis en cache pour les 111 pages.
+
+           width et height portent la taille D'AFFICHAGE, pas celle du tracé.
+           Elles réservent la place exacte avant chargement, et surtout elles
+           donnent une taille juste si la feuille de style manque à l'appel —
+           avec les dimensions du tracé, un logo sans CSS s'étalerait sur
+           1659 px et chasserait le menu hors de l'écran. -->
       <img class="brand-logo" src="/assets/img/logo/logo-deboucheur-richard.svg"
-           width="1659" height="480" fetchpriority="high"
+           width="159" height="46" fetchpriority="high"
            alt="Déboucheur Richard en Bretagne">
     </a>
 
