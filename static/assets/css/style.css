@@ -1534,6 +1534,77 @@ ul.liens-connexes { padding: var(--e-5); }
 }
 .evacuations span { display: block; font-size: .85rem; color: var(--texte-doux); }
 
+/* --- Tarifs « à partir de » -----------------------------------------------
+   Un prix d'appel n'est utile que s'il est lisible d'un coup d'œil ET
+   immédiatement replacé dans son contexte : ce qu'il couvre, et le fait qu'un
+   devis écrit précède l'intervention. Les trois informations tiennent dans la
+   même carte, jamais séparées. */
+.tarifs { margin: var(--e-6) 0; }
+.tarifs > h2 { margin-bottom: .6rem; }
+
+.tarifs-grille {
+  display: grid; gap: var(--e-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  list-style: none; margin: var(--e-5) 0 0; padding: 0;
+}
+.tarifs-grille > li {
+  margin: 0; display: grid; gap: .35rem; align-content: start;
+  padding: var(--e-5);
+  background: var(--surface);
+  border: 1px solid var(--bordure);
+  border-top: 3px solid var(--color-primary-dark);
+  box-shadow: var(--ombre-sm);
+}
+.tarif-nom { font-weight: 700; color: var(--texte-fort); }
+.tarif-prix { font-size: .95rem; color: var(--texte-doux); }
+.tarif-prix strong {
+  font-family: var(--police-titre);
+  font-size: 1.45rem; font-weight: 800; letter-spacing: -.02em;
+  color: var(--color-primary-deep);
+  display: block; line-height: 1.2;
+}
+.tarif-detail { font-size: .9rem; color: var(--texte-doux); }
+
+.tarifs-base {
+  list-style: none; margin: var(--e-5) 0 0; padding: 0;
+  border: 1px solid var(--bordure);
+  background: var(--color-primary-soft);
+}
+.tarifs-base li {
+  margin: 0; display: flex; flex-wrap: wrap; gap: .4rem var(--e-4);
+  justify-content: space-between; align-items: baseline;
+  padding: .8rem var(--e-5);
+  font-size: .96rem;
+}
+.tarifs-base li + li { border-top: 1px solid var(--bordure); }
+.tarifs-base strong {
+  font-family: var(--police-titre); font-weight: 800;
+  color: var(--color-primary-deep); white-space: nowrap;
+}
+.tarifs-mention {
+  margin-top: var(--e-4);
+  font-size: .85rem; color: var(--texte-doux);
+}
+.tarifs-absents .btn { margin-right: .5rem; margin-top: .5rem; }
+
+/* Ligne de prix posée sur une page de prestation. */
+.prix-depuis {
+  display: grid; gap: .15rem;
+  margin: var(--e-5) 0;
+  padding: var(--e-4) var(--e-5);
+  background: var(--color-primary-soft);
+  border: 1px solid var(--bleu-200);
+  border-left: 4px solid var(--color-primary-dark);
+}
+.prix-intitule { font-weight: 700; color: var(--texte-fort); }
+.prix-montant { font-size: .95rem; color: var(--texte-doux); }
+.prix-montant strong {
+  font-family: var(--police-titre);
+  font-size: 1.35rem; font-weight: 800; letter-spacing: -.02em;
+  color: var(--color-primary-deep);
+}
+.prix-note { font-size: .88rem; color: var(--texte-doux); }
+
 /* == 10. FAQ et tableaux ================================================== */
 
 .faq { display: grid; gap: .7rem; max-width: 62rem; }

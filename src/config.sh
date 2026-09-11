@@ -34,7 +34,7 @@ BASE_URL="https://${DOMAINE}"
 # appels et brouillerait la fiche Google Business Profile.
 TELEPHONE="02 20 06 00 75"
 TELEPHONE_E164="+33220060075"
-EMAIL="contact@degorgement-richard.fr"
+EMAIL="contact@deboucheur-richard.fr"
 
 # --- Identité légale --------------------------------------------------------
 # Données reprises du registre national des entreprises via le site
@@ -87,21 +87,36 @@ ASSUREUR_DECENNALE="[ASSUREUR DÉCENNALE]"
 MEDIATEUR_NOM="[NOM DU MÉDIATEUR DE LA CONSOMMATION]"
 MEDIATEUR_URL="[URL DU MÉDIATEUR]"
 
-# --- Tarifs (arrêté du 24 janvier 2017) -------------------------------------
-# ⚠ AUCUN PRIX N'EST INVENTÉ. Les forfaits du site serrurerie ne sont PAS
-# transposables : ouvrir une porte et hydrocurer un collecteur n'ont ni le même
-# matériel, ni la même durée, ni la même assurance. Renseignez ici les montants
-# RÉELLEMENT pratiqués ; tant qu'ils restent entre crochets, la page /tarifs
-# affiche l'explication des facteurs de prix et renvoie au devis, sans chiffre.
-# L'affichage des prix est obligatoire pour le dépannage à domicile.
-TAUX_HORAIRE="[TAUX HORAIRE À RENSEIGNER]"
-FRAIS_DEPLACEMENT="[FRAIS DE DÉPLACEMENT À RENSEIGNER]"
-MAJORATION_NUIT="[MAJORATION NUIT ET WEEK-END À RENSEIGNER]"
-FORFAIT_DEBOUCHAGE_SIMPLE="[FORFAIT DÉBOUCHAGE SIMPLE À RENSEIGNER]"
-FORFAIT_DEBOUCHAGE_WC="[FORFAIT DÉBOUCHAGE WC À RENSEIGNER]"
-FORFAIT_HYDROCURAGE="[FORFAIT HYDROCURAGE À RENSEIGNER]"
-FORFAIT_INSPECTION_CAMERA="[FORFAIT INSPECTION CAMÉRA À RENSEIGNER]"
-FORFAIT_POMPAGE="[FORFAIT POMPAGE À RENSEIGNER]"
+# --- Tarifs : prix d'appel « à partir de » -----------------------------------
+# ⚠ AUCUN PRIX N'EST INVENTÉ, et aucun ne doit l'être. Un prix affiché engage
+# l'entreprise : l'arrêté du 24 janvier 2017 impose l'affichage des tarifs de
+# dépannage à domicile, et un montant annoncé puis dépassé sans accord écrit
+# est une pratique commerciale trompeuse. Les forfaits du site serrurerie ne
+# sont pas transposables : ouvrir une porte et hydrocurer un collecteur n'ont
+# ni le même matériel, ni la même durée, ni la même assurance.
+#
+# Ces montants sont des PRIX D'APPEL, affichés « à partir de ». Ils doivent
+# donc être les minima RÉELLEMENT pratiqués, ceux de l'intervention la plus
+# simple de chaque catégorie — pas une moyenne, et pas un prix d'accroche que
+# personne ne paie jamais.
+#
+# Le chiffre seul, sans unité ni mention : « 129 », pas « à partir de 129 € ».
+# Le site compose la phrase, et l'unité vient de UNITE_PRIX ci-dessus.
+#
+# Une valeur VIDE n'affiche rien. Aucun crochet, aucun « à renseigner » ne
+# part en production : la page /tarifs explique alors les facteurs de prix et
+# renvoie au devis, ce qui reste conforme tant qu'aucun tarif n'est publié.
+PRIX_DEPUIS_DEBOUCHAGE=""            # évier, lavabo, douche, baignoire
+PRIX_DEPUIS_DEBOUCHAGE_WC=""         # WC et toilettes
+PRIX_DEPUIS_HYDROCURAGE=""           # curage haute pression
+PRIX_DEPUIS_INSPECTION_CAMERA=""     # inspection vidéo
+PRIX_DEPUIS_POMPAGE=""               # pompage, fosse, bac à graisses
+
+# Les trois lignes que l'arrêté du 24 janvier 2017 impose d'afficher dès
+# qu'un tarif est publié. Même règle : le chiffre seul.
+TAUX_HORAIRE=""                      # main-d'œuvre, à l'heure
+FRAIS_DEPLACEMENT=""                 # forfait de déplacement
+MAJORATION_NUIT=""                   # en pourcentage, ex. « 50 » pour +50 %
 
 # --- Indexation -------------------------------------------------------------
 # "index" en production, "noindex" pour une préproduction ou une recette.
@@ -125,11 +140,11 @@ ZONE_INTERVENTION="Côtes-d'Armor (22), Finistère (29), Ille-et-Vilaine (35), M
 ZONE_COURTE="Bretagne et Pays de la Loire"
 
 # --- Formulaire de demande d'intervention -----------------------------------
-EMAIL_DEVIS="contact@degorgement-richard.fr"
+EMAIL_DEVIS="contact@deboucheur-richard.fr"
 # Adresse qui ENVOIE le message. Sur un mutualisé Hostinger, elle DOIT
 # appartenir au domaine du site, sinon le message part en spam ou est rejeté
 # (SPF/DKIM). Créez-la dans hPanel > Emails avant la mise en ligne.
-EMAIL_EXPEDITEUR="site@degorgement-richard.fr"
+EMAIL_EXPEDITEUR="site@${DOMAINE}"
 DEVIS_PHOTO_MAX_MO="5"
 
 # --- Mesure d'audience et vérification Google -------------------------------

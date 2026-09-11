@@ -627,14 +627,20 @@ ce sont des obligations légales ou des données contractuelles.
 | `ASSUREUR_RCPRO`, `POLICE_RCPRO` | Responsabilité civile professionnelle — art. L.243-2 du code des assurances |
 | `ASSUREUR_DECENNALE` | Garantie décennale |
 | `MEDIATEUR_NOM`, `MEDIATEUR_URL` | Médiateur de la consommation — art. L.616-1 du code de la consommation |
-| `TAUX_HORAIRE`, `FRAIS_DEPLACEMENT`, `MAJORATION_NUIT`, `FORFAIT_*` | Affichage des prix — arrêté du 24 janvier 2017 |
+| `PRIX_DEPUIS_*`, `TAUX_HORAIRE`, `FRAIS_DEPLACEMENT`, `MAJORATION_NUIT` | Prix d'appel « à partir de » — arrêté du 24 janvier 2017 |
 | `DOMAINE`, `BASE_URL` | Nom de domaine retenu — `degorgement-richard.fr` est un choix par défaut, à confirmer |
 
 Les forfaits du site de serrurerie **n'ont pas été repris** : ouvrir une porte
 et hydrocurer un collecteur n'ont ni le même matériel, ni la même durée, ni la
 même assurance. Tant que les montants réels ne sont pas renseignés, la page
 `/tarifs` explique les facteurs de prix et renvoie au devis, sans afficher de
-chiffre inventé.
+chiffre inventé — et sans laisser traîner le moindre crochet en production.
+
+Le jour où ils le sont, il n'y a qu'à remplir les cinq `PRIX_DEPUIS_*` et les
+trois lignes de l'arrêté dans `src/config.sh` : la grille de `/tarifs`, son
+chapeau et la ligne « à partir de » des onze pages de prestation apparaissent
+d'elles-mêmes. Voir [`docs/configuration.md`](docs/configuration.md), section
+Tarifs.
 
 Rien d'autre n'a été inventé sur ce site : aucun avis client, aucune note
 moyenne, aucune certification, aucune ancienneté, aucune agence locale, aucun

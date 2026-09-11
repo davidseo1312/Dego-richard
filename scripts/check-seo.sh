@@ -236,7 +236,7 @@ ok "Six pages departementales presentes"
 
 # --- 11. Donnees d'entreprise ----------------------------------------------
 titre "11. Donnees d'entreprise a fournir (bloquant avant mise en ligne)"
-MOTIF='\[(RAISON SOCIALE|SIRET|ADRESSE|FORME|CAPITAL|RCS|N. TVA|ASSUREUR|N. DE POLICE|NOM DU M|URL DU M|.TABLISSEMENT|TAUX HORAIRE|FRAIS DE|MAJORATION|FORFAIT)[^]]*\]'
+MOTIF='\[(RAISON SOCIALE|SIRET|ADRESSE|FORME|CAPITAL|RCS|N. TVA|ASSUREUR|N. DE POLICE|NOM DU M|URL DU M|.TABLISSEMENT)[^]]*\]'
 PLACEHOLDERS=$(grep -rlE "$MOTIF" public/ 2>/dev/null | sed 's|^public/||' | sort || true)
 if [ -n "$PLACEHOLDERS" ]; then
   NB_PAGES_PH=$(echo "$PLACEHOLDERS" | grep -c .)
@@ -247,6 +247,24 @@ if [ -n "$PLACEHOLDERS" ]; then
   echo "           « Avant la mise en ligne » du README."
 else
   ok "Donnees d'entreprise renseignees"
+fi
+
+# Les tarifs ne laissent plus de crochet dans les pages : une valeur vide
+# n'affiche rien du tout. Le manque se constate donc dans la configuration,
+# pas dans le HTML — c'est la source, et c'est la seule qui dise la verite.
+PRIX_VIDES=""
+for cle in PRIX_DEPUIS_DEBOUCHAGE PRIX_DEPUIS_DEBOUCHAGE_WC PRIX_DEPUIS_HYDROCURAGE \
+           PRIX_DEPUIS_INSPECTION_CAMERA PRIX_DEPUIS_POMPAGE \
+           TAUX_HORAIRE FRAIS_DEPLACEMENT MAJORATION_NUIT; do
+  [ -z "$(eval "printf '%s' \"\${$cle}\"")" ] && PRIX_VIDES="$PRIX_VIDES $cle"
+done
+if [ -n "$PRIX_VIDES" ]; then
+  adonner "Tarifs non publies :$PRIX_VIDES"
+  echo "        -> la page /tarifs explique les facteurs de prix et renvoie au"
+  echo "           devis, sans chiffre : c'est conforme, mais un prix d'appel"
+  echo "           affiche convertit nettement mieux. Montants reels attendus."
+else
+  ok "Tarifs « a partir de » publies"
 fi
 
 TEL_ATTENDU=$(grep -c "$TELEPHONE" public/index.html 2>/dev/null || echo 0)

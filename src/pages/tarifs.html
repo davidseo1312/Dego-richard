@@ -23,9 +23,7 @@ priority: 0.8
         <p class="urgence-badge"><span class="pastille" aria-hidden="true"></span> Intervention {{DISPONIBILITE}} · 6 départements</p>
         <h1>Tarifs : comment le prix d'un dégorgement se construit</h1>
         <p class="chapeau">
-          Nous n'affichons pas de « prix à partir de » séduisant qui n'aurait rien à voir avec la
-          facture. Cette page explique ce qui fait réellement varier le montant, et comment il
-          vous est communiqué avant que quoi que ce soit ne commence.
+          {{CHAPEAU_TARIFS}}
         </p>
       </div>
 
@@ -102,26 +100,7 @@ priority: 0.8
       </li>
     </ol>
 
-    <div class="encadre">
-      <h2>Nos tarifs détaillés</h2>
-      <p>
-        <strong>Taux horaire de main-d'œuvre :</strong> {{TAUX_HORAIRE}}<br>
-        <strong>Frais de déplacement :</strong> {{FRAIS_DEPLACEMENT}}<br>
-        <strong>Majoration nuit, dimanche et jours fériés :</strong> {{MAJORATION_NUIT}}<br>
-        <strong>Forfait débouchage simple :</strong> {{FORFAIT_DEBOUCHAGE_SIMPLE}}<br>
-        <strong>Forfait débouchage WC :</strong> {{FORFAIT_DEBOUCHAGE_WC}}<br>
-        <strong>Forfait hydrocurage :</strong> {{FORFAIT_HYDROCURAGE}}<br>
-        <strong>Forfait inspection caméra :</strong> {{FORFAIT_INSPECTION_CAMERA}}<br>
-        <strong>Forfait pompage :</strong> {{FORFAIT_POMPAGE}}
-      </p>
-      <p>
-        Ces montants sont renseignés dans la configuration du site et doivent correspondre
-        exactement aux tarifs pratiqués, comme l'exige l'arrêté du 24 janvier 2017 relatif à la
-        publicité des prix des prestations de dépannage. Tant qu'ils apparaissent entre crochets,
-        c'est qu'ils n'ont pas encore été communiqués : appelez-nous, le prix vous sera donné de
-        vive voix et confirmé par écrit.
-      </p>
-    </div>
+    {{SECTION_TARIFS}}
 
     <h2>Comment nous annonçons un prix</h2>
     <ol>

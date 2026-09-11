@@ -130,21 +130,48 @@ Le périmètre est verrouillé à trois niveaux :
 
 ## Tarifs
 
+Les prix sont des **prix d'appel**, affichés « à partir de ».
+
 | Clé | Rôle |
 |---|---|
+| `PRIX_DEPUIS_DEBOUCHAGE` | Évier, lavabo, douche, baignoire. |
+| `PRIX_DEPUIS_DEBOUCHAGE_WC` | WC et toilettes. |
+| `PRIX_DEPUIS_HYDROCURAGE` | Curage haute pression. |
+| `PRIX_DEPUIS_INSPECTION_CAMERA` | Inspection vidéo. |
+| `PRIX_DEPUIS_POMPAGE` | Pompage, fosse, bac à graisses. |
 | `TAUX_HORAIRE` | Main-d'œuvre horaire. |
 | `FRAIS_DEPLACEMENT` | Déplacement, annoncé au téléphone. |
-| `MAJORATION_NUIT` | Majoration nuit, dimanche et jours fériés. |
-| `FORFAIT_DEBOUCHAGE_SIMPLE`, `FORFAIT_DEBOUCHAGE_WC`, `FORFAIT_HYDROCURAGE`, `FORFAIT_INSPECTION_CAMERA`, `FORFAIT_POMPAGE` | Forfaits affichés sur `/tarifs`. |
+| `MAJORATION_NUIT` | Majoration nuit, dimanche et jours fériés, **en pourcentage**. |
+
+**Le chiffre seul**, sans unité ni mention : `129`, pas `à partir de 129 €`.
+Le site compose la phrase, et l'unité vient de `UNITE_PRIX`.
+
+Une valeur **vide n'affiche rien** — ni crochet, ni « à renseigner », ni zéro.
+Une page publique n'a pas à exposer l'état d'avancement de sa propre
+configuration. Trois choses s'adaptent toute seules :
+
+* la page `/tarifs` bascule entre la grille des prix et un bloc qui explique
+  les facteurs de prix et renvoie au devis ;
+* son chapeau change de formulation, pour ne jamais annoncer des prix
+  affichés quand aucun ne l'est ;
+* la ligne « à partir de » des onze pages de prestation concernées
+  apparaît ou disparaît.
 
 L'arrêté du 24 janvier 2017 impose l'affichage des conditions tarifaires pour
-le dépannage à domicile. **Ces montants doivent correspondre aux tarifs
-réellement pratiqués.**
+le dépannage à domicile dès lors qu'un tarif est publié. **Ces montants
+doivent correspondre aux tarifs réellement pratiqués** : un prix affiché
+engage l'entreprise, et un montant annoncé puis dépassé sans accord écrit est
+une pratique commerciale trompeuse.
+
+Ce sont des minima, pas des moyennes : celui de l'intervention la plus simple
+de chaque catégorie. Un prix d'appel que personne ne paie jamais oblige soit à
+surfacturer les cas simples, soit à faire apparaître des suppléments sur
+place — et le site dit exactement le contraire sur `/tarifs` et dans
+l'article « Le prix d'un dégorgement, poste par poste ».
 
 Les forfaits du site de serrurerie n'ont pas été transposés : ouvrir une porte
 et hydrocurer un collecteur n'ont ni le même matériel, ni la même durée, ni la
-même assurance. Tant que les valeurs restent entre crochets, la page `/tarifs`
-explique les facteurs de prix et renvoie au devis, sans chiffre inventé.
+même assurance.
 
 ---
 

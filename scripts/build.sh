@@ -138,6 +138,121 @@ fi
 # Le formulaire n'existe qu'en un seul exemplaire, dans src/partials/. Les
 # pages qui l'affichent écrivent simplement {{FORMULAIRE_DEVIS}} : une
 # correction sur le partiel se répercute partout au build suivant.
+# --- Tarifs « à partir de » --------------------------------------------------
+# Un prix non renseigné n'affiche RIEN. Ni crochet, ni « à renseigner », ni
+# zéro : une page publique n'a pas à exposer l'état d'avancement de sa propre
+# configuration, et un prix faux engage l'entreprise plus sûrement qu'un prix
+# absent. La page /tarifs reste conforme sans chiffre — elle explique les
+# facteurs de prix et renvoie au devis écrit.
+prix_depuis() {                     # $1 = montant brut, "" si non renseigné
+  [ -n "${1:-}" ] || return 0
+  printf 'à partir de <strong>%s&nbsp;%s</strong>' "$1" "$UNITE_PRIX"
+}
+
+# Ligne de prix posée sur une page de prestation.
+ligne_prix() {                      # $1 = montant, $2 = intitulé
+  [ -n "${1:-}" ] || return 0
+  printf '<p class="prix-depuis"><span class="prix-intitule">%s</span>' "$2"
+  printf '<span class="prix-montant">%s</span>' "$(prix_depuis "$1")"
+  printf '<span class="prix-note">Devis écrit remis avant toute intervention.</span></p>'
+}
+
+export PRIX_DEPUIS_DEBOUCHAGE_LIGNE="$(ligne_prix "$PRIX_DEPUIS_DEBOUCHAGE" "Débouchage d'un appareil sanitaire")"
+export PRIX_DEPUIS_DEBOUCHAGE_WC_LIGNE="$(ligne_prix "$PRIX_DEPUIS_DEBOUCHAGE_WC" "Débouchage de WC")"
+export PRIX_DEPUIS_HYDROCURAGE_LIGNE="$(ligne_prix "$PRIX_DEPUIS_HYDROCURAGE" "Curage haute pression")"
+export PRIX_DEPUIS_INSPECTION_CAMERA_LIGNE="$(ligne_prix "$PRIX_DEPUIS_INSPECTION_CAMERA" "Inspection caméra")"
+export PRIX_DEPUIS_POMPAGE_LIGNE="$(ligne_prix "$PRIX_DEPUIS_POMPAGE" "Pompage")"
+
+# Le tableau complet de la page /tarifs.
+TARIFS_CARTES=""
+ajouter_tarif() {                   # $1 = montant, $2 = intitulé, $3 = précision
+  [ -n "${1:-}" ] || return 0
+  TARIFS_CARTES="${TARIFS_CARTES}
+      <li class=\"tarif\">
+        <span class=\"tarif-nom\">$2</span>
+        <span class=\"tarif-prix\">$(prix_depuis "$1")</span>
+        <span class=\"tarif-detail\">$3</span>
+      </li>"
+}
+ajouter_tarif "$PRIX_DEPUIS_DEBOUCHAGE" "Débouchage d'un appareil sanitaire" \
+  "Évier, lavabo, douche, baignoire. Démontage du siphon et furet compris."
+ajouter_tarif "$PRIX_DEPUIS_DEBOUCHAGE_WC" "Débouchage de WC" \
+  "Furet à tête adaptée, sans dépose de la cuvette dans la plupart des cas."
+ajouter_tarif "$PRIX_DEPUIS_HYDROCURAGE" "Curage haute pression" \
+  "Canalisation intérieure ou enterrée, depuis un regard accessible."
+ajouter_tarif "$PRIX_DEPUIS_INSPECTION_CAMERA" "Inspection caméra" \
+  "Passage vidéo et compte rendu de l'état réel de la conduite."
+ajouter_tarif "$PRIX_DEPUIS_POMPAGE" "Pompage" \
+  "Regard, fosse ou bac à graisses, évacuation des matières comprise."
+
+TARIFS_BASE=""
+ajouter_base() {                    # $1 = montant, $2 = intitulé, $3 = unité
+  [ -n "${1:-}" ] || return 0
+  TARIFS_BASE="${TARIFS_BASE}
+      <li><span>$2</span><strong>$1&nbsp;$3</strong></li>"
+}
+ajouter_base "$TAUX_HORAIRE" "Taux horaire de main-d'œuvre" "$UNITE_PRIX"
+ajouter_base "$FRAIS_DEPLACEMENT" "Frais de déplacement" "$UNITE_PRIX"
+ajouter_base "$MAJORATION_NUIT" "Majoration nuit, dimanche et jours fériés" "%"
+
+# Le chapeau de /tarifs doit dire la vérité dans les deux états : annoncer des
+# prix affichés alors qu'aucun ne l'est serait faux, et taire ceux qui le sont
+# reviendrait à cacher l'argument le plus utile de la page.
+if [ -n "$TARIFS_CARTES" ]; then
+  export CHAPEAU_TARIFS="Nos prix d'appel sont affichés, et ce sont de vrais montants :
+          celui de l'intervention la plus simple de chaque catégorie, pas une accroche que
+          personne ne paie. Cette page explique ce qui fait varier le prix au-delà, et comment
+          il vous est communiqué avant que quoi que ce soit ne commence."
+else
+  export CHAPEAU_TARIFS="Le prix d'un dégorgement n'est pas un chiffre unique : il dépend de
+          ce que l'on trouve. Cette page explique ce qui le fait varier, et comment le montant
+          vous est annoncé — au téléphone d'abord, par écrit ensuite, avant que quoi que ce soit
+          ne commence."
+fi
+
+if [ -n "$TARIFS_CARTES" ] || [ -n "$TARIFS_BASE" ]; then
+  BASE_HTML=""
+  [ -n "$TARIFS_BASE" ] && BASE_HTML="
+    <ul class=\"tarifs-base\">$TARIFS_BASE
+    </ul>"
+  GRILLE_HTML=""
+  [ -n "$TARIFS_CARTES" ] && GRILLE_HTML="
+    <ul class=\"tarifs-grille\">$TARIFS_CARTES
+    </ul>"
+  export SECTION_TARIFS="<div class=\"tarifs\">
+    <h2>Nos tarifs</h2>
+    <p>
+      Ces montants sont des prix d'appel : ils correspondent à l'intervention la
+      plus simple de chaque catégorie. Le prix exact dépend de la nature du
+      bouchon, de son emplacement, de l'accessibilité et du matériel nécessaire.
+      Il vous est annoncé par écrit <em>avant</em> le démarrage, et rien n'est
+      engagé sans votre accord.
+    </p>${GRILLE_HTML}${BASE_HTML}
+    <p class=\"tarifs-mention\">
+      ${MENTION_TVA:-}. Affichage conforme à l'arrêté du 24 janvier 2017
+      relatif à la publicité des prix des prestations de dépannage, de réparation
+      et d'entretien dans le secteur du bâtiment.
+    </p>
+  </div>"
+else
+  # Aucun tarif publié : on le dit, et on n'invente rien.
+  export SECTION_TARIFS="<div class=\"tarifs tarifs-absents\">
+    <h2>Nos tarifs</h2>
+    <p>
+      Le prix dépend de la nature du bouchon, de son emplacement, de
+      l'accessibilité et du matériel nécessaire : un siphon d'évier et un
+      collecteur enterré ne demandent ni le même temps, ni le même matériel.
+      C'est pourquoi nous annonçons un prix au téléphone, après quelques
+      questions, puis un <strong>devis écrit remis avant toute
+      intervention</strong>. Rien n'est engagé sans votre accord.
+    </p>
+    <p>
+      <a class=\"btn btn-call btn-large\" href=\"tel:${TELEPHONE_E164}\" data-track=\"appel\" data-track-zone=\"tarifs\">${TELEPHONE}</a>
+      <a class=\"btn btn-ghost btn-large\" href=\"/devis\" data-track=\"clic_devis\" data-track-zone=\"tarifs\">Demander un devis</a>
+    </p>
+  </div>"
+fi
+
 export FORMULAIRE_DEVIS="$(cat src/partials/formulaire-devis.html)"
 
 # --- Carte des zones d'intervention ----------------------------------------
