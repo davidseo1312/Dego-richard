@@ -248,7 +248,8 @@ def image_partage(slug: str, sortie: Path) -> None:
     vignette = Image.composite(Image.new("RGB", (L, H), (10, 16, 30)), vignette, voile)
 
     d = ImageDraw.Draw(vignette)
-    d.rounded_rectangle((44, H - 138, 44 + 74, H - 138 + 74), 20, fill=(2, 132, 199))
+    # Cartouche de marque : angles vifs, comme tout le reste du site.
+    d.rectangle((44, H - 138, 44 + 74, H - 138 + 74), fill=(2, 132, 199))
     # La goutte de la marque, tracée au trait blanc dans le carré.
     import math
     cx, cy, r = 44 + 37, H - 138 + 40, 21

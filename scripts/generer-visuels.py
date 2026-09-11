@@ -166,7 +166,7 @@ def defs() -> str:
       </pattern>
       <pattern id="carrelage" width="52" height="52" patternUnits="userSpaceOnUse">
         <rect width="52" height="52" fill="#e8eef4"/>
-        <rect x="1.6" y="1.6" width="48.8" height="48.8" rx="3" fill="#f6f9fc"/>
+        <rect x="1.6" y="1.6" width="48.8" height="48.8" fill="#f6f9fc"/>
       </pattern>
       <pattern id="beton" width="40" height="40" patternUnits="userSpaceOnUse">
         <rect width="40" height="40" fill="#cbd5e1"/>
@@ -206,7 +206,7 @@ def etiquette(x, y, contenu, vers=None, couleur=BLEU_700, fond=BLANC):
                   f'<circle cx="{vers[0]:.0f}" cy="{vers[1]:.0f}" r="5" fill="{couleur}"/>')
     return (rappel +
             f'<g transform="translate({x-largeur/2:.0f},{y-16:.0f})" filter="url(#ombreDouce)">'
-            f'<rect width="{largeur:.0f}" height="34" rx="17" fill="{fond}" '
+            f'<rect width="{largeur:.0f}" height="34" fill="{fond}" '
             f'stroke="{melange(couleur, BLANC, .72)}" stroke-width="2"/>'
             f'{texte(largeur/2, 23, contenu, 16, 700, couleur, "middle")}</g>')
 
@@ -217,7 +217,7 @@ def cote(x1, y1, x2, y2, libelle):
     return (f'<g stroke="{ARDOISE}" stroke-width="1.8" fill="none">'
             f'<path d="M{x1:.0f} {y1:.0f} L{x2:.0f} {y2:.0f}"/>'
             f'<path d="M{x1:.0f} {y1-7:.0f} v14"/><path d="M{x2:.0f} {y2-7:.0f} v14"/></g>'
-            f'<rect x="{mx-34:.0f}" y="{my-13:.0f}" width="68" height="26" rx="6" fill="{BLANC}" opacity=".92"/>'
+            f'<rect x="{mx-34:.0f}" y="{my-13:.0f}" width="68" height="26" fill="{BLANC}" opacity=".92"/>'
             f'{texte(mx, my+6, libelle, 15, 650, ARDOISE, "middle")}')
 
 
@@ -387,7 +387,7 @@ def hud(x, y, libelle, point="#f87171"):
     """Incrustation type moniteur d'inspection."""
     largeur = 30 + len(libelle) * 9.4
     return (f'<g transform="translate({x:.0f},{y:.0f})">'
-            f'<rect width="{largeur:.0f}" height="44" rx="12" fill="rgba(255,255,255,.09)" '
+            f'<rect width="{largeur:.0f}" height="44" fill="rgba(255,255,255,.09)" '
             f'stroke="rgba(255,255,255,.20)" stroke-width="1.6"/>'
             f'<circle cx="22" cy="22" r="6.5" fill="{point}"/>'
             f'{texte(38, 28, libelle, 17, 600, "#e2e8f0")}</g>')

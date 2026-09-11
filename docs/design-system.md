@@ -143,9 +143,36 @@ corps 1.0625 rem, interligne 1.68
 
 ## 3. Rayons, ombres, espacement
 
+### Angles vifs
+
 ```
---r-xs 8px   --r-sm 12px   --r-md 16px   --r-lg 20px   --r-xl 28px
+--r-xs 0   --r-sm 0   --r-md 0   --r-lg 0   --r-xl 0   --r-full 0
 ```
+
+L'identité est **à angles vifs**. Boutons, cartes, encadrés, champs de
+formulaire, pastilles d'icône, puces de liste, incrustations des schémas,
+cartouche des vignettes de partage, bulles et boutons de la carte Leaflet :
+tout est carré, sans exception. Un seul angle adouci au milieu se remarquerait
+comme un oubli.
+
+Les six jetons sont **conservés** plutôt que supprimés des règles. Un
+composant continue d'écrire son intention — « ce bloc porte le rayon d'une
+carte », « cette pastille est pleinement arrondie » — et revenir à des angles
+adoucis se fait ici, en six valeurs, sans toucher à une seule règle de
+composant.
+
+Deux exceptions, et elles sont fonctionnelles :
+
+* **Les boutons radio et les cases à cocher natifs** restent ronds et carrés
+  respectivement. Cette différence de forme est ce qui distingue « un seul
+  choix » de « plusieurs choix » ; l'uniformiser serait une faute
+  d'utilisabilité, pas un choix de style. Leur cible tactile, elle — la
+  bordure de l'étiquette — est carrée.
+* **Les rayons qui décrivent un objet réel** dans les schémas techniques —
+  carter de machine, céramique d'une cuvette, arête de béton d'un regard — ne
+  relèvent pas de la charte et n'ont pas été touchés.
+
+### Ombres et espacement
 
 Trois ombres seulement, toutes à deux couches et très douces
 (`--ombre-sm`, `--ombre-md`, `--ombre-lg`), plus deux ombres colorées pour
