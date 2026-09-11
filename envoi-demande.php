@@ -155,7 +155,7 @@ function page_erreur(array $messages, int $code = 400): void
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0b2a4a">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/css/style.css?v=e927186c">
+<link rel="stylesheet" href="/assets/css/style.css?v=0d06681d">
 </head>
 <body>
 <main id="contenu">

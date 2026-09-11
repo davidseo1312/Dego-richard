@@ -640,13 +640,7 @@
     <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
-    <loc>https://degorgement-richard.fr/recherche-bouchon</loc>
-    <lastmod>2026-09-11</lastmod>
-    <priority>0.75</priority>
-    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://degorgement-richard.fr/services</loc>
+    <loc>https://degorgement-richard.fr/prestations</loc>
     <lastmod>2026-09-11</lastmod>
     <priority>0.9</priority>
     <image:image><image:loc>https://degorgement-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
@@ -658,6 +652,12 @@
     <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
     <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
     <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://degorgement-richard.fr/recherche-bouchon</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.75</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/tarifs</loc>

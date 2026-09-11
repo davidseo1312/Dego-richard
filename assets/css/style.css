@@ -1440,7 +1440,11 @@ ul.liens-connexes { padding: var(--e-5); }
 /* --- Liste de communes ---------------------------------------------------- */
 .villes-liste {
   display: grid; gap: .55rem;
-  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  /* 12,5 rem : « Loire-Atlantique (44) » tient alors sur une ligne. En
+     dessous, il se coupait en deux et son pavé dépassait ses voisins d'une
+     hauteur de ligne. Le min(100%) garde la colonne unique sur un écran
+     étroit, où 12,5 rem seraient plus larges que la place disponible. */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 12.5rem), 1fr));
   list-style: none; margin: 0; padding: 0;
 }
 .villes-liste > li { margin: 0; }

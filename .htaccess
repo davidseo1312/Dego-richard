@@ -83,8 +83,11 @@ RewriteRule ^douche-bouchee/?$                   /debouchage-douche             
 RewriteRule ^baignoire-bouchee/?$                /debouchage-baignoire               [R=301,L]
 RewriteRule ^hydrocurage/?$                      /curage-canalisation                [R=301,L]
 RewriteRule ^camera-canalisation/?$              /inspection-camera-canalisation     [R=301,L]
-RewriteRule ^services/?$                         /services                           [R=301,L]
-RewriteRule ^prestations/?$                      /services                           [R=301,L]
+# /services redirigeait vers lui-même : boucle infinie, et donc page
+# inaccessible en production. La page s'appelle désormais /prestations —
+# comme l'entrée de menu, et en français comme le reste du site.
+RewriteRule ^services/?$                         /prestations                        [R=301,L]
+RewriteRule ^nos-prestations/?$                  /prestations                        [R=301,L]
 RewriteRule ^zones-d-intervention/?$             /zone-intervention                  [R=301,L]
 RewriteRule ^zones/?$                            /zone-intervention                  [R=301,L]
 RewriteRule ^devis-degorgement/?$                /devis                              [R=301,L]
