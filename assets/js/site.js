@@ -270,11 +270,36 @@
       injecter('https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent(GTM_ID));
     }
 
-    if (GA_ID) {
-      injecter('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID));
+    if (typeof window.gtag !== 'function') {
       window.gtag = function () { window.dataLayer.push(arguments); };
+    }
+
+    if (GA_ID) {
+      /* Mode consentement v2. Google l'exige pour le trafic européen depuis
+         mars 2024 : sans ces signaux, les données peuvent être écartées.
+
+         Tout part de « denied », y compris les quatre signaux publicitaires,
+         puis SEULE la mesure d'audience passe à « granted » — c'est exactement
+         ce que le bandeau a demandé, et le site ne fait pas de publicité. Les
+         signaux ad_* ne repassent jamais à granted, nulle part.
+
+         La déclaration précède le config : après, elle arriverait trop tard
+         pour la première mesure. */
+      window.gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        wait_for_update: 500
+      });
+      window.gtag('consent', 'update', { analytics_storage: 'granted' });
+
       window.gtag('js', new Date());
-      window.gtag('config', GA_ID, { anonymize_ip: true });
+      /* Pas d'anonymize_ip : Google Analytics 4 l'ignore, l'anonymisation des
+         adresses IP y étant permanente et non désactivable. Le paramètre
+         laisserait croire à un réglage là où il n'y en a plus. */
+      window.gtag('config', GA_ID);
+      injecter('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID));
     }
   }
 
@@ -302,6 +327,10 @@
     }
   }
 
+  function oublier() {
+    try { localStorage.removeItem(CLE); } catch (e) { /* stockage indisponible */ }
+  }
+
   function accepter() {
     consentement = true;
     chargerMesure();
@@ -315,6 +344,27 @@
   } else if (choix !== 'refuse' && MESURE_ACTIVE) {
     afficherBandeau();
   }
+
+  /* Retrait du consentement. Le RGPD impose qu'il soit aussi simple à retirer
+     qu'à donner : un lien dans le pied de page rouvre le bandeau. Le script
+     déjà chargé ne peut pas être désinstallé, mais la mesure s'arrête — le
+     signal de consentement repasse à « denied » et plus aucun événement n'est
+     émis. Sans JavaScript, le lien mène à la politique de confidentialité,
+     qui explique la marche à suivre. */
+  document.addEventListener('click', function (e) {
+    var lien = e.target.closest('[data-consentement="rouvrir"]');
+    if (!lien || !MESURE_ACTIVE) { return; }
+    e.preventDefault();
+    consentement = false;
+    fileAttente = [];
+    oublier();
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', { analytics_storage: 'denied' });
+    }
+    var ancien = document.querySelector('.cookie-bandeau');
+    if (ancien) { ancien.remove(); }
+    afficherBandeau();
+  });
 
   function afficherBandeau() {
     var bandeau = document.createElement('div');
