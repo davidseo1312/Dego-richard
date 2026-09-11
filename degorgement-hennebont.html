@@ -27,15 +27,15 @@
 <meta name="twitter:description" content="Dégorgement et débouchage à Hennebont : ville close et quartiers en pente sur le Blavet, réseaux anciens et niveaux bas. Intervention 24h/24, devis écrit.">
 <meta name="twitter:image" content="https://degorgement-richard.fr/assets/img/partage/og-debouchage-evier-cuisine.jpg">
 
-<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/assets/img/favicon.ico" sizes="32x32">
-<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/assets/img/favicon.svg?v=efe59b56" type="image/svg+xml">
+<link rel="icon" href="/assets/img/favicon.ico?v=efe59b56" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=efe59b56">
+<link rel="manifest" href="/manifest.webmanifest?v=efe59b56">
 <!-- Les deux familles variables sont servies depuis ce domaine. Les
      précharger évite le saut de police sur le H1, qui est l'élément LCP. -->
 <link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/jakarta-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css?v=c3ea0a87">
 
 <!-- Active l'apparition au défilement. Placé ici, et non dans site.js qui est
      différé, pour que l'état initial soit posé avant le premier rendu : sinon
@@ -139,10 +139,15 @@
   <div class="wrap header-inner">
     <a class="brand" href="/">
       <!-- Logo vectoriel : net à toutes les définitions, et un seul fichier
-           mis en cache pour les 111 pages. Les dimensions portées par la
-           balise réservent sa place avant même qu'il soit chargé. -->
+           mis en cache pour les 111 pages.
+
+           width et height portent la taille D'AFFICHAGE, pas celle du tracé.
+           Elles réservent la place exacte avant chargement, et surtout elles
+           donnent une taille juste si la feuille de style manque à l'appel —
+           avec les dimensions du tracé, un logo sans CSS s'étalerait sur
+           1659 px et chasserait le menu hors de l'écran. -->
       <img class="brand-logo" src="/assets/img/logo/logo-deboucheur-richard.svg"
-           width="1659" height="480" fetchpriority="high"
+           width="159" height="46" fetchpriority="high"
            alt="Déboucheur Richard en Bretagne">
     </a>
 
@@ -384,7 +389,7 @@
       <!-- Variante claire : sur le bleu nuit du pied de page, l'encre sombre
            du logo disparaîtrait. -->
       <img class="footer-logo" src="/assets/img/logo/logo-deboucheur-richard-clair.svg"
-           width="1659" height="480" loading="lazy"
+           width="166" height="48" loading="lazy"
            alt="Déboucheur Richard en Bretagne">
       <p>Dégorgement, débouchage et assainissement dans le Grand Ouest. Débouchage de WC, d'évier, de douche et de canalisation, curage, inspection caméra et assainissement pour les particuliers et les professionnels.</p>
       <a class="footer-tel" href="tel:+33220060075" data-track="appel" data-track-zone="pied-de-page">
@@ -503,6 +508,6 @@
   </a>
 </div>
 
-<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/site.js?v=4491cc3a" defer></script>
 </body>
 </html>
