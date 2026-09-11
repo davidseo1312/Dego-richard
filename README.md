@@ -678,6 +678,36 @@ chapeau et la ligne « à partir de » des onze pages de prestation apparaissent
 d'elles-mêmes. Voir [`docs/configuration.md`](docs/configuration.md), section
 Tarifs.
 
+### La raison sociale n'est pas affichée en pied de page
+
+L'entreprise est une entreprise individuelle : sa dénomination légale est le
+nom de son exploitant. La porter au bas des 111 pages revenait à exposer un
+nom de personne sur tout le site, sans que rien ne l'impose.
+
+La LCEN (art. 6-III-1) ne demande pas que la mention figure sur chaque page,
+mais qu'elle soit **facilement accessible** — le lien « Mentions légales » du
+pied de page y suffit. Le SIRET, lui, reste affiché : il identifie
+l'entreprise sans nommer la personne.
+
+La dénomination reste en toutes lettres là où elle est **obligatoire** :
+
+| Page | Fondement |
+|---|---|
+| `/mentions-legales` | LCEN art. 6-III-1 — dénomination et directeur de la publication |
+| `/conditions-generales` | code de la consommation art. L111-1 — identification du prestataire |
+| `/politique-confidentialite` | RGPD art. 13 — identité du responsable de traitement |
+| `/contact` | bloc d'identification de l'entreprise |
+
+Elle figure aussi, par choix éditorial et non par obligation, sur `/a-propos`,
+`/degorgement`, `/zone-intervention` et dans le bloc « Réponse rapide » de
+l'accueil, où elle sert d'argument vérifiable — « une entreprise identifiée,
+pas une plateforme ». Ces quatre occurrences peuvent être retirées sans aucune
+conséquence juridique.
+
+Enfin, `legalName` du balisage `LocalBusiness` la conserve : il n'est pas
+visible sur la page, et c'est lui qui permet à Google de rapprocher le site de
+l'entreprise réellement immatriculée.
+
 Rien d'autre n'a été inventé sur ce site : aucun avis client, aucune note
 moyenne, aucune certification, aucune ancienneté, aucune agence locale, aucun
 prix.
