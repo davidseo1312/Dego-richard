@@ -218,6 +218,7 @@ qui est voulu.
   `scripts/routeur-local.php` pour que l'aperçu local se comporte comme la
   production.
 * Les **couleurs et la mise en page** : dans `static/assets/css/style.css`.
-  Si vous changez les couleurs de marque, relancez
-  `python3 scripts/generer-images.py` pour régénérer favicon, icônes et
-  vignette sociale.
+* Le **logo** : remplacez `logo-source/logo-original.webp` puis relancez
+  `python3 scripts/preparer-logo.py`. Le script en tire le logo de l'en-tête,
+  sa variante claire pour le pied de page, le favicon et les icônes
+  d'application — il n'y a rien d'autre à changer.

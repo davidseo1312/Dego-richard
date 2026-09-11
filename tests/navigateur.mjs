@@ -263,7 +263,15 @@ verifier(
 const sansTexte = await bureau.evaluate(() => {
   const vides = [];
   for (const a of document.querySelectorAll('a')) {
-    const texte = (a.textContent || '').trim() || a.getAttribute('aria-label') || a.title;
+    // Un lien retiré de l'arbre d'accessibilité et du parcours clavier double
+    // un lien voisin : ce n'est pas lui qui doit porter l'intitulé.
+    if (a.getAttribute('aria-hidden') === 'true' && a.tabIndex < 0) continue;
+    // Le nom accessible d'un lien qui ne contient qu'une image est le texte
+    // alternatif de cette image — c'est ce que lit une synthèse vocale.
+    const texte = (a.textContent || '').trim()
+      || a.getAttribute('aria-label')
+      || a.title
+      || [...a.querySelectorAll('img')].map((i) => i.alt.trim()).join(' ').trim();
     if (!texte) vides.push(a.getAttribute('href') || '(sans href)');
   }
   return vides;
@@ -395,6 +403,49 @@ const entete = await landing.evaluate(() => {
   };
 });
 verifier(entete.ordre, 'l’en-tête range marque, menu puis actions dans cet ordre');
+
+// Le logo : présent, chargé, en haut à gauche, et sur TOUTES les pages.
+const logo = await landing.evaluate(() => {
+  const l = document.querySelector('.brand-logo');
+  if (!l) return null;
+  const r = l.getBoundingClientRect();
+  // « En haut à gauche » se mesure par rapport à la barre, pas à la fenêtre :
+  // au-delà de 1200 px, la largeur utile est centrée et tout le contenu de
+  // l'en-tête commence à 120 px du bord de l'écran.
+  const barre = document.querySelector('.header-inner').getBoundingClientRect();
+  return {
+    charge: l.complete && l.naturalWidth > 0,
+    vectoriel: l.currentSrc.endsWith('.svg'),
+    gauche: Math.abs(r.left - barre.left) < 2,
+    haut: r.top < 120,
+    ratio: +(r.width / r.height).toFixed(2),
+    alt: l.getAttribute('alt') || '',
+    reserve: l.hasAttribute('width') && l.hasAttribute('height'),
+  };
+});
+verifier(logo !== null && logo.charge, 'le logo est présent et chargé');
+verifier(logo !== null && logo.vectoriel, 'le logo est servi en vectoriel');
+verifier(logo !== null && logo.gauche && logo.haut, 'le logo est en haut à gauche');
+verifier(logo !== null && Math.abs(logo.ratio - 3.46) < 0.06,
+  `le logo n’est pas déformé (rapport ${logo?.ratio})`);
+verifier(logo !== null && logo.alt.length > 8,
+  `le logo porte un texte alternatif (${logo?.alt})`);
+verifier(logo !== null && logo.reserve,
+  'le logo réserve sa place avant chargement (width/height)');
+
+const sansLogo = [];
+for (const [, url] of PAGES) {
+  await landing.goto(BASE + url);
+  const ok = await landing.evaluate(() => {
+    const h = document.querySelector('.brand-logo');
+    const f = document.querySelector('.footer-logo');
+    return !!h && h.complete && h.naturalWidth > 0 && !!f;
+  });
+  if (!ok) sansLogo.push(url);
+}
+verifier(sansLogo.length === 0,
+  `le logo est présent sur les ${PAGES.length} gabarits, en-tête et pied de page${sansLogo.length ? ' — manque : ' + sansLogo.join(', ') : ''}`);
+await landing.goto(BASE + '/');
 verifier(entete.centre, 'le menu est centré entre la marque et les actions');
 verifier(entete.tel.replace(/\s+/g, ' ') === '02 20 06 00 75',
   `le numéro de l’en-tête est le bon (${entete.tel})`);

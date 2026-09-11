@@ -148,7 +148,7 @@ scripts/
   test-http.sh           sert public/ et interroge toutes les URLs (aucun 403)
   apercu.sh              aperçu local avec les URLs de production
   routeur-local.php      reproduit les règles du .htaccess en local
-  generer-images.py      régénère favicon et icônes d'application
+  preparer-logo.py       détoure et vectorise le logo, en tire favicon et icônes
   generer-visuels.py     régénère les schémas techniques et les images de
                          partage, rendus en WebP et JPEG par Chromium
   preparer-photos.py     dérivés AVIF/WebP des photographies + src/photos.sh
@@ -182,6 +182,34 @@ l'action, Plus Jakarta Sans pour les titres et Inter pour le texte, deux
 polices variables auto-hébergées. Tout passe par des variables CSS déclarées
 en tête de `static/assets/css/style.css` ; aucune page n'écrit de couleur en
 dur.
+
+---
+
+## Logo
+
+`logo-source/logo-original.webp` est la source unique. Pour le remplacer :
+
+```bash
+cp nouveau-logo.png logo-source/logo-original.webp
+python3 scripts/preparer-logo.py
+bash scripts/build.sh
+```
+
+Le script détoure le fond, ramène l'image à ses deux encres, la vectorise avec
+`potrace` et produit d'un coup : le logo de l'en-tête, sa variante claire pour
+le pied de page (sans quoi l'encre sombre disparaîtrait sur le bleu nuit), le
+monogramme, le favicon vectoriel, le `.ico` et les quatre icônes
+d'application. Il n'y a rien d'autre à toucher : l'en-tête et le pied de page
+pointent vers des chemins fixes.
+
+> L'ancien `scripts/generer-images.py`, qui dessinait une goutte faute de logo,
+> a été supprimé. Il écrivait les mêmes fichiers : l'avoir laissé en place
+> aurait suffi à écraser le vrai logo par le provisoire à la première
+> exécution distraite.
+
+Le logo porte « DEBOUCHEUR RICHARD », le site « Dégorgement Richard ». Les
+deux cohabitent, mais c'est une décision de marque à trancher — voir
+[`docs/design-system.md`](docs/design-system.md), section Logo.
 
 ---
 

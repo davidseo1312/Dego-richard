@@ -160,7 +160,46 @@ Largeurs : `--largeur` 1200 px, `--largeur-etroite` 760 px pour les articles
 
 ---
 
-## 4. En-tête
+## 4. Logo
+
+Le logo fourni par l'entreprise (`logo-source/logo-original.webp`) est la
+source unique. `scripts/preparer-logo.py` le détoure, le ramène à ses deux
+encres et le **vectorise** ; tout le reste en dérive : variante claire du pied
+de page, favicon, icônes d'application, replis matriciels.
+
+| | Valeur | Rôle |
+|---|---|---|
+| encre sombre | `#0d1d28` | « DEBOUCHEUR », « EN BRETAGNE », l'eau du monogramme |
+| encre claire | `#00abf3` | « RICHARD », le D, la machine, les éclaboussures |
+
+Les deux tombent déjà sur la palette du site — `#0d1d28` contre
+`--color-dark` `#0f172a`, `#00abf3` entre `--color-accent` et
+`--color-primary`. Rien n'a été retouché.
+
+**Pourquoi du vectoriel.** 23 Ko de SVG, 10 Ko une fois compressés par le
+serveur, nets à toutes les définitions. Le même logo en bitmap demandait
+31 Ko pour la version 320 px et 51 Ko pour la 480 px, et restait flou d'un
+cran partout ailleurs. Le fichier est mis en cache une fois pour les 111
+pages.
+
+**Deux variantes, pas une recoloration.** Sur le bleu nuit du pied de page,
+l'encre sombre disparaîtrait. La variante claire bascule cette encre-là en
+blanc et laisse le cyan intact.
+
+**Hauteurs.** En-tête : 2,9 rem, porté à 3,2 rem au-delà de 1400 px, réduit à
+2,5 rem sous 560 px et 2,25 rem sous 360 px — la ligne « EN BRETAGNE » doit
+rester lisible là où il y a la place. Pied de page : 3 rem. La largeur suit
+toujours le rapport de 3,46 ; les attributs `width` et `height` de la balise
+réservent la place avant chargement.
+
+> **À trancher.** Le logo dit « DEBOUCHEUR RICHARD », le site dit
+> « Dégorgement Richard » — titres, JSON-LD, nom de domaine compris. Les deux
+> cohabitent aujourd'hui sans se contredire (ce sont deux métiers voisins),
+> mais c'est une décision de marque, pas une décision technique.
+
+---
+
+## 5. En-tête
 
 Trois zones sur une grille `auto 1fr auto` : la marque à gauche, le menu au
 centre, le téléphone et le bouton d'intervention à droite.
@@ -183,7 +222,7 @@ barre sous forme de raccourci, réduit à son icône sous 560 px.
 
 ---
 
-## 5. Composants
+## 6. Composants
 
 | Classe | Rôle |
 |---|---|
@@ -215,7 +254,7 @@ barre sous forme de raccourci, réduit à son icône sous 560 px.
 
 ---
 
-## 6. Mouvement
+## 7. Mouvement
 
 Trois effets, tous discrets : soulèvement des cartes au survol, décalage de
 la flèche des liens d'action, apparition en fondu des blocs au défilement.
@@ -232,7 +271,7 @@ défilement doux et les survols qui déplacent.
 
 ---
 
-## 7. Accessibilité
+## 8. Accessibilité
 
 - contrastes AA vérifiés sur la page rendue (voir ci-dessus) ;
 - anneau de focus visible de 3 px sur tout élément interactif ;
@@ -252,7 +291,7 @@ défilement doux et les survols qui déplacent.
 
 ---
 
-## 8. Images
+## 9. Images
 
 Deux familles, deux rôles, et les confondre les affaiblit toutes les deux.
 
@@ -290,7 +329,7 @@ la 1536.
 
 ---
 
-## 9. Carte des zones
+## 10. Carte des zones
 
 Leaflet 1.9.4 (BSD 2-Clause), **auto-hébergé** dans `assets/vendor/leaflet/` :
 la politique de sécurité du site interdit les scripts venus d'un CDN.
@@ -308,7 +347,7 @@ si les tuiles ne chargent pas.
 
 ---
 
-## 10. Responsive
+## 11. Responsive
 
 Le site est vérifié à **onze largeurs** — 320, 375, 390, 414, 430, 768, 820,
 1024, 1280, 1440, 1920 — sur seize gabarits, soit 176 rendus, par
@@ -337,7 +376,7 @@ passe.
 
 ---
 
-## 11. Performance
+## 12. Performance
 
 | Ressource | Poids | Chargée |
 |---|---|---|

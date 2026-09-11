@@ -4,15 +4,35 @@ Deux familles de fichiers cohabitent ici, produites par deux scripts
 différents. Aucune n'est à retoucher à la main : ce sont les scripts qui font
 foi, une retouche serait perdue à la régénération suivante.
 
-## Icônes et favicon — `scripts/generer-images.py`
+## Logo, icônes et favicon — `scripts/preparer-logo.py`
+
+Le logo fourni par l'entreprise est dans `logo-source/logo-original.webp`.
+C'est la **source** : tout le reste en dérive, et rien ici ne se retouche à la
+main.
 
 | Fichier | Rôle |
 |---|---|
-| `favicon.svg` | icône d'onglet, écrite à la main (vectorielle) |
-| `favicon.ico` | repli 16/32/48 px pour les navigateurs anciens |
-| `apple-touch-icon.png` | 180 px, écran d'accueil iOS |
+| `logo/logo-deboucheur-richard.svg` | logo de l'en-tête, vectoriel |
+| `logo/logo-deboucheur-richard-clair.svg` | variante encre claire, pour le pied de page |
+| `logo/logo-deboucheur-richard{,-clair}-480.{png,webp}` | repli matriciel pour les contextes sans vectoriel (signature de courriel, impression) |
+| `logo/monogramme.png` | pictogramme seul, isolé du bloc de texte |
+| `favicon.svg` | icône d'onglet, vectorielle — c'est elle que servent les navigateurs récents |
+| `favicon.ico` | repli 16/32/48 px, fond opaque |
+| `apple-touch-icon.png` | 180 px, écran d'accueil iOS — **jamais transparent**, iOS composerait sur du noir |
 | `icone-192.png`, `icone-512.png` | manifeste d'application |
-| `icone-512-maskable.png` | variante à marge de sécurité (Android) |
+| `icone-512-maskable.png` | variante à marge de sécurité : Android rogne jusqu'à 20 % de chaque bord |
+
+Le script détoure le fond blanc du fichier fourni, ramène chaque pixel à l'une
+des deux encres du logo (`#0d1d28` et `#00abf3`, déjà alignées sur la palette
+du site), puis vectorise chaque encre avec `potrace` et recompose un SVG
+unique. Résultat : 23 Ko de SVG — 10 Ko une fois compressé par le serveur —
+net à toutes les définitions, là où il aurait fallu deux bitmaps de 31 et
+51 Ko pour un rendu moins bon.
+
+> Le script **remplace** l'ancien `generer-images.py`, qui dessinait une
+> goutte faute de logo. Deux scripts ne doivent pas se disputer les mêmes
+> fichiers : celui-là a été supprimé, faute de quoi une exécution distraite
+> aurait écrasé le vrai logo par le provisoire.
 
 ## Images de partage — `scripts/generer-visuels.py`
 

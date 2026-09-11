@@ -454,33 +454,25 @@ section.alt + section.alt { background: var(--color-surface); }
 }
 
 .brand {
-  display: inline-flex; align-items: center; gap: .65rem;
-  text-decoration: none; color: var(--texte-fort); flex: none;
+  display: inline-flex; align-items: center;
+  text-decoration: none; flex: none;
 }
-.brand-mark {
-  width: 2.6rem; height: 2.6rem; flex: none;
-  color: #fff;
-  background: linear-gradient(145deg, var(--bleu-500), var(--bleu-800));
-  border-radius: 14px;
-  padding: .42rem;
-  box-shadow: var(--ombre-bleue);
+/* Le logo est servi en SVG : sa hauteur est la seule chose à fixer, la
+   largeur suit son rapport (3,46 pour 1). Les attributs width et height de la
+   balise réservent la place avant le chargement — pas de saut de mise en
+   page, même sur un réseau lent. */
+.brand-logo {
+  display: block;
+  height: 2.9rem; width: auto;
+  transition: opacity .18s ease;
 }
-.brand-text { display: grid; line-height: 1.2; }
-.brand-text strong {
-  font-family: var(--police-titre);
-  font-size: 1.08rem; font-weight: 800;
-  letter-spacing: -.02em; color: var(--texte-fort);
-  white-space: nowrap;
-}
-/* La ligne d'accroche ne survit qu'aux largeurs qui peuvent la payer : au
-   milieu de la plage desktop, ces 190 px décideraient à eux seuls du passage
-   en défilement horizontal. */
-.brand-text small {
-  display: none;
-  font-size: .72rem; color: var(--texte-doux); font-weight: 500;
-  white-space: nowrap;
-}
-@media (min-width: 1400px) { .brand-text small { display: block; } }
+.brand:hover .brand-logo { opacity: .82; }
+/* Deux paliers, pour la même raison que le reste de la barre : la ligne
+   « EN BRETAGNE » doit rester lisible là où il y a la place, et le logo doit
+   savoir se serrer là où il n'y en a pas. */
+@media (min-width: 1400px) { .brand-logo { height: 3.2rem; } }
+@media (max-width: 559px)  { .brand-logo { height: 2.5rem; } }
+@media (max-width: 359px)  { .brand-logo { height: 2.25rem; } }
 
 .nav { justify-self: center; }
 .nav ul {
@@ -659,13 +651,8 @@ section.alt + section.alt { background: var(--color-surface); }
   .header-actions .btn-devis { font-size: .88rem; padding: .68rem .9rem; }
 }
 
-/* Sous 480 px, le nom de la marque passe sur deux lignes plutôt que de
-   rogner la police jusqu'à l'illisible ou de tronquer la raison sociale. */
-@media (max-width: 479px) {
-  .brand { min-width: 0; }
-  .brand-text { min-width: 0; }
-  .brand-text strong { white-space: normal; font-size: 1rem; line-height: 1.08; }
-}
+/* Sous 480 px, c'est la hauteur du logo qui se réduit, plus haut dans cette
+   feuille : une image ne se replie pas sur deux lignes. */
 
 /* Fil d'Ariane. */
 .fil { padding-top: var(--e-5); }
@@ -1820,7 +1807,11 @@ tbody tr:hover { background: var(--fond-doux); }
 }
 .footer-brand { grid-column: span 1; }
 @media (min-width: 900px) { .footer-brand { grid-column: span 2; max-width: 30rem; } }
-.footer-brand .brand-mark { margin-bottom: var(--e-4); }
+.footer-logo {
+  display: block;
+  height: 3rem; width: auto;
+  margin-bottom: var(--e-4);
+}
 .footer-brand > strong {
   display: block;
   font-family: var(--police-titre);
