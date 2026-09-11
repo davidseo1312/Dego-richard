@@ -51,7 +51,7 @@
   "name": "Dégorgement et débouchage à Questembert (56)",
   "description": "Dégorgement, débouchage et assainissement à Questembert : bourg, habitat dispersé, fosses toutes eaux et réseaux enterrés. Intervention 24h/24, devis écrit.",
   "inLanguage": "fr-FR",
-  "dateModified": "2026-09-09",
+  "dateModified": "2026-09-11",
   "isPartOf": { "@id": "https://degorgement-richard.fr/#site" },
   "about": { "@id": "https://degorgement-richard.fr/#entreprise" },
   "primaryImageOfPage": {
@@ -138,14 +138,12 @@
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="/">
-      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-        <path d="M16 3c5.2 7.2 7.6 10.7 7.6 14A7.6 7.6 0 0 1 16 24.6 7.6 7.6 0 0 1 8.4 17c0-3.3 2.4-6.8 7.6-14z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
-        <path d="M11 28.4h10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-      </svg>
-      <span class="brand-text">
-        <strong>Dégorgement Richard</strong>
-        <small>Débouchage · Curage · Assainissement</small>
-      </span>
+      <!-- Logo vectoriel : net à toutes les définitions, et un seul fichier
+           mis en cache pour les 111 pages. Les dimensions portées par la
+           balise réservent sa place avant même qu'il soit chargé. -->
+      <img class="brand-logo" src="/assets/img/logo/logo-deboucheur-richard.svg"
+           width="1659" height="480" fetchpriority="high"
+           alt="Déboucheur Richard en Bretagne">
     </a>
 
     <nav id="nav-principal" class="nav" aria-label="Navigation principale">
@@ -387,11 +385,11 @@
 <footer class="site-footer">
   <div class="wrap footer-grid">
     <div class="footer-col footer-brand">
-      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-        <path d="M16 3c5.2 7.2 7.6 10.7 7.6 14A7.6 7.6 0 0 1 16 24.6 7.6 7.6 0 0 1 8.4 17c0-3.3 2.4-6.8 7.6-14z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
-        <path d="M11 28.4h10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-      </svg>
-      <strong>Dégorgement Richard</strong>
+      <!-- Variante claire : sur le bleu nuit du pied de page, l'encre sombre
+           du logo disparaîtrait. -->
+      <img class="footer-logo" src="/assets/img/logo/logo-deboucheur-richard-clair.svg"
+           width="1659" height="480" loading="lazy"
+           alt="Déboucheur Richard en Bretagne">
       <p>Dégorgement, débouchage et assainissement dans le Grand Ouest. Débouchage de WC, d'évier, de douche et de canalisation, curage, inspection caméra et assainissement pour les particuliers et les professionnels.</p>
       <a class="footer-tel" href="tel:+33220060075" data-track="appel" data-track-zone="pied-de-page">
         <span class="icone" aria-hidden="true">
