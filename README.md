@@ -151,6 +151,7 @@ scripts/
   preparer-logo.py       détoure et vectorise le logo, en tire favicon et icônes
   maillage-conseils.py   relie les articles aux prestations qui les concernent
   check-indexation.py    redirections, pages orphelines, canoniques, sitemap
+  check-semantique.py    couverture d'un champ lexical sur une page donnée
   generer-visuels.py     régénère les schémas techniques et les images de
                          partage, rendus en WebP et JPEG par Chromium
   preparer-photos.py     dérivés AVIF/WebP des photographies + src/photos.sh

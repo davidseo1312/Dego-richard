@@ -356,7 +356,30 @@ done
 # Deux pages portant la meme question se concurrencent dans les resultats
 # enrichis de Google : aucune des deux ne ressort.
 titre "15. Donnees structurees FAQ"
-DOUBLES=$(grep -rhoE '"name": "[^"]+\?"' public --include='*.html' | sort | uniq -d || true)
+# Les questions sont extraites des seuls blocs FAQPage. En les cherchant a la
+# grep dans tout le HTML, un titre d'article se terminant par un point
+# d'interrogation — repris tel quel dans son fil d'Ariane balise — passait
+# pour une question dupliquee. Un faux positif qui masque les vrais.
+DOUBLES=$(python3 - <<'PYFAQ' || true
+import json, pathlib, re, collections
+q = collections.Counter()
+for f in pathlib.Path("public").rglob("*.html"):
+    for bloc in re.findall(r'<script type="application/ld\+json">(.*?)</script>',
+                           f.read_text(encoding="utf-8"), re.S):
+        try:
+            d = json.loads(bloc)
+        except ValueError:
+            continue
+        for o in (d if isinstance(d, list) else [d]):
+            for x in (o.get("@graph") or [o]):
+                if x.get("@type") == "FAQPage":
+                    for e in x.get("mainEntity", []):
+                        q[e.get("name", "").strip()] += 1
+for nom, n in q.items():
+    if n > 1:
+        print(f'"name": "{nom}"')
+PYFAQ
+)
 if [ -n "$DOUBLES" ]; then
   while IFS= read -r q; do avert "question FAQ presente sur plusieurs pages : ${q:10:70}"; done <<< "$DOUBLES"
 else
