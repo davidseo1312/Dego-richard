@@ -30,6 +30,7 @@ TITRES = {
     "canalisation-bouchee-signes": "Les signes qui annoncent un bouchon",
     "comment-entretenir-canalisations": "Comment entretenir ses canalisations",
     "degorgement-ou-curage": "Dégorgement ou curage : lequel choisir ?",
+    "depannage-urgence-vos-droits": "Dépannage en urgence : vos droits, les prix, les pièges",
     "eau-remonte-evier": "L'eau remonte dans l'évier : pourquoi ?",
     "entretenir-assainissement-non-collectif": "Entretenir un assainissement non collectif",
     "eviter-bouchons-canalisation": "Éviter les bouchons de canalisation",
@@ -45,9 +46,9 @@ TITRES = {
 # rempli de liens.
 LIENS = {
     "degorgement": ["prix-degorgement", "degorgement-ou-curage", "residence-secondaire-reouverture"],
-    "degorgement-urgence": ["canalisation-bouchee-que-faire", "canalisation-bouchee-signes"],
+    "degorgement-urgence": ["canalisation-bouchee-que-faire", "canalisation-bouchee-signes", "depannage-urgence-vos-droits"],
     "debouchage-canalisation": ["canalisation-bouchee-que-faire", "pourquoi-canalisation-se-bouche",
-                                "eviter-bouchons-canalisation"],
+                                "eviter-bouchons-canalisation", "depannage-urgence-vos-droits"],
     "debouchage-canalisation-exterieure": ["pourquoi-canalisation-se-bouche",
                                            "quand-utiliser-camera-inspection"],
     "debouchage-wc": ["wc-bouche-que-faire", "eviter-bouchons-canalisation"],
@@ -66,8 +67,8 @@ LIENS = {
     "assainissement": ["entretenir-assainissement-non-collectif", "residence-secondaire-reouverture"],
     "degorgement-professionnel": ["comment-entretenir-canalisations", "degorgement-ou-curage"],
     "degorgement-collectif": ["eviter-bouchons-canalisation", "pourquoi-canalisation-se-bouche"],
-    "tarifs": ["prix-degorgement", "degorgement-ou-curage"],
-    "devis": ["prix-degorgement"],
+    "tarifs": ["prix-degorgement", "degorgement-ou-curage", "depannage-urgence-vos-droits"],
+    "devis": ["prix-degorgement", "depannage-urgence-vos-droits"],
     "faq": ["prix-degorgement", "canalisation-bouchee-que-faire", "wc-bouche-que-faire"],
 }
 
@@ -98,8 +99,20 @@ def traiter(slug: str, articles) -> str | None:
     if not f.is_file():
         return f"{slug} : page introuvable"
     s = f.read_text(encoding="utf-8")
+
+    # Un bloc déjà posé est REMPLACÉ, pas laissé tel quel : sans cela, un
+    # article ajouté au blog après coup ne serait jamais relié aux pages déjà
+    # traitées, et le script mentirait sur ce qu'il garantit.
     if MARQUE in s:
-        return None
+        debut = s.index(MARQUE)
+        fin = s.index("</section>", debut) + len("</section>\n\n")
+        avant = s[debut:fin]
+        neuf = bloc(articles)
+        if avant == neuf:
+            return None
+        f.write_text(s[:debut] + neuf + s[fin:], encoding="utf-8")
+        return f"{slug} → bloc mis à jour, {len(articles)} article(s)"
+
     i = s.rfind('<section class="cta-final">')
     if i == -1:
         return f"{slug} : pas d'appel à l'action final, bloc non posé"
