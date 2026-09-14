@@ -152,6 +152,8 @@ scripts/
   maillage-conseils.py   relie les articles aux prestations qui les concernent
   check-indexation.py    redirections, pages orphelines, canoniques, sitemap
   check-semantique.py    couverture d'un champ lexical sur une page donnée
+  check-blog-semantique.py  les 13 articles, chacun sur son champ, + leur CTA
+  duree-lecture.py       recalcule les durées de lecture affichées
   generer-visuels.py     régénère les schémas techniques et les images de
                          partage, rendus en WebP et JPEG par Chromium
   preparer-photos.py     dérivés AVIF/WebP des photographies + src/photos.sh
@@ -678,6 +680,36 @@ trois lignes de l'arrêté dans `src/config.sh` : la grille de `/tarifs`, son
 chapeau et la ligne « à partir de » des onze pages de prestation apparaissent
 d'elles-mêmes. Voir [`docs/configuration.md`](docs/configuration.md), section
 Tarifs.
+
+### Les articles du blog et leur ancrage local
+
+Chaque article est mesuré sur un champ lexical déclaré dans
+`src/seo/champs-lexicaux.tsv` : le champ commun — zone d'intervention et
+vocabulaire du métier — plus les notions propres à son sujet.
+`scripts/check-blog-semantique.py` vérifie, pour les treize :
+
+* couverture ≥ 90 % des termes attendus ;
+* aucun terme au-delà de 1,5 % des mots, **sauf ceux du H1** — reprocher à
+  « Dégorgement ou curage » de répéter « curage » reviendrait à lui reprocher
+  de traiter sa question ;
+* un appel à l'action final contenant un lien `tel:`.
+
+**Sur le mot « Bretagne ».** Le site couvre six départements, et **quatre
+seulement sont bretons**. La Loire-Atlantique et le Maine-et-Loire sont en
+Pays de la Loire. Aucun article n'écrit donc « en Bretagne » pour les
+désigner : l'englobant est « le Grand Ouest » ou « Bretagne et Pays de la
+Loire ». C'est une contrainte d'exactitude, et elle ne coûte rien au
+référencement — les quatre départements bretons sont nommés explicitement,
+plusieurs fois, dans chaque article.
+
+Chaque article porte une section locale **qui lui est propre** : les délais
+par secteur pour l'urgence, le bâti local pour les signes précoces, le
+calendrier littoral pour l'entretien, les secteurs bas pour le refoulement,
+les sols sur schiste pour l'assainissement, les racines de bocage pour les
+causes structurelles, les îles et la saison pour le prix. Douze angles
+différents, pas douze fois le même paragraphe : la similarité maximale entre
+deux articles est de 0,12 (seuil de clonage : 0,40), et de 0,06 entre les
+seules sections locales.
 
 ### La raison sociale n'est pas affichée en pied de page
 

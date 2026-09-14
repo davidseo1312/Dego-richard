@@ -1,0 +1,205 @@
+# Champs lexicaux visés par les articles du blog.
+#
+# Un terme par ligne, précédé du slug de l'article. Ces listes servent à
+# scripts/check-blog-semantique.py, qui mesure la couverture réelle de chaque
+# page — ce que notent les outils d'optimisation sémantique.
+#
+# Elles ne sont PAS une liste de mots à caser : ce sont les notions qu'un
+# article complet sur le sujet aborde nécessairement. Un terme qu'on ne peut
+# pas employer sans forcer la phrase n'a rien à faire ici — il faut alors
+# retirer le terme, pas tordre le texte.
+#
+# Le champ local est commun à tous : le site couvre six départements, et
+# quatre seulement sont bretons. « Bretagne » ne doit jamais désigner la
+# Loire-Atlantique ni le Maine-et-Loire : le site écrit « Grand Ouest » ou
+# « Bretagne et Pays de la Loire » quand il les englobe.
+#
+# slug	terme
+
+# --- Champ local, repris par tous les articles -----------------------------
+*	Bretagne
+*	Grand Ouest
+*	Côtes-d'Armor
+*	Finistère
+*	Ille-et-Vilaine
+*	Morbihan
+*	Loire-Atlantique
+*	Maine-et-Loire
+*	dégorgement
+*	débouchage
+*	canalisation
+*	intervention
+*	devis
+
+canalisation-bouchee-que-faire	refoulement
+canalisation-bouchee-que-faire	siphon
+canalisation-bouchee-que-faire	ventouse
+canalisation-bouchee-que-faire	furet
+canalisation-bouchee-que-faire	déboucheur chimique
+canalisation-bouchee-que-faire	eau chaude
+canalisation-bouchee-que-faire	évacuation
+canalisation-bouchee-que-faire	chasse d'eau
+canalisation-bouchee-que-faire	colonne
+canalisation-bouchee-que-faire	regard
+canalisation-bouchee-que-faire	urgence
+canalisation-bouchee-que-faire	plombier
+canalisation-bouchee-que-faire	délai
+canalisation-bouchee-que-faire	Rennes
+canalisation-bouchee-que-faire	Brest
+canalisation-bouchee-que-faire	Nantes
+canalisation-bouchee-que-faire	copropriété
+
+canalisation-bouchee-signes	écoulement lent
+canalisation-bouchee-signes	gargouillis
+canalisation-bouchee-signes	mauvaises odeurs
+canalisation-bouchee-signes	siphon
+canalisation-bouchee-signes	tartre
+canalisation-bouchee-signes	graisses
+canalisation-bouchee-signes	lingettes
+canalisation-bouchee-signes	colonne en fonte
+canalisation-bouchee-signes	grès
+canalisation-bouchee-signes	eau dure
+canalisation-bouchee-signes	inspection caméra
+canalisation-bouchee-signes	entretien
+canalisation-bouchee-signes	Brest
+canalisation-bouchee-signes	Angers
+canalisation-bouchee-signes	diagnostic
+
+comment-entretenir-canalisations	entretien
+comment-entretenir-canalisations	siphon
+comment-entretenir-canalisations	graisses
+comment-entretenir-canalisations	eau chaude
+comment-entretenir-canalisations	bicarbonate
+comment-entretenir-canalisations	vinaigre
+comment-entretenir-canalisations	bac à graisses
+comment-entretenir-canalisations	curage
+comment-entretenir-canalisations	calcaire
+comment-entretenir-canalisations	saison
+comment-entretenir-canalisations	location saisonnière
+comment-entretenir-canalisations	littoral
+comment-entretenir-canalisations	fosse toutes eaux
+comment-entretenir-canalisations	prévention
+
+degorgement-ou-curage	curage
+degorgement-ou-curage	hydrocurage
+degorgement-ou-curage	haute pression
+degorgement-ou-curage	furet
+degorgement-ou-curage	buse
+degorgement-ou-curage	colonne
+degorgement-ou-curage	dépôt
+degorgement-ou-curage	diamètre
+degorgement-ou-curage	inspection caméra
+degorgement-ou-curage	collecteur
+degorgement-ou-curage	immeuble
+degorgement-ou-curage	restauration
+degorgement-ou-curage	entretien préventif
+
+eau-remonte-evier	refoulement
+eau-remonte-evier	siphon
+eau-remonte-evier	évier
+eau-remonte-evier	graisses
+eau-remonte-evier	colonne
+eau-remonte-evier	clapet anti-retour
+eau-remonte-evier	réseau en charge
+eau-remonte-evier	secteur bas
+eau-remonte-evier	ventilation
+eau-remonte-evier	cuisine
+eau-remonte-evier	Redon
+eau-remonte-evier	estuaire
+eau-remonte-evier	marais
+
+entretenir-assainissement-non-collectif	assainissement non collectif
+entretenir-assainissement-non-collectif	fosse toutes eaux
+entretenir-assainissement-non-collectif	préfiltre
+entretenir-assainissement-non-collectif	épandage
+entretenir-assainissement-non-collectif	vidange
+entretenir-assainissement-non-collectif	boues
+entretenir-assainissement-non-collectif	SPANC
+entretenir-assainissement-non-collectif	contrôle
+entretenir-assainissement-non-collectif	bac dégraisseur
+entretenir-assainissement-non-collectif	ventilation
+entretenir-assainissement-non-collectif	sol
+entretenir-assainissement-non-collectif	schiste
+entretenir-assainissement-non-collectif	habitat dispersé
+
+eviter-bouchons-canalisation	lingettes
+eviter-bouchons-canalisation	graisses
+eviter-bouchons-canalisation	cheveux
+eviter-bouchons-canalisation	siphon
+eviter-bouchons-canalisation	grille
+eviter-bouchons-canalisation	bac à graisses
+eviter-bouchons-canalisation	prévention
+eviter-bouchons-canalisation	colonne
+eviter-bouchons-canalisation	copropriété
+eviter-bouchons-canalisation	restaurant
+eviter-bouchons-canalisation	locataire
+eviter-bouchons-canalisation	entretien
+
+pourquoi-canalisation-se-bouche	racines
+pourquoi-canalisation-se-bouche	affaissement
+pourquoi-canalisation-se-bouche	pente
+pourquoi-canalisation-se-bouche	grès
+pourquoi-canalisation-se-bouche	fonte
+pourquoi-canalisation-se-bouche	joint
+pourquoi-canalisation-se-bouche	emboîtement
+pourquoi-canalisation-se-bouche	tartre
+pourquoi-canalisation-se-bouche	inspection caméra
+pourquoi-canalisation-se-bouche	bocage
+pourquoi-canalisation-se-bouche	haie
+pourquoi-canalisation-se-bouche	diamètre
+pourquoi-canalisation-se-bouche	récidive
+
+prix-degorgement	tarif
+prix-degorgement	devis écrit
+prix-degorgement	taux horaire
+prix-degorgement	frais de déplacement
+prix-degorgement	majoration
+prix-degorgement	forfait
+prix-degorgement	accessibilité
+prix-degorgement	hydrocurage
+prix-degorgement	inspection caméra
+prix-degorgement	urgence
+prix-degorgement	saison
+prix-degorgement	île
+prix-degorgement	distance
+
+quand-utiliser-camera-inspection	inspection caméra
+quand-utiliser-camera-inspection	caméra
+quand-utiliser-camera-inspection	compte rendu
+quand-utiliser-camera-inspection	racines
+quand-utiliser-camera-inspection	affaissement
+quand-utiliser-camera-inspection	regard
+quand-utiliser-camera-inspection	tracé
+quand-utiliser-camera-inspection	litige
+quand-utiliser-camera-inspection	locataire
+quand-utiliser-camera-inspection	achat
+quand-utiliser-camera-inspection	maison ancienne
+quand-utiliser-camera-inspection	vétusté
+quand-utiliser-camera-inspection	diagnostic
+
+residence-secondaire-reouverture	résidence secondaire
+residence-secondaire-reouverture	siphon
+residence-secondaire-reouverture	garde d'eau
+residence-secondaire-reouverture	odeurs
+residence-secondaire-reouverture	ventilation
+residence-secondaire-reouverture	remise en eau
+residence-secondaire-reouverture	fosse toutes eaux
+residence-secondaire-reouverture	regard
+residence-secondaire-reouverture	littoral
+residence-secondaire-reouverture	golfe
+residence-secondaire-reouverture	location saisonnière
+residence-secondaire-reouverture	hivernage
+
+wc-bouche-que-faire	WC
+wc-bouche-que-faire	cuvette
+wc-bouche-que-faire	siphon
+wc-bouche-que-faire	furet
+wc-bouche-que-faire	ventouse
+wc-bouche-que-faire	lingettes
+wc-bouche-que-faire	chasse d'eau
+wc-bouche-que-faire	chute
+wc-bouche-que-faire	colonne
+wc-bouche-que-faire	fosse toutes eaux
+wc-bouche-que-faire	déboucheur chimique
+wc-bouche-que-faire	broyeur
+wc-bouche-que-faire	copropriété

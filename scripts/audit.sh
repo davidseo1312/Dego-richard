@@ -25,7 +25,7 @@ etape() { RESULTATS="${RESULTATS}$1|$2"$'\n'; }
 titre() { echo; echo "${GRAS}=== $1 ===${FIN}"; echo; }
 
 # --- 1. Construction --------------------------------------------------------
-titre "1/9  Construction"
+titre "1/10  Construction"
 if bash scripts/build.sh; then
   etape "BUILD" "OK"
 else
@@ -35,7 +35,7 @@ else
 fi
 
 # --- 2. SEO, GEO, liens, ressources ----------------------------------------
-titre "2/9  Contrôle SEO / GEO, liens internes et ressources"
+titre "2/10  Contrôle SEO / GEO, liens internes et ressources"
 if bash scripts/check-seo.sh; then
   etape "SEO / GEO / LIENS" "OK"
 else
@@ -43,7 +43,7 @@ else
 fi
 
 # --- 3. Indexation ----------------------------------------------------------
-titre "3/9  Indexabilité : redirections, maillage, canoniques, sitemap"
+titre "3/10  Indexabilité : redirections, maillage, canoniques, sitemap"
 if command -v python3 >/dev/null; then
   if python3 scripts/check-indexation.py; then
     etape "INDEXATION" "OK"
@@ -55,8 +55,21 @@ else
   etape "INDEXATION" "IGNOREE"
 fi
 
-# --- 4. Structure HTML ------------------------------------------------------
-titre "4/9  Structure HTML"
+# --- 4. Sémantique du blog --------------------------------------------------
+titre "4/10  Couverture sémantique des articles du blog"
+if command -v python3 >/dev/null; then
+  if python3 scripts/check-blog-semantique.py; then
+    etape "SÉMANTIQUE BLOG" "OK"
+  else
+    etape "SÉMANTIQUE BLOG" "ECHEC"; ECHEC=1
+  fi
+else
+  echo "Python 3 absent : contrôle ignoré."
+  etape "SÉMANTIQUE BLOG" "IGNOREE"
+fi
+
+# --- 5. Structure HTML ------------------------------------------------------
+titre "5/10  Structure HTML"
 if command -v python3 >/dev/null; then
   if python3 scripts/check-html.py; then
     etape "STRUCTURE HTML" "OK"
@@ -69,7 +82,7 @@ else
 fi
 
 # --- 4. Contenu local -------------------------------------------------------
-titre "5/9  Similarité des pages locales"
+titre "6/10  Similarité des pages locales"
 if command -v python3 >/dev/null; then
   if python3 scripts/check-contenu-local.py; then
     etape "CONTENU LOCAL" "OK"
@@ -82,7 +95,7 @@ else
 fi
 
 # --- 5. Données structurées -------------------------------------------------
-titre "6/9  Données structurées (JSON-LD)"
+titre "7/10  Données structurées (JSON-LD)"
 if command -v python3 >/dev/null; then
   if python3 - <<'PY'
 import json, re, glob, sys
@@ -111,7 +124,7 @@ else
 fi
 
 # --- 6. Test HTTP -----------------------------------------------------------
-titre "7/9  Test HTTP du dossier de production"
+titre "8/10  Test HTTP du dossier de production"
 if command -v php >/dev/null && command -v curl >/dev/null; then
   if bash scripts/test-http.sh; then
     etape "TEST HTTP / 403" "OK"
@@ -123,7 +136,7 @@ else
   etape "TEST HTTP / 403" "IGNOREE"
 fi
 
-titre "8/9  Contrastes (WCAG 1.4.3)"
+titre "9/10  Contrastes (WCAG 1.4.3)"
 
 # Le contrôle mesure les couleurs sur la page RENDUE : il lui faut donc un
 # navigateur. Sur un poste qui n'en a pas, l'étape est signalée ignorée
@@ -139,7 +152,7 @@ else
   etape "CONTRASTES" "IGNOREE"
 fi
 
-titre "9/9  Responsive (11 largeurs d'appareil)"
+titre "10/10  Responsive (11 largeurs d'appareil)"
 
 # Même dépendance que le contrôle des contrastes : il faut un navigateur pour
 # mesurer une mise en page. Absent, l'étape est signalée ignorée.
