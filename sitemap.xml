@@ -59,6 +59,7 @@
     <loc>https://degorgement-richard.fr/blog/degorgement-ou-curage</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/blog/depannage-urgence-vos-droits</loc>
@@ -76,6 +77,7 @@
     <loc>https://degorgement-richard.fr/blog/entretenir-assainissement-non-collectif</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.55</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/blog/evacuation-bouchee-logement-etudiant-rennes</loc>
@@ -87,6 +89,7 @@
     <loc>https://degorgement-richard.fr/blog/eviter-bouchons-canalisation</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/controle-ecoulement-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/blog/fosse-septique-refoule-cotes-d-armor</loc>
@@ -98,6 +101,13 @@
     <loc>https://degorgement-richard.fr/blog/</loc>
     <lastmod>2026-09-30</lastmod>
     <priority>0.6</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/controle-ecoulement-evier-cuisine-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/blog/location-saisonniere-bouchon-entre-deux-arrivees-morbihan</loc>
@@ -106,9 +116,31 @@
     <image:image><image:loc>https://degorgement-richard.fr/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://degorgement-richard.fr/blog/page/2</loc>
+    <lastmod>2026-09-30</lastmod>
+    <priority>0.4</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/controle-ecoulement-evier-cuisine-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://degorgement-richard.fr/blog/page/3</loc>
+    <lastmod>2026-09-30</lastmod>
+    <priority>0.4</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://degorgement-richard.fr/blog/pourquoi-canalisation-se-bouche</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
+    <image:image><image:loc>https://degorgement-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://degorgement-richard.fr/blog/prix-degorgement</loc>

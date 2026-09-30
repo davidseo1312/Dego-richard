@@ -1849,6 +1849,80 @@ tbody tr:hover { background: var(--fond-doux); }
 .sommaire ol { margin: 0; padding-left: 1.15rem; font-size: .96rem; }
 .sommaire li { margin-bottom: .35em; }
 
+/* Pagination du sommaire du blog.
+   Une séquence de pages est une liste ordonnée : le balisage le dit, et la
+   page courante est un <span aria-current>, pas un lien vers soi-même. Les
+   cibles font 44 px de côté au minimum, taille de doigt. */
+.pagination {
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: var(--e-3);
+  margin-top: var(--e-8);
+  padding-top: var(--e-6);
+  border-top: 1px solid var(--bordure);
+}
+.pagination ol {
+  display: flex; flex-wrap: wrap; gap: var(--e-2);
+  list-style: none; margin: 0; padding: 0;
+}
+.pagination li { margin: 0; }
+/* Le cadre ne s'applique qu'aux ÉLÉMENTS DE PAGINATION eux-mêmes — les
+   <span> de libellé et de flèche qu'ils contiennent ne doivent pas hériter
+   d'une bordure, faute de quoi « ← Précédent » s'affiche en deux boîtes. */
+.pagination > a,
+.pagination > span,
+.pagination li > a,
+.pagination li > span {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 2.75rem; min-height: 2.75rem;
+  padding: 0 .85rem;
+  border: 1px solid var(--bordure-forte);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--texte-fort);
+  font-weight: 600; font-size: .98rem;
+  text-decoration: none;
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+.pagination > a:hover, .pagination > a:focus-visible,
+.pagination li > a:hover, .pagination li > a:focus-visible {
+  background: var(--bleu-50);
+  border-color: var(--bleu-700);
+  color: var(--bleu-900);
+}
+.pagination [aria-current="page"] {
+  background: var(--bleu-700);
+  border-color: var(--bleu-700);
+  color: var(--blanc);
+}
+.pagination-bord { font-weight: 500; gap: .45rem; }
+.pagination-bord .pagination-fleche { font-size: 1.05rem; line-height: 1; }
+/* Les deux <span> intérieurs sont du texte, pas des boutons. */
+.pagination .pagination-fleche,
+.pagination .pagination-libelle {
+  display: inline; min-width: 0; min-height: 0;
+  padding: 0; border: 0; background: none; color: inherit; font-weight: inherit;
+}
+.pagination-inactif {
+  color: var(--texte-doux);
+  border-color: var(--bordure);
+  background: transparent;
+}
+
+@media (max-width: 560px) {
+  .pagination { gap: var(--e-2); }
+  /* Sous 560 px, seules les flèches restent visibles : trois lignes de
+     pagination valent moins qu'une ligne lisible. Le libellé n'est pas
+     supprimé mais masqué visuellement — il reste le nom accessible du lien,
+     là où un display:none le retirerait à la synthèse vocale. */
+  .pagination-bord { padding: 0 .7rem; }
+  .pagination-bord .pagination-libelle {
+    position: absolute; width: 1px; height: 1px;
+    margin: -1px; padding: 0; border: 0;
+    clip: rect(0 0 0 0); clip-path: inset(50%);
+    overflow: hidden; white-space: nowrap;
+  }
+}
+
 /* == 13. Pied de page ===================================================== */
 
 .site-footer {
@@ -2052,32 +2126,6 @@ tbody tr:hover { background: var(--fond-doux); }
 .confiance span { display: block; font-size: .95rem; color: var(--texte); }
 
 /* --- Schémas explicatifs -------------------------------------------------- */
-/* Le schéma n'est plus un visuel d'ouverture : il appuie une explication, et
-   se lit donc avec sa légende. */
-/* Un schéma en pleine largeur d'une page de 1200 px devient un poster : il
-   écrase le texte qu'il est censé appuyer. On le ramène à la largeur d'une
-   colonne de lecture. */
-.wrap > .schema { max-width: 44rem; margin-inline: auto; }
-.schema {
-  margin: var(--e-6) 0;
-  background: var(--surface);
-  border: 1px solid var(--bordure);
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  box-shadow: var(--ombre-xs);
-}
-.schema img { width: 100%; background: var(--bleu-50); }
-.schema figcaption {
-  padding: var(--e-4) var(--e-5);
-  font-size: .93rem; color: var(--texte);
-  border-top: 1px solid var(--bordure);
-  background: var(--fond-doux);
-}
-.schema figcaption strong { color: var(--texte-fort); }
-.schemas-grille .schema { margin: 0; display: flex; flex-direction: column; }
-.schemas-grille .schema img { aspect-ratio: 3 / 2; object-fit: cover; }
-.schemas-grille .schema figcaption { flex: 1; }
-
 /* --- Carte des zones d'intervention --------------------------------------- */
 .carte-bloc {
   display: grid; gap: var(--e-5);
