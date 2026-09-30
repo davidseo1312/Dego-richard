@@ -203,3 +203,86 @@ wc-bouche-que-faire	fosse toutes eaux
 wc-bouche-que-faire	déboucheur chimique
 wc-bouche-que-faire	broyeur
 wc-bouche-que-faire	copropriété
+
+# --- Huit articles d'urgence, deux par département breton -----------------
+regard-deborde-cotes-d-armor	regard de visite
+regard-deborde-cotes-d-armor	refoulement
+regard-deborde-cotes-d-armor	eaux usées
+regard-deborde-cotes-d-armor	racines
+regard-deborde-cotes-d-armor	limite de propriété
+regard-deborde-cotes-d-armor	branchement
+regard-deborde-cotes-d-armor	hydrocurage
+regard-deborde-cotes-d-armor	inspection caméra
+regard-deborde-cotes-d-armor	réseau public
+regard-deborde-cotes-d-armor	assainissement
+
+fosse-septique-refoule-cotes-d-armor	fosse toutes eaux
+fosse-septique-refoule-cotes-d-armor	préfiltre
+fosse-septique-refoule-cotes-d-armor	épandage
+fosse-septique-refoule-cotes-d-armor	vidange
+fosse-septique-refoule-cotes-d-armor	boues
+fosse-septique-refoule-cotes-d-armor	SPANC
+fosse-septique-refoule-cotes-d-armor	assainissement non collectif
+fosse-septique-refoule-cotes-d-armor	refoulement
+fosse-septique-refoule-cotes-d-armor	regard
+fosse-septique-refoule-cotes-d-armor	eaux usées
+
+colonne-immeuble-bouchee-brest	colonne
+colonne-immeuble-bouchee-brest	copropriété
+colonne-immeuble-bouchee-brest	syndic
+colonne-immeuble-bouchee-brest	parties communes
+colonne-immeuble-bouchee-brest	refoulement
+colonne-immeuble-bouchee-brest	collecteur
+colonne-immeuble-bouchee-brest	hydrocurage
+colonne-immeuble-bouchee-brest	eaux usées
+colonne-immeuble-bouchee-brest	immeuble
+
+cuisine-professionnelle-bloquee-finistere	bac à graisses
+cuisine-professionnelle-bloquee-finistere	graisses
+cuisine-professionnelle-bloquee-finistere	plonge
+cuisine-professionnelle-bloquee-finistere	hydrocurage
+cuisine-professionnelle-bloquee-finistere	siphon
+cuisine-professionnelle-bloquee-finistere	évacuation
+cuisine-professionnelle-bloquee-finistere	hygiène
+cuisine-professionnelle-bloquee-finistere	curage
+
+evacuation-bouchee-logement-etudiant-rennes	siphon
+evacuation-bouchee-logement-etudiant-rennes	cheveux
+evacuation-bouchee-logement-etudiant-rennes	locataire
+evacuation-bouchee-logement-etudiant-rennes	propriétaire
+evacuation-bouchee-logement-etudiant-rennes	réparations locatives
+evacuation-bouchee-logement-etudiant-rennes	colocation
+evacuation-bouchee-logement-etudiant-rennes	bonde
+evacuation-bouchee-logement-etudiant-rennes	lingettes
+evacuation-bouchee-logement-etudiant-rennes	vétusté
+
+cave-inondee-pompage-urgence-ille-et-vilaine	pompage
+cave-inondee-pompage-urgence-ille-et-vilaine	sous-sol
+cave-inondee-pompage-urgence-ille-et-vilaine	refoulement
+cave-inondee-pompage-urgence-ille-et-vilaine	clapet anti-retour
+cave-inondee-pompage-urgence-ille-et-vilaine	remontée de nappe
+cave-inondee-pompage-urgence-ille-et-vilaine	infiltration
+cave-inondee-pompage-urgence-ille-et-vilaine	inspection caméra
+cave-inondee-pompage-urgence-ille-et-vilaine	hydrocurage
+cave-inondee-pompage-urgence-ille-et-vilaine	eaux usées
+cave-inondee-pompage-urgence-ille-et-vilaine	avaloir
+
+location-saisonniere-bouchon-entre-deux-arrivees-morbihan	meublé de tourisme
+location-saisonniere-bouchon-entre-deux-arrivees-morbihan	siphon
+location-saisonniere-bouchon-entre-deux-arrivees-morbihan	bonde
+location-saisonniere-bouchon-entre-deux-arrivees-morbihan	hydrocurage
+location-saisonniere-bouchon-entre-deux-arrivees-morbihan	assainissement individuel
+location-saisonniere-bouchon-entre-deux-arrivees-morbihan	fosse
+location-saisonniere-bouchon-entre-deux-arrivees-morbihan	inspection caméra
+location-saisonniere-bouchon-entre-deux-arrivees-morbihan	regard
+location-saisonniere-bouchon-entre-deux-arrivees-morbihan	graisses
+
+degorgement-dimanche-jour-ferie-morbihan	majoration
+degorgement-dimanche-jour-ferie-morbihan	astreinte
+degorgement-dimanche-jour-ferie-morbihan	regard de branchement
+degorgement-dimanche-jour-ferie-morbihan	réseau public
+degorgement-dimanche-jour-ferie-morbihan	refoulement
+degorgement-dimanche-jour-ferie-morbihan	ventouse
+degorgement-dimanche-jour-ferie-morbihan	colonne
+degorgement-dimanche-jour-ferie-morbihan	assainissement
+degorgement-dimanche-jour-ferie-morbihan	eaux usées
