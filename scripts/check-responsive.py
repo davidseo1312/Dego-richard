@@ -51,7 +51,8 @@ PAGES = [
     "/curage-canalisation",           # prestation avec tableau
     "/departements/finistere",        # page départementale
     "/degorgement-rennes",            # page communale
-    "/blog/",                         # index du blog
+    "/blog/",                         # index du blog, première page
+    "/blog/page/2",                   # sommaire paginé
     "/blog/prix-degorgement",         # article
     "/devis",                         # formulaire
     "/contact",

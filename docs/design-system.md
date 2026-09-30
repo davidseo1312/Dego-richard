@@ -260,7 +260,6 @@ barre sous forme de raccourci, réduit à son icône sous 560 px.
 | `.etapes` (`.horizontale`) | chronologie numérotée, verticale sur mobile, horizontale au-delà de 900 px |
 | `.galerie` (`.mise-en-avant`) | galerie 4 colonnes, première vignette en 2×2 : les cinq photographies remplissent la grille sans trou |
 | `.confiance` `.confiance-icone` | les huit arguments vérifiables, icône animée au survol |
-| `.schema` `.schemas-grille` | schéma technique accompagné de sa légende, dans le corps du texte |
 | `.carte-bloc` `.carte-toile` `.carte-legende` `.carte-liste` | carte des zones et sa liste HTML |
 | `.avis-carte` `.avis-note` `.etoile` | avis clients — inactifs tant qu'aucun avis réel n'est renseigné |
 | `.bandeau-urgence` `.urgence-encart` | la seule section sur fond sombre |
@@ -320,12 +319,17 @@ défilement doux et les survols qui déplacent.
 
 ## 9. Images
 
-Deux familles, deux rôles, et les confondre les affaiblit toutes les deux.
+Une seule famille : **la photographie d'intervention**. Le site a porté un
+temps une bibliothèque de schémas dessinés — des coupes techniques décrites
+en SVG puis rendues en WebP. Ils ont été retirés : une illustration produite
+par la machine n'a rien à montrer d'une entreprise de dégorgement, et sur une
+page qui promet de dire les choses telles qu'elles sont, elle dit le
+contraire. Ce qui reste est donc ce qui a été photographié en intervention.
 
 | | Rôle | Où |
 |---|---|---|
-| **Photographies** (`assets/img/<famille>/`) | montrer qui intervient | ouverture de page, galerie, cartes de prestation, cas de figure |
-| **Schémas** (`assets/img/schemas/`) | expliquer où se forme un bouchon | corps du texte, accompagnés d'une légende, largeur limitée à 44 rem |
+| **Photographies** (`assets/img/<famille>/`) | montrer qui intervient | ouverture de page, galerie, cartes de prestation, cartes du blog, cas de figure |
+| **Logo et pictogrammes** (`assets/img/logo/`, SVG en ligne) | repérer, jamais illustrer | en-tête, pied de page, cartes de service, carte des zones |
 
 Les photographies sont rangées par famille — `interventions/`, `debouchage/`,
 `degorgement/`, `plomberie/`, `camera/`, et `curage/`, `assainissement/`,

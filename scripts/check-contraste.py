@@ -44,7 +44,7 @@ CHROMIUM = "/opt/pw-browsers/chromium"
 PAGES = [
     "/", "/prestations", "/debouchage-wc", "/curage-canalisation",
     "/departements/finistere", "/degorgement-rennes", "/degorgement-vannes",
-    "/blog/", "/blog/prix-degorgement", "/devis", "/contact", "/faq",
+    "/blog/", "/blog/page/2", "/blog/prix-degorgement", "/devis", "/contact", "/faq",
     "/tarifs", "/zone-intervention", "/degorgement-urgence",
     "/mentions-legales", "/a-propos", "/404.html",
 ]

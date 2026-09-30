@@ -4,17 +4,25 @@ Recalcule la durée de lecture affichée par chaque article du blog.
 
     python3 scripts/duree-lecture.py
 
-Elle est écrite à deux endroits — l'étiquette de l'article et sa carte dans le
-sommaire du blog — et elle était tenue à la main. Une durée maintenue à la
-main devient fausse au premier paragraphe ajouté, et elle l'était : des
-articles annonçaient six minutes après avoir doublé de longueur.
+Elle était tenue à la main, et une durée maintenue à la main devient fausse
+au premier paragraphe ajouté : des articles annonçaient six minutes après
+avoir doublé de longueur.
+
+Le script écrit la durée dans l'ARTICLE, et seulement là. Les cartes du
+sommaire la reprennent de l'article : scripts/paginer-blog.py, qui construit
+les pages du sommaire, la lit à cet unique endroit. Enchaînez donc :
+
+    bash scripts/build.sh
+    python3 scripts/duree-lecture.py
+    python3 scripts/paginer-blog.py
+    bash scripts/build.sh
 
 Le calcul se fait sur le texte RENDU, donc après construction, à 200 mots par
 minute — le rythme de lecture courante d'un adulte sur un texte de prose
 française. Le site employait auparavant un rythme deux fois plus lent, qui
 gonflait chaque durée.
 
-Le script met à jour les deux endroits d'un coup. Idempotent.
+Idempotent.
 """
 
 import re
@@ -39,8 +47,6 @@ def main() -> int:
         print("Construisez d'abord le site : bash scripts/build.sh", file=sys.stderr)
         return 1
 
-    index = SRC / "index.html"
-    texte_index = index.read_text(encoding="utf-8")
     faits = []
 
     for f in sorted(SRC.glob("*.html")):
@@ -58,14 +64,8 @@ def main() -> int:
         if s != avant:
             f.write_text(s, encoding="utf-8")
 
-        # La carte du sommaire du blog porte la même durée.
-        motif = (r'(<a href="/blog/' + re.escape(slug) +
-                 r'"[^>]*>.*?<span class="duree">Lecture )\d+( min</span>)')
-        texte_index = re.sub(motif, lambda x: f"{x.group(1)}{m}{x.group(2)}",
-                             texte_index, count=1, flags=re.S)
         faits.append((slug, m))
 
-    index.write_text(texte_index, encoding="utf-8")
     print(f"{len(faits)} article(s) — durées recalculées à {MOTS_PAR_MINUTE} mots/minute")
     for slug, m in faits:
         print(f"   ✓ {slug} — {m} min")

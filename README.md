@@ -132,7 +132,6 @@ static/
     vendor/leaflet/      Leaflet 1.9.4 (BSD 2-Clause), auto-hébergé
     img/                 favicon et icônes d'application
     img/interventions/   photographies, 5 largeurs × 2 formats
-    img/schemas/         schémas techniques
     img/partage/         images Open Graph (JPEG 1200×630)
 photos-source/           photographies d'origine, source de la chaîne images
 scripts/
@@ -152,14 +151,12 @@ scripts/
   maillage-conseils.py   relie les articles aux prestations qui les concernent
   check-indexation.py    redirections, pages orphelines, canoniques, sitemap
   check-semantique.py    couverture d'un champ lexical sur une page donnée
-  check-blog-semantique.py  les 13 articles, chacun sur son champ, + leur CTA
+  check-blog-semantique.py  chaque article sur son champ lexical, + son CTA
   duree-lecture.py       recalcule les durées de lecture affichées
-  generer-visuels.py     régénère les schémas techniques et les images de
-                         partage, rendus en WebP et JPEG par Chromium
-  preparer-photos.py     dérivés AVIF/WebP des photographies + src/photos.sh
-  placer-photos.py       répartit photographies et schémas dans les pages
-  refonte-heros.py       applique le gabarit de héros aux pages intérieures
-  refonte-articles.py    applique le gabarit d'article et génère les sommaires
+  preparer-photos.py     dérivés AVIF/WebP des photographies, images de
+                         partage et src/photos.sh
+  paginer-blog.py        construit le sommaire du blog, paginé, depuis les
+                         articles (--verifier : contrôle qu'il est à jour)
   capturer.py            captures d'écran des pages, pour contrôle visuel
 tests/
   lancer.sh              parcours réels dans un navigateur (facultatif)
@@ -252,13 +249,14 @@ date, pas de résultat, pas de client : rien qui ne soit visible à l'image. Une
 photographie légendée « intervention à Saint-Brieuc » alors que rien ne le
 prouve est exactement le genre de détail qui ruine la crédibilité du reste.
 
-Photographies et schémas ne jouent pas le même rôle : la photographie ouvre
-la page et montre qui intervient, le schéma descend dans le texte et explique
-où se forme un bouchon. `scripts/placer-photos.py` applique cette règle.
+Le site ne porte **que** des photographies. Il a un temps utilisé une
+bibliothèque de schémas dessinés par programme, faute d'accès à une banque
+d'images ; ils ont été retirés. Une image fabriquée par la machine ne montre
+rien d'une entreprise de dégorgement, et sur un site qui promet de dire les
+choses telles qu'elles sont, elle dit le contraire.
 
 Les photographies portées par une page sont déclarées au sitemap sous
-`<image:image>` : c'est ce qui les rend éligibles à Google Images. Les schémas
-ne le sont pas — ils n'ont rien à y faire.
+`<image:image>` : c'est ce qui les rend éligibles à Google Images.
 
 ### Cas de figure et avant / après
 
@@ -374,21 +372,18 @@ correspondante dans `src/pages/blog/index.html`.
 `src/partials/header.html` et `src/partials/footer.html`. Une seule
 modification se répercute sur les 111 pages au build suivant.
 
-### Remplacer les illustrations par des photographies
+### Ajouter une photographie
 
-Les visuels du site sont des **illustrations originales** produites par
-`scripts/generer-visuels.py`, et non des photographies : l'environnement de
-construction n'a accès à aucune banque d'images. Elles n'appartiennent donc
-à personne d'autre — aucun filigrane, aucun logo tiers, aucune licence à
-respecter au-delà de celle du dépôt.
+Déposez le fichier d'origine dans `photos-source/`, déclarez-le dans
+`scripts/preparer-photos.py` avec son texte alternatif et sa légende, puis
+lancez le script : il produit les dérivés AVIF et WebP en cinq largeurs,
+l'image de partage, et les jetons `{{PHOTO_<FAMILLE>_<RÔLE>}}` de
+`src/photos.sh`. Les pages n'écrivent jamais un chemin d'image : elles
+écrivent un jeton, et héritent du `srcset`, du `sizes`, des dimensions et du
+texte alternatif.
 
-Pour passer à de vraies photographies, déposez un fichier WebP de **mêmes nom
-et dimensions** dans `static/assets/img/photos/`. Le HTML référence les
-fichiers par leur nom et porte déjà `width`, `height`, `loading`, `decoding`
-et `alt` : aucune page n'est à modifier. Vérifiez seulement que la
-photographie est libre de droits pour un usage commercial et que le texte
-alternatif la décrit toujours. L'inventaire complet, avec dimensions et
-textes alternatifs, est dans `static/assets/img/photos/README.md`.
+Le texte alternatif ne décrit **que ce que la photographie montre** : pas de
+lieu, pas de date, pas de résultat, pas de client.
 
 ---
 

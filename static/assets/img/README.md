@@ -34,20 +34,26 @@ net à toutes les définitions, là où il aurait fallu deux bitmaps de 31 et
 > fichiers : celui-là a été supprimé, faute de quoi une exécution distraite
 > aurait écrasé le vrai logo par le provisoire.
 
-## Images de partage — `scripts/generer-visuels.py`
+## Images de partage — `scripts/preparer-photos.py`
 
 Les fichiers `og-*.jpg` (1200 × 630) sont les vignettes affichées lorsqu'une
-page est partagée sur un réseau social ou une messagerie. Elles reprennent les
-visuels du site, surmontés d'un cartouche de marque.
+page est partagée sur un réseau social ou une messagerie. Chacune est le
+recadrage d'une **photographie d'intervention**, surmontée d'un cartouche de
+marque ; `og-default.jpg` sert de valeur par défaut.
 
 Le format est imposé : un SVG n'est pas affiché par les réseaux sociaux, et
 WebP y reste inégalement pris en charge. JPEG est la seule combinaison
 acceptée partout. Chaque page désigne la sienne par la clé `image:` de son
-bloc de métadonnées ; `og-default.jpg` sert de valeur par défaut.
+bloc de métadonnées.
 
 Le numéro de téléphone n'y est **pas** incrusté : ces images sont mises en
 cache des mois par les plateformes, et un numéro périmé y ferait plus de
 dégâts que son absence.
+
+> Treize vignettes produites à partir des anciens schémas dessinés ont été
+> supprimées avec eux, ainsi que le script `generer-visuels.py` qui les
+> dessinait. Les pages concernées désignent désormais la vignette tirée de
+> leur propre photographie.
 
 ## Photographies d'intervention — `scripts/preparer-photos.py`
 

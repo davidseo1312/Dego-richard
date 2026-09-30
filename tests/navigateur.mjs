@@ -51,6 +51,7 @@ const PAGES = [
   ['page départementale', '/departements/morbihan'],
   ['zone d’intervention', '/zone-intervention'],
   ['blog', '/blog/'],
+  ['blog paginé', '/blog/page/2'],
   ['article', '/blog/wc-bouche-que-faire'],
   ['mentions légales', '/mentions-legales'],
   ['404', '/page-inexistante'],
@@ -554,8 +555,69 @@ verifier(pire < 0.4,
 
 await ctxLanding.close();
 
-// --- 14. Mesure d'audience et consentement ---------------------------------
-titre('14. Mesure d’audience et consentement');
+/* --- 14. Sommaire du blog paginé ----------------------------------------- */
+
+titre('14. Sommaire du blog paginé');
+
+const ctxBlog = await navigateur.newContext({ viewport: { width: 1280, height: 900 }, locale: 'fr-FR' });
+const blog = await ctxBlog.newPage();
+
+const PAR_PAGE = 8;
+const vues = [];
+let pageBlog = '/blog/';
+let garde = 0;
+
+while (pageBlog && garde < 20) {
+  garde += 1;
+  await blog.goto(BASE + pageBlog);
+  const liens = await blog.$$eval('.grille .carte-media h2 a',
+    (a) => a.map((x) => new URL(x.href).pathname));
+  vues.push({ url: pageBlog, liens });
+  verifier(liens.length > 0 && liens.length <= PAR_PAGE,
+    `${pageBlog} : ${liens.length} article(s), pas plus de ${PAR_PAGE}`);
+  // La page courante se désigne, mais ne se lie pas à elle-même.
+  verifier(await blog.locator('.pagination [aria-current="page"]').count() === 1,
+    `${pageBlog} : la page courante est marquée une fois`);
+  verifier(await blog.locator(`.pagination a[href="${pageBlog}"]`).count() === 0,
+    `${pageBlog} : aucun lien vers elle-même`);
+  const suivant = await blog.locator('.pagination a[rel="next"]').first();
+  pageBlog = await suivant.count()
+    ? new URL(await suivant.getAttribute('href'), BASE).pathname
+    : null;
+}
+
+verifier(vues.length >= 2, `le sommaire est paginé (${vues.length} pages parcourues)`);
+verifier(vues.slice(0, -1).every((v) => v.liens.length === PAR_PAGE),
+  `toutes les pages sauf la dernière portent exactement ${PAR_PAGE} articles`);
+
+const tous = vues.flatMap((v) => v.liens);
+verifier(new Set(tous).size === tous.length,
+  `aucun article n'apparaît deux fois (${tous.length} cartes)`);
+
+// Tous les articles publiés doivent être atteignables depuis le sommaire :
+// une pagination qui en oublie un le retire du site sans prévenir.
+const sitemap = await (await fetch(BASE + '/sitemap.xml')).text();
+const articles = [...sitemap.matchAll(/<loc>[^<]*?(\/blog\/[a-z0-9-]+)<\/loc>/g)]
+  .map((m) => m[1]);
+const manquants = articles.filter((a) => !tous.includes(a));
+verifier(manquants.length === 0,
+  `les ${articles.length} articles du sitemap sont tous listés${manquants.length ? ' — absents : ' + manquants.join(', ') : ''}`);
+
+// Le premier article listé doit être l'un des plus récents : c'est la règle
+// de tri annoncée au visiteur.
+await blog.goto(BASE + '/blog/');
+const premier = await blog.$eval('.grille .carte-media h2 a', (a) => new URL(a.href).pathname);
+const datePremier = await (async () => {
+  await blog.goto(BASE + premier);
+  return blog.$eval('.article-meta', (p) => p.textContent);
+})();
+verifier(/2026/.test(datePremier),
+  `le premier article de la page 1 porte une date (${premier.split('/').pop()})`);
+
+await ctxBlog.close();
+
+// --- 15. Mesure d'audience et consentement ---------------------------------
+titre('15. Mesure d’audience et consentement');
 
 const ctxMesure = await navigateur.newContext({ viewport: { width: 1280, height: 900 }, locale: 'fr-FR' });
 const requetesGoogle = [];
