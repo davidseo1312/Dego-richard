@@ -570,7 +570,7 @@ let garde = 0;
 while (pageBlog && garde < 20) {
   garde += 1;
   await blog.goto(BASE + pageBlog);
-  const liens = await blog.$$eval('.grille .carte-media h2 a',
+  const liens = await blog.$$eval('.grille .carte-article h2 a',
     (a) => a.map((x) => new URL(x.href).pathname));
   vues.push({ url: pageBlog, liens });
   verifier(liens.length > 0 && liens.length <= PAR_PAGE,
@@ -606,7 +606,7 @@ verifier(manquants.length === 0,
 // Le premier article listé doit être l'un des plus récents : c'est la règle
 // de tri annoncée au visiteur.
 await blog.goto(BASE + '/blog/');
-const premier = await blog.$eval('.grille .carte-media h2 a', (a) => new URL(a.href).pathname);
+const premier = await blog.$eval('.grille .carte-article h2 a', (a) => new URL(a.href).pathname);
 const datePremier = await (async () => {
   await blog.goto(BASE + premier);
   return blog.$eval('.article-meta', (p) => p.textContent);

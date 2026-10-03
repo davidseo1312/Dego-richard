@@ -691,6 +691,12 @@ main > section.hero { padding-block: clamp(2.25rem, 1rem + 4.4vw, 4.5rem); }
 @media (min-width: 980px) {
   .hero-grid { grid-template-columns: 1.05fr .95fr; }
 }
+/* Toutes les pages ne portent pas de photographie d'ouverture : celles dont
+   la photographie n'apprenait rien de propre à leur sujet l'ont perdue. Leur
+   bande d'ouverture n'a plus qu'une colonne, qui prend alors toute la
+   largeur — bornée à la longueur de ligne lisible, faute de quoi le chapeau
+   s'étirerait sur 1200 px. */
+.hero-grid > :only-child { grid-column: 1 / -1; max-width: 54rem; }
 
 .urgence-badge {
   display: inline-flex; align-items: center; gap: .55rem;
@@ -889,6 +895,12 @@ main > section.hero-interieur { padding-block: 0 clamp(2rem, 1rem + 3vw, 3.25rem
 .carte-media:hover > a > picture > img { transform: scale(1.035); }
 .carte-media .carte-corps { padding: var(--e-5); display: flex; flex-direction: column; flex: 1; }
 .carte-media .carte-corps > :last-child { margin-top: auto; }
+
+/* Carte d'article sans visuel : l'étiquette tient lieu d'accroche, et le
+   titre doit peser plus qu'il ne pesait sous une image. */
+.carte-article { padding: var(--e-5); }
+.carte-article h2 { font-size: 1.22rem; line-height: 1.3; }
+.carte-article p { margin-bottom: var(--e-4); }
 
 .carte-etiquettes {
   display: flex; flex-wrap: wrap; gap: .4rem;

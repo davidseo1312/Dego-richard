@@ -18,14 +18,13 @@ métadonnées, ce qui le décrit dans la liste :
     carte_etiquette: Urgence
     carte_titre: WC bouché : que faire ?
     carte_resume: Ce qui fonctionne, ce qui ne fonctionne pas…
-    carte_photo: WC              famille de photographies, cf. src/photos.sh
 
-Le visuel de la carte est la PHOTOGRAPHIE d'intervention de l'article, pas
-une illustration : « carte_photo: WC » devient {{PHOTO_WC_CARTE}}, que
-scripts/preparer-photos.py a rempli avec ses sources AVIF/WebP, son srcset et
-son texte alternatif. Le sommaire hérite donc automatiquement d'une image
-responsive correctement décrite, et la carte montre la même photographie que
-le haut de l'article.
+Les cartes ne portent pas de visuel. Le site compte dix photographies
+d'intervention ; à huit cartes par page, deux d'entre elles revenaient deux
+fois sur le même écran, et chacune répétait l'image placée en tête de
+l'article qu'elle annonce. Une vignette qui n'apprend rien et qu'on a déjà
+vue n'aide pas à choisir un article : le titre, l'étiquette et la durée de
+lecture, si.
 
 L'ordre est celui de la date de publication, du plus récent au plus ancien ;
 à date égale, « carte_rang » tranche. Un article publié aujourd'hui se place
@@ -86,9 +85,6 @@ def articles() -> list:
         titre = meta(bloc, "carte_titre")
         if not titre:
             raise SystemExit(f"{f.name} : carte_titre manquant dans le bloc meta")
-        photo = meta(bloc, "carte_photo")
-        if not photo:
-            raise SystemExit(f"{f.name} : carte_photo manquant dans le bloc meta")
         duree = re.search(r'<span class="duree">Lecture (\d+) min</span>', s)
         liste.append({
             "slug": f.stem,
@@ -97,7 +93,6 @@ def articles() -> list:
             "etiquette": meta(bloc, "carte_etiquette", "Conseils"),
             "titre": titre,
             "resume": meta(bloc, "carte_resume", ""),
-            "photo": photo,
             "duree": int(duree.group(1)) if duree else 6,
         })
     liste.sort(key=lambda a: (a["date"], -a["rang"]), reverse=True)
@@ -105,14 +100,11 @@ def articles() -> list:
 
 
 def carte(a: dict) -> str:
-    return f'''      <article class="carte carte-media">
-        <a href="/blog/{a['slug']}" tabindex="-1" aria-hidden="true">{{{{PHOTO_{a['photo']}_CARTE}}}}</a>
-        <div class="carte-corps">
-          <p class="carte-etiquettes"><span>{a['etiquette']}</span><span class="duree">Lecture {a['duree']} min</span></p>
-          <h2><a href="/blog/{a['slug']}">{a['titre']}</a></h2>
-          <p>{a['resume']}</p>
-          <a class="lien-fleche" href="/blog/{a['slug']}">Lire l'article</a>
-        </div>
+    return f'''      <article class="carte carte-article">
+        <p class="carte-etiquettes"><span>{a['etiquette']}</span><span class="duree">Lecture {a['duree']} min</span></p>
+        <h2><a href="/blog/{a['slug']}">{a['titre']}</a></h2>
+        <p>{a['resume']}</p>
+        <a class="lien-fleche" href="/blog/{a['slug']}">Lire l'article</a>
       </article>
 '''
 

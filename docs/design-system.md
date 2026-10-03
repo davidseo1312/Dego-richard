@@ -254,7 +254,7 @@ barre sous forme de raccourci, réduit à son icône sous 560 px.
 | Classe | Rôle |
 |---|---|
 | `.btn` `.btn-call` `.btn-devis` `.btn-ghost` `.btn-large` `.btn-bloc` | boutons ; `.btn-call` porte l'aplat bleu profond, `.btn-devis` le bleu ciel, `.btn-ghost` le contour |
-| `.carte` `.carte-service` `.carte-media` `.carte-icone` `.carte-pied` | cartes : fond blanc, rayon 20 px, filet 1 px, ombre légère, survol qui soulève de 3 px |
+| `.carte` `.carte-service` `.carte-media` `.carte-article` `.carte-icone` `.carte-pied` | cartes : fond blanc, angles vifs, filet 1 px, ombre légère, survol qui soulève de 3 px. `.carte-article` est la variante sans visuel du sommaire du blog |
 | `.hero` `.hero-interieur` `.hero-article` `.hero-page` | quatre déclinaisons de la bande d'ouverture |
 | `.reponse-rapide` `.definition` `.qr-liste` `.cle` | bloc GEO : réponse autoportante, puis QUI/QUOI/OÙ/QUAND/COMMENT/POURQUOI/COMBIEN en blocs — chacun se cite isolément, ce qui est l'usage qu'en fait un moteur génératif |
 | `.etapes` (`.horizontale`) | chronologie numérotée, verticale sur mobile, horizontale au-delà de 900 px |
@@ -328,7 +328,26 @@ contraire. Ce qui reste est donc ce qui a été photographié en intervention.
 
 | | Rôle | Où |
 |---|---|---|
-| **Photographies** (`assets/img/<famille>/`) | montrer qui intervient | ouverture de page, galerie, cartes de prestation, cartes du blog, cas de figure |
+| **Photographies** (`assets/img/<famille>/`) | montrer qui intervient | accueil (ouverture et galerie), pages départementales, les dix prestations dont elles montrent le sujet, ouverture d'article |
+
+**Une photographie ne se répète pas.** Le site en compte dix. Elles ont un
+temps ouvert quatre-vingt-dix pages : la même image de local technique
+d'immeuble servait d'ouverture à dix-neuf pages communales, et le sommaire du
+blog affichait deux fois la même vignette sur un seul écran. Une photographie
+qu'on a déjà vue trois fois ne montre plus rien — elle meuble. Elles ne
+figurent donc plus que là où elles montrent le sujet de la page, une fois
+chacune par page :
+
+* l'accueil — ouverture et galerie, sept photographies distinctes ;
+* les six pages départementales — ouverture et deux cas de figure ;
+* dix pages de prestation — celle qui montre l'appareil ou l'ouvrage dont
+  la page parle ;
+* chaque article du blog — une photographie en tête, celle de son sujet.
+
+Les pages communales, le sommaire des prestations, le sommaire du blog et les
+pages générales (tarifs, devis, FAQ, zone d'intervention, à propos) n'en
+portent plus : elles n'avaient rien de particulier à montrer.
+
 | **Logo et pictogrammes** (`assets/img/logo/`, SVG en ligne) | repérer, jamais illustrer | en-tête, pied de page, cartes de service, carte des zones |
 
 Les photographies sont rangées par famille — `interventions/`, `debouchage/`,
