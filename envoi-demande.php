@@ -25,7 +25,7 @@ declare(strict_types=1);
 
 /* --- Paramètres, injectés depuis src/config.sh --------------------------- */
 const DESTINATAIRE   = 'contact@deboucheur-richard.fr';
-const EXPEDITEUR     = 'site@degorgement-richard.fr';
+const EXPEDITEUR     = 'site@deboucheur-richard.fr';
 const NOM_SITE       = 'Dégorgement Richard';
 const TELEPHONE      = '02 20 06 00 75';
 const TELEPHONE_E164 = '+33220060075';
@@ -155,7 +155,7 @@ function page_erreur(array $messages, int $code = 400): void
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0b2a4a">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/css/style.css?v=d38aaa3f">
+<link rel="stylesheet" href="/assets/css/style.css?v=acf9a1d9">
 </head>
 <body>
 <main id="contenu">

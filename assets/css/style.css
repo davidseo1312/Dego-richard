@@ -2328,7 +2328,7 @@ tbody tr:hover { background: var(--fond-doux); }
   .cta-final, .bandeau-urgence, .skip-link { display: none !important; }
   body { font-size: 11pt; color: #000; background: #fff; padding-bottom: 0; }
   .wrap { width: 100%; }
-  a[href^="/"]::after { content: " (degorgement-richard.fr" attr(href) ")"; font-size: 9pt; }
+  a[href^="/"]::after { content: " (deboucheur-richard.fr" attr(href) ")"; font-size: 9pt; }
   .carte, .encadre, .reponse-rapide { break-inside: avoid; box-shadow: none; }
   details { open: true; }
   details > * { display: block !important; }
