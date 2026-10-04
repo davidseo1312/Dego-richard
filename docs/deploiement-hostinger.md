@@ -152,7 +152,7 @@ Chaque publication sur `deploy` déclenche alors la mise à jour du site.
 ## Étape 5 — Vérifications sur le site en ligne
 
 ```bash
-D=https://degorgement-richard.fr
+D=https://deboucheur-richard.fr
 
 curl -I $D/                          # 200
 curl -I $D/degorgement                # 200
@@ -169,7 +169,7 @@ curl -I $D/sitemap.xml                # 200
 curl -I $D/page-inexistante           # 404 — surtout pas 403
 curl -I $D/.git/config                # 403 — attendu
 curl -I $D/index.html                 # 301 vers /
-curl -I http://degorgement-richard.fr # 301 vers https://
+curl -I http://deboucheur-richard.fr # 301 vers https://
 ```
 
 Contrôlez également, dans un navigateur :

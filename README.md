@@ -567,12 +567,12 @@ GitHub : **Settings → Webhooks → Add webhook**, *Payload URL* = l'URL copié
 ### Vérifications après déploiement
 
 ```bash
-curl -I https://degorgement-richard.fr/                     # 200
-curl -I https://degorgement-richard.fr/degorgement-rennes   # 200
-curl -I https://degorgement-richard.fr/robots.txt           # 200
-curl -I https://degorgement-richard.fr/sitemap.xml          # 200
-curl -I https://degorgement-richard.fr/page-inexistante     # 404, pas 403
-curl -I https://degorgement-richard.fr/.git/config          # 403 (attendu)
+curl -I https://deboucheur-richard.fr/                     # 200
+curl -I https://deboucheur-richard.fr/degorgement-rennes   # 200
+curl -I https://deboucheur-richard.fr/robots.txt           # 200
+curl -I https://deboucheur-richard.fr/sitemap.xml          # 200
+curl -I https://deboucheur-richard.fr/page-inexistante     # 404, pas 403
+curl -I https://deboucheur-richard.fr/.git/config          # 403 (attendu)
 ```
 
 ### Si le site renvoie encore 403
@@ -662,7 +662,7 @@ ce sont des obligations légales ou des données contractuelles.
 | `ASSUREUR_DECENNALE` | Garantie décennale |
 | `MEDIATEUR_NOM`, `MEDIATEUR_URL` | Médiateur de la consommation — art. L.616-1 du code de la consommation |
 | `PRIX_DEPUIS_*`, `TAUX_HORAIRE`, `FRAIS_DEPLACEMENT`, `MAJORATION_NUIT` | Prix d'appel « à partir de » — arrêté du 24 janvier 2017 |
-| `DOMAINE`, `BASE_URL` | Nom de domaine retenu — `degorgement-richard.fr` est un choix par défaut, à confirmer |
+| `DOMAINE`, `BASE_URL` | Domaine servi par Hostinger — `deboucheur-richard.fr`. Toutes les adresses canoniques, le sitemap et les données structurées en dérivent : ne le changer que pour un domaine qui résout |
 
 Les forfaits du site de serrurerie **n'ont pas été repris** : ouvrir une porte
 et hydrocurer un collecteur n'ont ni le même matériel, ni la même durée, ni la

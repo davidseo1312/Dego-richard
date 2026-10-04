@@ -59,6 +59,14 @@ jobs:
       - name: Contrôler le référencement, le GEO et les liens
         run: bash scripts/check-seo.sh
 
+      # Ce contrôle vérifie, entre autres, que le domaine inscrit dans les
+      # adresses canoniques RÉSOUT. Le site a été publié pendant près d'un
+      # mois en désignant un domaine sans enregistrement DNS : les pages
+      # étaient explorées puis écartées, et rien dans la chaîne ne le voyait.
+      # Il doit donc tourner ICI, là où l'on publie.
+      - name: Contrôler l'indexabilité et le domaine déclaré
+        run: python3 scripts/check-indexation.py
+
       - name: Contrôler la structure HTML
         run: python3 scripts/check-html.py
 

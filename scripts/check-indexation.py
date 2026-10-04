@@ -201,12 +201,44 @@ if not (manquantes or en_trop or contradictoires):
 
 # --- 6. Domaine -------------------------------------------------------------
 titre("5. Domaine déclaré")
+# Ce contrôle a été ajouté APRÈS coup, et il faut dire pourquoi. Le site a été
+# publié pendant près d'un mois en désignant « degorgement-richard.fr » comme
+# adresse canonique de chacune de ses 122 pages. Ce domaine n'a jamais eu le
+# moindre enregistrement DNS. Googlebot explorait donc le site à son vraie
+# adresse, lisait « la bonne adresse est ailleurs », allait voir ailleurs, ne
+# trouvait rien, et écartait la page. Résultat : trois impressions en
+# vingt-cinq jours. Aucun contrôle ne voyait le problème, parce qu'aucun ne
+# posait la seule question qui comptait : CE DOMAINE RÉPOND-IL ?
+hote = BASE.split("//")[-1] if BASE else ""
 print(f"      Les adresses canoniques et le sitemap désignent {GRAS}{BASE}{FIN}.")
-print("      Une page servie depuis un AUTRE domaine — un sous-domaine de")
-print("      prévisualisation, par exemple — désigne donc une adresse qui n'est")
-print("      pas la sienne, et aucun moteur ne l'indexera. C'est voulu tant que")
-print("      le site est en préparation ; à l'ouverture, DOMAINE doit être celui")
-print("      sur lequel le site répond vraiment (src/config.sh).")
+
+resolu = None
+if hote:
+    try:
+        import socket
+        socket.getaddrinfo(hote, None)
+        resolu = True
+    except socket.gaierror:
+        resolu = False
+    except Exception:
+        resolu = None          # pas de résolveur ici : on ne conclut pas
+
+if resolu is True:
+    print(f"  {VERT}v{FIN} le domaine déclaré résout — les pages peuvent être indexées")
+elif resolu is False:
+    print(f"  {ROUGE}x{FIN} {GRAS}{hote} ne résout pas.{FIN} Chaque page demande à Google")
+    print("      d'indexer une adresse qui n'existe pas : elle sera explorée, puis")
+    print("      écartée. Corrigez DOMAINE dans src/config.sh.")
+    defauts += 1
+else:
+    print(f"  {JAUNE}!{FIN} impossible de résoudre les noms depuis cet environnement :")
+    print(f"      vérifiez à la main que {hote} répond bien.")
+    avertissements += 1
+
+print("      Rappel : une page servie depuis un AUTRE domaine que celui-ci")
+print("      désigne une adresse qui n'est pas la sienne, et aucun moteur ne")
+print("      l'indexera. DOMAINE doit toujours être le domaine sur lequel le")
+print("      site répond vraiment (src/config.sh).")
 
 print(f"\n{GRAS}Bilan{FIN}")
 print(f"  {len(PAGES)} pages analysées")

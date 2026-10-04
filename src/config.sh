@@ -11,21 +11,23 @@
 # --- Identité ---------------------------------------------------------------
 NOM_COMMERCIAL="Dégorgement Richard"
 BASELINE="Dégorgement, débouchage et assainissement dans le Grand Ouest"
-# ⚠ DOMAINE À CONFIRMER : aucun nom de domaine n'était fixé pour ce nouveau
-# site. Celui-ci est un choix par défaut, cohérent avec le nom commercial.
-# S'il change, modifiez cette ligne et rien d'autre : tout le site suit.
+# Le domaine réel du site, celui que servent les serveurs Hostinger. Il est
+# écrit dans TOUTES les adresses canoniques, dans og:url, dans le sitemap,
+# dans robots.txt et dans les données structurées.
 #
-# Ce domaine est écrit dans TOUTES les adresses canoniques et dans le sitemap.
-# Une page servie depuis un autre domaine — un sous-domaine de
-# prévisualisation, par exemple — désigne donc une adresse qui n'est pas la
-# sienne, et aucun moteur ne l'indexera. C'est sans conséquence tant que le
-# site est en préparation, et bloquant le jour de l'ouverture.
+# ⚠ Ne le changez que pour un domaine qui RÉPOND. Une page servie depuis un
+# domaine et qui en désigne un autre comme adresse canonique demande à Google
+# d'indexer l'autre : la page explorée est alors écartée. C'est précisément ce
+# qui s'est produit ici — le site a été publié pendant près d'un mois avec
+# « degorgement-richard.fr » en adresse canonique, un domaine qui n'a jamais
+# eu d'enregistrement DNS. Les pages étaient explorées, renvoyées vers le
+# néant, et jamais indexées.
 #
 # Pour construire une version de démonstration cohérente avec l'adresse où
 # elle sera servie, sans toucher à ce fichier :
 #
 #     DOMAINE=exemple.hostingersite.com bash scripts/build.sh
-DOMAINE="${DOMAINE:-degorgement-richard.fr}"
+DOMAINE="${DOMAINE:-deboucheur-richard.fr}"
 BASE_URL="https://${DOMAINE}"
 
 # --- Contact ----------------------------------------------------------------
