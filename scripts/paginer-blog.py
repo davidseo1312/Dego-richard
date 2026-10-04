@@ -161,8 +161,13 @@ def page(n: int, total: int, lot: list, tous: list) -> str:
         entete_meta = ""
     else:
         titre = f"Conseils canalisations — page {n} sur {total}"
-        description = (f"Page {n} du sommaire : de « {premier['titre']} » à "
-                       f"« {dernier['titre']} ». {len(tous)} articles au total.")
+        # Composée à partir des RANGS, pas des titres : un titre long faisait
+        # dépasser la limite de 160 caractères, et la troncature coupait au
+        # milieu d'un nom propre.
+        description = (f"Page {n} du sommaire des conseils canalisations : "
+                       f"les articles {(n - 1) * ARTICLES_PAR_PAGE + 1} à "
+                       f"{(n - 1) * ARTICLES_PAR_PAGE + len(lot)} sur {len(tous)}, "
+                       f"du plus récent au plus ancien.")
         fil = f"Page {n}"
         h1 = f"Conseils canalisations — page {n} sur {total}"
         chapeau = (f"Les articles {(n - 1) * ARTICLES_PAR_PAGE + 1} à "
@@ -172,8 +177,7 @@ def page(n: int, total: int, lot: list, tous: list) -> str:
         priorite = "0.4"
         entete_meta = "parent_nom: Conseils canalisations\nparent_url: /blog/\n"
 
-    if len(description) > 160:
-        description = description[:157].rstrip(" ,;·") + "…"
+    assert len(description) <= 160, (n, len(description))
 
     fil_html = ('          <li>Conseils canalisations</li>' if n == 1 else
                 '          <li><a href="/blog/">Conseils canalisations</a></li>\n'

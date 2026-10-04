@@ -286,3 +286,135 @@ degorgement-dimanche-jour-ferie-morbihan	ventouse
 degorgement-dimanche-jour-ferie-morbihan	colonne
 degorgement-dimanche-jour-ferie-morbihan	assainissement
 degorgement-dimanche-jour-ferie-morbihan	eaux usées
+
+# --- Seize articles d'urgence, quatre villes par département breton -------
+urgence-soir-appartement-saint-brieuc	refoulement
+urgence-soir-appartement-saint-brieuc	voisin
+urgence-soir-appartement-saint-brieuc	syndic
+urgence-soir-appartement-saint-brieuc	colonne
+urgence-soir-appartement-saint-brieuc	constat amiable
+urgence-soir-appartement-saint-brieuc	dégât des eaux
+urgence-soir-appartement-saint-brieuc	parties communes
+urgence-soir-appartement-saint-brieuc	majoration
+
+wc-bouche-samedi-soir-lannion	ventouse
+wc-bouche-samedi-soir-lannion	cuvette
+wc-bouche-samedi-soir-lannion	siphon
+wc-bouche-samedi-soir-lannion	chasse d'eau
+wc-bouche-samedi-soir-lannion	lingettes
+wc-bouche-samedi-soir-lannion	déboucheur chimique
+wc-bouche-samedi-soir-lannion	inspection caméra
+
+maison-ancienne-canalisation-bouchee-dinan	grès
+maison-ancienne-canalisation-bouchee-dinan	regard
+maison-ancienne-canalisation-bouchee-dinan	emboîtement
+maison-ancienne-canalisation-bouchee-dinan	pente
+maison-ancienne-canalisation-bouchee-dinan	hydrocurage
+maison-ancienne-canalisation-bouchee-dinan	inspection caméra
+maison-ancienne-canalisation-bouchee-dinan	refoulement
+maison-ancienne-canalisation-bouchee-dinan	branchement
+
+commerce-bouche-avant-ouverture-guingamp	bac à graisses
+commerce-bouche-avant-ouverture-guingamp	graisses
+commerce-bouche-avant-ouverture-guingamp	hygiène
+commerce-bouche-avant-ouverture-guingamp	eaux usées
+commerce-bouche-avant-ouverture-guingamp	hydrocurage
+commerce-bouche-avant-ouverture-guingamp	siphon
+commerce-bouche-avant-ouverture-guingamp	assainissement
+
+evier-refoule-dimanche-midi-quimper	siphon
+evier-refoule-dimanche-midi-quimper	graisses
+evier-refoule-dimanche-midi-quimper	lave-vaisselle
+evier-refoule-dimanche-midi-quimper	descente
+evier-refoule-dimanche-midi-quimper	hydrocurage
+evier-refoule-dimanche-midi-quimper	colonne
+evier-refoule-dimanche-midi-quimper	bonde
+
+odeurs-glouglous-le-soir-morlaix	ventilation
+odeurs-glouglous-le-soir-morlaix	garde d'eau
+odeurs-glouglous-le-soir-morlaix	siphon
+odeurs-glouglous-le-soir-morlaix	colonne
+odeurs-glouglous-le-soir-morlaix	odeurs
+odeurs-glouglous-le-soir-morlaix	refoulement
+odeurs-glouglous-le-soir-morlaix	inspection caméra
+
+sanitaires-collectifs-bouches-week-end-concarneau	lingettes
+sanitaires-collectifs-bouches-week-end-concarneau	eaux usées
+sanitaires-collectifs-bouches-week-end-concarneau	hydrocurage
+sanitaires-collectifs-bouches-week-end-concarneau	bonde
+sanitaires-collectifs-bouches-week-end-concarneau	astreinte
+sanitaires-collectifs-bouches-week-end-concarneau	cuvette
+sanitaires-collectifs-bouches-week-end-concarneau	hygiène
+
+broyeur-sanitaire-bloque-le-soir-landerneau	broyeur
+broyeur-sanitaire-bloque-le-soir-landerneau	cuvette
+broyeur-sanitaire-bloque-le-soir-landerneau	lingettes
+broyeur-sanitaire-bloque-le-soir-landerneau	refoulement
+broyeur-sanitaire-bloque-le-soir-landerneau	calcaire
+broyeur-sanitaire-bloque-le-soir-landerneau	locataire
+broyeur-sanitaire-bloque-le-soir-landerneau	vétusté
+
+refoulement-maree-haute-saint-malo	refoulement
+refoulement-maree-haute-saint-malo	clapet anti-retour
+refoulement-maree-haute-saint-malo	eaux usées
+refoulement-maree-haute-saint-malo	regard de branchement
+refoulement-maree-haute-saint-malo	inspection caméra
+refoulement-maree-haute-saint-malo	siphon
+refoulement-maree-haute-saint-malo	assainissement
+
+urgence-nuit-personne-fragile-fougeres	locataire
+urgence-nuit-personne-fragile-fougeres	propriétaire
+urgence-nuit-personne-fragile-fougeres	réparations locatives
+urgence-nuit-personne-fragile-fougeres	astreinte
+urgence-nuit-personne-fragile-fougeres	vétusté
+urgence-nuit-personne-fragile-fougeres	majoration
+urgence-nuit-personne-fragile-fougeres	assainissement
+
+atelier-production-arretee-vitre	hydrocurage
+atelier-production-arretee-vitre	graisses
+atelier-production-arretee-vitre	regard
+atelier-production-arretee-vitre	inspection caméra
+atelier-production-arretee-vitre	contre-pente
+atelier-production-arretee-vitre	bail commercial
+atelier-production-arretee-vitre	majoration
+
+etat-des-lieux-reseau-bouche-bruz	locataire
+etat-des-lieux-reseau-bouche-bruz	propriétaire
+etat-des-lieux-reseau-bouche-bruz	réparations locatives
+etat-des-lieux-reseau-bouche-bruz	vétusté
+etat-des-lieux-reseau-bouche-bruz	siphon
+etat-des-lieux-reseau-bouche-bruz	inspection caméra
+etat-des-lieux-reseau-bouche-bruz	parties communes
+
+sanitaires-bureaux-hors-service-vannes	colonne
+sanitaires-bureaux-hors-service-vannes	syndic
+sanitaires-bureaux-hors-service-vannes	parties communes
+sanitaires-bureaux-hors-service-vannes	lingettes
+sanitaires-bureaux-hors-service-vannes	cuvette
+sanitaires-bureaux-hors-service-vannes	calcaire
+sanitaires-bureaux-hors-service-vannes	bail commercial
+
+lave-linge-refoule-buanderie-lorient	refoulement
+lave-linge-refoule-buanderie-lorient	siphon
+lave-linge-refoule-buanderie-lorient	hydrocurage
+lave-linge-refoule-buanderie-lorient	clapet anti-retour
+lave-linge-refoule-buanderie-lorient	contre-pente
+lave-linge-refoule-buanderie-lorient	inspection caméra
+lave-linge-refoule-buanderie-lorient	sous-sol
+
+canalisation-bouchee-apres-travaux-auray	laitance
+canalisation-bouchee-apres-travaux-auray	gravats
+canalisation-bouchee-apres-travaux-auray	siphon
+canalisation-bouchee-apres-travaux-auray	hydrocurage
+canalisation-bouchee-apres-travaux-auray	inspection caméra
+canalisation-bouchee-apres-travaux-auray	lingettes
+canalisation-bouchee-apres-travaux-auray	bonde
+
+urgence-habitat-rural-isole-pontivy	regard
+urgence-habitat-rural-isole-pontivy	fosse
+urgence-habitat-rural-isole-pontivy	préfiltre
+urgence-habitat-rural-isole-pontivy	épandage
+urgence-habitat-rural-isole-pontivy	racines
+urgence-habitat-rural-isole-pontivy	vidange
+urgence-habitat-rural-isole-pontivy	assainissement
+urgence-habitat-rural-isole-pontivy	eaux usées
