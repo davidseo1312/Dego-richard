@@ -12,6 +12,24 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://deboucheur-richard.fr/blog/atelier-production-arretee-vitre</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/broyeur-sanitaire-bloque-le-soir-landerneau</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/plomberie/installation-broyeur-sanitaire-wc-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/canalisation-bouchee-apres-travaux-auray</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://deboucheur-richard.fr/blog/canalisation-bouchee-que-faire</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
@@ -40,6 +58,12 @@
     <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/commerce-bouche-avant-ouverture-guingamp</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/controle-ecoulement-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/blog/cuisine-professionnelle-bloquee-finistere</loc>
@@ -78,10 +102,22 @@
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://deboucheur-richard.fr/blog/etat-des-lieux-reseau-bouche-bruz</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://deboucheur-richard.fr/blog/evacuation-bouchee-logement-etudiant-rennes</loc>
     <lastmod>2026-09-30</lastmod>
     <priority>0.6</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/evier-refoule-dimanche-midi-quimper</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/blog/eviter-bouchons-canalisation</loc>
@@ -101,10 +137,28 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://deboucheur-richard.fr/blog/lave-linge-refoule-buanderie-lorient</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://deboucheur-richard.fr/blog/location-saisonniere-bouchon-entre-deux-arrivees-morbihan</loc>
     <lastmod>2026-09-30</lastmod>
     <priority>0.6</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/maison-ancienne-canalisation-bouchee-dinan</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/odeurs-glouglous-le-soir-morlaix</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/blog/page/2</loc>
@@ -113,6 +167,16 @@
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/blog/page/3</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/page/4</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/page/5</loc>
     <lastmod>2026-10-04</lastmod>
     <priority>0.4</priority>
   </url>
@@ -135,6 +199,12 @@
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://deboucheur-richard.fr/blog/refoulement-maree-haute-saint-malo</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://deboucheur-richard.fr/blog/regard-deborde-cotes-d-armor</loc>
     <lastmod>2026-09-30</lastmod>
     <priority>0.6</priority>
@@ -147,8 +217,44 @@
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://deboucheur-richard.fr/blog/sanitaires-bureaux-hors-service-vannes</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/sanitaires-collectifs-bouches-week-end-concarneau</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/urgence-habitat-rural-isole-pontivy</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/urgence-nuit-personne-fragile-fougeres</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/urgence-soir-appartement-saint-brieuc</loc>
+    <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://deboucheur-richard.fr/blog/wc-bouche-que-faire</loc>
     <lastmod>2026-09-09</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/wc-bouche-samedi-soir-lannion</loc>
+    <lastmod>2026-10-04</lastmod>
     <priority>0.6</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
