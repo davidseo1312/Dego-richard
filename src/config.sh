@@ -41,8 +41,28 @@ EMAIL="contact@deboucheur-richard.fr"
 # --- Identité légale --------------------------------------------------------
 # Données reprises du registre national des entreprises via le site
 # serrurerie (SIREN 901133041), vérifiées le 08/09/2026.
-RAISON_SOCIALE="Bilal Assoul"
+#
+# ⚠ PROVISOIRE, ET INSUFFISANT EN L'ÉTAT.
+# Pour une entreprise individuelle, l'article 6-III de la LCEN impose que les
+# mentions légales portent les NOM ET PRÉNOM de la personne physique qui
+# édite le site, ainsi que le nom du directeur de la publication. Le site
+# n'affiche pour l'instant que le nom commercial, à la demande de
+# l'exploitant : c'est une formulation d'attente, pas une mise en conformité.
+# Le SIRET reste publié, et le registre national des entreprises est public —
+# l'identité reste donc accessible, elle n'est simplement plus écrite ici.
+#
+# Pour régulariser : remettre ici les nom et prénom, et renseigner
+# DIRECTEUR_PUBLICATION. scripts/check-seo.sh compte cette ligne parmi les
+# informations à fournir tant que ce n'est pas fait.
+RAISON_SOCIALE="Dégorgement Richard"
+
+# Nom de la personne responsable de la publication. Vide, le site emploie une
+# désignation générique, qui ne satisfait pas la LCEN.
+DIRECTEUR_PUBLICATION=""
 FORME_JURIDIQUE="Entrepreneur individuel"
+# La même chose, telle qu'elle s'écrit dans une phrase :
+#   « exploitée en entreprise individuelle »
+FORME_EXPLOITATION="entreprise individuelle"
 CAPITAL=""                       # Sans objet pour une entreprise individuelle
 SIRET="901 133 041 00011"
 SIREN="901 133 041"

@@ -72,6 +72,18 @@ meta_get() {
 # Rien n'est écrit tant que l'identifiant correspondant est vide : pas de
 # balise creuse, pas de requête réseau inutile.
 
+# --- Directeur de la publication -------------------------------------------
+# La LCEN veut un nom. Tant que DIRECTEUR_PUBLICATION est vide, la page affiche
+# une désignation générique : elle ne trompe personne, et scripts/check-seo.sh
+# la signale comme information à fournir. On ne laisse PAS un crochet visible
+# sur une page publiée — un marqueur de chantier en mentions légales fait plus
+# de mal qu'une formule d'attente.
+if [ -n "${DIRECTEUR_PUBLICATION:-}" ]; then
+  export DIRECTEUR_PUBLICATION_AFFICHE="$DIRECTEUR_PUBLICATION"
+else
+  export DIRECTEUR_PUBLICATION_AFFICHE="Le représentant légal de l'entreprise"
+fi
+
 export BLOC_VERIFICATION=""
 if [ -n "${GSC_CODE:-}" ]; then
   BLOC_VERIFICATION="<meta name=\"google-site-verification\" content=\"${GSC_CODE}\">"

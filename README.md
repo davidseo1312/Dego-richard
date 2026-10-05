@@ -652,9 +652,16 @@ de ces six départements.
 
 ## Avant la mise en ligne : informations à fournir
 
-`scripts/check-seo.sh` liste ces champs à chaque exécution. Ils sont entre
-crochets dans `src/config.sh` parce qu'ils **ne peuvent pas être devinés** :
-ce sont des obligations légales ou des données contractuelles.
+`scripts/check-seo.sh` liste ces champs à chaque exécution, et il refuse de
+déclarer le site prêt tant qu'il en reste. Ils **ne peuvent pas être
+devinés** : ce sont des obligations légales ou des données contractuelles.
+
+Deux façons de manquer, et le contrôle couvre les deux. Les champs entre
+crochets dans `src/config.sh` laissent un marqueur visible dans les pages, et
+il se cherche dans le HTML produit. Les autres — un prix vide, une identité
+remplacée par une formule d'attente — ne laissent aucune trace à l'écran :
+ceux-là se constatent dans la configuration, qui est la seule à dire la
+vérité.
 
 | Clé | Nature |
 |---|---|
@@ -662,6 +669,7 @@ ce sont des obligations légales ou des données contractuelles.
 | `ASSUREUR_DECENNALE` | Garantie décennale |
 | `MEDIATEUR_NOM`, `MEDIATEUR_URL` | Médiateur de la consommation — art. L.616-1 du code de la consommation |
 | `PRIX_DEPUIS_*`, `TAUX_HORAIRE`, `FRAIS_DEPLACEMENT`, `MAJORATION_NUIT` | Prix d'appel « à partir de » — arrêté du 24 janvier 2017 |
+| `RAISON_SOCIALE`, `DIRECTEUR_PUBLICATION` | **Identité de l'éditeur — art. 6-III de la LCEN.** Pour une entreprise individuelle, les mentions légales doivent porter les nom et prénom de la personne physique, et le nom du directeur de la publication. Le site n'affiche aujourd'hui que le nom commercial et une désignation générique, à la demande de l'exploitant : c'est une formulation d'attente, pas une mise en conformité |
 | `DOMAINE`, `BASE_URL` | Domaine servi par Hostinger — `deboucheur-richard.fr`. Toutes les adresses canoniques, le sitemap et les données structurées en dérivent : ne le changer que pour un domaine qui résout |
 
 Les forfaits du site de serrurerie **n'ont pas été repris** : ouvrir une porte

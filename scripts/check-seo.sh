@@ -249,6 +249,25 @@ else
   ok "Donnees d'entreprise renseignees"
 fi
 
+# L'identité légale de l'éditeur ne laisse, elle non plus, aucun crochet dans
+# les pages : à la demande de l'exploitant, le site n'affiche que le nom
+# commercial. Ce n'est pas conforme à l'article 6-III de la LCEN, qui veut les
+# nom et prénom de la personne physique pour une entreprise individuelle, et
+# le nom du directeur de la publication. Le manque se constate donc dans la
+# configuration, pas dans le HTML.
+IDENTITE_DUE=""
+[ "$RAISON_SOCIALE" = "$NOM_COMMERCIAL" ] && IDENTITE_DUE="$IDENTITE_DUE RAISON_SOCIALE"
+[ -z "${DIRECTEUR_PUBLICATION:-}" ] && IDENTITE_DUE="$IDENTITE_DUE DIRECTEUR_PUBLICATION"
+if [ -n "$IDENTITE_DUE" ]; then
+  adonner "Identite legale de l'editeur incomplete :$IDENTITE_DUE"
+  echo "        -> l'article 6-III de la LCEN impose, pour une entreprise"
+  echo "           individuelle, les NOM ET PRENOM de l'editeur et le nom du"
+  echo "           directeur de la publication. Le site n'affiche que le nom"
+  echo "           commercial : formulation d'attente, pas mise en conformite."
+else
+  ok "Identite legale de l'editeur complete"
+fi
+
 # Les tarifs ne laissent plus de crochet dans les pages : une valeur vide
 # n'affiche rien du tout. Le manque se constate donc dans la configuration,
 # pas dans le HTML — c'est la source, et c'est la seule qui dise la verite.
