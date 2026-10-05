@@ -63,10 +63,28 @@ FORME_JURIDIQUE="Entrepreneur individuel"
 # La même chose, telle qu'elle s'écrit dans une phrase :
 #   « exploitée en entreprise individuelle »
 FORME_EXPLOITATION="entreprise individuelle"
+
+# Formule affichée partout où un identifiant ou une adresse manque.
+MENTION_ATTENTE="en attente de documents"
 CAPITAL=""                       # Sans objet pour une entreprise individuelle
-SIRET="901 133 041 00011"
-SIREN="901 133 041"
-RCS="Immatriculée au Registre National des Entreprises (RNE) sous le numéro 901 133 041"
+
+# ⚠ RETIRÉS À LA DEMANDE DE L'EXPLOITANT — « en attente de documents ».
+# Les valeurs réelles, vérifiées au registre national des entreprises le
+# 08/09/2026, sont conservées ici en commentaire pour n'avoir rien à
+# rechercher le jour de la régularisation :
+#   SIRET="901 133 041 00011"
+#   SIREN="901 133 041"
+#   RCS="Immatriculée au Registre National des Entreprises (RNE) sous le numéro 901 133 041"
+#
+# Tant que ces lignes sont vides, le site n'affiche AUCUN identifiant
+# d'entreprise. L'article R.123-237 du code de commerce impose pourtant de
+# faire figurer le numéro SIREN sur le site d'un professionnel, et l'article
+# L.121-3 du code de la consommation impose que l'identité et l'adresse du
+# professionnel soient connues du consommateur avant la commande.
+# scripts/check-seo.sh les compte parmi les informations à fournir.
+SIRET=""
+SIREN=""
+RCS=""
 DATE_CREATION="6 juillet 2021"
 
 # Aucun numéro de TVA intracommunautaire actif au 08/09/2026 (vérifié VIES).
@@ -75,9 +93,12 @@ MENTION_TVA="TVA non applicable, article 293 B du code général des impôts"
 UNITE_PRIX="€"                   # Mettre "€ TTC" si assujetti à la TVA
 
 # --- Adresse du siège (mentions légales) ------------------------------------
-SIEGE_RUE="1 rue Albert Simonin"
-SIEGE_CP="92400"
-SIEGE_VILLE="Courbevoie"
+# ⚠ RETIRÉE À LA DEMANDE DE L'EXPLOITANT — « en attente de documents ».
+# Valeur réelle conservée en commentaire :
+#   SIEGE_RUE="1 rue Albert Simonin" / SIEGE_CP="92400" / SIEGE_VILLE="Courbevoie"
+SIEGE_RUE=""
+SIEGE_CP=""
+SIEGE_VILLE=""
 
 # --- Établissement de rattachement (balisage LocalBusiness) -----------------
 # ⚠ Le siège déclaré au registre est en Île-de-France, alors que l'activité
@@ -87,11 +108,19 @@ SIEGE_VILLE="Courbevoie"
 # une adresse fictive, sanctionnée par Google et trompeuse pour le client.
 # Le site n'affiche donc jamais « agence à [ville] », seulement
 # « intervention à [ville] ». Voir README, section « Cohérence géographique ».
-ADRESSE_RUE="1 rue Albert Simonin"
-ADRESSE_CP="92400"
-ADRESSE_VILLE="Courbevoie"
-LATITUDE="48.897442"
-LONGITUDE="2.256290"
+#
+# ⚠ RETIRÉE AVEC LE SIÈGE, à la demande de l'exploitant. Vidées, ces valeurs
+# font disparaître les blocs « address » et « geo » du balisage
+# LocalBusiness : un LocalBusiness sans adresse est un signal local très
+# affaibli, et Google ne peut plus rattacher l'entreprise à un lieu.
+# Valeurs réelles conservées en commentaire :
+#   ADRESSE_RUE="1 rue Albert Simonin" / ADRESSE_CP="92400"
+#   ADRESSE_VILLE="Courbevoie" / LATITUDE="48.897442" / LONGITUDE="2.256290"
+ADRESSE_RUE=""
+ADRESSE_CP=""
+ADRESSE_VILLE=""
+LATITUDE=""
+LONGITUDE=""
 
 # --- Activité déclarée ------------------------------------------------------
 # ⚠ APE au registre : 81.29A (désinfection, désinsectisation, dératisation).

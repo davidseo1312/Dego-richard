@@ -40,15 +40,14 @@ priority: 0.5
       <h2>Réponse rapide</h2>
       <p class="definition">
         <strong>{{NOM_COMMERCIAL}} est une entreprise de dégorgement et d'assainissement
-        exploitée en {{FORME_EXPLOITATION}}, immatriculée sous le SIRET {{SIRET}}
-        depuis le {{DATE_CREATION}}.</strong> Elle intervient dans les Côtes-d'Armor,
+        exploitée en {{FORME_EXPLOITATION}} depuis le {{DATE_CREATION}}.</strong> Elle intervient dans les Côtes-d'Armor,
         le Finistère, l'Ille-et-Vilaine, le Morbihan, la Loire-Atlantique et le Maine-et-Loire,
         {{HORAIRES_URGENCE}}, sur un seul numéro : {{TELEPHONE}}.
       </p>
       <ul class="qr-liste">
         <li><span class="cle">Métier</span><span>Évacuation des eaux usées : dégorgement, débouchage, curage, inspection, pompage, assainissement.</span></li>
         <li><span class="cle">Pas notre métier</span><span>Plomberie générale, fuite sur arrivée d'eau, chauffe-eau, chauffage.</span></li>
-        <li><span class="cle">Siège</span><span>{{SIEGE_RUE}}, {{SIEGE_CP}} {{SIEGE_VILLE}} — adresse administrative, pas un point d'accueil.</span></li>
+        {{BLOC_SIEGE_COURT}}
         <li><span class="cle">Zone</span><span>{{ZONE_INTERVENTION}}.</span></li>
       </ul>
     </div>
@@ -108,9 +107,9 @@ priority: 0.5
     <h2>Une même entité, deux activités</h2>
     <p>
       La même entreprise exploite également une activité de serrurerie de dépannage sous une
-      autre marque. Il s'agit de la même entreprise, avec le même SIRET et les mêmes mentions
-      légales, mais de deux métiers distincts et de deux sites distincts. Nous le mentionnons
-      par transparence : si vous retrouvez ce SIRET ailleurs, ce n'est pas une anomalie.
+      autre marque. Il s'agit de la même entreprise et des mêmes mentions légales, mais de deux
+      métiers distincts et de deux sites distincts. Nous le mentionnons par transparence :
+      si vous retrouvez les mêmes coordonnées ailleurs, ce n'est pas une anomalie.
     </p>
   </div>
 </section>
@@ -120,7 +119,7 @@ priority: 0.5
     <h2>Informations pratiques</h2>
     <ul class="infos-pratiques">
       <li><strong>Dénomination</strong>{{RAISON_SOCIALE}}, {{FORME_JURIDIQUE}}</li>
-      <li><strong>SIRET</strong>{{SIRET}}</li>
+      {{LIGNE_SIRET_COURTE}}
       <li><strong>Créée le</strong>{{DATE_CREATION}}</li>
       <li><strong>Téléphone</strong><a href="tel:{{TELEPHONE_E164}}">{{TELEPHONE}}</a></li>
       <li><strong>E-mail</strong><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></li>

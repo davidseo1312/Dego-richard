@@ -656,6 +656,14 @@ de ces six départements.
 déclarer le site prêt tant qu'il en reste. Ils **ne peuvent pas être
 devinés** : ce sont des obligations légales ou des données contractuelles.
 
+Depuis octobre 2026, à la demande de l'exploitant, le site n'affiche ni le
+nom de la personne physique, ni le SIRET, ni le SIREN, ni l'adresse du siège :
+ces lignes portent « en attente de documents ». **Ce n'est pas une mise en
+conformité, c'est une formulation d'attente**, et les valeurs réelles —
+relevées au registre national des entreprises le 08/09/2026 — sont conservées
+en commentaire dans `src/config.sh` : il n'y aura rien à rechercher le jour
+de la régularisation.
+
 Deux façons de manquer, et le contrôle couvre les deux. Les champs entre
 crochets dans `src/config.sh` laissent un marqueur visible dans les pages, et
 il se cherche dans le HTML produit. Les autres — un prix vide, une identité
@@ -669,7 +677,10 @@ vérité.
 | `ASSUREUR_DECENNALE` | Garantie décennale |
 | `MEDIATEUR_NOM`, `MEDIATEUR_URL` | Médiateur de la consommation — art. L.616-1 du code de la consommation |
 | `PRIX_DEPUIS_*`, `TAUX_HORAIRE`, `FRAIS_DEPLACEMENT`, `MAJORATION_NUIT` | Prix d'appel « à partir de » — arrêté du 24 janvier 2017 |
-| `RAISON_SOCIALE`, `DIRECTEUR_PUBLICATION` | **Identité de l'éditeur — art. 6-III de la LCEN.** Pour une entreprise individuelle, les mentions légales doivent porter les nom et prénom de la personne physique, et le nom du directeur de la publication. Le site n'affiche aujourd'hui que le nom commercial et une désignation générique, à la demande de l'exploitant : c'est une formulation d'attente, pas une mise en conformité |
+| `RAISON_SOCIALE`, `DIRECTEUR_PUBLICATION` | **Identité de l'éditeur — art. 6-III de la LCEN.** Pour une entreprise individuelle, les mentions légales doivent porter les nom et prénom de la personne physique, et le nom du directeur de la publication |
+| `SIRET`, `SIREN`, `RCS` | **Immatriculation — art. R.123-237 du code de commerce**, qui impose le numéro SIREN sur le site d'un professionnel |
+| `SIEGE_RUE`, `SIEGE_CP`, `SIEGE_VILLE` | **Adresse — art. 6-III LCEN et art. L.121-3 du code de la consommation**, qui veut que l'identité et l'adresse du professionnel soient connues du consommateur avant la commande |
+| `ADRESSE_RUE`, `ADRESSE_CP`, `ADRESSE_VILLE`, `LATITUDE`, `LONGITUDE` | Adresse du balisage `LocalBusiness`. Vides, les blocs `address` et `geo` disparaissent des données structurées : le signal local est fortement affaibli |
 | `DOMAINE`, `BASE_URL` | Domaine servi par Hostinger — `deboucheur-richard.fr`. Toutes les adresses canoniques, le sitemap et les données structurées en dérivent : ne le changer que pour un domaine qui résout |
 
 Les forfaits du site de serrurerie **n'ont pas été repris** : ouvrir une porte

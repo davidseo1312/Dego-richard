@@ -84,6 +84,53 @@ else
   export DIRECTEUR_PUBLICATION_AFFICHE="Le représentant légal de l'entreprise"
 fi
 
+# --- Identifiants d'entreprise et adresse du siège -------------------------
+# Vides, ils ne laissent ni ligne bancale (« SIRET  »), ni crochet visible :
+# une seule ligne d'attente remplace le bloc. Le manque se constate dans la
+# configuration, et scripts/check-seo.sh le compte comme information due.
+if [ -n "${SIRET:-}" ]; then
+  export BLOC_IDENTIFICATION="<li><strong>SIREN :</strong> ${SIREN}</li>
+      <li><strong>SIRET du siège :</strong> ${SIRET}</li>
+      <li><strong>Immatriculation :</strong> ${RCS}</li>"
+  export LIGNE_SIRET="<li><strong>SIRET :</strong> ${SIRET}</li>"
+  export LIGNE_SIRET_COURTE="<li><strong>SIRET</strong>${SIRET}</li>"
+  export MENTION_IDENTIFICATION="SIRET ${SIRET}"
+else
+  export BLOC_IDENTIFICATION="<li><strong>Identifiants d'entreprise :</strong> ${MENTION_ATTENTE}</li>"
+  export LIGNE_SIRET="<li><strong>Identifiants d'entreprise :</strong> ${MENTION_ATTENTE}</li>"
+  export LIGNE_SIRET_COURTE="<li><strong>Identifiants</strong>${MENTION_ATTENTE}</li>"
+  export MENTION_IDENTIFICATION="Identifiants d'entreprise : ${MENTION_ATTENTE}"
+fi
+
+if [ -n "${SIEGE_RUE:-}" ]; then
+  export SIEGE_LIGNE="${SIEGE_RUE}, ${SIEGE_CP} ${SIEGE_VILLE}"
+  export BLOC_SIEGE="<li><strong>Siège social :</strong> ${SIEGE_LIGNE}</li>"
+  export BLOC_SIEGE_COURT="<li><span class=\"cle\">Siège</span><span>${SIEGE_LIGNE} — adresse administrative, pas un point d'accueil.</span></li>"
+else
+  export SIEGE_LIGNE="adresse du siège ${MENTION_ATTENTE}"
+  export BLOC_SIEGE="<li><strong>Siège social :</strong> ${MENTION_ATTENTE}</li>"
+  export BLOC_SIEGE_COURT="<li><span class=\"cle\">Siège</span><span>${MENTION_ATTENTE} — l'entreprise n'a aucun point d'accueil du public.</span></li>"
+fi
+
+# Balisage LocalBusiness : pas d'adresse déclarée, pas de bloc « address ».
+# On ne publie pas une adresse vide dans des données structurées.
+if [ -n "${ADRESSE_RUE:-}" ]; then
+  export BLOC_ADRESSE_LD="\"address\": {
+        \"@type\": \"PostalAddress\",
+        \"streetAddress\": \"${ADRESSE_RUE}\",
+        \"postalCode\": \"${ADRESSE_CP}\",
+        \"addressLocality\": \"${ADRESSE_VILLE}\",
+        \"addressCountry\": \"FR\"
+      },
+      \"geo\": {
+        \"@type\": \"GeoCoordinates\",
+        \"latitude\": \"${LATITUDE}\",
+        \"longitude\": \"${LONGITUDE}\"
+      },"
+else
+  export BLOC_ADRESSE_LD="\"areaServed\": ["
+fi
+
 export BLOC_VERIFICATION=""
 if [ -n "${GSC_CODE:-}" ]; then
   BLOC_VERIFICATION="<meta name=\"google-site-verification\" content=\"${GSC_CODE}\">"
