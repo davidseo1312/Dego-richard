@@ -31,6 +31,25 @@
 *	intervention
 *	devis
 
+# --- Champ commun n°2 : les articles d'INSTALLATION ------------------------
+# Un article sur un radiateur ou un ballon d'eau chaude n'a aucune raison
+# d'employer « dégorgement » ou « débouchage » : les exiger reviendrait à
+# faire tordre la phrase pour satisfaire un contrôle. Ces articles déclarent
+# « champ_commun: installation » dans leur bloc meta et sont mesurés sur la
+# zone d'intervention plus le vocabulaire de l'installation sanitaire.
+*installation	Bretagne
+*installation	Grand Ouest
+*installation	Côtes-d'Armor
+*installation	Finistère
+*installation	Ille-et-Vilaine
+*installation	Morbihan
+*installation	Loire-Atlantique
+*installation	Maine-et-Loire
+*installation	plomberie
+*installation	installation
+*installation	intervention
+*installation	devis
+
 canalisation-bouchee-que-faire	refoulement
 canalisation-bouchee-que-faire	siphon
 canalisation-bouchee-que-faire	ventouse
@@ -418,3 +437,148 @@ urgence-habitat-rural-isole-pontivy	racines
 urgence-habitat-rural-isole-pontivy	vidange
 urgence-habitat-rural-isole-pontivy	assainissement
 urgence-habitat-rural-isole-pontivy	eaux usées
+
+# L'article sur les droits en dépannage : son champ complet est mesuré à part
+# par scripts/check-semantique.py (36 termes du champ « dégât des eaux et
+# assurance »). Ces lignes-ci le rattachent au contrôle d'ensemble, qui sans
+# elles ne le voyait pas du tout.
+depannage-urgence-vos-droits	devis
+depannage-urgence-vos-droits	rétractation
+depannage-urgence-vos-droits	majoration
+depannage-urgence-vos-droits	dégât des eaux
+depannage-urgence-vos-droits	assurance habitation
+depannage-urgence-vos-droits	réparations locatives
+depannage-urgence-vos-droits	vétusté
+depannage-urgence-vos-droits	recherche de fuite
+
+# --- Seize articles d'INSTALLATION, quatre villes par département breton ---
+# Ils déclarent « champ_commun: installation » : voir plus haut.
+ballon-eau-chaude-qui-fuit-saint-brieuc	chauffe-eau
+ballon-eau-chaude-qui-fuit-saint-brieuc	groupe de sécurité
+ballon-eau-chaude-qui-fuit-saint-brieuc	cuve
+ballon-eau-chaude-qui-fuit-saint-brieuc	résistance
+ballon-eau-chaude-qui-fuit-saint-brieuc	anode
+ballon-eau-chaude-qui-fuit-saint-brieuc	tartre
+ballon-eau-chaude-qui-fuit-saint-brieuc	disjoncteur
+ballon-eau-chaude-qui-fuit-saint-brieuc	remplacement
+
+robinet-qui-ne-ferme-plus-lannion	mitigeur
+robinet-qui-ne-ferme-plus-lannion	robinet d'arrêt
+robinet-qui-ne-ferme-plus-lannion	cartouche
+robinet-qui-ne-ferme-plus-lannion	flexible
+robinet-qui-ne-ferme-plus-lannion	joint
+robinet-qui-ne-ferme-plus-lannion	calcaire
+robinet-qui-ne-ferme-plus-lannion	réparations locatives
+
+douche-italienne-maison-ancienne-dinan	receveur
+douche-italienne-maison-ancienne-dinan	pente
+douche-italienne-maison-ancienne-dinan	étanchéité
+douche-italienne-maison-ancienne-dinan	bonde
+douche-italienne-maison-ancienne-dinan	siphon de sol
+douche-italienne-maison-ancienne-dinan	évacuation
+douche-italienne-maison-ancienne-dinan	ventilation
+
+radiateur-qui-fuit-guingamp	radiateur
+radiateur-qui-fuit-guingamp	purgeur
+radiateur-qui-fuit-guingamp	té de réglage
+radiateur-qui-fuit-guingamp	chaudière
+radiateur-qui-fuit-guingamp	circuit
+radiateur-qui-fuit-guingamp	pression
+radiateur-qui-fuit-guingamp	raccord
+
+plus-d-eau-chaude-que-verifier-brest	chauffe-eau
+plus-d-eau-chaude-que-verifier-brest	disjoncteur
+plus-d-eau-chaude-que-verifier-brest	contacteur
+plus-d-eau-chaude-que-verifier-brest	thermostat
+plus-d-eau-chaude-que-verifier-brest	résistance
+plus-d-eau-chaude-que-verifier-brest	anode
+plus-d-eau-chaude-que-verifier-brest	groupe de sécurité
+plus-d-eau-chaude-que-verifier-brest	tartre
+
+fuite-canalisation-encastree-quimper	compteur
+fuite-canalisation-encastree-quimper	recherche de fuite
+fuite-canalisation-encastree-quimper	dégât des eaux
+fuite-canalisation-encastree-quimper	cuivre
+fuite-canalisation-encastree-quimper	acier galvanisé
+fuite-canalisation-encastree-quimper	surconsommation
+fuite-canalisation-encastree-quimper	chaudière
+
+salle-d-eau-dans-une-chambre-morlaix	évacuation
+salle-d-eau-dans-une-chambre-morlaix	pente
+salle-d-eau-dans-une-chambre-morlaix	ventilation
+salle-d-eau-dans-une-chambre-morlaix	chute
+salle-d-eau-dans-une-chambre-morlaix	pompe de relevage
+salle-d-eau-dans-une-chambre-morlaix	robinet d'arrêt
+salle-d-eau-dans-une-chambre-morlaix	débit
+
+remplacer-wc-suspendu-concarneau	cuvette
+remplacer-wc-suspendu-concarneau	bâti-support
+remplacer-wc-suspendu-concarneau	entraxe
+remplacer-wc-suspendu-concarneau	évacuation
+remplacer-wc-suspendu-concarneau	mécanisme de chasse
+remplacer-wc-suspendu-concarneau	joint
+remplacer-wc-suspendu-concarneau	réservoir
+
+fuite-apres-compteur-rennes	compteur
+fuite-apres-compteur-rennes	branchement
+fuite-apres-compteur-rennes	surconsommation
+fuite-apres-compteur-rennes	écrêtement
+fuite-apres-compteur-rennes	attestation
+fuite-apres-compteur-rennes	robinet d'arrêt
+fuite-apres-compteur-rennes	parties communes
+
+baignoire-remplacee-par-douche-saint-malo	receveur
+baignoire-remplacee-par-douche-saint-malo	baignoire
+baignoire-remplacee-par-douche-saint-malo	barre d'appui
+baignoire-remplacee-par-douche-saint-malo	étanchéité
+baignoire-remplacee-par-douche-saint-malo	mitigeur thermostatique
+baignoire-remplacee-par-douche-saint-malo	évacuation
+baignoire-remplacee-par-douche-saint-malo	antidérapant
+
+seche-serviettes-radiateur-electrique-fougeres	sèche-serviettes
+seche-serviettes-radiateur-electrique-fougeres	radiateur
+seche-serviettes-radiateur-electrique-fougeres	volumes de sécurité
+seche-serviettes-radiateur-electrique-fougeres	puissance
+seche-serviettes-radiateur-electrique-fougeres	circuit dédié
+seche-serviettes-radiateur-electrique-fougeres	fil pilote
+seche-serviettes-radiateur-electrique-fougeres	isolation
+
+canalisation-gelee-rupture-au-degel-vitre	gel
+canalisation-gelee-rupture-au-degel-vitre	dégel
+canalisation-gelee-rupture-au-degel-vitre	purge
+canalisation-gelee-rupture-au-degel-vitre	compteur
+canalisation-gelee-rupture-au-degel-vitre	isolation
+canalisation-gelee-rupture-au-degel-vitre	vide sanitaire
+canalisation-gelee-rupture-au-degel-vitre	dégât des eaux
+
+raccorder-lave-linge-lave-vaisselle-vannes	lave-linge
+raccorder-lave-linge-lave-vaisselle-vannes	lave-vaisselle
+raccorder-lave-linge-lave-vaisselle-vannes	siphon
+raccorder-lave-linge-lave-vaisselle-vannes	flexible
+raccorder-lave-linge-lave-vaisselle-vannes	robinet d'arrêt
+raccorder-lave-linge-lave-vaisselle-vannes	vidange
+raccorder-lave-linge-lave-vaisselle-vannes	garde d'eau
+
+robinet-arret-flexibles-vetustes-lorient	robinet d'arrêt
+robinet-arret-flexibles-vetustes-lorient	flexible
+robinet-arret-flexibles-vetustes-lorient	presse-étoupe
+robinet-arret-flexibles-vetustes-lorient	calcaire
+robinet-arret-flexibles-vetustes-lorient	vanne générale
+robinet-arret-flexibles-vetustes-lorient	dégât des eaux
+robinet-arret-flexibles-vetustes-lorient	robinetterie
+
+pression-trop-forte-coups-de-belier-auray	pression
+pression-trop-forte-coups-de-belier-auray	coup de bélier
+pression-trop-forte-coups-de-belier-auray	réducteur de pression
+pression-trop-forte-coups-de-belier-auray	manomètre
+pression-trop-forte-coups-de-belier-auray	groupe de sécurité
+pression-trop-forte-coups-de-belier-auray	robinetterie
+pression-trop-forte-coups-de-belier-auray	flexible
+
+remise-en-eau-maison-inoccupee-pontivy	purge
+remise-en-eau-maison-inoccupee-pontivy	vanne générale
+remise-en-eau-maison-inoccupee-pontivy	compteur
+remise-en-eau-maison-inoccupee-pontivy	chauffe-eau
+remise-en-eau-maison-inoccupee-pontivy	siphon
+remise-en-eau-maison-inoccupee-pontivy	gel
+remise-en-eau-maison-inoccupee-pontivy	assainissement

@@ -34,6 +34,7 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 CHAMPS = RACINE / "src" / "seo" / "champs-lexicaux.tsv"
 BLOG = RACINE / "public" / "blog"
+SRC = RACINE / "src" / "pages" / "blog"
 
 sp = importlib.util.spec_from_file_location("cs", RACINE / "scripts" / "check-semantique.py")
 cs = importlib.util.module_from_spec(sp)
@@ -43,7 +44,17 @@ VERT, ROUGE, JAUNE, GRAS, FIN = "\033[32m", "\033[31m", "\033[33m", "\033[1m", "
 
 
 def champs() -> dict:
-    communs, propres = [], {}
+    """Les champs communs (plusieurs familles) et les champs propres.
+
+    Le site a longtemps traité un seul métier, et un seul champ commun
+    suffisait. Depuis qu'il publie aussi sur l'installation sanitaire,
+    exiger « dégorgement » et « débouchage » dans un article sur un
+    radiateur reviendrait à demander qu'on torde la phrase pour satisfaire
+    un contrôle — exactement ce que l'en-tête du fichier interdit. Un
+    article déclare donc sa famille par « champ_commun: » dans son bloc
+    meta ; sans mention, c'est la famille historique.
+    """
+    communs, propres = {"*": []}, {}
     for ligne in CHAMPS.read_text(encoding="utf-8").splitlines():
         if not ligne.strip() or ligne.lstrip().startswith("#"):
             continue
@@ -51,8 +62,8 @@ def champs() -> dict:
         terme = terme.strip()
         if not terme:
             continue
-        if slug == "*":
-            communs.append(terme)
+        if slug.startswith("*"):
+            communs.setdefault(slug, []).append(terme)
         else:
             propres.setdefault(slug, []).append(terme)
     return communs, propres
@@ -69,9 +80,24 @@ def main() -> int:
     echecs = []
 
     print(f"\n{GRAS}Couverture sémantique des articles du blog{FIN}")
-    print(f"  {len(propres)} articles, champ commun de {len(communs)} termes\n")
+    detail = ", ".join(f"{k} : {len(v)} termes" for k, v in sorted(communs.items()))
+    print(f"  {len(propres)} articles, champs communs — {detail}\n")
     print(f"  {'article':44} {'couv.':>6} {'plac.':>6} {'max/terme':>10}  CTA")
     print("  " + "-" * 76)
+
+    # Un article absent du fichier de champs n'était tout simplement pas
+    # mesuré, et le script annonçait pourtant « TOUS les articles du blog ».
+    # C'est ainsi que « depannage-urgence-vos-droits » est passé entre les
+    # mailles pendant des semaines. Le silence n'est pas un succès.
+    publies = {f.stem for f in SRC.glob("*.html") if f.name != "index.html"}
+    oublies = sorted(publies - set(propres))
+    if oublies:
+        print(f"  {ROUGE}Articles sans champ lexical déclaré "
+              f"(src/seo/champs-lexicaux.tsv) :{FIN}")
+        for o in oublies:
+            print(f"      • {o}")
+        print()
+        echecs.extend(oublies)
 
     for slug in sorted(propres):
         f = BLOG / f"{slug}.html"
@@ -79,6 +105,14 @@ def main() -> int:
             echecs.append(f"{slug} : page absente")
             continue
         html = f.read_text(encoding="utf-8")
+        famille = "*"
+        m = re.search(r"^champ_commun:[ \t]*(\S+)[ \t]*$",
+                      (SRC / f"{slug}.html").read_text(encoding="utf-8"), re.M)
+        if m:
+            famille = "*" + m.group(1)
+            if famille not in communs:
+                echecs.append(f"{slug} : champ commun « {m.group(1)} » inconnu")
+                continue
         corps = cs.corps(html)
         h1 = cs.sans_accent(cs.texte_nu(
             re.search(r"<h1[^>]*>(.*?)</h1>", corps, re.S).group(1)))
@@ -86,7 +120,7 @@ def main() -> int:
         fort = cs.sans_accent(cs.zones_fortes(corps)).replace("’", "'")
         nb = len(texte.split())
 
-        termes = communs + propres[slug]
+        termes = communs[famille] + propres[slug]
         presents = places = 0
         pire = (0.0, "—")
         manquants = []
