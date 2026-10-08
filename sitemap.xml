@@ -3,17 +3,29 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://deboucheur-richard.fr/a-propos</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/assainissement</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/blog/atelier-production-arretee-vitre</loc>
     <lastmod>2026-10-04</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/baignoire-remplacee-par-douche-saint-malo</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/ballon-eau-chaude-qui-fuit-saint-brieuc</loc>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.6</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
@@ -40,6 +52,12 @@
     <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/canalisation-gelee-rupture-au-degel-vitre</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/blog/cave-inondee-pompage-urgence-ille-et-vilaine</loc>
@@ -90,6 +108,12 @@
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://deboucheur-richard.fr/blog/douche-italienne-maison-ancienne-dinan</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://deboucheur-richard.fr/blog/eau-remonte-evier</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
@@ -132,8 +156,20 @@
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://deboucheur-richard.fr/blog/fuite-apres-compteur-rennes</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/fuite-canalisation-encastree-quimper</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://deboucheur-richard.fr/blog/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -162,29 +198,51 @@
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/blog/page/2</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/blog/page/3</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/blog/page/4</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/blog/page/5</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/page/6</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/page/7</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/plus-d-eau-chaude-que-verifier-brest</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/plomberie/installation-broyeur-sanitaire-wc-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/blog/pourquoi-canalisation-se-bouche</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/pression-trop-forte-coups-de-belier-auray</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/blog/prix-degorgement</loc>
@@ -199,6 +257,18 @@
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://deboucheur-richard.fr/blog/raccorder-lave-linge-lave-vaisselle-vannes</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/controle-ecoulement-evier-cuisine-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/radiateur-qui-fuit-guingamp</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://deboucheur-richard.fr/blog/refoulement-maree-haute-saint-malo</loc>
     <lastmod>2026-10-04</lastmod>
     <priority>0.6</priority>
@@ -211,10 +281,40 @@
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://deboucheur-richard.fr/blog/remise-en-eau-maison-inoccupee-pontivy</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/remplacer-wc-suspendu-concarneau</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://deboucheur-richard.fr/blog/residence-secondaire-reouverture</loc>
     <lastmod>2026-09-09</lastmod>
     <priority>0.55</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/robinet-arret-flexibles-vetustes-lorient</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/robinet-qui-ne-ferme-plus-lannion</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/salle-d-eau-dans-une-chambre-morlaix</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/blog/sanitaires-bureaux-hors-service-vannes</loc>
@@ -227,6 +327,12 @@
     <lastmod>2026-10-04</lastmod>
     <priority>0.6</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://deboucheur-richard.fr/blog/seche-serviettes-radiateur-electrique-fougeres</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/blog/urgence-habitat-rural-isole-pontivy</loc>
@@ -260,397 +366,397 @@
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/conditions-generales</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/contact</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/curage-canalisation</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/debouchage-baignoire</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.75</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/debouchage-canalisation-exterieure</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.85</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/debouchage-canalisation</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/debouchage-cuisine</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/controle-ecoulement-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/debouchage-douche</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/debouchage-evier</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.85</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/debouchage-lavabo</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/debouchage-toilettes</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/plomberie/installation-broyeur-sanitaire-wc-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/debouchage-wc</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.9</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-ancenis-saint-gereon</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-angers</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-auray</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-avrille</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-beaucouze</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.62</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-betton</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-brest</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-bruz</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.66</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-carhaix-plouguer</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.66</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-carquefou</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.66</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-cesson-sevigne</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.66</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-chantepie</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-chateaubriant</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-chemille-en-anjou</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.62</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-cholet</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.78</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-collectif</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-concarneau</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.72</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-dinan</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.72</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-douarnenez</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.68</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-fouesnant</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.66</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-fougeres</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-guidel</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.62</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-guingamp</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-guipavas</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.66</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-hennebont</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.66</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-lamballe-armor</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-landerneau</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.68</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-lanester</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.66</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-lannion</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-les-ponts-de-ce</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-lorient</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-montreuil-juigne</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.62</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-morlaix</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-nantes</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-orvault</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.66</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-paimpol</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-perros-guirec</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-plerin</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.68</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-ploemeur</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-ploufragan</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.66</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-pontivy</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-pornic</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.66</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-professionnel</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-questembert</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.62</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-quimper</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-quimperle</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.68</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-redon</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-rennes</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-reze</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.68</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-saint-brieuc</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-saint-gregoire</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-saint-herblain</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.68</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-saint-malo</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.78</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-saint-nazaire</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.78</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-sarzeau</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-saumur</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.78</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-segre-en-anjou-bleu</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-tregueux</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.66</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-trelaze</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-urgence</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.9</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-vannes</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-vertou</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.66</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement-vitre</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/degorgement</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/departements/cotes-d-armor</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.85</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
@@ -658,7 +764,7 @@
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/departements/finistere</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.85</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp</image:loc></image:image>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/controle-ecoulement-evier-cuisine-1536.webp</image:loc></image:image>
@@ -666,7 +772,7 @@
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/departements/ille-et-vilaine</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.85</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-wc-inspection-camera-1536.webp</image:loc></image:image>
@@ -674,7 +780,7 @@
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/departements/loire-atlantique</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.85</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/controle-ecoulement-evier-cuisine-1536.webp</image:loc></image:image>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/reseau-collectif-sous-sol-1536.webp</image:loc></image:image>
@@ -682,7 +788,7 @@
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/departements/maine-et-loire</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.85</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/debouchage/demontage-siphon-lavabo-1536.webp</image:loc></image:image>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-evier-cuisine-1536.webp</image:loc></image:image>
@@ -690,7 +796,7 @@
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/departements/morbihan</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.85</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/degorgement/aspiration-eau-receveur-douche-1536.webp</image:loc></image:image>
@@ -698,22 +804,22 @@
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/devis</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/entretien-canalisation</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/faq</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>1.0</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/debouchage-baignoire-inspection-1536.webp</image:loc></image:image>
@@ -725,44 +831,44 @@
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/inspection-camera-canalisation</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.85</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/camera/inspection-camera-regard-voirie-1366.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/mentions-legales</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/politique-confidentialite</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/pompage</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
     <image:image><image:loc>https://deboucheur-richard.fr/assets/img/interventions/urgence-degorgement-douche-1536.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/prestations</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/recherche-bouchon</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/tarifs</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://deboucheur-richard.fr/zone-intervention</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.85</priority>
   </url>
 </urlset>
